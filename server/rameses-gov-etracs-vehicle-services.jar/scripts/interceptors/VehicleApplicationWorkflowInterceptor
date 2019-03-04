@@ -72,13 +72,8 @@ class VehicleApplicationWorkflowInterceptor {
 		def entity = appEm.find( [objid: p.refid ] ).first();
 
 		//update the  renewaldate if apptype is new or renew
-		if( entity.apptype == "DROP" ) {
-			franchiseEm.find([ objid: entity.controlid ] ).update( [renewaldate: "{NULL}", appid: "{NULL}"])
-		}
-		else if( entity.apptype.matches("NEW|RENEW") ) {
-			def params = [application: entity];
-			def r = billRuleSvc.execute( [rulename:'vehicledates', params: params ] );
-			franchiseEm.find([ objid: entity.controlid ] ).update( [renewaldate: r.renewaldate ])
+		if( entity.apptype == "DROP_FRANCHISE" ) {
+			franchiseEm.find([ objid: entity.franchiseid ] ).update( [appid: "{NULL}"])
 		}
 	}
 

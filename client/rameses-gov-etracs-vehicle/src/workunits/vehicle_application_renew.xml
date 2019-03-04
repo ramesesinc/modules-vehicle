@@ -1,0 +1,24 @@
+<workunit schemaName="vehicle_application">
+    <invokers>
+        <invoker folderid="menucategory/vehicle/application"  apptype="RENEW"
+                 action="startOnline" caption="Vehicle Renewal"  index="11" />
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.ApplicationEntryModel" />
+    <pageflow>
+        <start>
+            <transition to="initial" />
+        </start>
+        <page name="initial" title="#{vehicletype.title} Search (#{entity.apptype} #{entity.txnmode})">
+            <transition to="view" caption="Next" action="searchEntry" />
+        </page>
+        <page name="view" title="#{entity.controlno)">
+            <transition to="end" caption="Submit" action="save" 
+                        confirm="You are about to renew this application. Proceed?"/>
+        </page>
+        <end/>
+    </pageflow>
+    <pages>
+        <page name="initial" template="com.rameses.gov.etracs.vehicle.views.SpecifyControlNoPage" />
+        <page name="view" template="com.rameses.gov.etracs.vehicle.views.ViewCurrentInfoPage" />
+    </pages>
+</workunit>

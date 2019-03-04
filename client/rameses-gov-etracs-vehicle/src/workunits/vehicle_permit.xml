@@ -1,7 +1,7 @@
 <workunit extends="com/rameses/seti2/templates/CrudReport.xml">
     <invokers>
-        <invoker type="vehicle_application_permit:print" 
-                 caption="Print Permit" target="self" action="openPermit"/> 
+        <invoker type="vehicle_permit:print" reportId="vehicle_permit"
+                 caption="Print Permit" target="self" action="init"/> 
     </invokers>             
     <code class="com.rameses.gov.etracs.vehicle.models.VehiclePermitReport" />
 </workunit>

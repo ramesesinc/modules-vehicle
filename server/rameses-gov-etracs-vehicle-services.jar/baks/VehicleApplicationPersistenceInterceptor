@@ -1,0 +1,166 @@
+import com.rameses.annotations.*;
+
+
+/*****************************************************************************
+* APPLICATION TYPES:
+* NEW, RENEW, CHANGE_GENERAL_INFO, CHANGE_OWNERSHIP, CHANGE_UNIT, DROP UNIT
+* DROP FRANCHISE
+******************************************************************************/
+class VehicleApplicationPersistenceInterceptor {
+	
+	@DataContext("vehicle_franchise_generalinfo")
+	def genInfoEm;
+
+	@DataContext("vehicle_franchise")
+	def franchiseEm;
+
+	@DataContext("vehicle_franchise_year")
+	def franchiseYearEm;
+
+	@DataContext("vehicle_unit")
+	def vehicleUnitEm;
+
+	@Service("ControlnoGeneratorService")
+	def controlNoSvc;
+
+	@Service("DateService")
+	def dateSvc;
+
+	@Service("WorkflowTaskService")
+	def taskSvc;
+
+	@DataContext("vw_vehicle_franchise")
+	def vwFranchiseEm;
+
+	def createInfo = { o->
+		def m = [:];
+		m.owner = o.owner;
+		m.phoneno = o.phoneno;
+		m.email = o.email;
+		m.mobileno = o.mobileno;		
+		m = genInfoEm.create(m);
+		return m;		
+	}
+
+	def generateAppNo = { franchiseid ->
+		def fran = franchiseEm.find([objid: franchiseid ]).first();
+		if( !fran?.vehicletype?.appnopattern )
+			throw new Exception("Please specify appnopattern in vehicletype");
+		return controlNoSvc.getNextNo( fran.vehicletype.appnopattern );	
+	}
+
+	def createYearEntry = { o, geninfo ->
+		def m = [:];
+		m.year = o.appyear;
+		m.geninfoid = geninfo.objid;
+		m.franchiseid = o.franchise.objid;
+		m = franchiseYearEm.create(m);
+		return m;		
+	}
+
+	@Before(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_application' && (args[0].apptype == 'NEW' || args[0].txnmode == 'CAPTURE') }")
+	public void beforeCreateNew(def evt) {
+		def app = evt.args[0];
+		if( !app.franchise ) throw new Exception("Please specify franchise in application");
+		if( !app.units ) throw new Exception("Please specify units in application");
+		if( !app.appyear ) throw new Exception("Please specify appyear in application");		
+		
+		def geninfo = createInfo( app );		
+		def yearentry = createYearEntry( app, geninfo );
+		app.geninfoid = geninfo.objid;
+		app.franchiseyearid = yearentry.objid;
+		app.appdate = dateSvc.getServerDate();
+		app.appno =  generateAppNo(app.franchise.objid);
+
+		//for each record, create vehicleunit
+		app.units.each {
+			if(!it.unit) throw new Exception("Please specify unit in each unit element");
+			def vu = vehicleUnitEm.create(it.unit);		
+			it.unitid = vu.objid;
+		}
+	} 
+
+	@Before(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_application' && args[0].apptype == 'RENEW' && args[0].txnmode == 'ONLINE' }")
+	public void beforeCreateRenew(def evt) {
+		def app = evt.args[0];		
+		if( !app.franchise ) throw new Exception("Please specify franchise in renewal application");
+		if( !app.units ) throw new Exception("Please specify units in renewal application");
+
+		def fran = vwFranchiseEm.find([objid:app.franchise.objid]).first();
+		if( (fran.year + 1) != app.appyear )
+			throw new Exception("Year must be an increment from last year renewed/registered");
+
+		def yearentry = createYearEntry( app, [objid: fran.geninfoid] );
+
+		app.appno = generateAppNo(fran.objid);
+		app.geninfoid = fran.geninfoid;
+		app.franchiseyearid = yearentry.objid;
+		app.appdate = dateSvc.getServerDate();
+	} 
+
+	@Before(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_application' && args[0].apptype.matches('(ADD|CHANGE|DROP)_UNIT') }")
+	public void beforeChangeUnit(def evt) {
+		def app = evt.args[0];
+		if( !app.franchise ) throw new Exception("Please specify franchise in add unit application");
+
+		def fran = vwFranchiseEm.find([objid:app.franchise.objid]).first();
+		app.appno = generateAppNo(fran.objid);
+		app.geninfoid = fran.geninfoid;
+		app.appyear = fran.year;
+		app.franchiseyearid = fran.currentyearid;		
+		app.appdate = dateSvc.getServerDate();
+
+		//for each record, create vehicleunit
+		if(app.units) {
+			app.units.each {
+				def vu = vehicleUnitEm.create( it.unit );		
+				it.unitid = vu.objid;
+			}		
+		}
+	} 
+
+
+	@After(pattern="PersistenceService.create", index=50, eval="#{args[0]._schemaname == 'vehicle_application' && args[0].apptype.matches('NEW|RENEW') }")
+	public void afterCreateNewRenew(def evt) {
+		def app = evt.args[0];
+		def yearid = app.franchiseyearid; 	
+		franchiseEm.find([objid: app.franchise.objid ] ).update( [currentyearid: yearid ]);
+		franchiseYearEm.find( [objid: yearid ] ).update( [appid: app.objid] );
+	} 
+
+	//workflow is applicable for all applications
+	@After(pattern="PersistenceService.create", index=100, eval="#{ args[0]._schemaname == 'vehicle_application' && args[0].txnmode=='ONLINE' }")
+	public void fireApplicationWorkflow(def evt) {
+		def entity = evt.args[0];
+		def p = [:];
+		p.processname = 'vehicle_application';
+		p.refid = entity.objid;
+		p.startdate = dateSvc.serverDate;
+		p.info = entity;
+		taskSvc.start(p);
+	}
+
+	@After(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_application' && args[0].apptype.matches('(CHANGE|DROP)_UNIT') }")
+	public void afterChangeDropUnit(def evt) {
+		def app = evt.args[0];
+		app.droppedunits.each {
+			vehicleUnitEm.find( [objid: it.unitid]).update( [state:'DROPPED']);
+		}
+	} 
+
+	@After(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_application' && args[0].apptype == 'DROP_FRANCHISE' }")
+	public void afterDropFranchise(def evt) {
+		def app = evt.args[0];
+		franchiseEm.find([objid: app.franchiseid ] ).update( [currentyearid: "{NULL}" ]);
+	} 
+
+	@After(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_application' && args[0].apptype.matches('CHANGE_GENERAL_INFO|CHANGE_OWNERSHIP') }")
+	public void beforeChangeGenInfo(def evt) {
+		def app = evt.args[0];
+		def geninfo = createInfo( app );	
+		app.geninfoid = geninfo.objid;
+		franchiseYearEm.find([objid: app.yearid ]).update( [geninfoid: geninfo.objid ]);
+	} 
+
+
+}

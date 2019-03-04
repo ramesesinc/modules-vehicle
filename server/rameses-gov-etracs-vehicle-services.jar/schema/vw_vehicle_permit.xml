@@ -1,0 +1,28 @@
+<schema adapter="vehicledb">
+	<element tablename="vw_vehicle_permit">
+		<field name="objid" primary="true"/>
+		<field name="state" />
+		<field name="permitno" />
+		<field name="permittype" />
+		<field name="dtissued" />
+		<field name="issuedby_objid" />
+		<field name="issuedby_name" />
+		<field name="expirydate" />
+		<field name="appid" />
+		<field name="txnmode" />
+		<field name="controlno" />
+		<field name="appno" />
+		<field name="appdate" />
+		<field name="owner_objid" />
+		<field name="owner_name" />
+		<field name="owner_address_text" />
+		<field name="phoneno" />
+		<field name="email" />
+		<field name="mobileno" />
+
+		<complex name="units" ref="vw_vehicle_unit_snapshot" jointype="one-to-many">
+			<key field="objid" target="permitid" />
+		</complex>
+		
+	</element>
+</schema>

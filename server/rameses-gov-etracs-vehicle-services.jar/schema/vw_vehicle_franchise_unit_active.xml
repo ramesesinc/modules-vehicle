@@ -1,0 +1,12 @@
+<schema adapter="vehicledb">
+	<element tablename="vw_vehicle_franchise_unit_active">
+		<field name="objid" primary="true" />
+
+		<field name="franchiseid" />
+
+		<complex name="unit" ref="vehicle_unit" jointype="many-to-one">
+			<key field="unitid" target="objid" />
+		</complex> 
+
+	</element>
+</schema>

@@ -1,4 +1,4 @@
-<workunit schemaName="vehicle_franchise" allowCreate="false" allowDelete="false">
+<workunit schemaName="vw_vehicle_franchise" allowCreate="false" allowDelete="false">
     <invokers>
         <invoker type="vehicle_franchise:open" caption="Vehicle Franchise" index="-10" action="open"/>
         <invoker type="formActions" caption="Close" action="_close"/>

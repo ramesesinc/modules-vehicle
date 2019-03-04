@@ -24,16 +24,16 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="engineno" class="java.lang.String"/>
-	<field name="bodyno" class="java.lang.String"/>
-	<field name="plateno" class="java.lang.String"/>
-	<field name="make" class="java.lang.String"/>
-	<field name="model" class="java.lang.String"/>
-	<field name="color" class="java.lang.String"/>
-	<field name="sidecarcolor" class="java.lang.String"/>
-	<field name="sidecarno" class="java.lang.String"/>
-	<field name="driver.name" class="java.lang.String"/>
-	<field name="chassisno" class="java.lang.String"/>
+	<field name="unit.engineno" class="java.lang.String"/>
+	<field name="unit.bodyno" class="java.lang.String"/>
+	<field name="unit.plateno" class="java.lang.String"/>
+	<field name="unit.make" class="java.lang.String"/>
+	<field name="unit.model" class="java.lang.String"/>
+	<field name="unit.color" class="java.lang.String"/>
+	<field name="unit.sidecarcolor" class="java.lang.String"/>
+	<field name="unit.sidecarno" class="java.lang.String"/>
+	<field name="unit.driver.name" class="java.lang.String"/>
+	<field name="unit.chassisno" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -213,7 +213,7 @@
 					<textElement textAlignment="Center">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{engineno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.engineno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -228,7 +228,7 @@
 					<textElement textAlignment="Center">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{chassisno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.chassisno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -243,7 +243,7 @@
 					<textElement textAlignment="Center">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{make}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.make}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -258,7 +258,7 @@
 					<textElement textAlignment="Center">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{color}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.color}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -273,7 +273,7 @@
 					<textElement textAlignment="Center">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{plateno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.plateno}]]></textFieldExpression>
 				</textField>
 				<line direction="TopDown">
 					<reportElement

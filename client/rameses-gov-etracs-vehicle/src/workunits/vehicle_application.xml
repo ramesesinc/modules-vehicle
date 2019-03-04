@@ -1,18 +1,27 @@
-<workunit schemaName="vehicle_application">
+<workunit schemaName="vw_vehicle_application" processName="vehicle_application">
     <invokers>
-        <invoker type="vehicle_application:open" 
+        <invoker type="vw_vehicle_application:open" 
                  action="open" caption="Vehicle Application"/>
         
-        <invoker type="formActions" 
-                 action="assess" caption="Assess" visibleWhen="#{entity.task.state == 'assessment' }"/>
+        <invoker type="formActions" action="assess" caption="Assess" 
+                 xvisibleWhen="#{entity.task.state == 'assessment' }"/>
 
         <invoker type="formActions" 
-                 action="issuePermit" caption="Issue Permit" 
-                 visibleWhen="#{entity.permitid == null &amp;&amp; entity.task.state.toString().matches('release|end') }"/>
+                 action="printApplication" caption="Print" 
+                 xvisibleWhen="#{entity.permitid == null &amp;&amp; entity.task.state.toString().matches('release|end') }"/>
+
+        <invoker type="formActions" 
+        action="issuePermit" caption="Issue Permit" 
+        visibleWhen="#{entity.permitid == null }"/>
+
+        <invoker type="formActions" 
+        action="viewPermit" caption="View Permit" 
+        visibleWhen="#{entity.permitid != null }"/>
 
     </invokers>
-    <code class="com.rameses.gov.etracs.vehicle.models.VehicleApplicationModel" />
+    <code class="com.rameses.gov.etracs.vehicle.models.ApplicationModel" />
     <pages>
-        <page template="com.rameses.gov.etracs.vehicle.views.ApplicationFormPage" />
+        <page name="new" template="com.rameses.gov.etracs.vehicle.views.ApplicationFormPage" />
+        <page name="renew" template="com.rameses.gov.etracs.vehicle.views.ApplicationFormPage" />        
     </pages>
 </workunit>

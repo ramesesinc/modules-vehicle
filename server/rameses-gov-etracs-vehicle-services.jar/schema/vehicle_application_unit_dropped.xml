@@ -1,0 +1,7 @@
+<schema adapter="vehicledb">
+	<element tablename="vehicle_application_unit_dropped">
+		<field name="objid" primary="true" prefix="VAUNIT"/>
+		<field name="appid" required="true"/>
+		<field name="appunitid" required="true" unique="true"/>		
+	</element>
+</schema>

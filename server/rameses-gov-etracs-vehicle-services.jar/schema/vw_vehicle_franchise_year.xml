@@ -1,0 +1,15 @@
+<schema adapter="vehicledb">
+	<element tablename="vw_vehicle_franchise_year">
+		<field name="objid" primary="true"/>
+		<field name="state" />
+		<field name="controlno" />
+		<field name="vehicletypeid"	/>
+		<field name="currentyearid" />
+		<field name="year" />
+		<field name="owner_objid" />
+		<field name="owner_name" />
+		<field name="owner_address_objid" />
+		<field name="owner_address_text" />
+		<field name="renewaldate" />
+	</element>
+</schema>

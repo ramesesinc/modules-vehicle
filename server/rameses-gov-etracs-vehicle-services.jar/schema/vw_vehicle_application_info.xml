@@ -1,0 +1,6 @@
+<schema adapter="vehicledb">
+	<element tablename="vw_vehicle_application_info">
+		
+
+	</element>
+</schema>

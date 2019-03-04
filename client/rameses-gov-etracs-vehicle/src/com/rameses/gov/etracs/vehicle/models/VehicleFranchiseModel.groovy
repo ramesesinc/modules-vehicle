@@ -29,7 +29,7 @@ public class VehicleFranchiseModel extends CrudFormModel {
     }
     
     def getQuery() {
-        return [controlid: entity.objid ];
+        return [objid: entity.objid ];
     }
     
     def getVehicletype() {
@@ -40,11 +40,12 @@ public class VehicleFranchiseModel extends CrudFormModel {
     void afterOpen() {
         fields = [];
         if( !vehicletype.allowedfields ) throw new Exception("Error in opening application form. vehicletype allowed fields must not be null");
-        schemaSvc.getSchema( [name:"vehicle_application_unit" ] )?.fields.collect{
+        schemaSvc.getSchema( [name:"vehicle_unit" ] )?.fields.collect{
             if(!it.included) return;
             def n = it.name;
             if(n.contains("_")) n = it.name.split("_")[0];
             if( n.matches(vehicletype.allowedfields)) {
+                it.name = "unit."+it.name;
                 fields << it;
             }
         };
@@ -55,8 +56,8 @@ public class VehicleFranchiseModel extends CrudFormModel {
             return fields;
         },
         fetchList : { o->
-            def m = [_schemaname: "vehicle_application_unit" ];
-            m.findBy = [ appid: entity.appid ];
+            def m = [_schemaname: "vw_vehicle_franchise_unit_active" ];
+            m.findBy = [ franchiseid: entity.objid ];
             return queryService.getList( m );
         }
     ] as BasicListModel;

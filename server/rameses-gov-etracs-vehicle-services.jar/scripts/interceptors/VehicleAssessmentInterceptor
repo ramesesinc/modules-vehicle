@@ -31,8 +31,8 @@ class VehicleAssessmentInterceptor {
 			//if this is the first entry
 			if( app.appyear == app.fromyear) {
 				//remove existing fees based on year
-				appFeeEm.find( [parentid: appid ] ).delete(); 
-				appInfoEm.find( [parentid: appid ] ).delete(); 
+				appFeeEm.find( [appid: appid ] ).delete(); 
+				appInfoEm.find( [appid: appid ] ).delete(); 
 				result.infos?.each {
 					it.parent = [objid: appid ];
 					appInfoEm.create( it );
@@ -41,20 +41,22 @@ class VehicleAssessmentInterceptor {
 		}
 		else {
 			//remove existing fees and infos	
-			appFeeEm.find( [parentid: appid ] ).delete(); 
-			appInfoEm.find( [parentid: appid ] ).delete(); 
+			appFeeEm.find( [appid: appid ] ).delete(); 
+			appInfoEm.find( [appid: appid ] ).delete(); 
 			result.infos?.each {
-				it.parent = [objid: appid ];
+				it.appid = appid;
 				appInfoEm.create( it );
 			}
 		}
 
 		//SAVE THE APP FEE HERE.
 		result.items?.each {
-			it.parent = [objid: appid ];
+			it.appid = appid;
 			appFeeEm.create( it );
 		}
+		def amt = appEm.find( [objid: appid ] ).select("SUM:{amount}").val();
+		appEm.find( [objid: appid ]).update([amount: amt ] ); 
 	}
-	
+
 
 }	

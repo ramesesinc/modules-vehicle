@@ -43,8 +43,8 @@
 	<field name="owner.gender" class="java.lang.String"/>
 	<field name="owner.civilstatus" class="java.lang.String"/>
 	<field name="fees" class="java.lang.Object"/>
-	<field name="permit.permitno" class="java.lang.String"/>
-	<field name="vehicleunits" class="java.lang.Object"/>
+	<field name="permitno" class="java.lang.String"/>
+	<field name="units" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
 	<field name="permit.expirydate" class="java.util.Date"/>
 
@@ -200,7 +200,7 @@
 					<textElement verticalAlignment="Middle">
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{permit.permitno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{permitno}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -388,7 +388,7 @@
 						width="552"
 						height="40"
 						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[$F{vehicleunits}]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[$F{units}]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA["vehicleunits.jasper"]]></subreportExpression>
 				</subreport>
 			</band>

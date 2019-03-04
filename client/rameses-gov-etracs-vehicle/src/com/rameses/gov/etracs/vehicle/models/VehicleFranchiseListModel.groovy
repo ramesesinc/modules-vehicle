@@ -15,34 +15,20 @@ class VehicleFranchiseListModel extends CrudListModel {
     def ctrlSvc;
 
     def vehicleTypeList;
-
-    def cluster;
     def vehicletype;
     
-
     @PropertyChangeListener
     def listener = [
-        "cluster|vehicletype" : { o->
+        "vehicletype" : { o->
             reload();
         }
     ];
     
     public def getCustomFilter() {
         if( !vehicletype?.objid ) return ["1=0"];
-        if(!cluster) {
-            return ["vehicletypeid = :vid AND clusterid IS NULL", [vid: vehicletype.objid] ]; 
-        }
-        else {
-            return ["vehicletypeid = :vid AND clusterid=:clusterid", [vid: vehicletype.objid, clusterid: cluster.objid] ]; 
-        }
+        return ["vehicletypeid = :vid", [vid: vehicletype.objid] ]; 
     }
     
-    public def getClusterList() {
-        if( !vehicletype ) return [];
-        def m = [_schemaname: 'vehicletype_cluster'];
-        m.findBy = [vehicletype: vehicletype.objid];
-        return queryService.getList(m);
-    }
     
     def create() {
         if(!vehicletype)
@@ -52,10 +38,6 @@ class VehicleFranchiseListModel extends CrudListModel {
         if(!q) return; 
         query.qty = q;
         query.vehicletype = vehicletype.objid;
-        if( cluster ) 
-            query.cluster = cluster;
-        else
-            query.cluster = null;
         ctrlSvc.generate(query);
         reload();
     }

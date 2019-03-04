@@ -6,12 +6,6 @@ import java.util.regex.*;
 
 class VehicleControlNoService {
 	
-	@DataContext("vehicletype")
-	def vt;
-
-	@DataContext("vehicletype_cluster")
-	def vtc;
-
 	@Service( "ControlNoGeneratorService" )
 	def controlNoGenerator;
 
@@ -26,6 +20,7 @@ class VehicleControlNoService {
 
 	@ProxyMethod
 	public def formatNextNo( def p ) {
+		throw new Exception("stop format number");
 		if(!p.pattern) throw new Exception("pattern is required in VehicleControlService.formatNextNo");
 		if(!p.date) {
 			p.date = dateSvc.getServerDate();
@@ -34,15 +29,12 @@ class VehicleControlNoService {
 			p.date = new java.text.SimpleDateFormat("yyyy-MM-dd").parse( p.date );
 		}	
 
-		def cluster = p.cluster;
-
 		def handler = { pttn, num, buff  ->
 			if( pttn == "org") {
 				return env.ORGCODE;
 			}
 			else if( pttn == "cluster") {
-				if( !cluster.code ) return "";
-				return cluster.code;
+				return "";
 			}
 			else if(pttn.startsWith("%")) {
 				int numb = seqSvc.getNextSeries( buff.toString() );

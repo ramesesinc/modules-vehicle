@@ -1,0 +1,25 @@
+<schema adapter="vehicledb">
+	<element tablename="vw_vehicle_unit_snapshot">
+		<field name="objid"  />
+		<field name="appno" />
+		<field name="appid" />
+		<field name="permitid" />
+		<field name="histappno" />
+		<field name="appdate" />
+		<field name="franchiseyearid" />
+		<field name="unit_objid"  />
+		<field name="unit_plateno" caption="Plateno"/>
+		<field name="unit_engineno" caption="Engine No" />
+		<field name="unit_bodyno" caption="Body No" />
+		<field name="unit_sidecarno" caption="Sidecar No" />
+		<field name="unit_make" caption="Make" />
+		<field name="unit_model" caption="Model" />
+		<field name="unit_color" caption="Color" />
+		<field name="unit_chassisno" caption="Chassis No" />
+		<field name="unit_sidecarcolor" caption="Sidecar Color" />
+		<field name="unit_crname" caption="CR Name" />
+		<field name="unit_driver_objid" caption="" />
+		<field name="unit_driver_name" caption="Driver Name" />
+		<field name="unit_remarks" caption="Remarks" />
+	</element>
+</schema>

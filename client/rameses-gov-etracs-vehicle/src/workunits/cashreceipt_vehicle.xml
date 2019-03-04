@@ -5,7 +5,7 @@
                  name="vehicle" formtype="serial" formno="51"  index="110" />
         
         <!-- collection type --> 
-        <invoker type="cashreceipt:vehicle" action="init" caption="Vehicle Registration"/>
+        <invoker type="cashreceipt:vehicle" action="start" caption="Vehicle Registration"/>
         <invoker type="cashreceipt:barcode:51010" action="loadBarcode" caption="Vehicle Registration"/>
     </invokers>
 </workunit>

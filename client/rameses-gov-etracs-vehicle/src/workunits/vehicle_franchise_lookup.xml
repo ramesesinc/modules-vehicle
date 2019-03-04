@@ -5,7 +5,7 @@
                  orderBy="controlno"
                  target="popup"
                  cols="controlno"
-                 customFilter="vehicletypeid = :vehicletypeid AND appid IS NULL"
+                 customFilter="vehicletypeid = :vehicletypeid AND currentyearid IS NULL"
                  action="init"/>
     </invokers>
 </workunit>

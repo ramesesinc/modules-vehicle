@@ -33,15 +33,19 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
 
         xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
         xLabel3 = new com.rameses.rcp.control.XLabel();
-        xLabel2 = new com.rameses.rcp.control.XLabel();
+        xLabel4 = new com.rameses.rcp.control.XLabel();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
-        xDateField1 = new com.rameses.rcp.control.XDateField();
+        xLabel2 = new com.rameses.rcp.control.XLabel();
         xComboBox1 = new com.rameses.rcp.control.XComboBox();
+        xDateField1 = new com.rameses.rcp.control.XDateField();
         xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
         entityLookup1 = new com.rameses.entity.components.EntityLookup();
         entityAddressLookup1 = new com.rameses.entity.components.EntityAddressLookup();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
+        vehicleUnitList1 = new com.rameses.gov.etracs.vehicle.components.VehicleUnitList();
+        xButton1 = new com.rameses.rcp.control.XButton();
+        xButton3 = new com.rameses.rcp.control.XButton();
 
         xFormPanel3.setCaptionWidth(150);
 
@@ -52,6 +56,21 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xLabel3.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel3.add(xLabel3);
 
+        xLabel4.setCaption("Franchise No");
+        xLabel4.setExpression("#{entity.franchise.controlno}");
+        xLabel4.setVisibleWhen("#{ entity.txnmode != 'CAPTURE' && entity.apptype != 'NEW'  }");
+        xLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel4.setPreferredSize(new java.awt.Dimension(150, 20));
+        xFormPanel3.add(xLabel4);
+
+        xLookupField1.setCaption("Franchise No");
+        xLookupField1.setExpression("#{ entity.franchise.controlno }");
+        xLookupField1.setHandler("lookupFranchise");
+        xLookupField1.setName("entity.franchise"); // NOI18N
+        xLookupField1.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' || entity.apptype == 'NEW'  }");
+        xLookupField1.setPreferredSize(new java.awt.Dimension(250, 20));
+        xFormPanel3.add(xLookupField1);
+
         xLabel2.setCaption("App Type");
         xLabel2.setExpression("#{entity.apptype}");
         xLabel2.setVisibleWhen("#{ entity.txnmode != 'CAPTURE' }");
@@ -59,12 +78,14 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xLabel2.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel3.add(xLabel2);
 
-        xLookupField1.setCaption("Franchise No");
-        xLookupField1.setExpression("#{ entity.franchise.controlno }");
-        xLookupField1.setHandler("lookupFranchise");
-        xLookupField1.setName("entity.franchise"); // NOI18N
-        xLookupField1.setPreferredSize(new java.awt.Dimension(250, 20));
-        xFormPanel3.add(xLookupField1);
+        xComboBox1.setCaption("App Type");
+        xComboBox1.setExpression("");
+        xComboBox1.setItems("appTypes");
+        xComboBox1.setName("entity.apptype"); // NOI18N
+        xComboBox1.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' }");
+        xComboBox1.setPreferredSize(new java.awt.Dimension(120, 27));
+        xComboBox1.setRequired(true);
+        xFormPanel3.add(xComboBox1);
 
         xDateField1.setCaption("App date");
         xDateField1.setDisableWhen("#{ entity.txnmode == 'ONLINE' }");
@@ -72,15 +93,6 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xDateField1.setPreferredSize(new java.awt.Dimension(150, 20));
         xDateField1.setRequired(true);
         xFormPanel3.add(xDateField1);
-
-        xComboBox1.setCaption("App Type");
-        xComboBox1.setExpression("");
-        xComboBox1.setItems("appTypes");
-        xComboBox1.setName("apptype"); // NOI18N
-        xComboBox1.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' }");
-        xComboBox1.setPreferredSize(new java.awt.Dimension(120, 27));
-        xComboBox1.setRequired(true);
-        xFormPanel3.add(xComboBox1);
 
         xIntegerField1.setCaption("App Year");
         xIntegerField1.setDisableWhen("#{ entity.txnmode != 'CAPTURE' }");
@@ -112,21 +124,49 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
 
         xFormPanel3.add(jScrollPane1);
 
+        vehicleUnitList1.setHandler("unitListModel");
+        vehicleUnitList1.setItems("entity.units");
+        vehicleUnitList1.setName("selectedUnit"); // NOI18N
+        vehicleUnitList1.setVehicletype("entity.vehicletype");
+
+        xButton1.setName("addUnit"); // NOI18N
+        xButton1.setText("Add Unit");
+
+        xButton3.setDepends(new String[] {"selectedUnit"});
+        xButton3.setDisableWhen("");
+        xButton3.setName("removeUnit"); // NOI18N
+        xButton3.setText("Remove Unit");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(xButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 254, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,12 +175,16 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
     private com.rameses.entity.components.EntityAddressLookup entityAddressLookup1;
     private com.rameses.entity.components.EntityLookup entityLookup1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.rameses.gov.etracs.vehicle.components.VehicleUnitList vehicleUnitList1;
+    private com.rameses.rcp.control.XButton xButton1;
+    private com.rameses.rcp.control.XButton xButton3;
     private com.rameses.rcp.control.XComboBox xComboBox1;
     private com.rameses.rcp.control.XDateField xDateField1;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XIntegerField xIntegerField1;
     private com.rameses.rcp.control.XLabel xLabel2;
     private com.rameses.rcp.control.XLabel xLabel3;
+    private com.rameses.rcp.control.XLabel xLabel4;
     private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     // End of variables declaration//GEN-END:variables

@@ -40,10 +40,8 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xLabel8 = new com.rameses.rcp.control.XLabel();
         xLabel15 = new com.rameses.rcp.control.XLabel();
         xLabel16 = new com.rameses.rcp.control.XLabel();
-        xLabel13 = new com.rameses.rcp.control.XLabel();
         xFormPanel6 = new com.rameses.rcp.control.XFormPanel();
         xLabel7 = new com.rameses.rcp.control.XLabel();
-        xLabel12 = new com.rameses.rcp.control.XLabel();
         xLabel14 = new com.rameses.rcp.control.XLabel();
         jPanel2 = new javax.swing.JPanel();
         xDataTable4 = new com.rameses.rcp.control.XDataTable();
@@ -53,46 +51,34 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xFormPanel5.setCaptionWidth(150);
 
         xLabel8.setCaption("Active Year");
-        xLabel8.setExpression("#{entity.app.appyear}");
-        xLabel8.setName("entity.app.appyear"); // NOI18N
+        xLabel8.setExpression("#{entity.year}");
+        xLabel8.setName("entity.year"); // NOI18N
         xLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel8.setPreferredSize(new java.awt.Dimension(0, 18));
         xFormPanel5.add(xLabel8);
 
         xLabel15.setCaption("Owner");
-        xLabel15.setExpression("#{entity.app.owner.name} - #{entity.app.owner.entityno}");
-        xLabel15.setName("entity.app.owner"); // NOI18N
+        xLabel15.setExpression("#{entity.owner.name} ");
+        xLabel15.setName("entity.owner"); // NOI18N
         xLabel15.setVisibleWhen("");
         xLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel15.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel5.add(xLabel15);
 
         xLabel16.setCaption("Owner Address");
-        xLabel16.setExpression("#{entity.app.owner.address.text}");
-        xLabel16.setName("entity.app.owner.address"); // NOI18N
+        xLabel16.setExpression("#{entity.owner.address.text}");
+        xLabel16.setName("entity.owner.address"); // NOI18N
         xLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel16.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel5.add(xLabel16);
 
-        xLabel13.setCaption("Renewal Date");
-        xLabel13.setExpression("#{entity.renewaldate}");
-        xLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel13.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel5.add(xLabel13);
-
         xFormPanel6.setCaptionWidth(150);
 
-        xLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel7.setCaption("Franchise Control No");
-        xLabel7.setExpression("#{entity.controlno}");
+        xLabel7.setExpression("#{entity.objid}");
+        xLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel7.setPreferredSize(new java.awt.Dimension(0, 18));
         xFormPanel6.add(xLabel7);
-
-        xLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel12.setCaption("Franchise Start Date");
-        xLabel12.setExpression("#{entity.startdate}");
-        xLabel12.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel6.add(xLabel12);
 
         xLabel14.setCaption("Vehice Type");
         xLabel14.setExpression("#{entity.vehicletype.objid}");
@@ -121,7 +107,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -212,21 +198,6 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "appdate"}
-                , new Object[]{"caption", "App Date"}
-                , new Object[]{"width", 100}
-                , new Object[]{"minWidth", 100}
-                , new Object[]{"maxWidth", 100}
-                , new Object[]{"required", false}
-                , new Object[]{"resizable", true}
-                , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
-                , new Object[]{"visible", true}
-                , new Object[]{"visibleWhen", null}
-                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.DateColumnHandler(null, null, null)}
-            }),
-            new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "txnmode"}
                 , new Object[]{"caption", "Txn Mode"}
                 , new Object[]{"width", 120}
@@ -242,10 +213,10 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             })
         });
-        schemaList1.setCustomFilter("controlid = :controlid");
+        schemaList1.setCustomFilter("franchiseid = :objid");
         schemaList1.setOrderBy("dtcreated DESC");
         schemaList1.setQueryName("query");
-        schemaList1.setSchemaName("vehicle_application");
+        schemaList1.setSchemaName("vw_vehicle_application");
         schemaList1.setAllowCreate(true);
         schemaList1.setAllowDelete(true);
 
@@ -292,8 +263,6 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
     private com.rameses.rcp.control.XDataTable xDataTable4;
     private com.rameses.rcp.control.XFormPanel xFormPanel5;
     private com.rameses.rcp.control.XFormPanel xFormPanel6;
-    private com.rameses.rcp.control.XLabel xLabel12;
-    private com.rameses.rcp.control.XLabel xLabel13;
     private com.rameses.rcp.control.XLabel xLabel14;
     private com.rameses.rcp.control.XLabel xLabel15;
     private com.rameses.rcp.control.XLabel xLabel16;

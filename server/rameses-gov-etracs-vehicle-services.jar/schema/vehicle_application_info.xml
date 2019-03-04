@@ -1,9 +1,7 @@
 <schema adapter="vehicledb">
 	<element tablename="vehicle_application_info">
 		<field name="objid" primary="true" prefix="VAPPI"/>
-		<complex name="parent" ref="vehicle_application" jointype="many-to-one" includefields="appno" required="true">
-			<key field="parentid" target="objid"/>
-		</complex>	
+		<field name="appid" required="true" />
 		<field name="name" required="true" />
 		<field name="stringvalue" />
 		<field name="decimalvalue" type="decimal"/>
@@ -23,5 +21,3 @@
 
 
 </schema>
-
-
