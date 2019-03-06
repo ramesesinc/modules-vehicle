@@ -24,7 +24,7 @@ public class ApplicationEntryModel extends PageFlowController  {
     def entity;
     def selectedUnit;
     def unitListModel;
-    def appTypes;
+    def appTypes = ["NEW", "RENEW"]; 
     def controlno;
     def prevowner;
 
@@ -170,6 +170,7 @@ public class ApplicationEntryModel extends PageFlowController  {
     }    
     
     def getLookupFranchise() {
+        MsgBox.alert('apptype = '+ entity.apptype); 
         def p = [:];
         p.onselect = { o->
             entity.franchise = o;
