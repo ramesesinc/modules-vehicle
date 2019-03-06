@@ -13,6 +13,7 @@ import com.rameses.rcp.framework.ClientContext;
 
 public class VehicleReportForm extends FormReportModel {
     
+    /*
     String _reportName;
     
     public String getReportName() {
@@ -25,9 +26,11 @@ public class VehicleReportForm extends FormReportModel {
         if(!u) {
             _reportName = mainPath + "/" + s + ".jasper";
         }
+        MsgBox.alert( "report name " + _reportName );
         return _reportName;
     }
-    
+    */
+   
     public def preview() {
         def entity =  caller.entityContext;
         query.objid = entity.objid;

@@ -26,7 +26,9 @@ public class ApplicationEntryModel extends PageFlowController  {
     def unitListModel;
     def appTypes;
     def controlno;
+    def prevowner;
 
+    
     public String getTitle() {
         return invoker?.caption + " " + vehicletype.title;
     }
@@ -155,6 +157,18 @@ public class ApplicationEntryModel extends PageFlowController  {
         
     }
 
+    def changeOwner() {
+        if(!prevowner) prevowner = entity.owner;
+        def p = [:];
+        p.onselect = { o->
+            if(o.objid == prevowner.objid)
+                throw new Exception("Please select another owner not the same as current owner ");
+            entity.owner = o;
+            binding.refresh("entity.owner.*");
+        };
+        return Inv.lookupOpener("entity:lookup", p ); 
+    }    
+    
     def getLookupFranchise() {
         def p = [:];
         p.onselect = { o->

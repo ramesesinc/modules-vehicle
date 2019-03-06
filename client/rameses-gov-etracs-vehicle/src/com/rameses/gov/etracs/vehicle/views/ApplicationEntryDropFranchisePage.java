@@ -11,7 +11,6 @@ import com.rameses.rcp.ui.annotations.Template;
  *
  * @author elmonazareno
  */
-@Template(ApplicationTemplate.class)
 public class ApplicationEntryDropFranchisePage extends javax.swing.JPanel {
 
     /**

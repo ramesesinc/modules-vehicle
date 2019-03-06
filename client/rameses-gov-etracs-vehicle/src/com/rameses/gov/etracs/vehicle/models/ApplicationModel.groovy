@@ -14,7 +14,7 @@ public class ApplicationModel extends WorkflowTaskModel {
     @Service(value="VehiclePermitService")
     def permitSvc;
 
-    boolean viewReportAllowed = true; 
+    //boolean viewReportAllowed = true; 
     def selectedUnit;
     def unitHandler;
     

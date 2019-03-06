@@ -6,10 +6,12 @@
         <invoker type="formActions" action="assess" caption="Assess" 
                  xvisibleWhen="#{entity.task.state == 'assessment' }"/>
 
+        <!--
         <invoker type="formActions" 
                  action="printApplication" caption="Print" 
                  xvisibleWhen="#{entity.permitid == null &amp;&amp; entity.task.state.toString().matches('release|end') }"/>
-
+        -->
+                 
         <invoker type="formActions" 
         action="issuePermit" caption="Issue Permit" 
         visibleWhen="#{entity.permitid == null }"/>
@@ -17,6 +19,8 @@
         <invoker type="formActions" 
         action="viewPermit" caption="View Permit" 
         visibleWhen="#{entity.permitid != null }"/>
+        
+        <invoker type="formActions" action="viewReport" tooltip="View Reports" caption="Reports"/>
 
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationModel" />

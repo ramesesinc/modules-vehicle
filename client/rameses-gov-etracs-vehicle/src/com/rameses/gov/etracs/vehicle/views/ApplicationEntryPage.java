@@ -44,6 +44,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
         vehicleUnitList1 = new com.rameses.gov.etracs.vehicle.components.VehicleUnitList();
+        xToolBar1 = new com.rameses.rcp.control.XToolBar();
         xButton1 = new com.rameses.rcp.control.XButton();
         xButton3 = new com.rameses.rcp.control.XButton();
 
@@ -131,11 +132,13 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
 
         xButton1.setName("addUnit"); // NOI18N
         xButton1.setText("Add Unit");
+        xToolBar1.add(xButton1);
 
         xButton3.setDepends(new String[] {"selectedUnit"});
         xButton3.setDisableWhen("");
         xButton3.setName("removeUnit"); // NOI18N
         xButton3.setText("Remove Unit");
+        xToolBar1.add(xButton3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,14 +147,10 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(xButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 254, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -162,11 +161,9 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(xButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,5 +184,6 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel4;
     private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
+    private com.rameses.rcp.control.XToolBar xToolBar1;
     // End of variables declaration//GEN-END:variables
 }

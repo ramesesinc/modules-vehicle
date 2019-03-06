@@ -80,6 +80,9 @@ class VehicleBillingInterceptor {
 	public void validateCashReceipt(def evt ) {
 		def app = evt.args[0].application;
 		def res = evt.result;
+		if(app.task.state != "payment")
+			throw new Exception("Application is not yet for payment");
+		throw new Exception("appid is " + app.objid);	
 	} 
 
 	@After( pattern="BillingInfoHandler.formatReceiptInfo", eval="#{ args[0].txntype == 'vehicle' }")

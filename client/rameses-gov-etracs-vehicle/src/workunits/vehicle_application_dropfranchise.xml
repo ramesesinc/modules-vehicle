@@ -1,6 +1,6 @@
 <workunit schemaName="vehicle_application">
     <invokers>
-        <invoker folderid="menucategory/vehicle/application" caption="Vehicle Drop Franchise"  index="15" />
+        <invoker folderid="menucategory/vehicle/application" caption="Vehicle Drop Franchise"  index="25" />
 
         <!-- toolbars -->
         <invoker type="formActions" action="loadApp" caption="Next" visibleWhen="#{ page == 'default' }"/> 
