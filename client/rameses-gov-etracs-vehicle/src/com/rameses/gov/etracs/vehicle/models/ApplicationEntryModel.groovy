@@ -170,7 +170,6 @@ public class ApplicationEntryModel extends PageFlowController  {
     }    
     
     def getLookupFranchise() {
-        MsgBox.alert('apptype = '+ entity.apptype); 
         def p = [:];
         p.onselect = { o->
             entity.franchise = o;

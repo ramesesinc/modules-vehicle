@@ -12,11 +12,13 @@ public class VehicleApplication {
 	String objid;
 	Date prevexpirydate;
 	String controlno;
+	int unitcount = 0;
 
 	public VehicleApplication( def m ) {
 		if(m.controlno) controlno = m.controlno;
 		apptype = m.apptype;
 		objid = m.objid;
+		if(m.unitcount) unitcount = m.unitcount;
 		if( m.vehicletypeid ) vehicletype  = m.vehicletypeid;
 		if( m.appyear ) appyear = m.appyear;
 		if( m.appdate ) {

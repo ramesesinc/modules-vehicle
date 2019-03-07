@@ -32,7 +32,8 @@
 
 		<field name="phoneno" />	
 		<field name="email" />	
-		<field name="mobileno" />	
+		<field name="mobileno" />
+		<field name="amount" />	
 
 		<field name="task_state" />	
 		<field name="task_startdate" />	
@@ -49,6 +50,7 @@
 		<complex name="droppedunits" ref="vehicle_application_unit_dropped" jointype="one-to-many">
 			<key field="objid" target="appid" />
 		</complex>	
+		
 
 	</element>
 </schema>

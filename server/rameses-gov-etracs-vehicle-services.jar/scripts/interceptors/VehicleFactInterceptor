@@ -33,14 +33,15 @@ class VehicleFactInterceptor {
 
 		def facts = factBuilder.facts;
 		def app = params.application;
-
-		facts << new VehicleApplication( app );
-
 		def units = app.vehicleunits;
 		if( !units) units =  appUnitEm.find( [appid: app.objid ]).list();
+		app.unitcount = units.size();
+
+		facts << new VehicleApplication( app );
 		units.each {
 			facts << new VehicleUnit( it );
 		};
+
 		factBuilder.variableInfoProvider = new DefaultVariableInfoProvider(
 			schemaName:"vehicle_variable"
 		);

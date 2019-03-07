@@ -2,13 +2,6 @@
     <invokers>
         <invoker folderid="menucategory/vehicle/application"  apptype="CHANGE_OWNER"
                  action="startOnline" caption="Vehicle Change Owner"  index="21" />
-        <invoker folderid="menucategory/vehicle/application"  apptype="CHANGE_UNIT"
-                 action="startOnline" caption="Vehicle Change Unit"  index="22" />
-        <invoker folderid="menucategory/vehicle/application"  apptype="ADD_UNIT"
-                 action="startOnline" caption="Vehicle Add Unit"  index="23" />
-        <invoker folderid="menucategory/vehicle/application"  apptype="DROP_UNIT"
-                 action="startOnline" caption="Vehicle Drop Unit"  index="24" />
-        
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationEntryModel" />
     <pageflow>
@@ -26,7 +19,6 @@
     </pageflow>
     <pages>
         <page name="initial" template="com.rameses.gov.etracs.vehicle.views.SpecifyControlNoPage" />
-        <page name="view" template="com.rameses.gov.etracs.vehicle.views.ViewCurrentInfoPage" />
         <page name="entry" template="com.rameses.gov.etracs.vehicle.views.ApplicationEntryAmendPage" />        
     </pages>
 </workunit>

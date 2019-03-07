@@ -57,19 +57,6 @@ class VehicleBillingInterceptor {
 
 		def list = evt.result;
 		list.addAll( res );
-
-		/*
-		if(p.apptype.matches("NEW|RENEW")) {
-			def pp = [controlid: p.controlid]
-			def res = appFeeEm.select(select).where( "parent.cont
-			def list = evt.result;rolid = :controlid AND parent.apptype IN ('NEW','RENEW') AND amount - amtpaid > 0", pp ).orderBy(ob).list();
-			list.addAll( res );
-		}
-		else {
-			def res = appFeeEm.select(select).where( "parentid = :parentid AND amount - amtpaid > 0", [parentid: p.objid] ).orderBy(ob).list();
-			list.addAll( res );
-		}
-		*/
 	}
 
 	/*******************************************
@@ -79,10 +66,13 @@ class VehicleBillingInterceptor {
 	@After( pattern="BillingInfoHandler.validateReceiptInfo", eval="#{ args[0].txntype == 'vehicle' }")
 	public void validateCashReceipt(def evt ) {
 		def app = evt.args[0].application;
+		def a = evt.args[0];
 		def res = evt.result;
+		if(a.billitems.size() == 0 )
+			throw new Exception("There are no items for payment found");
+
 		if(app.task.state != "payment")
 			throw new Exception("Application is not yet for payment");
-		throw new Exception("appid is " + app.objid);	
 	} 
 
 	@After( pattern="BillingInfoHandler.formatReceiptInfo", eval="#{ args[0].txntype == 'vehicle' }")

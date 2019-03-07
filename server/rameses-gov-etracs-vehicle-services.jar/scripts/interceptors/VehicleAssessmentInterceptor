@@ -54,7 +54,8 @@ class VehicleAssessmentInterceptor {
 			it.appid = appid;
 			appFeeEm.create( it );
 		}
-		def amt = appEm.find( [objid: appid ] ).select("SUM:{amount}").val();
+		def amt = appFeeEm.find( [appid: appid ] ).select("SUM:{amount}").val();
+		//throw new Exception("amount is " + amt );
 		appEm.find( [objid: appid ]).update([amount: amt ] ); 
 	}
 

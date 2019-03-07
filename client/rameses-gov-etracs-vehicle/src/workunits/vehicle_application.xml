@@ -25,7 +25,6 @@
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationModel" />
     <pages>
-        <page name="new" template="com.rameses.gov.etracs.vehicle.views.ApplicationFormPage" />
-        <page name="renew" template="com.rameses.gov.etracs.vehicle.views.ApplicationFormPage" />        
+        <page template="com.rameses.gov.etracs.vehicle.views.ApplicationFormPage" />
     </pages>
 </workunit>

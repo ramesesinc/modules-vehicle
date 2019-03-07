@@ -17,6 +17,7 @@ public class ApplicationModel extends WorkflowTaskModel {
     //boolean viewReportAllowed = true; 
     def selectedUnit;
     def unitHandler;
+    def infos;
     
     String getFormName() {
         return getSchemaName() + ":form";
@@ -51,7 +52,9 @@ public class ApplicationModel extends WorkflowTaskModel {
             def m = [_schemaname: "vehicle_application_fee"];
             m.findBy = [appid: entity.objid ];
             //m.orderBy = "year,month,sortorder";
-            return queryService.getList(m);
+            def list = queryService.getList(m);
+            entity.amount = list.sum{it.amount};
+            return list;
         }
     ] as BasicListModel;
     
@@ -60,14 +63,14 @@ public class ApplicationModel extends WorkflowTaskModel {
             def m = [_schemaname: "vehicle_application_info"];
             m.findBy = [appid: entity.objid ];
             m.orderBy = "sortorder";
-            def infos = queryService.getList(m);
+            infos = queryService.getList(m);
             infos.each {
                 it.putAll( it.remove("variable") );
                 if( it.stringvalue ) it.value = it.stringvalue;
                 else if( it.intvalue ) it.value = it.intvalue;
                 else if( it.decimalvalue ) it.value = it.decimalvalue;
                 else if( it.booleanvalue ) it.value = it.booleanvalue;
-            }
+            }           
             return infos;
         }
     ] as BasicListModel;
@@ -77,6 +80,7 @@ public class ApplicationModel extends WorkflowTaskModel {
         Modal.show( "show_vehicle_trackingno", [appno: entity.appno] );
     }
  
+    /*
     void assessWithLateRenewal() {
         boolean bstop = false;
         boolean infoloaded = false;
@@ -121,6 +125,7 @@ public class ApplicationModel extends WorkflowTaskModel {
         infoListModel.reload(); 
         binding.refresh("entity.amount");        
     }
+    */
     
     void assessBasic() {
         def p = [:];
@@ -150,6 +155,7 @@ public class ApplicationModel extends WorkflowTaskModel {
         }
     }
     
+    /*
     public boolean beforeSignal( def tsk ) {
         if(tsk.taskstate == "assessment") {
             if( feeList == null ) loadFees();
@@ -159,6 +165,7 @@ public class ApplicationModel extends WorkflowTaskModel {
         }
         return true;
     }
+    */
     
     //PRINTOUTS
     def viewPermit() { 
