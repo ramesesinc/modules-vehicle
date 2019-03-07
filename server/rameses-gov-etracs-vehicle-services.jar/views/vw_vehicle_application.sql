@@ -13,7 +13,6 @@ vfgi.owner_address_text,
 
 vfgi.phoneno,
 vfgi.email,
-vfgi.mobileno,
 
 vat.state AS task_state,
 vat.startdate AS task_startdate,
