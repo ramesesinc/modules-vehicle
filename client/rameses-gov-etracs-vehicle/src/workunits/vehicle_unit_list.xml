@@ -9,7 +9,6 @@
                  role="MASTER" 
                  index="5"
                  orderBy="appyear,controlno"
-                 cols="controlno,appyear,owner.name,plateno,bodyno,driver.name,bodyno,sidecarno"
                  /> 
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleUnitListModel" />

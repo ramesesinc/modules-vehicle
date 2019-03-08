@@ -10,10 +10,23 @@ import com.rameses.util.*;
 
 class VehicleUnitListModel extends CrudListModel {
 
+    @Service("DateService")
+    def dateSvc;
+    
+    def year;
+    
+    void afterInit() {
+        year = dateSvc.getServerYear();
+    }
+    
     def open() {
-        def op = Inv.lookupOpener("vehicle_franchise:open", [ entity: selectedItem ] );
+        def op = Inv.lookupOpener("vw_vehicle_unit:open", [ entity: selectedItem ] );
         op.target = "popup";
         return op;
+    }
+    
+    def getCustomFilter() {
+        return ["vehicletype.objid =:typeid AND year=:yr", [typeid: caller.vehicletype.objid, yr: year]];
     }
     
 } 
