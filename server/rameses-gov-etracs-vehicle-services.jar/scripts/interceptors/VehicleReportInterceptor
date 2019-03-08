@@ -7,7 +7,7 @@ import treasury.facts.*;
 
 class VehicleReportInterceptor {
 	
-	@DataContext("vehicle_application")
+	@DataContext("vw_vehicle_application")
 	def appEm;
 
 	@DataContext("vehicle_application_unit")
@@ -48,7 +48,7 @@ class VehicleReportInterceptor {
 		def params = [:];
 		params.application = app;
 		def select = "refid:{objid},reftype:{'vehicle_application_fee'},item.*,amount,parentid,year,month";		
-		params.billitems = appFeeEm.select(select).find( [parentid: app.objid] ).list();
+		params.billitems = appFeeEm.select(select).find( [appid: app.objid] ).list();
 		if(app.dtapproved) params.billdate = app.dtapproved;
 		//params.include_billitems = false;
 		//params.include_items = true;
