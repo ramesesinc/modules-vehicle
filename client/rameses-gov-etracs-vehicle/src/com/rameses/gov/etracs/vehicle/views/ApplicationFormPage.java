@@ -44,6 +44,7 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xLabel8 = new com.rameses.rcp.control.XLabel();
         xLabel16 = new com.rameses.rcp.control.XLabel();
         xLabel23 = new com.rameses.rcp.control.XLabel();
+        xLabel2 = new com.rameses.rcp.control.XLabel();
         xFormPanel6 = new com.rameses.rcp.control.XFormPanel();
         xLabel11 = new com.rameses.rcp.control.XLabel();
         xLabel15 = new com.rameses.rcp.control.XLabel();
@@ -113,6 +114,12 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel23.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel5.add(xLabel23);
+
+        xLabel2.setCaption("Show Assess?");
+        xLabel2.setExpression("#{ showAssessAction }");
+        xLabel2.setName(""); // NOI18N
+        xLabel2.setVisibleWhen("#{ mode != 'create' }");
+        xFormPanel5.add(xLabel2);
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder2 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder2.setPadding(new java.awt.Insets(20, 10, 2, 10));
@@ -191,8 +198,8 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         vehicleUnitList1.setName("selectedUnit"); // NOI18N
         vehicleUnitList1.setVehicletype("entity.vehicletype");
 
-        xButton1.setName("checkUnit"); // NOI18N
-        xButton1.setText("Check");
+        xButton1.setName("viewUnit"); // NOI18N
+        xButton1.setText("View");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -428,6 +435,7 @@ public class ApplicationFormPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel17;
     private com.rameses.rcp.control.XLabel xLabel18;
     private com.rameses.rcp.control.XLabel xLabel19;
+    private com.rameses.rcp.control.XLabel xLabel2;
     private com.rameses.rcp.control.XLabel xLabel20;
     private com.rameses.rcp.control.XLabel xLabel21;
     private com.rameses.rcp.control.XLabel xLabel22;

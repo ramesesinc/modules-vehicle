@@ -29,6 +29,8 @@ public class VehicleTypeModel extends CrudFormModel {
     def excludedFields = [];
     def excludedField;
     
+    
+    
     void loadFields() {
         schemaSvc.getSchema( [name:"vehicle_application_unit" ] )?.fields.findAll{it.included == "true"}.collect{
             if(it.name.contains("_")) it.name = it.name.split("_")[0];
@@ -111,6 +113,6 @@ public class VehicleTypeModel extends CrudFormModel {
     }
     
     void beforeSave( def o ) {
-        entity.allowedfields = includedFields*.name.join("|");
+        entity.allowedfields = includedFields.collect{ it.name.split("\\.")[1] }.join("|");
     }
 }

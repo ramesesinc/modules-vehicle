@@ -1,9 +1,8 @@
 <workunit>
     <invokers>
-        <!--
         <invoker type="vehicle_unit:create" caption="Vehicle Unit" action="create" target="popup"/>
-        -->
-        <invoker type="vw_vehicle_unit:open" caption="Vehicle Unit" action="open"  target="popup"/>
+        <invoker type="vehicle_unit:open" caption="Vehicle Unit" action="open"  target="popup"/>
+        <invoker type="vehicle_unit:edit" caption="Vehicle Unit" action="open"  target="popup"/>
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleUnitModel" />
     <pages>

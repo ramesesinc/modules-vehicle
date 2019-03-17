@@ -1,4 +1,4 @@
-<workunit extends="com/rameses/seti2/templates/FormReport.xml" xrulename="vehiclebilling">
+<workunit extends="com/rameses/seti2/templates/FormReport.xml">
     <invokers>
         <!-- This is for application billing -->
         <invoker type="vw_vehicle_application:form:reports" 
@@ -8,14 +8,16 @@
                  index="9"
                  id="vehicle_application"
                  reportName="com/rameses/gov/etracs/vehicle/tricycle/reports/DFRB-FORM-01.jasper"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
          
         <invoker type="vw_vehicle_application:form:reports" 
-                 caption="Affidavit (FORM 02)" 
+                 caption="Affidavit (FORM 02) xx" 
                  target="popup" 
                  action="preview"
                  index="21"
                  reportName="com/rameses/gov/etracs/vehicle/tricycle/reports/DFRB-FORM-02.jasper"
+                 xvisibleWhen="#{ task.state == 'draft' }"
                  reportId="vehicle_application" />
 
         <invoker type="vw_vehicle_application:form:reports" 
@@ -24,6 +26,7 @@
                  action="preview"
                  index="22"
                  reportName="com/rameses/gov/etracs/vehicle/tricycle/reports/DFRB-FORM-03.jasper"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
                 
         <invoker type="vw_vehicle_application:form:reports" 
@@ -32,6 +35,7 @@
                  action="preview"
                  index="23"
                  reportName="com/rameses/gov/etracs/vehicle/tricycle/reports/DFRB-FORM-04.jasper"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
 
         <invoker type="vw_vehicle_application:form:reports" 
@@ -40,6 +44,7 @@
                  action="preview"
                  index="24"
                  reportName="com/rameses/gov/etracs/vehicle/tricycle/reports/DFRB-FORM-05.jasper"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
 
     </invokers> 

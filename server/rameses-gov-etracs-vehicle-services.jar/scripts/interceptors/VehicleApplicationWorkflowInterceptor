@@ -16,6 +16,9 @@ class VehicleApplicationWorkflowInterceptor {
 	@DataContext("vehicle_application_unit")
 	def unitEm;
 
+	@DataContext("vehicle_application_unit_dropped")
+	def dropUnitEm;
+
 	@DataContext("vehicle_franchise")
 	def franchiseEm;
 
@@ -32,8 +35,19 @@ class VehicleApplicationWorkflowInterceptor {
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'draft' }")
 	public void beforeSubmittingDraft( def evt ) {
 		def p = evt.args[0];
-		def x = unitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
-		if( x == 0 ) throw new Exception("There must be at least 1 vehicle entry");	
+		def apptype = appEm.find( [objid: p.refid ]).select("apptype").val();
+		if( apptype == 'CHANGE_OWNER') {
+			//do nothing
+		};
+		else if( apptype.matches("NEW|RENEW")) {
+			def x = unitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
+			if( x == 0 ) throw new Exception("There must be at least 1 vehicle entry for " + apptype );	
+		}
+		else {
+			def x = unitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
+			if( x == 0 ) x = dropUnitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
+			if( x == 0 ) throw new Exception("There must be at entry for units or dropped units for " + apptype );	
+		}
 	}
 
 	//check before submitting assessed application
@@ -63,8 +77,15 @@ class VehicleApplicationWorkflowInterceptor {
 	}
 
 	/************************************************************************ 
-	* Issue Permit will create a new permit 
+	* Before releasing ensure that permit is issued. 
 	**************************************************************************/
+	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate=='release' && args[0].to == 'end'}")
+	public void beforeRelease( def evt ) {
+		def p = evt.args[0];
+		def entity = appEm.find( [objid: p.refid ] ).first();
+		if(!entity.permitid) throw new Exception("Please issue the permit first");
+	}
+
 	@After(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate=='release' && args[0].to == 'end'}")
 	public void afterRelease( def evt ) {
 		def p = evt.args[0];

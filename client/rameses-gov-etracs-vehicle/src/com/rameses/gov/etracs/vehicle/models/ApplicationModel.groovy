@@ -28,10 +28,7 @@ public class ApplicationModel extends WorkflowTaskModel {
     }
     
     public String getTitle() {
-        String state = task?.title;
-        if( !state ) state = "";
-        else state = " [" + task?.title + "]";
-        return entity.appno + state ;
+        return entity.appno + " [" + task?.title + "]" ;
     }
     
     public String getWindowTitle() {
@@ -42,9 +39,22 @@ public class ApplicationModel extends WorkflowTaskModel {
         return entity.objid;
     }
 
+    /***************************************************************************
+    The following are workflow state properties that is included in design time
+    ***************************************************************************/
+    def getShowAssessAction() {
+        if(! task?.properties?.show_assess) return false;
+        return task.properties.show_assess;
+    }
+    
+    def getShowIssuePermitAction() {
+        if(! task?.properties?.show_issue_permit) return false;
+        return task.properties.show_issue_permit;
+    }
+    
     void afterOpen() {
         feeListModel.reload(); 
-        infoListModel.reload(); 
+        infoListModel.reload();
     }
     
     def feeListModel = [
@@ -189,7 +199,7 @@ public class ApplicationModel extends WorkflowTaskModel {
         if(entity.txnmode == 'CAPTURE' ) {
             def p = [:]
             p.fields = [
-                [name:'permitno', caption:'Permit No', required: true],
+                [name:'permitno', caption:'Permit No'],
                 [name:'permittype', type:'lov', caption:'Permit Type', listName: 'VEHICLE_PERMIT_TYPE', required: true],                
                 [name:'dtissued', type:'date', caption:'Date Issued', required: true],
             ];
@@ -215,18 +225,12 @@ public class ApplicationModel extends WorkflowTaskModel {
         }
     }
 
-    def checkUnit() {
+    def viewUnit() {
+        if(!selectedUnit) throw new Exception("Please select a unit");
         def p = [:];
-        p.handler = { o->
-            entity.units << [unit: o];
-            unitHandler.reload();
-        };
         p.vehicletype = entity.vehicletype;
-        return Inv.lookupOpener("vehicle_unit:create", p );
-    }    
-    
-    def printApplication() {
-        MsgBox.alert("print application")
+        p.entity = selectedUnit.unit;
+        return Inv.lookupOpener("vehicle_unit:open", p );
     }
     
     

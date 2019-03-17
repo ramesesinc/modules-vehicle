@@ -11,6 +11,7 @@ vfgi.owner_name,
 vfgi.owner_address_objid,
 vfgi.owner_address_text,
 
+vfgi.mobileno,
 vfgi.phoneno,
 vfgi.email,
 
@@ -21,9 +22,18 @@ vat.assignee_objid AS task_assignee_objid,
 vat.assignee_name AS task_assignee_name,
 vat.actor_objid AS task_actor_objid,
 vat.actor_name AS task_actor_name,
-vfy.renewaldate
+vfy.renewaldate,
+
+vp.permitno as permit_permitno,
+vp.permittype as permit_permittype,
+vp.dtissued as permit_dtissued,
+vp.expirydate as permit_expirydate,
+vp.issuedby_name as permit_issuedby_name
+
+
 FROM vehicle_application va
 INNER JOIN vehicle_franchise_year vfy ON va.franchiseyearid = vfy.objid
 INNER JOIN vehicle_franchise vf ON vfy.franchiseid = vf.objid
 INNER JOIN vehicle_franchise_generalinfo vfgi ON va.geninfoid = vfgi.objid
-LEFT JOIN vehicle_application_task vat ON va.taskid = vat.taskid;
+LEFT JOIN vehicle_application_task vat ON va.taskid = vat.taskid
+LEFT JOIN vehicle_permit vp ON vp.objid = va.permitid;

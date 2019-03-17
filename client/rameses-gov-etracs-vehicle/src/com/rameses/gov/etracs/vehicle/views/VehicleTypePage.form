@@ -239,17 +239,6 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="com.rameses.enterprise.components.LOVList" name="lOVList1">
-                      <Properties>
-                        <Property name="caption" type="java.lang.String" value="Renewal Frequency"/>
-                        <Property name="listName" type="java.lang.String" value="VEHICLE_RENEWAL_FREQUENCY"/>
-                        <Property name="name" type="java.lang.String" value="entity.renewalfrequency" noResource="true"/>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[0, 22]"/>
-                        </Property>
-                        <Property name="required" type="boolean" value="true"/>
-                      </Properties>
-                    </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel1">

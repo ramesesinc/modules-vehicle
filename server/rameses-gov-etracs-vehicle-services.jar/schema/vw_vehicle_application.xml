@@ -44,6 +44,12 @@
 		<field name="task_actor_name" />	
 		<field name="renewaldate" />
 
+		<field name="permit_permitno" />
+		<field name="permit_permittype" />
+		<field name="permit_dtissued" />
+		<field name="permit_expirydate" />
+		<field name="permit_issuedby_name" />
+
 		<complex name="units" ref="vehicle_application_unit" jointype="one-to-many">
 			<key field="objid" target="appid" />
 		</complex>

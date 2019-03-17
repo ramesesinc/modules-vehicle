@@ -12,17 +12,22 @@ class VehiclePermitService {
 	@DataContext("vehicle_permit")
 	def permitEm;
 
-	@DataContext("vehicle_application")
+	@DataContext("vw_vehicle_application")
 	def appEm;
 
 	@DataContext("vehicle_franchise_year")
 	def franYearEm;
 
+	@Service("ControlnoGeneratorService")
+	def controlNoSvc;
+
 	@ProxyMethod 
 	public def create( def perm ) { 
 		def app = appEm.find([objid: perm.appid]).first();
 		if( !perm.permitno ) {
-			perm.permitno = "VP" + new UID();
+			if( !app?.vehicletype?.permitnopattern )
+				throw new Exception("Please specify permitnopattern in vehicletype");
+			perm.permitno = controlNoSvc.getNextNo( app.vehicletype.permitnopattern );	
 		}
 		if(!perm.dtissued) {
 			perm.dtissued = dateSvc.getServerDate();
@@ -31,7 +36,6 @@ class VehiclePermitService {
 		perm.state = "ACTIVE";
 		perm.issuedby = [objid: env.USERID, name: env.FULLNAME ];
 		perm = permitEm.create( perm );
-
 		appEm.find( [objid:perm.appid] ).update( [permitid: perm.objid ] );
 		franYearEm.find( [objid: app.franchiseyearid ] ).update([permitid: perm.objid ] );
 		return perm;

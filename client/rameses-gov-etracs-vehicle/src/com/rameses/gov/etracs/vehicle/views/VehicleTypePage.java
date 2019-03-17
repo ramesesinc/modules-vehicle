@@ -43,7 +43,6 @@ public class VehicleTypePage extends javax.swing.JPanel {
         xTextField4 = new com.rameses.rcp.control.XTextField();
         xTextField5 = new com.rameses.rcp.control.XTextField();
         xLabel2 = new com.rameses.rcp.control.XLabel();
-        lOVList1 = new com.rameses.enterprise.components.LOVList();
         jLabel1 = new javax.swing.JLabel();
         xPanel2 = new com.rameses.rcp.control.XPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -125,13 +124,6 @@ public class VehicleTypePage extends javax.swing.JPanel {
         xLabel2.setExpression("#{entity.issued}");
         xLabel2.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel2.add(xLabel2);
-
-        lOVList1.setCaption("Renewal Frequency");
-        lOVList1.setListName("VEHICLE_RENEWAL_FREQUENCY");
-        lOVList1.setName("entity.renewalfrequency"); // NOI18N
-        lOVList1.setPreferredSize(new java.awt.Dimension(0, 22));
-        lOVList1.setRequired(true);
-        xFormPanel2.add(lOVList1);
 
         jLabel1.setText("<html>[org] = org code <br> [cluster] = cluster <br> [yyyy] = year<br> [MM] = month <br>  [%06d]   = number with 6 leading 0s<br> ex: <i>MTOP[yyyy][MM][%06d]</i> <i>will result to MTOP20160100001</i> </html>");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -304,7 +296,6 @@ public class VehicleTypePage extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private com.rameses.enterprise.components.LOVList lOVList1;
     private com.rameses.rcp.control.XButton xButton1;
     private com.rameses.rcp.control.XButton xButton2;
     private com.rameses.rcp.control.XButton xButton3;
