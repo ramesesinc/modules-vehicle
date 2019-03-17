@@ -5,10 +5,14 @@
  */
 package com.rameses.gov.etracs.vehicle.views;
 
+import com.rameses.rcp.ui.annotations.Template;
+import com.rameses.seti2.views.CrudFormPage;
+
 /**
  *
  * @author elmonazareno
  */
+@Template(CrudFormPage.class)
 public class ViewVehicleUnitPage extends javax.swing.JPanel {
 
     /**

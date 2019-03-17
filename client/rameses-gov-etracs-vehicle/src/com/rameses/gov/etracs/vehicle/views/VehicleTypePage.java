@@ -125,7 +125,7 @@ public class VehicleTypePage extends javax.swing.JPanel {
         xLabel2.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel2.add(xLabel2);
 
-        jLabel1.setText("<html>[org] = org code <br> [cluster] = cluster <br> [yyyy] = year<br> [MM] = month <br>  [%06d]   = number with 6 leading 0s<br> ex: <i>MTOP[yyyy][MM][%06d]</i> <i>will result to MTOP20160100001</i> </html>");
+        jLabel1.setText("<html>[org] = org code <br>  [yyyy] = year<br> [MM] = month <br>  [%06d]   = number with 6 leading 0s<br> ex: <i>MTOP[yyyy][MM][%06d]</i> <i>will result to MTOP20160100001</i> </html>");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

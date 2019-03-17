@@ -35,7 +35,8 @@ public class VehicleTypeModel extends CrudFormModel {
         schemaSvc.getSchema( [name:"vehicle_application_unit" ] )?.fields.findAll{it.included == "true"}.collect{
             if(it.name.contains("_")) it.name = it.name.split("_")[0];
             def m = [name: it.name, caption: it.caption];
-            if( m.name.matches(entity.allowedfields)) {
+            def mstr = ".*(" + entity.allowedfields + ")";
+            if( m.name.matches(mstr)) {
                 includedFields << m;
             }
             else {
@@ -53,33 +54,6 @@ public class VehicleTypeModel extends CrudFormModel {
     void afterOpen() {
         loadFields();
     }
-    
-    void addCluster() {
-        def h = { m->
-            m._schemaname = 'vehicletype_cluster';
-            m.vehicletype = entity.objid;
-            m.issued = 0;
-            persistenceService.create(m);
-            clusterList.reload();
-        }    
-        Modal.show("vehicletype_cluster", [handler: h] );
-    }
-    
-    void removeCluster() {
-        if(!selectedCluster?.objid) return;
-        def m = [_schemaname: 'vehicletype_cluster'];
-        m.objid = selectedCluster.objid;
-        persistenceService.removeEntity(m);
-        clusterList.reload();
-    }
-    
-    def clusterList = [
-        fetchList: { o->
-            def m = [_schemaname: 'vehicletype_cluster'];
-            m.findBy = [vehicletype: entity.objid];
-            return queryService.getList(m);
-        }
-    ] as BasicListModel;
     
     void addImage() {
         def jfc = new JFileChooser();
@@ -113,6 +87,7 @@ public class VehicleTypeModel extends CrudFormModel {
     }
     
     void beforeSave( def o ) {
-        entity.allowedfields = includedFields.collect{ it.name.split("\\.")[1] }.join("|");
+        def str = includedFields.collect{ it.name.split("\\.")[1] }.join("|");
+        entity.allowedfields = str;
     }
 }

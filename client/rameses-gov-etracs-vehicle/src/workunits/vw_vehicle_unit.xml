@@ -1,4 +1,5 @@
-<workunit extends="com/rameses/seti2/templates/CrudForm.xml" schemaName="vw_vehicle_unit">
+<workunit extends="com/rameses/seti2/templates/CrudForm.xml" schemaName="vw_vehicle_unit" 
+          allowCreate="false" allowEdit="false" allowDelete="false">
     <invokers>
         <invoker type="vw_vehicle_unit:open" caption="Vehicle Unit" action="open"  target="popup"/>
     </invokers>

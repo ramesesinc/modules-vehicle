@@ -243,7 +243,7 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="&lt;html&gt;[org] = org code &lt;br&gt; [cluster] = cluster &lt;br&gt; [yyyy] = year&lt;br&gt; [MM] = month &lt;br&gt;  [%06d]   = number with 6 leading 0s&lt;br&gt; ex: &lt;i&gt;MTOP[yyyy][MM][%06d]&lt;/i&gt; &lt;i&gt;will result to MTOP20160100001&lt;/i&gt; &lt;/html&gt;"/>
+                    <Property name="text" type="java.lang.String" value="&lt;html&gt;[org] = org code &lt;br&gt;  [yyyy] = year&lt;br&gt; [MM] = month &lt;br&gt;  [%06d]   = number with 6 leading 0s&lt;br&gt; ex: &lt;i&gt;MTOP[yyyy][MM][%06d]&lt;/i&gt; &lt;i&gt;will result to MTOP20160100001&lt;/i&gt; &lt;/html&gt;"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
                   </Properties>
                 </Component>
