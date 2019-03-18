@@ -67,6 +67,9 @@ public class ApplicationEntryModel extends PageFlowController  {
         entity.owner = fran.owner;
         entity.units = fran.units;
         entity.franchise = fran.franchise;
+        entity.prevappid = fran.prevappid;
+        entity.prevowner = fran.owner;
+        
     }
     
     public def save() {

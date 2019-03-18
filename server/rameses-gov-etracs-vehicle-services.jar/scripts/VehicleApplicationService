@@ -33,6 +33,9 @@ public class VehicleApplicationService  {
 	@DataContext("vw_vehicle_franchise")
 	def vwFranchiseEm;
 
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
 	def createInfo = { o, franchiseid ->
 		def m = [:];
 		m.owner = o.owner;
@@ -189,6 +192,15 @@ public class VehicleApplicationService  {
 		app.franchise = [objid:vf.objid, controlno: vf.controlno];
 		app.units = [];
 		app.units.addAll( vf.units.collect{ [objid: 'VU'+new UID(), prevappunitid:it.objid, unit: it.unit] }  );
+
+		//get the latest previous appid. Apply only for NOT new and renew
+		if( !o.apptype.matches('NEW') ) {
+			def z = vwAppEm.find( [year: vf.year] ).orderBy("dtcreated DESC").limit(1).first();
+			if( z.task.state != 'end' ) {
+				throw new Exception("The previous application was not completed");
+			}
+			app.prevappid = z.objid;
+		}
 
 		return app;
 	}

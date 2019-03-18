@@ -1,0 +1,15 @@
+import com.rameses.annotations.*;
+import com.rameses.util.*;
+
+class VehicleApplicationPersistenceInterceptor {
+	
+	//check before submitting draft application
+	@Before(pattern="PersistenceService.removeEntity", eval="#{ args[0]._schemaname=='vw_vehicle_application' }")
+	public void removeApplication( def evt ) {
+		def r = evt.args[0];
+		throw new Exception("r is " + r);
+	}
+
+
+
+}

@@ -14,6 +14,13 @@ class VehicleUnitListModel extends CrudListModel {
     def dateSvc;
     
     def year;
+
+    @PropertyChangeListener
+    def listener = [
+        "year": { o->
+            reload();
+        }
+    ]
     
     void afterInit() {
         year = dateSvc.getServerYear();

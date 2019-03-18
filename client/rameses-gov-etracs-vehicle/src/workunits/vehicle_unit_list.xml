@@ -12,4 +12,7 @@
                  /> 
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleUnitListModel" />
+    <pages>
+        <page name="queryForm" template="com.rameses.gov.etracs.vehicle.views.ViewVehicleQueryPanel" />
+    </pages>
 </workunit>

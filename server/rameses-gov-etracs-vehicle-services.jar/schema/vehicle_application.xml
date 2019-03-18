@@ -19,6 +19,8 @@
 		<field name="taskid" />
 		<field name="permitid"/>
 		<field name="prevappid" />
+
+		<!-- used for change ownership -->
 		<field name="amount" />
 
 		<complex name="units" ref="vehicle_application_unit" jointype="one-to-many" required="false">

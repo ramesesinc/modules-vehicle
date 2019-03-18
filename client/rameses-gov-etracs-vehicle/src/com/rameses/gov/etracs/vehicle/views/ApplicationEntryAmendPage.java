@@ -45,6 +45,7 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
         xLabel13 = new com.rameses.rcp.control.XLabel();
         xLabel16 = new com.rameses.rcp.control.XLabel();
         xLabel15 = new com.rameses.rcp.control.XLabel();
+        xLabel5 = new com.rameses.rcp.control.XLabel();
         xLabel7 = new com.rameses.rcp.control.XLabel();
         xLabel6 = new com.rameses.rcp.control.XLabel();
         xLabel8 = new com.rameses.rcp.control.XLabel();
@@ -64,7 +65,7 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
         jPanel1.setLayout(new com.rameses.rcp.control.layout.XLayout());
 
         xButton1.setName("addUnit"); // NOI18N
-        xButton1.setVisibleWhen("#{entity.apptype.matches('NEW|ADD_UNIT')}");
+        xButton1.setVisibleWhen("#{entity.apptype.matches('NEW|CHANGE_UNIT')}");
         xButton1.setText("Add Unit");
         jPanel1.add(xButton1);
 
@@ -84,7 +85,7 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
         xButton4.setDepends(new String[] {"selectedUnit"});
         xButton4.setDisableWhen("#{ selectedUnit?.objid == null }");
         xButton4.setName("dropUnit"); // NOI18N
-        xButton4.setVisibleWhen("#{ entity.apptype == 'DROP_UNIT' }");
+        xButton4.setVisibleWhen("#{ entity.apptype == 'CHANGE_UNIT' }");
         xButton4.setContentAreaFilled(false);
         xButton4.setText("Drop Unit");
         jPanel1.add(xButton4);
@@ -92,7 +93,7 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
         xButton5.setDepends(new String[] {"selectedUnit"});
         xButton5.setDisableWhen("#{selectedUnit?.objid != null }");
         xButton5.setName("removeUnit"); // NOI18N
-        xButton5.setVisibleWhen("#{ entity.apptype.matches('NEW|ADD_UNIT') }");
+        xButton5.setVisibleWhen("#{ entity.apptype.matches('NEW|CHANGE_UNIT') }");
         xButton5.setContentAreaFilled(false);
         xButton5.setText("Remove Unit");
         jPanel1.add(xButton5);
@@ -155,6 +156,13 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
         xLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel15.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel5.add(xLabel15);
+
+        xLabel5.setCaption("Previous Owner");
+        xLabel5.setExpression("#{entity.prevowner.name}");
+        xLabel5.setVisibleWhen("#{ entity.apptype == 'CHANGE_OWNER'  }");
+        xLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel5.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel5);
 
         xLabel7.setCaption("Owner ");
         xLabel7.setExpression("#{entity.owner.name}");
@@ -240,7 +248,7 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+                .addComponent(xFormPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -309,6 +317,7 @@ public class ApplicationEntryAmendPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel17;
     private com.rameses.rcp.control.XLabel xLabel18;
     private com.rameses.rcp.control.XLabel xLabel21;
+    private com.rameses.rcp.control.XLabel xLabel5;
     private com.rameses.rcp.control.XLabel xLabel6;
     private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XLabel xLabel8;
