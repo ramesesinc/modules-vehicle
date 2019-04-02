@@ -34,9 +34,7 @@
 	<field name="owner.name" class="java.lang.String"/>
 	<field name="appno" class="java.lang.String"/>
 	<field name="franchise.controlno" class="java.lang.String"/>
-	<field name="gender" class="java.lang.String"/>
 	<field name="vehicleunits" class="java.lang.Object"/>
-	<field name="vehicletype.title" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -110,9 +108,9 @@
 					</textElement>
 				<text><![CDATA[DFRB Form No.03 ( 2005 Revised )]]></text>
 				</staticText>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="226"
+						x="229"
 						y="333"
 						width="249"
 						height="20"

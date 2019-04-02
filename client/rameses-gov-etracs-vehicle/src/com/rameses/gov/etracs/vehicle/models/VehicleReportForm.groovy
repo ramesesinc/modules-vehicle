@@ -31,6 +31,14 @@ public class VehicleReportForm extends FormReportModel {
     }
     */
    
+    public def getReportData() {
+        def o = super.getReportData();
+        o.each {
+            println it;
+        }
+        return o;
+    }
+   
     public def preview() {
         def entity =  caller.entityContext;
         query.objid = entity.objid;

@@ -34,6 +34,7 @@
 	<field name="owner.name" class="java.lang.String"/>
 	<field name="appno" class="java.lang.String"/>
 	<field name="franchise.controlno" class="java.lang.String"/>
+	<field name="gender" class="java.lang.String"/>
 	<field name="vehicleunits" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
 
@@ -116,6 +117,188 @@ of Municipality of Dalaguete
 
           2. The applicant proposes to operate a tricycle service within the area of the Municipality of Dalaguete with the following unit (s) more particularly described as follows:
 ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="389"
+						width="153"
+						height="15"
+						key="staticText-38"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[MAKE                                     :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="407"
+						width="153"
+						height="15"
+						key="staticText-39"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[MOTOR NUMBER                    :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="426"
+						width="153"
+						height="15"
+						key="staticText-41"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[CHASSIS NUMBER                   :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="444"
+						width="153"
+						height="15"
+						key="staticText-42"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[TRICYCLE BODY NUMBER       :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="463"
+						width="153"
+						height="15"
+						key="staticText-43"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[PLATE NUMBER                      :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="480"
+						width="153"
+						height="15"
+						key="staticText-44"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[POLICY INSURANCE NO         :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="101"
+						y="498"
+						width="153"
+						height="15"
+						key="staticText-45"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[INSURER                                 :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="389"
+						width="153"
+						height="15"
+						key="staticText-48"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="407"
+						width="153"
+						height="15"
+						key="staticText-49"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="426"
+						width="153"
+						height="15"
+						key="staticText-51"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="444"
+						width="153"
+						height="15"
+						key="staticText-52"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="462"
+						width="153"
+						height="15"
+						key="staticText-53"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="480"
+						width="153"
+						height="15"
+						key="staticText-54"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="259"
+						y="498"
+						width="153"
+						height="15"
+						key="staticText-55"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -225,16 +408,6 @@ of Municipality of Dalaguete
 					</textElement>
 				<text><![CDATA[DALAGUETE FRANCHISING AND REGULATION BOARD]]></text>
 				</staticText>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="7"
-						y="385"
-						width="539"
-						height="27"
-						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[$F{vehicleunits}]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["DFRB-FORM-01-SUBREPORT.jasper"]]></subreportExpression>
-				</subreport>
 			</band>
 		</title>
 		<pageHeader>

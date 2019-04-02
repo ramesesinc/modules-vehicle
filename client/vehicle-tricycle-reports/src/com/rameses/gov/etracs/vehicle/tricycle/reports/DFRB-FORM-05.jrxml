@@ -34,7 +34,6 @@
 	<field name="owner.name" class="java.lang.String"/>
 	<field name="appno" class="java.lang.String"/>
 	<field name="franchise.controlno" class="java.lang.String"/>
-	<field name="gender" class="java.lang.String"/>
 	<field name="vehicleunits" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
 
@@ -161,20 +160,6 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="15"
-						y="164"
-						width="207"
-						height="18"
-						key="staticText-59"/>
-					<box topPadding="2">					<topPen lineWidth="0.0"/>
-</box>
-					<textElement textAlignment="Left">
-						<font size="11"/>
-					</textElement>
-				<text><![CDATA[X --------------------------- /]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
 						x="57"
 						y="284"
 						width="471"
@@ -235,6 +220,19 @@
 					</textElement>
 				<text><![CDATA[Province of Cebu]]></text>
 				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="15"
+						y="165"
+						width="242"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{owner.name}]]></textFieldExpression>
+				</textField>
 			</band>
 		</title>
 		<pageHeader>

@@ -2,13 +2,13 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="DFRB-FORM-04"
+		 name="DFRB-FORM-03"
 
 		 language="groovy"		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
 		 pageWidth="612"
-		 pageHeight="900"
+		 pageHeight="800"
 		 columnWidth="552"
 		 columnSpacing="0"
 		 leftMargin="30"
@@ -34,6 +34,7 @@
 	<field name="owner.name" class="java.lang.String"/>
 	<field name="appno" class="java.lang.String"/>
 	<field name="franchise.controlno" class="java.lang.String"/>
+	<field name="gender" class="java.lang.String"/>
 	<field name="vehicleunits" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
 
@@ -42,11 +43,11 @@
 			</band>
 		</background>
 		<title>
-			<band height="820"  isSplitAllowed="true" >
+			<band height="700"  isSplitAllowed="true" >
 				<staticText>
 					<reportElement
 						x="64"
-						y="81"
+						y="59"
 						width="0"
 						height="0"
 						key="staticText-1"/>
@@ -58,64 +59,43 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="6"
-						y="25"
-						width="535"
-						height="16"
-						key="staticText-2"/>
+						x="90"
+						y="82"
+						width="368"
+						height="19"
+						key="staticText-3"/>
 					<box></box>
 					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="12" isBold="false"/>
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true" isItalic="false"/>
 					</textElement>
-				<text><![CDATA[Republic of the Philippines]]></text>
+				<text><![CDATA[STATEMENT OF UNDERTAKING]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="6"
-						y="147"
-						width="287"
-						height="63"
-						key="staticText-30"/>
+						x="46"
+						y="119"
+						width="456"
+						height="157"
+						key="staticText-12"/>
 					<box></box>
-					<textElement textAlignment="Left">
+					<textElement textAlignment="Justified">
 						<font/>
 					</textElement>
-				<text><![CDATA[In the matter for Application / Change Unit /Renewal       
-of Certificate of Public Convenience to
-operate a Tricycle Service within the area
-of Municipality of Dalaguete
-]]></text>
+				<text><![CDATA[                   I hereby certify that all information given before the Dalaguete Franchising and Regulatory Board, Municipality of Dalaguete as well as all attachments to the  application herein submitted are true and correct. I further certify  that I am not a husband, wife, son or daughter of any employee of the Dalaguete Franchising and Regulatory Board ( DFRB ) or member of the  Dalaguete Philippine National Police assigned to a unit which has jurisdiction over the municipality where this application is being filed. I acknowledge that any false representation on my part can serve  as a ground  for the disapproval of this application or cancellation of the certificate that may be granted  as a result of this application. I also acknowledge that the mere act of filing this application does not bind the municipality and / or the Dalaguete Franchising and Regulatory Board to grant me a franchise to operate a tricycle service.]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="116"
-						y="231"
-						width="280"
-						height="26"
-						key="staticText-31"/>
-					<box></box>
+						x="271"
+						y="354"
+						width="164"
+						height="18"
+						key="staticText-46"/>
+					<box topPadding="2">					<topPen lineWidth="0.0"/>
+</box>
 					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+						<font size="11"/>
 					</textElement>
-				<text><![CDATA[P E T I T I O N]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="6"
-						y="287"
-						width="539"
-						height="88"
-						key="staticText-32"/>
-					<box></box>
-					<textElement textAlignment="Left">
-						<font/>
-					</textElement>
-				<text><![CDATA[         Comes now, ARMAN B. RATUNIL, herein applicant, upon himself and unto this Honorable Board most respectfully state the following;
-
-          1. The applicant is a Filipino citizen, of legal age and resident of Angas, Casay, Dalaguete, Cebu;
-
-          2. The applicant proposes to operate a tricycle service within the area of the Municipality of Dalaguete with the following unit (s) more particularly described as follows:
-]]></text>
+				<text><![CDATA[Applicant]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -128,113 +108,66 @@ of Municipality of Dalaguete
 					<textElement textAlignment="Left">
 						<font/>
 					</textElement>
-				<text><![CDATA[DFRB Form No.04 ( 2005 Revised )]]></text>
+				<text><![CDATA[DFRB Form No.03 ( 2005 Revised )]]></text>
 				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="226"
+						y="333"
+						width="249"
+						height="20"
+						key="textField-10"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{owner.name}]]></textFieldExpression>
+				</textField>
 				<staticText>
 					<reportElement
-						x="300"
-						y="147"
-						width="126"
-						height="15"
-						key="staticText-57"/>
+						x="54"
+						y="412"
+						width="456"
+						height="51"
+						key="staticText-77"/>
 					<box></box>
 					<textElement textAlignment="Left">
 						<font/>
 					</textElement>
-				<text><![CDATA[DFRB CASE No. ]]></text>
+				<text><![CDATA[SUBSCRIBED AND SWORN to before me this ______ day of ___________, at Dalaguete, Cebu, Philippines, affiant exhibiting to me her/his CTC  No. ____________ issued on _________________ at Dalaguete, Cebu]]></text>
 				</staticText>
-				<line direction="TopDown">
-					<reportElement
-						x="377"
-						y="158"
-						width="113"
-						height="0"
-						key="line-6"/>
-					<graphicElement stretchType="NoStretch"/>
-				</line>
 				<staticText>
 					<reportElement
-						x="6"
-						y="535"
-						width="539"
-						height="156"
-						key="staticText-58"/>
+						x="54"
+						y="616"
+						width="154"
+						height="51"
+						key="staticText-78"/>
 					<box></box>
 					<textElement textAlignment="Left">
-						<font/>
+						<font pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
 					</textElement>
-				<text><![CDATA[           3. The applicant is financially capable to meet the responsibilities in the maintenance and operation of a public convenience vehicle;
-
-           4. The applicant is aware on the provisions on Public Service Law 
-( Commonwealth Act No. 146, as amended ) and provisions on Common Carriers as provided for under Articles 1732 up to Article 1766 of the Civil Code of the  Philippines and is willing to comply for the same;
-
-           5. Other than the National laws that are to be complied with and observed, herein applicant is willing to comply with the rule and regulations adopted by the Dalaguete Franchising and Regulatory Board;
-
-            6. The applicant in his desire to apply for a Certificate of Public Convenience is willing to abide by the required degree of diligence as a common carrier as herein provided by the present laws;
+				<text><![CDATA[Doc. No. ______			                    
+Page No. ______			                                   
+Book No. ______			                                  
+Series of  _______                                     	
 ]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
-						x="6"
-						y="41"
-						width="535"
-						height="16"
-						key="staticText-59"/>
-					<box></box>
+						x="315"
+						y="511"
+						width="201"
+						height="47"
+						key="staticText-79"/>
+					<box topPadding="2">					<topPen lineWidth="0.0"/>
+</box>
 					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="12" isBold="false"/>
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
 					</textElement>
-				<text><![CDATA[Municipality pf Dalaguete]]></text>
+				<text><![CDATA[RONALD ALLAN G. CESANTE, CPA.
+Municipal Mayor ]]></text>
 				</staticText>
-				<staticText>
-					<reportElement
-						x="6"
-						y="57"
-						width="535"
-						height="16"
-						key="staticText-60"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica" size="12" isBold="false"/>
-					</textElement>
-				<text><![CDATA[Province of Cebu]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="6"
-						y="123"
-						width="229"
-						height="15"
-						key="staticText-61"/>
-					<box></box>
-					<textElement textAlignment="Left">
-						<font pdfFontName="Helvetica-Bold" isBold="true" isUnderline="true"/>
-					</textElement>
-				<text><![CDATA[ARMAN B. RATUNIL]]></text>
-				</staticText>
-				<staticText>
-					<reportElement
-						x="6"
-						y="87"
-						width="535"
-						height="16"
-						key="staticText-62"/>
-					<box></box>
-					<textElement textAlignment="Center">
-						<font pdfFontName="Helvetica-Oblique" size="12" isBold="false" isItalic="true" isUnderline="false"/>
-					</textElement>
-				<text><![CDATA[DALAGUETE FRANCHISING AND REGULATION BOARD]]></text>
-				</staticText>
-				<subreport  isUsingCache="true">
-					<reportElement
-						x="7"
-						y="385"
-						width="539"
-						height="27"
-						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[$F{vehicleunits}]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["DFRB-FORM-01-SUBREPORT.jasper"]]></subreportExpression>
-				</subreport>
 			</band>
 		</title>
 		<pageHeader>
@@ -258,8 +191,8 @@ of Municipality of Dalaguete
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="7"
-						y="3"
+						x="6"
+						y="4"
 						width="186"
 						height="11"
 						forecolor="#000000"
@@ -279,8 +212,8 @@ of Municipality of Dalaguete
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="482"
-						y="3"
+						x="481"
+						y="4"
 						width="63"
 						height="11"
 						forecolor="#000000"
@@ -300,8 +233,8 @@ of Municipality of Dalaguete
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
-						x="140"
-						y="3"
+						x="144"
+						y="5"
 						width="342"
 						height="11"
 						forecolor="#000000"
