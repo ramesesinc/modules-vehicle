@@ -53,6 +53,8 @@ class VehicleBillingInterceptor {
 		def p = evt.args[0].headerinfo.application;
 		def selfields = "refid:{objid},reftype:{'vehicle_application_fee'},item.*,amount:{amount-amtpaid},appid";
 		def ob = "sortorder ASC";
+
+		appFeeEm.debug = true;
 		def res = appFeeEm.select(selfields).where( "appid = :appid AND amount - amtpaid > 0", [appid: p.objid] ).orderBy(ob).list();
 
 		def list = evt.result;
