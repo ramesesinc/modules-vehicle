@@ -1,0 +1,10 @@
+<schema adapter="vehicledb">
+	<element tablename="vehicle_itemaccount">
+		<field name="objid" primary="true" />
+		<field name="title" />
+		<field name="item_objid" />
+		<field name="item_title" />
+		<field name="sortorder" type="integer"/>		
+	</element>
+</schema>
+

@@ -1,0 +1,27 @@
+import com.rameses.annotations.*;
+
+import com.rameses.util.*;
+import java.text.*;
+import java.util.regex.*;
+import treasury.facts.*;
+import vehicle.facts.*;
+
+public class VehiclePaymentService {
+	
+	@Service("WorkflowTaskService")
+	def taskSvc;
+
+	@DataContext("vehicle_payment")
+	def paymentEm;
+
+	@ProxyMethod
+	public void postPayment(def o ) {
+
+	}
+
+	@ProxyMethod
+	public void voidPayment(def o ) {
+
+	}
+
+}

@@ -70,6 +70,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xLookupField1.setName("entity.franchise"); // NOI18N
         xLookupField1.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' || entity.apptype == 'NEW'  }");
         xLookupField1.setPreferredSize(new java.awt.Dimension(250, 20));
+        xLookupField1.setRequired(true);
         xFormPanel3.add(xLookupField1);
 
         xLabel2.setCaption("App Type");
@@ -103,7 +104,6 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xFormPanel3.add(xIntegerField1);
 
         entityLookup1.setCaption("Owner");
-        entityLookup1.setEntityType("entityindividual");
         entityLookup1.setName("entity.owner"); // NOI18N
         entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
         entityLookup1.setRequired(true);

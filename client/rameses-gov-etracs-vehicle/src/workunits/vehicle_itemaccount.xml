@@ -1,0 +1,9 @@
+<workunit extends="com/rameses/seti2/templates/CrudForm.xml"  schemaName="vehicle_itemaccount">
+    <invokers>
+        <invoker type="vehicle_itemaccount:create" caption="Vehicle Item Account" action="create" index="1" target="popup"/>
+        <invoker type="vehicle_itemaccount:open" caption="Vehicle Item Account" action="open" index="1" target="popup"/>
+    </invokers>
+     <pages>
+        <page template="com.rameses.gov.etracs.vehicle.views.VehicleItemAccountPage" />
+    </pages>
+</workunit>
