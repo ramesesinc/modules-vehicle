@@ -88,6 +88,7 @@ public class ApplicationEntryModel extends PageFlowController  {
             entity.geninfoid = null;
             entity.prevowner = entity.owner;
             entity.owner = null;
+            entity.startdate = fran.startdate; 
         }
         else {
             entity.franchiseyearid = fran.currentyearid;            

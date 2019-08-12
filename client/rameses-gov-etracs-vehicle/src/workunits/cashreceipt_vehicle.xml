@@ -1,11 +1,11 @@
 <workunit extends="com/rameses/treasury/common/templates/BillingCashReceipt.xml" 
           rulename="vehiclebilling" contextName="vehicle">
     <invokers>
-        <invoker type="collectiontype:handler" caption="Vehicle Registration" 
+        <invoker type="collectiontype:handler" caption="Vehicle Collection" 
                  name="vehicle" formtype="serial" formno="51"  index="110" />
         
         <!-- collection type --> 
-        <invoker type="cashreceipt:vehicle" action="start" caption="Vehicle Registration"/>
-        <invoker type="cashreceipt:barcode:51010" action="loadBarcode" caption="Vehicle Registration"/>
+        <invoker type="cashreceipt:vehicle" action="start" caption="Vehicle Collection"/>
+        <invoker type="cashreceipt:barcode:51010" action="loadBarcode" caption="Vehicle Collection"/>
     </invokers>
 </workunit>

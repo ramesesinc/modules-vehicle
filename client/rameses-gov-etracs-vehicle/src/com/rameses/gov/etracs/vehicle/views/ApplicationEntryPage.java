@@ -58,6 +58,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xDateField1 = new com.rameses.rcp.control.XDateField();
         xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
         xIntegerField2 = new com.rameses.rcp.control.XIntegerField();
+        xDateField2 = new com.rameses.rcp.control.XDateField();
 
         xFormPanel3.setCaptionWidth(150);
 
@@ -175,6 +176,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         });
         jPanel1.add(xButton7);
 
+        xFormPanel1.setCaptionVAlignment(com.rameses.rcp.constant.UIConstants.CENTER);
         xFormPanel1.setCaptionWidth(140);
 
         xLabel3.setCaption("Vehicle Type");
@@ -196,7 +198,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xComboBox1.setItems("appTypes");
         xComboBox1.setName("entity.apptype"); // NOI18N
         xComboBox1.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' }");
-        xComboBox1.setPreferredSize(new java.awt.Dimension(120, 27));
+        xComboBox1.setPreferredSize(new java.awt.Dimension(120, 22));
         xComboBox1.setRequired(true);
         xFormPanel1.add(xComboBox1);
 
@@ -220,6 +222,14 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
         xIntegerField2.setVisibleWhen("");
         xIntegerField2.setRequired(true);
         xFormPanel1.add(xIntegerField2);
+
+        xDateField2.setCaption("Start Date");
+        xDateField2.setName("entity.startdate"); // NOI18N
+        xDateField2.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' ||  apptype == 'NEW' }");
+        xDateField2.setCellPadding(new java.awt.Insets(5, 0, 0, 0));
+        xDateField2.setPreferredSize(new java.awt.Dimension(150, 20));
+        xDateField2.setRequired(true);
+        xFormPanel1.add(xDateField2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -248,7 +258,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
                         .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -275,6 +285,7 @@ public class ApplicationEntryPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XButton xButton7;
     private com.rameses.rcp.control.XComboBox xComboBox1;
     private com.rameses.rcp.control.XDateField xDateField1;
+    private com.rameses.rcp.control.XDateField xDateField2;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XIntegerField xIntegerField1;
