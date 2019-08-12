@@ -21,7 +21,7 @@ class VehicleBillingInterceptor {
 	@DataContext("vehicle_application_unit")
 	def appUnitEm;
 
-	@DataContext("vehicle_application_fee")
+	@DataContext("vehicle_assessment_fee")
 	def appFeeEm;
 
 	@DataContext("vehicle_payment")
@@ -51,11 +51,11 @@ class VehicleBillingInterceptor {
     @After(pattern="BillingInfoHandler.getBillItems",  eval="#{ args[0].rulename == 'vehiclebilling' }" )
 	public void loadBillItems(def evt) {
 		def p = evt.args[0].headerinfo.application;
-		def selfields = "refid:{objid},reftype:{'vehicle_application_fee'},item.*,amount:{amount-amtpaid},appid";
+		def selfields = "refid:{objid},item.*,amount:{amount-amtpaid},parent.appid";
 		def ob = "sortorder ASC";
 
 		appFeeEm.debug = true;
-		def res = appFeeEm.select(selfields).where( "appid = :appid AND amount - amtpaid > 0", [appid: p.objid] ).orderBy(ob).list();
+		def res = appFeeEm.select(selfields).where( "parent.appid = :appid AND amount - amtpaid > 0", [appid: p.objid] ).orderBy(ob).list();
 
 		def list = evt.result;
 		list.addAll( res );

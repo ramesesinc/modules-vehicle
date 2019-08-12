@@ -1,17 +1,28 @@
 <workunit schemaName="vehicle_application">
+
     <invokers>
-        <invoker folderid="menucategory/vehicle/application" caption="Vehicle Drop Franchise"  index="25" />
-
-        <!-- toolbars -->
-        <invoker type="formActions" action="loadApp" caption="Next" visibleWhen="#{ page == 'default' }"/> 
-        <invoker type="formActions" action="backToDefault" caption="Back" visibleWhen="#{ page == 'entry' }"/> 
-        <invoker type="formActions" action="save" caption="Submit" visibleWhen="#{ page == 'entry' }"/> 
-
+        <invoker folderid="menucategory/vehicle/application"  apptype="DROP_FRANCHISE"
+                 action="startOnline" caption="Drop Franchise"  index="25" role="INFO" />
     </invokers>
-    <code class="com.rameses.gov.etracs.vehicle.models.ChangeVehicleApplicationModel" />
+    
+    <code class="com.rameses.gov.etracs.vehicle.models.ApplicationEntryModel" />
+    <pageflow>
+        <start>
+            <transition to="initial" />
+        </start>
+        <page name="initial" title="#{vehicletype.title} Search (#{entity.apptype} #{entity.txnmode})">
+            <transition to="entry" caption="Next" action="searchEntry" />
+        </page>
+        <page name="entry" title="#{entity.controlno)">
+            <transition to="end" caption="Submit" action="save" 
+                        confirm="You are about to submit this application. Proceed?"/>
+        </page>
+        <end/>
+    </pageflow>
+   
     <pages>
-        <page name="default" template="com.rameses.gov.etracs.vehicle.views.SpecifyFranchiseControlNoPage" />
-        <page name="entry" template="com.rameses.gov.etracs.vehicle.views.ApplicationEntryPage" />
+      <page name="initial" template="com.rameses.gov.etracs.vehicle.views.SpecifyControlNoPage" />
+      <page name="entry" template="com.rameses.gov.etracs.vehicle.views.ApplicationEntryPage" />  
     </pages>
     
 </workunit>

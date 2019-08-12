@@ -1,7 +1,7 @@
 <workunit schemaName="vehicle_application">
     <invokers>
         <invoker folderid="menucategory/vehicle/application"  apptype="CHANGE_UNIT"
-                 action="startOnline" caption="Vehicle Change Unit"  index="22" />
+                 action="startOnline" caption="Change Unit"  index="22" />
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationEntryModel" />
     <pageflow>
@@ -19,6 +19,6 @@
     </pageflow>
     <pages>
         <page name="initial" template="com.rameses.gov.etracs.vehicle.views.SpecifyControlNoPage" />
-        <page name="entry" template="com.rameses.gov.etracs.vehicle.views.ApplicationEntryAmendPage" />        
+        <page name="entry" template="com.rameses.gov.etracs.vehicle.views.ApplicationEntryPage" />        
     </pages>
 </workunit>

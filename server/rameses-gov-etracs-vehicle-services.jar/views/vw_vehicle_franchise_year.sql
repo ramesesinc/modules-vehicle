@@ -3,6 +3,7 @@ CREATE VIEW vw_vehicle_franchise_year AS
 SELECT
     vfy.objid, 
 	vfy.year,
+	vfy.appid,
 	vf.controlno,
 	vf.vehicletypeid,
 	vfgi.owner_objid,

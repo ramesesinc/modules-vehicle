@@ -8,7 +8,7 @@ import vehicle.facts.*;
 
 class VehicleAssessmentInterceptor {
 
-	@DataContext("vehicle_application_fee")
+	@DataContext("vehicle_assessment_fee")
 	def appFeeEm;
 
 	@DataContext("vehicle_application_info")

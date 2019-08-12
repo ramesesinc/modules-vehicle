@@ -7,7 +7,7 @@ import com.rameses.util.*;
 ***************************************************************************************/
 class VehicleApplicationWorkflowInterceptor {
 	
-	@DataContext("vehicle_application_fee")
+	@DataContext("vehicle_assessment_item")
 	def vFee;
 
 	@DataContext("vehicle_application")
@@ -31,6 +31,17 @@ class VehicleApplicationWorkflowInterceptor {
 	@Service("BillingRuleService")
 	def billRuleSvc;
 
+
+	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'release' }")
+	public void beforeSubmittingDraft( def evt ) {
+		def t = evt.args[0];
+		t.each { k,v->
+			println k+"="+v;
+		}
+		throw new Exception("stop before release " );
+	}
+
+	/*
 	//check before submitting draft application
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'draft' }")
 	public void beforeSubmittingDraft( def evt ) {
@@ -76,9 +87,6 @@ class VehicleApplicationWorkflowInterceptor {
 		p.info = [amtdue: total, message: 'balance unpaid:' + total ];	
 	}
 
-	/************************************************************************ 
-	* Before releasing ensure that permit is issued. 
-	**************************************************************************/
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate=='release' && args[0].to == 'end'}")
 	public void beforeRelease( def evt ) {
 		def p = evt.args[0];
@@ -97,6 +105,6 @@ class VehicleApplicationWorkflowInterceptor {
 			franchiseEm.find([ objid: entity.franchiseid ] ).update( [appid: "{NULL}"])
 		}
 	}
-
+	*/
 
 }

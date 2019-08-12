@@ -1,7 +1,7 @@
 <workunit schemaName="vehicle_application">
     <invokers>
         <invoker folderid="menucategory/vehicle/application"  apptype="NEW"
-                 action="startOnline" caption="New Vehicle Application"  index="10" role="INFO"/>
+                 action="startOnline" caption="New Application"  index="10" role="INFO"/>
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationEntryModel" />
     <pageflow>

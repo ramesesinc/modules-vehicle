@@ -14,13 +14,17 @@
 		<field name="geninfoid" />
 		<field name="owner_objid" />
 		<field name="owner_name" />
+		<field name="owner_type" />
 		<field name="owner_address_objid" />
 		<field name="owner_address_text" />
 		<field name="renewaldate" />
+		<field name="appid" />
+		<field name="appstate" />
 
+		<!--
 		<complex name="units" ref="vw_vehicle_franchise_unit_active" jointype="one-to-many">
 			<key field="objid" target="franchiseid" />
 		</complex>
-
+		-->
 	</element>
 </schema>

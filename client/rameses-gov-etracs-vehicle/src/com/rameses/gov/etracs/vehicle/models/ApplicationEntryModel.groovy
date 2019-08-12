@@ -19,7 +19,6 @@ public class ApplicationEntryModel extends PageFlowController  {
     @Service("DateService")
     def dateSvc;
 
-
     def vehicletype;
     def entity;
     def selectedUnit;
@@ -27,7 +26,10 @@ public class ApplicationEntryModel extends PageFlowController  {
     def appTypes = ["NEW", "RENEW"]; 
     def controlno;
     def prevowner;
-
+    def apptype;
+    
+    def units = [];
+    def droppedunits = [];
     
     public String getTitle() {
         return invoker?.caption + " " + vehicletype.title;
@@ -39,7 +41,7 @@ public class ApplicationEntryModel extends PageFlowController  {
     }
     
     void initNew() {
-        entity = [units:[]];
+        entity = [:];
         entity.vehicletypeid = vehicletype.objid;
         entity.vehicletype = vehicletype;
         if( !entity.txnmode ) entity.txnmode = "ONLINE";
@@ -49,32 +51,51 @@ public class ApplicationEntryModel extends PageFlowController  {
     def startCapture() {
         initNew();
         appTypes = ["NEW", "RENEW"];        
-        entity.appyear = dateSvc.getServerYear();
         entity.txnmode = "CAPTURE";
         return super.start();
     }
     
     def startOnline() {
         initNew();
-        entity.apptype = invoker.properties.apptype;
+        apptype = invoker.properties.apptype;
         entity.appyear = dateSvc.getServerYear();
         entity.txnmode = "ONLINE";
         return super.start();
     }
     
-    void searchEntry() {
-        def fran = appSvc.findByControlNo( [controlno:controlno, vehicletypeid: vehicletype.objid, apptype:entity.apptype] );
-        entity.owner = fran.owner;
-        entity.units = fran.units;
-        entity.franchise = fran.franchise;
-        entity.prevappid = fran.prevappid;
-        entity.prevowner = fran.owner;
-        
+    def getLookupFranchise() {
+        def p = [:];
+        p.onselect = { o->
+            entity.franchise = o;
+            binding.refresh("entity.franchise");
+        };
+        p.query = [ vehicletypeid: vehicletype.objid ];    
+        return Inv.lookupOpener("vehicle_franchise:available:lookup", p );
     }
     
-    public def save() {
-        entity = appSvc.create( entity );
+    void searchEntry() {
+        def fran = appSvc.findByControlNo( [controlno:controlno, vehicletypeid: vehicletype.objid, apptype:apptype] );
+        entity.owner = fran.owner;
+        entity.geninfoid = fran.geninfoid;
+        entity.franchise = fran;
+        if( apptype == 'RENEW') {
+            entity.franchiseyearid = null;
+            entity.prevappid = fran.appid;
+            entity.prevyear = fran.year;
+        }
+        else if( apptype == 'CHANGE_OWNER') {
+            entity.franchiseyearid = fran.currentyearid;
+            entity.geninfoid = null;
+            entity.prevowner = entity.owner;
+            entity.owner = null;
+        }
+        else {
+            entity.franchiseyearid = fran.currentyearid;            
+        }
+        units = fran.units; 
     }
+    
+    
     
     public def onComplete() {
         def op =  Inv.lookupOpener("vw_vehicle_application:open", [entity: entity ] );
@@ -85,7 +106,7 @@ public class ApplicationEntryModel extends PageFlowController  {
     def addUnit() {
         def p = [:];
         p.handler = { o->
-            entity.units << [unit: o];
+            units << [unit: o];
             unitListModel.reload();
         };
         p.vehicletype = vehicletype;
@@ -94,9 +115,10 @@ public class ApplicationEntryModel extends PageFlowController  {
 
     def editUnit() {
         if(!selectedUnit) throw new Exception("Please select a unit");
+        def lineId = selectedUnit.objid;
         def p = [:];
         p.handler = { o->
-            if( o.objid ) {
+            if( lineId !=null ) {
                 def m = [_schemaname: 'vehicle_unit'];
                 m.findBy = [objid: o.objid ];
                 m.putAll( o );
@@ -114,8 +136,9 @@ public class ApplicationEntryModel extends PageFlowController  {
     
     def removeUnit() {
         if(!selectedUnit) throw new Exception("Please select a unit");
+        if(selectedUnit.objid) throw new Exception("Cannot remove unit. This unit already exists");
         if(!MsgBox.confirm("You are about to remove this entry. Proceed?")) return null;
-        entity.units.remove( selectedUnit );
+        units.remove( selectedUnit );
         unitListModel.reload();
     }    
     
@@ -130,26 +153,10 @@ public class ApplicationEntryModel extends PageFlowController  {
     def dropUnit() {
         if(!selectedUnit) throw new Exception("Please select a unit");
         if(!MsgBox.confirm("You are about to drop this unit. Proceed?")) return null;
-        if(!entity.droppedunits) entity.droppedunits  = [];
-        entity.units.remove( selectedUnit );
-        entity.droppedunits << selectedUnit;
+        
+        units.remove( selectedUnit );
+        droppedunits << selectedUnit;
         unitListModel.reload();
-    }
-    
-    def changeUnit() {
-        if(!selectedUnit) throw new Exception("Please select a unit");
-        if(!selectedUnit.objid) throw new Exception("Selected Unit must have an objid");
-        if(!entity.droppedunits) entity.droppedunits  = [];
-        def p = [:];
-        p.handler = { o->
-            entity.units << [unit: o];
-            entity.units.remove( selectedUnit );
-            entity.droppedunits << selectedUnit;
-            unitListModel.reload();
-        };
-        p.vehicletype = vehicletype;
-        p.entity = [:];
-        return Inv.lookupOpener("vehicle_unit:edit", p );
     }
     
     def undropUnit() {
@@ -159,28 +166,57 @@ public class ApplicationEntryModel extends PageFlowController  {
     def revertChange() {
         
     }
-
-    def changeOwner() {
-        if(!prevowner) prevowner = entity.owner;
-        def p = [:];
-        p.onselect = { o->
-            if(o.objid == prevowner.objid)
-                throw new Exception("Please select another owner not the same as current owner ");
-            entity.owner = o;
-            binding.refresh("entity.owner.*");
-        };
-        return Inv.lookupOpener("entity:lookup", p ); 
-    }    
     
-    def getLookupFranchise() {
-        def p = [:];
-        p.onselect = { o->
-            entity.franchise = o;
-            binding.refresh("entity.franchise");
-        };
-        p.query = [ vehicletypeid: vehicletype.objid ];    
-        return Inv.lookupOpener("vehicle_franchise:available:lookup", p );
+    def addAssessment( def fromyear, def toyear ) {
+        entity.assessments = [];
+        if(toyear!=null) {
+            int fyear = fromyear.toInteger();
+            int tyear = toyear.toInteger();
+            (fyear..toyear).each {
+                entity.assessments << [year: it, state: 'PENDING' ];
+            }
+        }
+        else {
+            entity.assessments << [year: fromyear, state: 'PENDING' ];
+        }
     }
-
+    
+    public def save() {
+        entity.units = [];
+        entity.droppedunits = [];
+        entity.assessments = [];
+        if(entity.txnmode!='CAPTURE') {
+            entity.apptype = apptype;
+        }
+        if( entity.txnmode == "CAPTURE") {
+            entity.units = units;
+        }
+        else if( entity.apptype == 'NEW' ) {
+            entity.units = units;
+            addAssessment( entity.appyear, null );
+        }
+        else if(entity.apptype == 'RENEW' ) {
+            units.each {
+                entity.units << [ unit: it.unit ];
+            }
+            addAssessment( entity.prevyear, entity.appyear );
+        }
+        else if( entity.apptype == 'CHANGE_UNIT') {
+            units.each {
+                if(!it.objid) {
+                    entity.units << [unit: it.unit ];
+                }
+            }
+            droppedunits.each {
+                entity.droppedunits << [ appunitid: it.objid ];
+            }
+            addAssessment( entity.appyear, null );
+        }
+        else {
+            addAssessment( entity.appyear, null );            
+        }
+        entity = appSvc.create( entity );
+    }
+    
     
 }

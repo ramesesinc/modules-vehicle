@@ -15,5 +15,6 @@
 		<field name="driver_objid" visible="false"/>
 		<field name="driver_name" caption="Driver" included="true"/>
 		<field name="remarks" caption="Remarks" included="true"/>
+		<field name="supersederid" />		
 	</element>
 </schema>

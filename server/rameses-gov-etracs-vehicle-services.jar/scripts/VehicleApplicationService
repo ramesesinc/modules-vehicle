@@ -6,15 +6,168 @@ import java.text.*;
 
 public class VehicleApplicationService  {
 
+	@Service("WorkflowTaskService")
+	def taskSvc;
+
+	@Service("DateService")
+	def dateSvc;
+
+	@Service("ControlnoGeneratorService")
+	def controlNoSvc;
+
 	@DataContext("vehicle_application")
 	def appEm;
 
+	@DataContext("vehicle_franchise")
+	def franchiseEm;
+
+	@DataContext("vehicle_franchise_year")
+	def franchiseYearEm;
+
+	@DataContext("vehicle_franchise_generalinfo")
+	def genInfoEm;
+
+	@DataContext("vehicle_unit")
+	def unitEm;
+
+	@DataContext("vehicle_application_task")
+	def vtaskEm;
+
+	@DataContext("vw_vehicle_franchise")
+	def vwFranchiseEm;
+
+
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
+	@DataContext("vw_vehicle_franchise_unit_active")
+	def vwActiveUnitsEm;	
+
+	@Env
+	def env;
+
+	def generateAppNo = { franchiseid ->
+		def fran = franchiseEm.find([objid: franchiseid ]).first();
+		if( !fran?.vehicletype?.appnopattern )
+			throw new Exception("Please specify appnopattern in vehicletype");
+		return controlNoSvc.getNextNo( fran.vehicletype.appnopattern );	
+	}
+
+	def createInfo = { o ->
+		def m = [:];
+		m.owner = o.owner;
+		m.phoneno = o.phoneno;
+		m.email = o.email;
+		m.mobileno = o.mobileno;
+		m.franchiseid = o.franchise.objid;		
+		return genInfoEm.create(m);
+	}
+
+	def createUnit = { o ->
+		return unitEm.create( o );
+	}
+
+	def createFranchiseYear = { o ->
+		def m = [:];
+		m.objid = o.franchise.objid + '-' + o.appyear;
+		m.year = o.appyear;
+		m.geninfoid = o.geninfoid;
+		m.franchiseid = o.franchise.objid;
+		return franchiseYearEm.create(m);
+	}
+
 	@ProxyMethod
 	public def create( def o ) {
-		o.each { k,v->
-			println k+"="+v;
+		o.dtcreated = dateSvc.getServerDate();
+		o.createdby = [objid: env.USERID, name:  env.FULLNAME ];
+		o.appno = generateAppNo( o.franchise.objid );
+		if( !o.geninfoid ) {
+			def gi = createInfo( o );
+			o.geninfoid = gi.objid;
 		}
-		throw new Exception("fired create");
+		if( !o.franchiseyearid ) {
+			def fy =  createFranchiseYear( o );
+			o.franchiseyearid = fy.objid;
+		}
+		o.units?.each {
+			if( !it.unit.objid ) {
+				def ui =  createUnit( it.unit );
+				it.unit.objid = ui.objid;
+			}	
+		};
+		o = appEm.create( o );
+		//update franchise current year and franchise year application only if new or capture. otherwise updating this will be done after releasing
+		if( o.apptype.matches('NEW|RENEW') ) {
+			franchiseYearEm.find( [objid:o.franchiseyearid ]).update( [appid: o.objid ] );
+			franchiseEm.find( [objid: o.franchise.objid ] ).update( [currentyearid: o.franchiseyearid] );
+		}
+
+		if(o.txnmode == 'ONLINE') {
+			def p = [:];
+			p.processname = 'vehicle_application';
+			p.refid = o.objid;
+			p.startdate = o.dtcreated;
+			p.info = o;
+			taskSvc.start(p);	
+		}
+		else {
+			//create a dummy end task
+			def t = [:];
+			t.refid = o.objid;
+			t.dtcreated = o.dtcreated;
+			t.state = 'end';
+			t = vtaskEm.create(t);
+			appEm.find( [objid: o.objid] ).update([taskid: t.taskid]);
+		}
+		return o;
 	}
+
+	@ProxyMethod
+	public def findByControlNo( def o ) {
+		//test first franchise no. then application  no.
+		def vf = vwFranchiseEm.find( [controlno: o.controlno ]).first();
+		if(!vf) {
+			def app = vwAppEm.select("franchiseid").find( [appno: o.controlno ]).first();
+			if(app) {
+				vf = vwFranchiseEm.find( [objid: app.franchiseid] ).first();
+			}
+		}
+		if(!vf) throw new Exception("Control " +  o.controlno +  " no not found");
+
+		if(o.apptype == 'RENEW') {
+			if( vf.year == dateSvc.getServerYear() ) 
+                throw new Exception("Cannot proceed with renewal. This is already current or a pending renewal application is ongoing")
+		}
+		else {
+            if( vf.appstate != 'end' )
+                throw new Exception("Cannot proceed with transaction. The last transaction is not yet completed ");                
+		}
+		vf.units = vwActiveUnitsEm.find([franchiseid: vf.objid ] ).list();
+		return vf;
+	}
+
+	@ProxyMethod
+	public def cancelApplication( def o ) {
+		def app = vwAppEm.find( [objid: o.appid ]).first();
+		def taskid = app.taskid;
+
+		def upd = [taskid: "{NULL}", prevappid: "{NULL}" ];
+		if( app.apptype.matches('NEW|RENEW') ) {
+			upd.franchiseyearid = "{NULL}";
+		}
+		appEm.find( [objid: o.appid ] ).update( upd );
+		vtaskEm.find( [refid: o.appid] ).delete();
+
+		if( app.apptype == 'NEW' ) {
+			franchiseEm.find( [ objid: app.franchiseid] ).update([ currentyearid : "{NULL}" ] );
+			franchiseYearEm.find( [objid: app.franchiseyearid ] ).delete();
+		}
+		else if( app.apptype == 'RENEW' ) {
+			franchiseEm.find( [ objid: app.franchiseid] ).update([ currentyearid :app.prev.franchiseyearid] );
+			franchiseYearEm.find( [objid: app.franchiseyearid ] ).delete();
+		}
+		appEm.find( [objid: o.appid ] ).delete();
+	}
+
 
 }

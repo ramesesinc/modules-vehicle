@@ -7,12 +7,16 @@ SELECT
 	vf.vehicletypeid,
 	vf.currentyearid,
 	vfy.year,
+	vfy.appid,
 	vfgi.objid AS geninfoid,
 	vfgi.owner_objid,
 	vfgi.owner_name,
 	vfgi.owner_address_objid,
+	vfgi.owner_type,
 	vfgi.owner_address_text,
-	vfy.renewaldate
+	vfy.renewaldate,
+	vt.state AS appstate
 FROM vehicle_franchise vf 
 LEFT JOIN vehicle_franchise_year vfy ON vf.currentyearid = vfy.objid
-LEFT JOIN vehicle_franchise_generalinfo vfgi ON vfy.geninfoid = vfgi.objid; 
+LEFT JOIN vehicle_franchise_generalinfo vfgi ON vfy.geninfoid = vfgi.objid
+LEFT JOIN vehicle_application_task vt ON vfy.appid = vt.refid;

@@ -2,6 +2,7 @@
 	<element tablename="vw_vehicle_franchise_year">
 		<field name="objid" primary="true"/>
 		<field name="state" />
+		<field name="appid" />
 		<field name="controlno" />
 		<field name="vehicletypeid"	/>
 		<field name="currentyearid" />

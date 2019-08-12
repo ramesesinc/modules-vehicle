@@ -13,7 +13,7 @@ class VehicleReportInterceptor {
 	@DataContext("vehicle_application_unit")
 	def appUnitEm;
 
-	@DataContext("vehicle_application_fee")
+	@DataContext("vehicle_assessment_fee")
 	def appFeeEm;
 
 	@DataContext("vw_vehicle_permit")
@@ -47,8 +47,8 @@ class VehicleReportInterceptor {
 
 		def params = [:];
 		params.application = app;
-		def select = "refid:{objid},reftype:{'vehicle_application_fee'},item.*,amount,appid,year,month";		
-		params.billitems = appFeeEm.select(select).find( [appid: app.objid] ).list();
+		def select = "refid:{objid},item.*,amount,appid,year,month";		
+		params.billitems = appFeeEm.select(select).where( "parent.appid= :appid", [appid: app.objid] ).list();
 		if(app.dtapproved) params.billdate = app.dtapproved;
 		//params.include_billitems = false;
 		//params.include_items = true;

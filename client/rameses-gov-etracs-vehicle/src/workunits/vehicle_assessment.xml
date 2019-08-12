@@ -1,0 +1,17 @@
+<workunit>
+    <invokers>
+        <invoker type="vw_vehicle_application:form:formActions" 
+                 action="init" caption="View Assessment"
+                 visibleWhen="#{ task.state != 'draft' }"   />
+        
+        <invoker type="formActions" 
+                 action="_close" caption="Back"/>
+        
+        <invoker type="formActions" action="assess" caption="Assess" />
+        
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleAssessmentModel" />
+    <pages>
+        <page template="com.rameses.gov.etracs.vehicle.views.VehicleAssessmentPage" />
+    </pages>
+</workunit>

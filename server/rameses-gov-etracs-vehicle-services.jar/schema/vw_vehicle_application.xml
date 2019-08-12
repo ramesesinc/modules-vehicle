@@ -29,11 +29,12 @@
 		<field name="owner_name" searchable="true" caption="Owner Name"/>	
 		<field name="owner_address_objid" />	
 		<field name="owner_address_text" />	
+		<field name="owner_type" />
 
 		<field name="phoneno" />	
 		<field name="email" />	
 		<field name="mobileno" />
-		<field name="amount" />	
+		
 
 		<field name="task_state" />	
 		<field name="task_startdate" />	
@@ -50,13 +51,16 @@
 		<field name="permit_expirydate" />
 		<field name="permit_issuedby_name" />
 
+		<field name="prev_year" />
+		<field name="prev_franchiseyearid" />
+		
+
 		<complex name="units" ref="vehicle_application_unit" jointype="one-to-many">
 			<key field="objid" target="appid" />
 		</complex>
 		<complex name="droppedunits" ref="vehicle_application_unit_dropped" jointype="one-to-many">
 			<key field="objid" target="appid" />
 		</complex>	
-		
 
 	</element>
 </schema>

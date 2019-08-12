@@ -14,7 +14,7 @@ class VehicleFactInterceptor {
 	@DataContext("vehicle_application_unit")
 	def appUnitEm;
 
-	@DataContext("vehicle_application_fee")
+	@DataContext("vehicle_assessment_fee")
 	def appFeeEm;
 
 	@DataContext("vehicle_payment")

@@ -1,0 +1,3 @@
+"addUnit|removeUnit|editUnit" [ apptype?.matches('CHANGE_OWNER|DROP_FRANCHISE') ] {
+    visible:false;
+}
