@@ -104,8 +104,13 @@ public class VehicleAssessmentModel  {
     */
     
     void assess() {
-        assmtSvc.assess( [appid: entity.objid ] );
-        feeListModel.reload();
+        def p = [:];
+        p.params = [appid : entity.objid ]
+        p.handler = { o->
+            MsgBox.alert('finished fire rule');
+            feeListModel.reload();
+        }
+        Modal.show( "vehicle_assessment_rule", p );
     }
     
     

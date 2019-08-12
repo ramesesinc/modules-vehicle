@@ -1,6 +1,6 @@
 <schema adapter="vehicledb">
 	<element tablename="vehicle_assessment_item">
-		<field name="objid" primary="true" prefix="VAPPF"/>
+		<field name="objid" primary="true" prefix="VASSMTITM"/>
 		<field name="amount" required="true" />
 		<field name="amtpaid" required="true" />
 		<field name="balance" expr="amount - amtpaid" />

@@ -1,0 +1,115 @@
+import com.rameses.annotations.*;
+import com.rameses.util.*;
+import enterprise.utils.*;
+import java.rmi.server.*;
+import com.rameses.rules.common.*;
+import java.text.*;
+
+public class VehicleAssessmentService  {
+
+	@Service("DateService")
+	def dateSvc;
+
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
+	@DataContext("vehicle_application_unit")
+	def appUnitEm;	
+
+	@DataContext("vehicle_assessment")
+	def assessmentEm;	
+
+	@DataContext("vehicle_assessment_item")
+	def feeEm;	
+
+	@DataContext("vehicle_application_info")
+	def infoEm;
+
+	@DataContext("vehicle_itemaccount")
+ 	def itemAcctEm;	
+
+	@Service("BillingRuleService")
+	def billingRuleSvc;
+
+	void saveInfos( def appid, def infos ) {
+		infoEm.find([appid: appid] ).delete();
+		infos.each {
+			def m = [appid: appid, name: it.name ];
+			if(it.datatype == 'decimal' ) m.decimalvalue = it.value;
+			else if(it.datatype == 'integer' ) m.intvalue = it.value;
+			else if(it.datatype == 'boolean' )m.booleanvalue = it.value;
+			else if(it.datatype == 'datevalue' )m.datevalue = it.value;
+			else m.stringvalue = it.value;
+			infoEm.create( m );
+		}
+	}
+
+	void saveBillItems( def items ) {
+		def itemMap = [:];
+		def findAcct = { id->
+			if(!itemMap.containsKey(id)) {
+				itemMap.put( id, itemAcctEm.find( [objid:id]).first());
+			}
+			return itemMap.get(id);
+		}
+		items.each {
+			def m = [:];
+			m.item = findAcct( it.itemid );
+			m.amount = it.amount;
+			m.amtpaid = 0;
+			m.parent = it.parent;
+			feeEm.create( m );
+		}
+	}
+
+	@ProxyMethod
+	public def execute( def req ) {
+
+		def app = vwAppEm.find( [objid: req.params.appid ] ).first();
+		def vehicleFact = new vehicle.facts.VehicleApplication( app );
+
+		def facts = [];
+		facts << vehicleFact;
+
+		req.factBuilder = new treasury.utils.FactBuilder();
+		req.factBuilder.variableInfoProvider = new DefaultVariableInfoProvider(
+			schemaName:"vehicle_variable"
+		);
+		req.factBuilder.facts = facts;
+
+		def res = billingRuleSvc.execute(req);
+		if(res.askinfos) return res;
+
+		def infos = res.infos;
+		if( infos ) saveInfos( app.objid, infos );
+
+		def billitems = [];
+		//loop thru each assessment if any, for renewals that have delinquencies
+		def aList = assessmentEm.find( [appid: app.objid ] ).list();
+		if( !aList) {
+			throw new Exception("There is no assessment defined for this application");
+		}
+		else if( aList.size() > 1 ) {
+			aList.each { af->
+				vehicleFact.appyear = af.year;
+				req.factBuilder.facts = facts;			
+				res = billingRuleSvc.execute(req);
+				res.billitems.each { bi->
+					billitems <<  [itemid: bi.billcode, parent: af, amount: bi.amount];
+				}
+			}
+		}
+		else {
+			def ai = aList[0];
+			res.billitems.each {
+				billitems << [itemid: it.billcode, parent: ai, amount: it.amount];
+			}
+		}
+		
+		saveBillItems(  billitems );
+		//store billitems and appinfos into the database;
+	}
+
+
+
+}
