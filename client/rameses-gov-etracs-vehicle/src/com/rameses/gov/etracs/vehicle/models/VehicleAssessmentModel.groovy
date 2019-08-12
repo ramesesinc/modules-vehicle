@@ -10,6 +10,9 @@ import com.rameses.util.*;
 
 public class VehicleAssessmentModel  {
     
+    @Service("VehicleAssessmentService")
+    def assmtSvc;
+    
     @Service("QueryService")
     def qrySvc;
     
@@ -100,32 +103,9 @@ public class VehicleAssessmentModel  {
     }
     */
     
-    void assessBasic() {
-        def p = [:];
-        p.rulename = "vehicleassessment";
-        p.connection = "vehicle";
-        p.params = [application: entity ];
-        p.include_items = true;
-        p.include_billitems = false;
-        if(infos) p.defaultInfos = infos;
-        p.handler = { result->
-            if( result !=null && result!='_close' ) { 
-                feeListModel.reload(); 
-                infoListModel.reload(); 
-                binding.refresh("entity.amount");                
-            }
-        }
-        Modal.show( "billing_rule", p );
-    }
-
     void assess() {
-        if( entity.apptype == 'RENEW' && entity.prevappyear && ((entity.prevappyear + 1) < entity.appyear )) {
-            if(! MsgBox.confirm("This is subject for late renewal assessments from " + (entity.prevappyear+1) + ". Proceed?" )) return;
-            assessWithLateRenewal();
-        }
-        else {
-            assessBasic();            
-        }
+        assmtSvc.assess( [appid: entity.objid ] );
+        feeListModel.reload();
     }
     
     
