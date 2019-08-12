@@ -1,20 +1,12 @@
 import com.rameses.annotations.*;
 
-import com.rameses.util.*;
-import java.text.*;
-import java.util.regex.*;
-import treasury.facts.*;
-import vehicle.facts.*;
-
 public class VehicleBillingService {
 	
 	@DataContext("vehicle_application")
 	def appEm;
 
 	@ProxyMethod
-	public def getBilling(def o ) {
-		
+	public def getBilling( pp ) {
+		return null; 
 	}
-
-
 }

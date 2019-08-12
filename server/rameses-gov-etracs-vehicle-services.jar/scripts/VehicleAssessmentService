@@ -44,7 +44,13 @@ public class VehicleAssessmentService  {
 		}
 	}
 
-	void saveBillItems( def items ) {
+	void saveBillItems( def assessments, def items ) {
+		//delete first all items
+		assessments.each {
+			feeEm.find( [parentid:it.objid ] ).delete();
+			assessmentEm.find([objid: it.objid]).update( [state: 'ACTIVE' ] );
+		}
+
 		def itemMap = [:];
 		def findAcct = { id->
 			if(!itemMap.containsKey(id)) {
@@ -106,10 +112,14 @@ public class VehicleAssessmentService  {
 			}
 		}
 		
-		saveBillItems(  billitems );
 		//store billitems and appinfos into the database;
+		saveBillItems( aList, billitems );
 	}
 
+	@ProxyMethod
+	public def getItems( def o ) {
+		return feeEm.where( "parent.appid = :appid", [appid: o.appid ] ).orderBy("parent.year, item.sortorder" ).list();
+	}
 
 
 }

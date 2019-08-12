@@ -1,34 +1,48 @@
 import com.rameses.annotations.*;
 
-import com.rameses.util.*;
-import java.text.*;
-import java.util.regex.*;
-import treasury.facts.*;
-import vehicle.facts.*;
 
 public class VehicleCashReceiptService {
 	
-	@Service("VehicleBillingService")
-	def billingSvc;
+	@DataContext("vw_vehicle_application")
+	def vwappEm;
 
 	@ProxyMethod
-	public def getBilling(def o ) {
-		def billing = billingSvc.getBilling( o );
+	public def getBilling( pp ) {
 
-		def m = [:];
-		m.payer = billing.owner;
-		m.paidby = billing.owner.name;
-		m.paidbyaddress = billing.owner.address.text;
-		m.amount = billing.amount;
-
-		m.items = [];
-		def acctGroups = billing.billitems.groupBy { it.item.item }
-		acctGroups.each { k,v->
-			m.items = [ item: k, amount: v.sum{ it.amount }, remarks:'' ];
+		println '\n** pp'
+		pp.each{
+			println '> '+ it;
 		}
 
-		return m;
-	}
+		def param = pp.params;
+		if ( !param ) throw new Exception('params argument is required in VehicleBillingService'); 
 
+		if ( !param?.id ) throw new Exception('id parameter is required in VehicleBillingService'); 
+		if ( !param?.action ) throw new Exception('action parameter is required in VehicleBillingService'); 
+
+		def info = vwappEm.find([ appno: param.id ]).select('objid').first(); 
+		if ( !info ) info = vwappEm.find([ franchiseid: param.id ]).select('objid').first(); 
+		if ( !info ) throw new Exception('Transaction number not found');  
+
+		// compute bill items 
+		def items = [];
+		items << [
+			item: [
+				objid: 'REVITEM217a91b:1409e6ae44e:-7ea7', 
+				code:'584-0002', title: 'FRANCHISE TAX - MTOP', 
+				fund: [objid: 'GENERAL'] 
+			], 
+			discount: 0.0, surcharge: 0.0, interest: 0.0, 
+			amount: 110.00, total: 110.0 
+		];
+
+		// build results 
+		def resp = [items: items, billitems: items]; 
+		resp.app = vwappEm.find([ objid: info.objid ]).first();
+		resp.payer = resp.app.owner;
+		resp.paidby = resp.app.owner?.name; 
+		resp.paidbyaddress = resp.app.owner?.address?.text; 
+		return resp; 
+	}
 
 }

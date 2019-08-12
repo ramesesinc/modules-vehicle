@@ -45,12 +45,7 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
         xLabel17 = new com.rameses.rcp.control.XLabel();
         xLabel18 = new com.rameses.rcp.control.XLabel();
         xLabel21 = new com.rameses.rcp.control.XLabel();
-        jPanel2 = new javax.swing.JPanel();
-        xPanel1 = new com.rameses.rcp.control.XPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        xList1 = new com.rameses.rcp.control.XList();
         xDataTable6 = new com.rameses.rcp.control.XDataTable();
-        jPanel3 = new javax.swing.JPanel();
         xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
         xLabel7 = new com.rameses.rcp.control.XLabel();
 
@@ -153,34 +148,32 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
                     .addComponent(xFormPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        xPanel1.setVisibleWhen("#{ assessmentSize > 1 }");
-        xPanel1.setPreferredSize(new java.awt.Dimension(100, 172));
-        xPanel1.setLayout(new java.awt.BorderLayout());
-
-        xList1.setExpression("#{ item.year }");
-        xList1.setHandler("assessmentModel");
-        xList1.setName("selectedItem"); // NOI18N
-        jScrollPane1.setViewportView(xList1);
-
-        xPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        jPanel2.add(xPanel1, java.awt.BorderLayout.WEST);
-
         xDataTable6.setHandler("feeListModel");
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder3.setTitle("Fees");
         xDataTable6.setBorder(xTitledBorder3);
         xDataTable6.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "item.code"}
-                , new Object[]{"caption", "Account Code"}
-                , new Object[]{"width", 100}
-                , new Object[]{"minWidth", 80}
-                , new Object[]{"maxWidth", 150}
+                new Object[]{"name", "parent.year"}
+                , new Object[]{"caption", "Year"}
+                , new Object[]{"width", 50}
+                , new Object[]{"minWidth", 50}
+                , new Object[]{"maxWidth", 50}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"visible", true}
+                , new Object[]{"visibleWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.IntegerColumnHandler(null, -1, -1)}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "item.title"}
+                , new Object[]{"caption", "Description"}
+                , new Object[]{"width", 200}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
@@ -191,11 +184,11 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "item.title"}
-                , new Object[]{"caption", "Account Title"}
+                new Object[]{"name", "item.item.title"}
+                , new Object[]{"caption", "Account"}
                 , new Object[]{"width", 200}
-                , new Object[]{"minWidth", 150}
-                , new Object[]{"maxWidth", 250}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
                 , new Object[]{"required", false}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
@@ -222,34 +215,13 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.DecimalColumnHandler("#,##0.00", -1.0, -1.0, false, 2)}
             })
         });
-        jPanel2.add(xDataTable6, java.awt.BorderLayout.CENTER);
-
-        jPanel3.setPreferredSize(new java.awt.Dimension(830, 30));
 
         xLabel7.setCaption("Total");
-        xLabel7.setExpression("#{selectedItem.amount}");
+        xLabel7.setExpression("#{total}");
         xLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         xLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         xLabel7.setPreferredSize(new java.awt.Dimension(0, 22));
         xFormPanel3.add(xLabel7);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(546, Short.MAX_VALUE)
-                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -258,12 +230,14 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 832, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(100, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(xDataTable6, javax.swing.GroupLayout.PREFERRED_SIZE, 831, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(735, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,17 +245,16 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(xDataTable6, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private com.rameses.rcp.control.XDataTable xDataTable6;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XFormPanel xFormPanel5;
@@ -298,7 +271,5 @@ public class VehicleAssessmentPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel6;
     private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XLabel xLabel8;
-    private com.rameses.rcp.control.XList xList1;
-    private com.rameses.rcp.control.XPanel xPanel1;
     // End of variables declaration//GEN-END:variables
 }
