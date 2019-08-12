@@ -8,4 +8,6 @@
         <invoker type="cashreceipt:vehicle" action="start" caption="Vehicle Collection"/>
         <invoker type="cashreceipt:barcode:51010" action="loadBarcode" caption="Vehicle Collection"/>
     </invokers>
+    
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleCashReceiptModel"/> 
 </workunit>

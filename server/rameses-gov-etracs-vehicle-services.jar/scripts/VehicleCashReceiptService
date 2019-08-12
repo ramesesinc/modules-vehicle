@@ -1,0 +1,47 @@
+import com.rameses.annotations.*;
+
+public class VehicleCashReceiptService {
+	
+	@DataContext("vw_vehicle_application")
+	def vwappEm;
+
+	@ProxyMethod
+	public def getBilling( pp ) {
+
+		println '\n** pp'
+		pp.each{
+			println '> '+ it;
+		}
+
+
+		def param = pp.params;
+		if ( !param ) throw new Exception('params argument is required in VehicleBillingService'); 
+
+		if ( !param?.id ) throw new Exception('id parameter is required in VehicleBillingService'); 
+		if ( !param?.action ) throw new Exception('action parameter is required in VehicleBillingService'); 
+
+		def info = vwappEm.find([ appno: param.id ]).select('objid').first(); 
+		if ( !info ) info = vwappEm.find([ franchiseid: param.id ]).select('objid').first(); 
+		if ( !info ) throw new Exception('Transaction number not found');  
+
+		// compute bill items 
+		def items = [];
+		items << [
+			item: [
+				objid: 'REVITEM217a91b:1409e6ae44e:-7ea7', 
+				code:'584-0002', title: 'FRANCHISE TAX - MTOP', 
+				fund: [objid: 'GENERAL'] 
+			], 
+			discount: 0.0, surcharge: 0.0, interest: 0.0, 
+			amount: 110.00, total: 110.0 
+		];
+
+		// build results 
+		def resp = [items: items, billitems: items]; 
+		resp.app = vwappEm.find([ objid: info.objid ]).first();
+		resp.payer = resp.app.owner;
+		resp.paidby = resp.app.owner?.name; 
+		resp.paidbyaddress = resp.app.owner?.address?.text; 
+		return resp; 
+	}
+}

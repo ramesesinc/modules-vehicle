@@ -1,0 +1,22 @@
+import com.rameses.annotations.*;
+
+class VehicleCashReceiptInterceptor {
+	
+	@Service(dynamic=true) 
+	def dynaSvc; 
+
+	@After( pattern="CashReceiptService.post", eval="#{args[0]?.collectiontype?.handler == 'vehicle'}")
+	public void afterPostPayment( evt ) {
+		def result = evt.args[0]; 
+		def svc = dynaSvc.lookup('VehiclePaymentService', 'vehicle_proxy'); 
+		svc.postPayment( result );  
+	}
+
+
+	@After( pattern="CashReceiptVoidService.post", eval="#{args[0]?.receipt?.collectiontype?.handler == 'vehicle'}")
+	public void afterVoidPayment( evt ) {
+		def result = evt.args[0]; 
+		def svc = dynaSvc.lookup('VehiclePaymentService', 'vehicle_proxy'); 
+		svc.voidPayment( result );  
+	}
+}

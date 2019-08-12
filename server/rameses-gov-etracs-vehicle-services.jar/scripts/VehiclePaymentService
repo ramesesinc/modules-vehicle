@@ -1,11 +1,5 @@
 import com.rameses.annotations.*;
 
-import com.rameses.util.*;
-import java.text.*;
-import java.util.regex.*;
-import treasury.facts.*;
-import vehicle.facts.*;
-
 public class VehiclePaymentService {
 	
 	@Service("WorkflowTaskService")
@@ -16,12 +10,20 @@ public class VehiclePaymentService {
 
 	@ProxyMethod
 	public void postPayment(def o ) {
-
+		println ''
+		println '** postPayment ';
+		o.each{
+			println '>> '+ it;
+		}
 	}
 
 	@ProxyMethod
 	public void voidPayment(def o ) {
-
+		println ''
+		println '** voidPayment ';
+		o.each{
+			println '>> '+ it;
+		}
 	}
 
 }
