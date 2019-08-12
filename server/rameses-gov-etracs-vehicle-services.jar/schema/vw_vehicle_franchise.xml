@@ -20,6 +20,7 @@
 		<field name="renewaldate" />
 		<field name="appid" />
 		<field name="appstate" />
+		<field name="startdate" />
 
 		<!--
 		<complex name="units" ref="vw_vehicle_franchise_unit_active" jointype="one-to-many">

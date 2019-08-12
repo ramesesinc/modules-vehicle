@@ -11,46 +11,10 @@ public class VehicleBillingService {
 	@DataContext("vehicle_application")
 	def appEm;
 
-	@DataContext("vehicle_assessment_item")
-	def itemEm;
-
-	@DataContext("vw_vehicle_franchise")
-	def vwFranchiseEm;
-
-	@DataContext("vw_franchise")
-	def vwAppEm;
-
-	def findHeaderInfo( def o ) {
-		//get the header info
-		//test first franchise no. then application  no.
-		def vf = vwFranchiseEm.find( [controlno: o.controlno ]).first();
-		if(!vf) {
-			def app = vwAppEm.select("franchiseid").find( [appno: o.controlno ]).first();
-			if(app) {
-				vf = vwFranchiseEm.find( [objid: app.franchiseid] ).first();
-			}
-		}
-		if(!vf) throw new Exception("Control " +  o.controlno +  " no not found");
-
-		if(o.apptype == 'RENEW') {
-			if( vf.year == dateSvc.getServerYear() ) 
-                throw new Exception("Cannot proceed with renewal. This is already current or a pending renewal application is ongoing")
-		}
-		else {
-            if( vf.appstate != 'end' )
-                throw new Exception("Cannot proceed with transaction. The last transaction is not yet completed ");                
-		}
-		vf.units = vwActiveUnitsEm.find([franchiseid: vf.objid ] ).list();
-		return vf;
-	}
-
 	@ProxyMethod
 	public def getBilling(def o ) {
-		def info = findHeaderInfo( o );
-
+		
 	}
-
-
 
 
 }

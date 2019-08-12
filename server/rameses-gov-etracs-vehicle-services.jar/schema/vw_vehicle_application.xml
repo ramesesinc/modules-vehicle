@@ -62,5 +62,6 @@
 			<key field="objid" target="appid" />
 		</complex>	
 
+		<field name="startdate" />
 	</element>
 </schema>

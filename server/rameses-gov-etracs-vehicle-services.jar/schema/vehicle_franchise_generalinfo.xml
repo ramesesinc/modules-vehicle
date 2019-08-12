@@ -12,5 +12,6 @@
 		<field name="mobileno" />
 		<field name="email" />
 		<field name="franchiseid" />
+		<field name="startdate" required="true"/>
 	</element>
 </schema>

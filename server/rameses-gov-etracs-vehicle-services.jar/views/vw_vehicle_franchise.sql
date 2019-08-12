@@ -15,7 +15,8 @@ SELECT
 	vfgi.owner_type,
 	vfgi.owner_address_text,
 	vfy.renewaldate,
-	vt.state AS appstate
+	vt.state AS appstate, 
+	vfgi.startdate 
 FROM vehicle_franchise vf 
 LEFT JOIN vehicle_franchise_year vfy ON vf.currentyearid = vfy.objid
 LEFT JOIN vehicle_franchise_generalinfo vfgi ON vfy.geninfoid = vfgi.objid

@@ -32,8 +32,8 @@ vp.expirydate as permit_expirydate,
 vp.issuedby_name as permit_issuedby_name,
 
 prev.year AS prev_year,
-a1.franchiseyearid AS prev_franchiseyearid
-
+a1.franchiseyearid AS prev_franchiseyearid, 
+vfgi.startdate
 
 FROM vehicle_application va
 INNER JOIN vehicle_franchise_year vfy ON va.franchiseyearid = vfy.objid

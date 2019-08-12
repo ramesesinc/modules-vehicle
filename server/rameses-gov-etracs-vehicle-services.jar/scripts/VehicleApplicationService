@@ -60,6 +60,7 @@ public class VehicleApplicationService  {
 		m.email = o.email;
 		m.mobileno = o.mobileno;
 		m.franchiseid = o.franchise.objid;		
+		m.startdate = o.startdate; 
 		return genInfoEm.create(m);
 	}
 
