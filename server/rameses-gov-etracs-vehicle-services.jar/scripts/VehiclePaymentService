@@ -8,6 +8,9 @@ public class VehiclePaymentService {
 	@DataContext("vehicle_payment")
 	def paymentEm;
 
+	@DataContext("vehicle_assessment_item")
+	def feeEm;
+
 	@ProxyMethod
 	public void postPayment(def o ) {
 		def pmt = [:];
@@ -24,6 +27,11 @@ public class VehiclePaymentService {
 		pmt.items = o.items.collect{ [refid: it.refid, amount: it.amount, discount: it.discount, surcharge: it.surcharge, interest: it.interest, remarks: it.remarks]  };
 		paymentEm.create( pmt );
 
+		//post the amounts into the respective ledgers
+		pmt.items.each {
+			feeEm.find( [objid: it.refid] ).update( [amount: "{amtpaid + :amt}", amt: it.amount ] );
+		}
+
 		if( o.app.taskid !=null ) {
 			def m = [processname: 'vehicle_application'];
 			m.taskid = o.app.taskid;
@@ -33,9 +41,6 @@ public class VehiclePaymentService {
 			taskSvc.signal( m );
 		}
 
-		throw new Exception("Posting success! " + o.app);
-		
-		
 	}
 
 	@ProxyMethod

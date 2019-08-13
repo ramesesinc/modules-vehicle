@@ -56,8 +56,8 @@ class VehicleApplicationWorkflowInterceptor {
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'payment' && args[0].action == 'post' }")
 	public void beforePayment( def evt ) {
 		def p = evt.args[0];
-		def	total = vFee.select( "total:{SUM( amount-amtpaid )}" ).where( "parent.objid = :appid",  [appid: p.refid ] ).val();
-		throw new Exception("total is " + total);
+		def	total = vFee.select( "total:{SUM( amount-amtpaid )}" ).where( "parent.appid = :appid",  [appid: p.refid ] ).val();
+		if(total == null) total = 0;
 		p.info = [amtdue: total, message: 'balance unpaid:' + total ];	
 	}
 

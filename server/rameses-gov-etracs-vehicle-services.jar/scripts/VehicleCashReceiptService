@@ -18,7 +18,7 @@ public class VehicleCashReceiptService {
 		if ( !param?.id ) throw new Exception('id parameter is required in VehicleBillingService'); 
 		if ( !param?.action ) throw new Exception('action parameter is required in VehicleBillingService'); 
 
-		def info = vwappEm.find([ appno: param.id ]).select('objid').first(); 
+		def info = vwappEm.find([ appno: param.id ]).select('objid').first();
 		if ( !info ) info = vwappEm.find([ franchiseid: param.id ]).select('objid').first(); 
 		if ( !info ) throw new Exception('Transaction number not found');  
 
@@ -31,7 +31,7 @@ public class VehicleCashReceiptService {
 
 		def app = vwappEm.find([ objid: info.objid ]).first();
 		if( app.task.state != 'payment') {
-			throw new Exception("This application is not yet in FOR PAYMENT state");
+			throw new Exception("This transaction is not available for payment");
 		}
 		// build results 
 		def resp = [items: items, billitems: items]; 
