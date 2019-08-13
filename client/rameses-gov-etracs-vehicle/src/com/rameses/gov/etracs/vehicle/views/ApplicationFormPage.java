@@ -54,11 +54,6 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xLabel12 = new com.rameses.rcp.control.XLabel();
         xLabel23 = new com.rameses.rcp.control.XLabel();
         xButton2 = new com.rameses.rcp.control.XButton();
-        xFormPanel7 = new com.rameses.rcp.control.XFormPanel();
-        xLabel14 = new com.rameses.rcp.control.XLabel();
-        xLabel19 = new com.rameses.rcp.control.XLabel();
-        xLabel20 = new com.rameses.rcp.control.XLabel();
-        xLabel22 = new com.rameses.rcp.control.XLabel();
         vehicleUnitList1 = new com.rameses.gov.etracs.vehicle.components.VehicleUnitList();
         xButton1 = new com.rameses.rcp.control.XButton();
         xPanel3 = new com.rameses.rcp.control.XPanel();
@@ -174,36 +169,6 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xButton2.setText("Change Renewal Date");
         xFormPanel6.add(xButton2);
 
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder3.setPadding(new java.awt.Insets(20, 10, 2, 10));
-        xTitledBorder3.setTitle("Permit Info");
-        xFormPanel7.setBorder(xTitledBorder3);
-        xFormPanel7.setCaptionWidth(120);
-
-        xLabel14.setCaption("Permit No");
-        xLabel14.setExpression("#{entity.permit.permitno}");
-        xLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel14.setPreferredSize(new java.awt.Dimension(150, 20));
-        xFormPanel7.add(xLabel14);
-
-        xLabel19.setCaption("Permit Type");
-        xLabel19.setExpression("#{entity.permit.permittype}");
-        xLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel19.setPreferredSize(new java.awt.Dimension(150, 20));
-        xFormPanel7.add(xLabel19);
-
-        xLabel20.setCaption("Date Issued");
-        xLabel20.setExpression("#{entity.permit.dtissued}");
-        xLabel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel20.setPreferredSize(new java.awt.Dimension(150, 20));
-        xFormPanel7.add(xLabel20);
-
-        xLabel22.setCaption("Expiry Date");
-        xLabel22.setExpression("#{entity.permit.expirydate}");
-        xLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel22.setPreferredSize(new java.awt.Dimension(150, 20));
-        xFormPanel7.add(xLabel22);
-
         vehicleUnitList1.setHandler("unitHandler");
         vehicleUnitList1.setItems("entity.units");
         vehicleUnitList1.setName("selectedUnit"); // NOI18N
@@ -217,26 +182,23 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xFormPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xFormPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
-                    .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(vehicleUnitList1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(xFormPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(215, 215, 215))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(xFormPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(xFormPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(xFormPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,9 +211,9 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xTabbedPane1.addTab("General Info", jPanel1);
 
         xDataTable7.setHandler("infoListModel");
-        com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder4.setTitle("Infos");
-        xDataTable7.setBorder(xTitledBorder4);
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder3 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder3.setTitle("Infos");
+        xDataTable7.setBorder(xTitledBorder3);
         xDataTable7.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "name"}
@@ -292,7 +254,7 @@ public class ApplicationFormPage extends javax.swing.JPanel {
             .addGroup(xPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(xDataTable7, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
         );
         xPanel3Layout.setVerticalGroup(
             xPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,8 +272,8 @@ public class ApplicationFormPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1196, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(xTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,20 +292,15 @@ public class ApplicationFormPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XDataTable xDataTable7;
     private com.rameses.rcp.control.XFormPanel xFormPanel5;
     private com.rameses.rcp.control.XFormPanel xFormPanel6;
-    private com.rameses.rcp.control.XFormPanel xFormPanel7;
     private com.rameses.rcp.control.XLabel xLabel1;
     private com.rameses.rcp.control.XLabel xLabel11;
     private com.rameses.rcp.control.XLabel xLabel12;
     private com.rameses.rcp.control.XLabel xLabel13;
-    private com.rameses.rcp.control.XLabel xLabel14;
     private com.rameses.rcp.control.XLabel xLabel15;
     private com.rameses.rcp.control.XLabel xLabel16;
     private com.rameses.rcp.control.XLabel xLabel17;
     private com.rameses.rcp.control.XLabel xLabel18;
-    private com.rameses.rcp.control.XLabel xLabel19;
-    private com.rameses.rcp.control.XLabel xLabel20;
     private com.rameses.rcp.control.XLabel xLabel21;
-    private com.rameses.rcp.control.XLabel xLabel22;
     private com.rameses.rcp.control.XLabel xLabel23;
     private com.rameses.rcp.control.XLabel xLabel24;
     private com.rameses.rcp.control.XLabel xLabel5;

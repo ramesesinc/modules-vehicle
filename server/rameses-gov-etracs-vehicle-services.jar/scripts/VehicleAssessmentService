@@ -135,7 +135,6 @@ public class VehicleAssessmentService  {
 
 	@ProxyMethod
 	public def getItems( def o ) {
-		feeEm.debug = true;
 		return feeEm.where( "parent.appid = :appid", [appid: o.appid ] ).orderBy("parent.year, item.sortorder" ).list();
 	}
 

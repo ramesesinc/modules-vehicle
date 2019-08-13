@@ -11,6 +11,9 @@ public class VehiclePaymentService {
 	@DataContext("vehicle_assessment_item")
 	def feeEm;
 
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
 	@ProxyMethod
 	public void postPayment(def o ) {
 		def pmt = [:];
@@ -29,7 +32,7 @@ public class VehiclePaymentService {
 
 		//post the amounts into the respective ledgers
 		pmt.items.each {
-			feeEm.find( [objid: it.refid] ).update( [amount: "{amtpaid + :amt}", amt: it.amount ] );
+			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid + :amt}", amt: it.amount ] );
 		}
 
 		if( o.app.taskid !=null ) {
@@ -45,11 +48,24 @@ public class VehiclePaymentService {
 
 	@ProxyMethod
 	public void voidPayment(def o ) {
-		println ''
-		println '** voidPayment ';
-		o.each{
-			println '>> '+ it;
+		//check first if we can still void the transaction
+
+		def pmt = paymentEm.find( [refid: o.receipt.objid  ]).first(1);
+		def app = vwAppEm.find( [objid: pmt.appid ] ).first();
+		if(!app) throw new Exception("applixation refered in payment does not exist");
+
+		pmt.items.each {
+			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid - :amt}", amt: it.amount ] );
 		}
+
+		if( app.taskid !=null ) {
+			def m = [processname: 'vehicle_application'];
+			m.taskid = app.taskid;
+			m.refid = app.objid;
+			m.action = 'void-payment';
+			taskSvc.signal( m );
+		}
+		paymentEm.find( [objid: pmt.objid] ).update( [voided: 1 ] );
 	}
 
 }
