@@ -1,6 +1,6 @@
 <workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="vehicle_itemaccount">
     <invokers>
         <invoker folderid="explorer/master/vehicle"  caption="Vehicle Item Account" action="init" index="20"
-            cols="objid,title,item.title,sortorder" orderBy="sortorder" role="MASTER" />
+            cols="objid,title,item.code,item.title,sortorder" orderBy="sortorder" role="MASTER" />
     </invokers>
 </workunit>

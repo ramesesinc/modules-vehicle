@@ -6,13 +6,11 @@ public class VehicleCashReceiptService {
 	@DataContext("vw_vehicle_application")
 	def vwappEm;
 
+	@Service("VehicleBillingService")
+	def billingSvc;
+
 	@ProxyMethod
 	public def getBilling( pp ) {
-
-		println '\n** pp'
-		pp.each{
-			println '> '+ it;
-		}
 
 		def param = pp.params;
 		if ( !param ) throw new Exception('params argument is required in VehicleBillingService'); 
@@ -25,23 +23,22 @@ public class VehicleCashReceiptService {
 		if ( !info ) throw new Exception('Transaction number not found');  
 
 		// compute bill items 
-		def items = [];
-		items << [
-			item: [
-				objid: 'REVITEM217a91b:1409e6ae44e:-7ea7', 
-				code:'584-0002', title: 'FRANCHISE TAX - MTOP', 
-				fund: [objid: 'GENERAL'] 
-			], 
-			discount: 0.0, surcharge: 0.0, interest: 0.0, 
-			amount: 110.00, total: 110.0 
-		];
+		def res = billingSvc.getBillItems( [appid: info.objid ] );
+		def items = res.billitems;
+		items.each {
+			it.remarks = it.year;
+		}
 
+		def app = vwappEm.find([ objid: info.objid ]).first();
+		if( app.task.state != 'payment') {
+			throw new Exception("This application is not yet in FOR PAYMENT state");
+		}
 		// build results 
 		def resp = [items: items, billitems: items]; 
-		resp.app = vwappEm.find([ objid: info.objid ]).first();
-		resp.payer = resp.app.owner;
-		resp.paidby = resp.app.owner?.name; 
-		resp.paidbyaddress = resp.app.owner?.address?.text; 
+		resp.app = [appid: app.objid, taskid: app.taskid ];
+		resp.payer = app.owner;
+		resp.paidby = app.owner?.name; 
+		resp.paidbyaddress = app.owner?.address?.text; 
 		return resp; 
 	}
 

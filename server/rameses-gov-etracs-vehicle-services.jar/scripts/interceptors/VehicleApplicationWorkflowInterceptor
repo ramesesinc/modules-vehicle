@@ -53,73 +53,12 @@ class VehicleApplicationWorkflowInterceptor {
 		//throw new Exception('stop');
 	}
 
-	/*
-	//check before submitting draft application
-	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'draft' }")
-	public void beforeSubmittingDraft( def evt ) {
-		def p = evt.args[0];
-		def apptype = appEm.find( [objid: p.refid ]).select("apptype").val();
-		if( apptype == 'CHANGE_OWNER') {
-			//do nothing
-		};
-		else if( apptype.matches("NEW|RENEW")) {
-			def x = unitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
-			if( x == 0 ) throw new Exception("There must be at least 1 vehicle entry for " + apptype );	
-		}
-		else {
-			def x = unitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
-			if( x == 0 ) x = dropUnitEm.find( [ appid: p.refid ] ).select("c:{COUNT(*)}").val();
-			if( x == 0 ) throw new Exception("There must be at entry for units or dropped units for " + apptype );	
-		}
-	}
-
-	//check before submitting assessed application
-	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'assessment' }")
-	public void checkHasFees( def evt ) {
-		def p = evt.args[0];
-		def app = appEm.find( [objid: p.refid] ).select("txnmode,apptype").first();
-		if( app.txnmode == "ONLINE" && app.apptype.matches('NEW|RENEW') ) {
-			int ct = vFee.find( [appid: p.refid ] ).select("scount:{COUNT(*)}").val();
-			if( ct == 0 ) throw new Exception("There must be at least one fee entry for new or renewal");
-		}
-	}
-
-	//before running the payment get the necessary info for evaluation, in this case the amtdue 
-	@After(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'approval' && args[0].to == 'payment' }")
-	public void afterApproval( def evt ) {
-		def p = evt.args[0];
-		appEm.find( [objid: p.refid ]).update( [dtapproved: dateSvc.getServerDate() ]);
-	}
-	*/
-
-	//before running the payment get the necessary info for evaluation, in this case the amtdue 
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'payment' && args[0].action == 'post' }")
 	public void beforePayment( def evt ) {
 		def p = evt.args[0];
-		//def	total = vFee.select( "total:{SUM( amount-amtpaid )}" ).find( [appid: p.refid ] ).val();
-		def total = 0.0;
+		def	total = vFee.select( "total:{SUM( amount-amtpaid )}" ).where( "parent.objid = :appid",  [appid: p.refid ] ).val();
+		throw new Exception("total is " + total);
 		p.info = [amtdue: total, message: 'balance unpaid:' + total ];	
 	}
-
-	/*
-	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate=='release' && args[0].to == 'end'}")
-	public void beforeRelease( def evt ) {
-		def p = evt.args[0];
-		def entity = appEm.find( [objid: p.refid ] ).first();
-		if(!entity.permitid) throw new Exception("Please issue the permit first");
-	}
-
-	@After(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate=='release' && args[0].to == 'end'}")
-	public void afterRelease( def evt ) {
-		def p = evt.args[0];
-
-		def entity = appEm.find( [objid: p.refid ] ).first();
-
-		//update the  renewaldate if apptype is new or renew
-		if( entity.apptype == "DROP_FRANCHISE" ) {
-			franchiseEm.find([ objid: entity.franchiseid ] ).update( [appid: "{NULL}"])
-		}
-	}
-	*/
 
 }

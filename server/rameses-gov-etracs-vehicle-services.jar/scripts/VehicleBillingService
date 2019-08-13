@@ -19,7 +19,7 @@ public class VehicleBillingService {
 		if( !pp.appid ) 
 			throw new Exception("appid is required in billing");
 
-		def sel = "billcode:{item.objid},amount:{amount-amtpaid},sortorder:{item.sortorder},account_objid:{item.item.objid},account_title:{item.item.title},year:{parent.year}";	
+		def sel = "billcode:{item.objid},amount:{amount-amtpaid},sortorder:{item.sortorder},account_objid:{item.item.objid},account_title:{item.item.title},account_code:{item.item.code},account_fund_objid:{item.item.fund.objid},year:{parent.year},refid:{objid}";	
 		def items = feeEm.select(sel).where( "parent.appid = :appid AND amount-amtpaid > 0 ", [appid: pp.appid ] ).orderBy("parent.year, item.sortorder" ).list();
 		
 		def req = [rulename: 'vehiclebilling', params: [appid: pp.appid ] ];

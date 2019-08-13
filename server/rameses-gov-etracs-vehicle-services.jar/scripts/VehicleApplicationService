@@ -125,9 +125,11 @@ public class VehicleApplicationService  {
 		}
 
 		//automatically set the ren
+		/*
 		if( o.apptype.matches('NEW|RENEW') ) {
 			setRenewalDate( [appid: o.objid] );	
-		}	
+		}
+		*/	
 		return o;
 	}
 

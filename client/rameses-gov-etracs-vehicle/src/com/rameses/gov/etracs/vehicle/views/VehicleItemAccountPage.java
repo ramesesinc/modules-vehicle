@@ -59,7 +59,7 @@ public class VehicleItemAccountPage extends javax.swing.JPanel {
         xFormPanel1.add(xIntegerField1);
 
         xLookupField1.setCaption("Item Account");
-        xLookupField1.setExpression("#{ entity.item.title }");
+        xLookupField1.setExpression("#{ entity.item.code } : #{ entity.item.title }");
         xLookupField1.setHandler("itemaccount:lookup");
         xLookupField1.setName("entity.item"); // NOI18N
         xLookupField1.setCellPadding(new java.awt.Insets(20, 0, 0, 0));

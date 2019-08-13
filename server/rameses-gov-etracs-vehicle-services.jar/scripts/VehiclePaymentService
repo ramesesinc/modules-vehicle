@@ -10,11 +10,32 @@ public class VehiclePaymentService {
 
 	@ProxyMethod
 	public void postPayment(def o ) {
-		println ''
-		println '** postPayment ';
-		o.each{
-			println '>> '+ it;
+		def pmt = [:];
+		pmt.txndate = o.txndate;
+		pmt.appid = o.app.appid;
+		pmt.refdate = o.receiptdate;
+		pmt.refno = o.receiptno;
+		pmt.reftype = "cashreceipt";
+		pmt.refid = o.objid;
+		pmt.amount = o.amount;
+		pmt.voided = 0;
+		pmt.txnmode = o.txnmode;
+		pmt.remarks = o.remarks;
+		pmt.items = o.items.collect{ [refid: it.refid, amount: it.amount, discount: it.discount, surcharge: it.surcharge, interest: it.interest, remarks: it.remarks]  };
+		paymentEm.create( pmt );
+
+		if( o.app.taskid !=null ) {
+			def m = [processname: 'vehicle_application'];
+			m.taskid = o.app.taskid;
+			m.refid = o.app.appid;
+			m.taskstate = 'payment';
+			m.action = 'post';
+			taskSvc.signal( m );
 		}
+
+		throw new Exception("Posting success! " + o.app);
+		
+		
 	}
 
 	@ProxyMethod
