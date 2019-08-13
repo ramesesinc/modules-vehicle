@@ -26,6 +26,7 @@ public class VehicleApplication {
 		objid = m.objid;		
 		vehicletype  = m.vehicletypeid;
 		if( m.appyear ) appyear = m.appyear;
+		if( m.year ) appyear = m.year;
 		
 		if( m.appdate ) {
 			appdate = fixDate( m.appdate );

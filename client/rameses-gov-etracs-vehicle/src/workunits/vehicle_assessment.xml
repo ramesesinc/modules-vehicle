@@ -7,8 +7,8 @@
         <invoker type="formActions" 
                  action="_close" caption="Back"/>
         
-        <invoker type="formActions" action="assess" caption="Assess" />
-        
+        <invoker type="formActions" action="assess" caption="Assess" visibleWhen="#{ task.state == 'assessment' }"/>
+        <invoker type="formActions" action="viewBill" caption="View Billing" />
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleAssessmentModel" />
     <pages>

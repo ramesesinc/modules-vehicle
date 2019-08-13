@@ -155,6 +155,10 @@ public class ApplicationModel extends WorkflowTaskModel {
         return "_close";
     }
     
-   
+    void setRenewalDate() {
+        def renewaldate = appSvc.setRenewalDate( [appid: entity.objid ] );
+        entity.renewaldate = renewaldate;
+        binding.refresh();
+    }
     
 }

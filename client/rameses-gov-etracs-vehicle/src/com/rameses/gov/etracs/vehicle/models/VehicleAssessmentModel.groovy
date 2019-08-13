@@ -49,4 +49,10 @@ public class VehicleAssessmentModel  {
         Modal.show( "vehicle_assessment_rule", p );
     }
     
+    def viewBill() {
+        def h =[:];
+        h.put("query.appid", entity.objid);
+        return Inv.lookupOpener("vehicle_billing", h );
+    }
+    
 }

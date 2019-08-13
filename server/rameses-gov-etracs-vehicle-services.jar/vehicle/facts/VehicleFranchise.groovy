@@ -6,7 +6,6 @@ public class VehicleFranchise {
 	
 	String controlno;
 	Date startdate;
-	String objid;
 
 	def fixDate( def dt ) {
 		if( dt instanceof String ) {
@@ -18,7 +17,6 @@ public class VehicleFranchise {
 
 	public VehicleFranchise( def m ) {
 		controlno = m.controlno;
-		objid = m.objid;
 		if( m.startdate ) {
 			startdate = fixDate( m.startdate );
 		}	

@@ -31,6 +31,10 @@ public class VehicleAssessmentService  {
 	@Service("BillingRuleService")
 	def billingRuleSvc;
 
+	@Service("VehicleBillingService")
+	def vehicleBillingSvc;
+
+
 	void saveInfos( def appid, def infos ) {
 		infoEm.find([appid: appid] ).delete();
 		infos.each {
@@ -75,12 +79,11 @@ public class VehicleAssessmentService  {
 		def vehicleFact = new vehicle.facts.VehicleApplication( app );
 		def vehicleFranchise = new vehicle.facts.VehicleFranchise( app );
 
-		def units = appUnitEm.find( [franchiseid : app.franchiseid ] ).list();
-
 		def facts = [];
 		facts << vehicleFact;
 		facts << vehicleFranchise;
-		
+
+		def units = appUnitEm.find( [franchiseid : app.franchiseid ] ).list();
 		units.each {
 			facts << new vehicle.facts.VehicleUnit( it );
 		}
@@ -105,24 +108,25 @@ public class VehicleAssessmentService  {
 		}
 		else if( aList.size() > 1 ) {
 			aList.each { af->
+				req.factBuilder.facts.clear();
 				vehicleFact.appyear = af.year;
 				req.factBuilder.facts.addAll( facts );			
 				res = billingRuleSvc.execute(req);
 				res.billitems.each { bi->
-					billitems <<  [itemid: bi.billcode, parent: af, amount: bi.amount];
+					billitems <<  [itemid: bi.billcode, parent: af, amount: bi.amount, year: af.year];
 				}
 			}
 		}
 		else {
 			def ai = aList[0];
 			res.billitems.each {
-				billitems << [itemid: it.billcode, parent: ai, amount: it.amount];
+				billitems << [itemid: it.billcode, parent: ai, amount: it.amount, year: ai.year ];
 			}
 		}
 
 		//store billitems and appinfos into the database;
 		saveBillItems( aList, billitems );
-		
+
 		return [
 			infos: res.infos,
 			billitems: billitems

@@ -43,6 +43,9 @@ public class VehicleApplicationService  {
 	@DataContext("vw_vehicle_franchise_unit_active")
 	def vwActiveUnitsEm;	
 
+	@Service("BillingRuleService")
+	def billingRuleSvc;
+
 	@Env
 	def env;
 
@@ -120,6 +123,11 @@ public class VehicleApplicationService  {
 			t = vtaskEm.create(t);
 			appEm.find( [objid: o.objid] ).update([taskid: t.taskid]);
 		}
+
+		//automatically set the ren
+		if( o.apptype.matches('NEW|RENEW') ) {
+			setRenewalDate( [appid: o.objid] );	
+		}	
 		return o;
 	}
 
@@ -168,6 +176,28 @@ public class VehicleApplicationService  {
 			franchiseYearEm.find( [objid: app.franchiseyearid ] ).delete();
 		}
 		appEm.find( [objid: o.appid ] ).delete();
+	}
+
+	@ProxyMethod
+	public def setRenewalDate( def o ) {
+		def app = vwAppEm.find( [objid: o.appid ] ).first();
+
+		def req = [rulename: "vehicledates", params: [appid: app.objid ]];
+		req.factBuilder = new treasury.utils.FactBuilder();
+		req.factBuilder.variableInfoProvider = new enterprise.utils.DefaultVariableInfoProvider(
+			schemaName:"vehicle_variable"
+		);
+		req.factBuilder.facts << new vehicle.facts.VehicleApplication( app ); 
+		req.factBuilder.facts << new vehicle.facts.VehicleFranchise( app );
+
+		def res = billingRuleSvc.execute(req);
+		def v = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'renewaldate' };
+		if( !v ) throw new Exception("There is no rule defined for renewal date that matches conditions");
+		def df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+		def renewaldate = df.format( v.date );
+
+		franchiseYearEm.find( [objid: app.franchiseyearid ] ).update( [renewaldate: renewaldate ] );
+		return renewaldate;
 	}
 
 

@@ -2,11 +2,41 @@ import com.rameses.annotations.*;
 
 public class VehicleBillingService {
 	
-	@DataContext("vehicle_application")
-	def appEm;
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
+	@DataContext("vehicle_assessment_item")
+	def feeEm;
+
+	@DataContext("vw_vehicle_franchise_unit_active")
+	def appUnitEm;
+
+	@Service("BillingRuleService")
+	def billingRuleSvc;
 
 	@ProxyMethod
-	public def getBilling( pp ) {
-		return null; 
+	public def getBillItems( pp ) {
+		if( !pp.appid ) 
+			throw new Exception("appid is required in billing");
+
+		def sel = "billcode:{item.objid},amount:{amount-amtpaid},sortorder:{item.sortorder},account_objid:{item.item.objid},account_title:{item.item.title},year:{parent.year}";	
+		def items = feeEm.select(sel).where( "parent.appid = :appid AND amount-amtpaid > 0 ", [appid: pp.appid ] ).orderBy("parent.year, item.sortorder" ).list();
+		
+		def req = [rulename: 'vehiclebilling', params: [appid: pp.appid ] ];
+		def app = vwAppEm.find( [objid: pp.appid ] ).first();
+		def facts = [];
+		facts << new vehicle.facts.VehicleApplication( app );
+		facts << new vehicle.facts.VehicleFranchise( app );
+		def units = appUnitEm.find( [franchiseid : app.franchiseid ] ).list();
+		units.each {
+			facts << new vehicle.facts.VehicleUnit( it );
+		}
+		req.factBuilder = new treasury.utils.FactBuilder();
+		req.factBuilder.addBillItems( items );
+		req.factBuilder.facts.addAll( facts );
+
+		return billingRuleSvc.execute( req );
 	}
+
+
 }

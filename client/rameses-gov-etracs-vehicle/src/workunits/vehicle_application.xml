@@ -14,7 +14,9 @@
                  action="printApplication" caption="Print" 
                  xvisibleWhen="#{entity.permitid == null &amp;&amp; entity.task.state.toString().matches('release|end') }"/>
         -->
-        <invoker type="formActions" action="viewReport" tooltip="View Reports" caption="Reports"/>
+        <invoker type="formActions" action="viewReport" tooltip="View Reports" 
+                 caption="Reports" 
+                 visibleWhen="#{task.state == 'end' }"  />
 
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationModel" />
