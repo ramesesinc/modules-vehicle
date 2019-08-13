@@ -32,7 +32,7 @@ public class VehiclePaymentService {
 
 		//post the amounts into the respective ledgers
 		pmt.items.each {
-			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid + :amt}", amt: it.amount ] );
+			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid + :amt}"], [amt: it.amount] );
 		}
 
 		if( o.app.taskid !=null ) {
@@ -55,7 +55,7 @@ public class VehiclePaymentService {
 		if(!app) throw new Exception("applixation refered in payment does not exist");
 
 		pmt.items.each {
-			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid - :amt}", amt: it.amount ] );
+			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid - :amt}"], [amt: it.amount] );
 		}
 
 		if( app.taskid !=null ) {
