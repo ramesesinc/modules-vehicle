@@ -5,7 +5,7 @@ CREATE VIEW vw_vehicle_franchise_unit_active AS
 vau.*,
 vf.objid AS franchiseid,
 va.apptype,
-va.appno 
+va.appno
 FROM vehicle_application_unit vau
 INNER JOIN vehicle_application va ON vau.appid = va.objid
 INNER JOIN vehicle_franchise_year vfy ON va.franchiseyearid = vfy.objid

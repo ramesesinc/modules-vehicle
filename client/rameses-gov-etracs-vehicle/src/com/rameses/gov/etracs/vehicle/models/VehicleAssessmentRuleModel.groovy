@@ -19,7 +19,7 @@ public class VehicleAssessmentRuleModel extends BillingRuleModel  {
     }
     
     void init() {
-        rulename =  "vehicleassessment";   
+        rulename =  "vehicleassessment"; 
         super.init();
     }
     

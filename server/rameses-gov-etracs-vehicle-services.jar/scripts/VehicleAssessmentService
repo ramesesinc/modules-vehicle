@@ -13,7 +13,7 @@ public class VehicleAssessmentService  {
 	@DataContext("vw_vehicle_application")
 	def vwAppEm;
 
-	@DataContext("vehicle_application_unit")
+	@DataContext("vw_vehicle_franchise_unit_active")
 	def appUnitEm;	
 
 	@DataContext("vehicle_assessment")
@@ -73,15 +73,23 @@ public class VehicleAssessmentService  {
 
 		def app = vwAppEm.find( [objid: req.params.appid ] ).first();
 		def vehicleFact = new vehicle.facts.VehicleApplication( app );
+		def vehicleFranchise = new vehicle.facts.VehicleFranchise( app );
+
+		def units = appUnitEm.find( [franchiseid : app.franchiseid ] ).list();
 
 		def facts = [];
 		facts << vehicleFact;
+		facts << vehicleFranchise;
+		
+		units.each {
+			facts << new vehicle.facts.VehicleUnit( it );
+		}
 
 		req.factBuilder = new treasury.utils.FactBuilder();
 		req.factBuilder.variableInfoProvider = new DefaultVariableInfoProvider(
 			schemaName:"vehicle_variable"
 		);
-		req.factBuilder.facts = facts;
+		req.factBuilder.facts.addAll( facts );
 
 		def res = billingRuleSvc.execute(req);
 		if(res.askinfos) return res;
@@ -98,7 +106,7 @@ public class VehicleAssessmentService  {
 		else if( aList.size() > 1 ) {
 			aList.each { af->
 				vehicleFact.appyear = af.year;
-				req.factBuilder.facts = facts;			
+				req.factBuilder.facts.addAll( facts );			
 				res = billingRuleSvc.execute(req);
 				res.billitems.each { bi->
 					billitems <<  [itemid: bi.billcode, parent: af, amount: bi.amount];
@@ -111,9 +119,14 @@ public class VehicleAssessmentService  {
 				billitems << [itemid: it.billcode, parent: ai, amount: it.amount];
 			}
 		}
-		
+
 		//store billitems and appinfos into the database;
 		saveBillItems( aList, billitems );
+		
+		return [
+			infos: res.infos,
+			billitems: billitems
+		];
 	}
 
 	@ProxyMethod

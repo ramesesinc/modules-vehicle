@@ -6,14 +6,22 @@ public class VehicleFranchise {
 	
 	String controlno;
 	Date startdate;
-	int activeyear;
 	String objid;
+
+	def fixDate( def dt ) {
+		if( dt instanceof String ) {
+			def df = new java.text.SimpleDateFormat( "yyyy-MM-dd");
+			dt = df.parse( dt );
+		}
+		return dt;
+	}
 
 	public VehicleFranchise( def m ) {
 		controlno = m.controlno;
 		objid = m.objid;
-		if( m.startdate ) startdate = m.startdate;
-		if( m.activeyear ) activeyear = m.activeyear;
+		if( m.startdate ) {
+			startdate = fixDate( m.startdate );
+		}	
 	}
 
 }

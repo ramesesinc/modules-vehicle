@@ -19,6 +19,9 @@ public class VehicleAssessmentModel  {
     @Caller
     def caller;
     
+    @Binding
+    def binding;
+    
     def entity;
     def task;
     def total = 0;
@@ -32,7 +35,7 @@ public class VehicleAssessmentModel  {
         fetchList: { o->
             def items = assmtSvc.getItems([appid: entity.objid ] );
             total = items.sum{ it.amount };
-            binding?.refresh("total");
+            binding.refresh("total");
             return items;
         }
     ] as BasicListModel;
