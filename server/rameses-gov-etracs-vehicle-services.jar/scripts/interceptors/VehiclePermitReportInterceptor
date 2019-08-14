@@ -1,0 +1,25 @@
+import com.rameses.annotations.*;
+import com.rameses.util.*;
+
+class VehiclePermitReportInterceptor {
+	
+	@Service("VehicleBillingService")
+	def billSvc;
+
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
+	@DataContext("vw_vehicle_franchise_unit_active")
+	def vwUnitEm;	
+
+	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_permit' }")
+	public void getPermitData( def evt ) {
+		def t = evt.args[0];
+		def result = evt.result;
+		//def appid = t.parameters.appid;
+		//throw new Exception("display permit params" + t.parameters);
+		println "parameters is " + t.parameters;
+		result.data = [permitno:"ttt"];
+	}
+
+}

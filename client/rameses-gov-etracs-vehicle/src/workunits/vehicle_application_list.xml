@@ -2,6 +2,7 @@
           processName="vehicle_application"
           schemaName="vw_vehicle_application" 
           allowCreate="false"
+          allowDelete="false"
           allowNotify="true">
     <invokers>
         <invoker folderid="menucategory/vehicle/application" 

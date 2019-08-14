@@ -1,6 +1,9 @@
+<root>
+
+</root>
+<!--
 <workunit extends="com/rameses/seti2/templates/FormReport.xml">
     <invokers>
-        <!-- This is for application billing -->
         <invoker type="vw_vehicle_application:form:reports" 
                  caption="Print Application (FORM 01)" 
                  target="popup" 
@@ -50,3 +53,4 @@
     </invokers> 
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleReportForm"/>
 </workunit>
+-->

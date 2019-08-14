@@ -3,16 +3,24 @@
         <invoker type="vw_vehicle_application:open" 
                  action="open" caption="Vehicle Application"/>
         
+         <invoker type="formActions" visibleWhen="#{ task?.state == 'draft' }"
+                action="cancelApplication" caption="Cancel Application" />
+        
+        <invoker type="formActions" action="assess" caption="Assess" 
+                 visibleWhen="#{ showAssessAction == true }"/>
+        
+        <invoker type="formActions" action="viewBill" caption="View Billing" 
+                visibleWhen="#{ showBillingAction == true }" />
+         
         <invoker type="formActions" 
                 action="issuePermit" caption="Issue Permit" 
-                visibleWhen="#{ showIssuePermitAction == true &amp;&amp; entity.permitid == null }"/>
+                visibleWhen="#{ showIssuePermitAction == true }"/>
                 
         <invoker type="formActions" 
                 action="viewPermit" caption="View Permit" 
-                visibleWhen="#{ showIssuePermitAction == true &amp;&amp; entity.permitid != null }"/>        
+                visibleWhen="#{ entity.permitid != null }"/>        
         
-        <invoker type="formActions" visibleWhen="#{ task?.state == 'draft' }"
-                action="cancelApplication" caption="Cancel Application" />
+       
         <!--
         <invoker type="formActions" 
                  action="printApplication" caption="Print" 

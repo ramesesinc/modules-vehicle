@@ -1,8 +1,8 @@
 <workunit extends="com/rameses/seti2/templates/FormReport.xml">
     <invokers>
-        <invoker type="vehicle_basic_permit" 
+        <invoker type="tricycle_permit" 
             caption="View Permit" index="-9" 
-            reportName="com/rameses/gov/etracs/vehicle/reports/permit.jasper" 
+            reportName="com/rameses/gov/etracs/vehicle/tricycle/reports/DFRB-FORM-01.jasper" 
             reportId="vehicle_permit"
             target="popup"
             action="preview"/>

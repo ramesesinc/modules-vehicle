@@ -23,6 +23,9 @@ class VehicleBillingInterceptor {
 		def units = vwUnitEm.find( [franchiseid: app.franchiseid ] ).list();
 		def res = billSvc.getBillItems( [appid: appid ] );
 
+		if( !res.billitems )
+			throw new Exception("No pending billitems found");
+
 		def data = [:];
 		data.putAll( app );
 		data.vehicleunits = units; 

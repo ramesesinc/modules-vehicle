@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="PermitReport"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="612"
+		 pageHeight="792"
+		 columnWidth="612"
+		 columnSpacing="0"
+		 leftMargin="0"
+		 rightMargin="0"
+		 topMargin="0"
+		 bottomMargin="0"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+
+	<field name="application.year" class="java.lang.String"/>
+	<field name="application.permitno" class="java.lang.String"/>
+	<field name="application.operator" class="java.lang.String"/>
+	<field name="application.address" class="java.lang.String"/>
+	<field name="application.motorcabno" class="java.lang.String"/>
+	<field name="application.mtopno" class="java.lang.String"/>
+	<field name="application.expirydate" class="java.lang.String"/>
+	<field name="application.remarks" class="java.lang.String"/>
+	<field name="application.permitexpirydate" class="java.lang.String"/>
+	<field name="application.permitissueddate" class="java.lang.String"/>
+	<field name="application.paymentdetails" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="792"  isSplitAllowed="true" >
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="111"
+						y="183"
+						width="390"
+						height="367"
+						key="image-2"/>
+					<box></box>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+</graphicElement>
+					<imageExpression class="java.lang.String"><![CDATA["images/watermark.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement
+						mode="Transparent"
+						x="31"
+						y="286"
+						width="550"
+						height="173"
+						forecolor="#C1E784"
+						backcolor="#FFFFFF"
+						key="staticText-17"/>
+					<box>					<pen lineWidth="0.0" lineColor="#C1E784"/>
+					<topPen lineWidth="0.8" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.8" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.8" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.8" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="24"
+						y="26"
+						width="72"
+						height="72"
+						key="image-3"/>
+					<box></box>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+</graphicElement>
+					<imageExpression class="java.lang.String"><![CDATA["images/logo.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement
+						x="174"
+						y="28"
+						width="265"
+						height="20"
+						key="staticText-1"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Microsoft New Tai Lue" pdfFontName="Helvetica-Bold" size="13" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Republic of the Philippines]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="174"
+						y="36"
+						width="265"
+						height="31"
+						forecolor="#C1E784"
+						key="staticText-2"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CITY OF TAGBILARAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="174"
+						y="57"
+						width="265"
+						height="20"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Franklin Gothic Medium Cond" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[http://www.tagbilaran.gov.ph]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="174"
+						y="76"
+						width="265"
+						height="22"
+						key="staticText-4"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Impact" pdfFontName="Helvetica-Bold" size="18" isBold="true"/>
+					</textElement>
+				<text><![CDATA[OFFICE OF THE CITY MAYOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="146"
+						y="100"
+						width="321"
+						height="36"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Engravers MT" pdfFontName="Helvetica-Bold" size="23" isBold="true"/>
+					</textElement>
+				<text><![CDATA[MAYOR'S PERMIT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="488"
+						y="46"
+						width="72"
+						height="14"
+						key="staticText-6"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[YEAR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="488"
+						y="74"
+						width="72"
+						height="14"
+						key="staticText-7"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[PERMIT NO.]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="475"
+						y="46"
+						width="99"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="475"
+						y="74"
+						width="99"
+						height="0"
+						key="line-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="26"
+						y="108"
+						width="560"
+						height="0"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="26"
+						y="136"
+						width="560"
+						height="0"
+						key="line-4"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="40"
+						y="146"
+						width="75"
+						height="20"
+						key="staticText-8"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Operator:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="40"
+						y="165"
+						width="75"
+						height="20"
+						key="staticText-9"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica" size="13" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Address:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="9"
+						y="184"
+						width="106"
+						height="20"
+						key="staticText-10"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica" size="13" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Motor Cab No.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="9"
+						y="202"
+						width="106"
+						height="20"
+						key="staticText-11"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica" size="13" isBold="false"/>
+					</textElement>
+				<text><![CDATA[MTOP No.:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="117"
+						y="166"
+						width="460"
+						height="0"
+						key="line-5"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="117"
+						y="185"
+						width="460"
+						height="0"
+						key="line-6"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="117"
+						y="204"
+						width="460"
+						height="0"
+						key="line-7"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="117"
+						y="222"
+						width="215"
+						height="0"
+						key="line-8"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="31"
+						y="260"
+						width="550"
+						height="26"
+						forecolor="#FFFFFF"
+						backcolor="#C1E784"
+						key="staticText-12"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[LINE(S) OF BUSINESS/DETAILS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="253"
+						y="231"
+						width="106"
+						height="16"
+						key="staticText-13"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="13" isBold="true"/>
+					</textElement>
+				<text><![CDATA[to operate]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="335"
+						y="202"
+						width="74"
+						height="20"
+						key="staticText-14"/>
+					<box></box>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica" size="13" isBold="false"/>
+					</textElement>
+				<text><![CDATA[Expiry Date:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="416"
+						y="222"
+						width="160"
+						height="0"
+						key="line-9"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="188"
+						y="290"
+						width="236"
+						height="23"
+						key="staticText-15"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="16" isBold="true"/>
+					</textElement>
+				<text><![CDATA[MOTORIZED TRICYCLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="45"
+						y="348"
+						width="97"
+						height="23"
+						key="staticText-16"/>
+					<box></box>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="16" isBold="true"/>
+					</textElement>
+				<text><![CDATA[REMARKS:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="31"
+						y="465"
+						width="550"
+						height="43"
+						key="staticText-18"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[            PROVIDED, that the provisions of Laws, Rules and Regulations which are now in force and other subsequent ordinances of the City of Tagbilaran pertaining to the aforementioned business shall be strictly compiled with.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="31"
+						y="510"
+						width="550"
+						height="43"
+						key="staticText-19"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[             THIS PERMIT expires on ____________________ and may be revoked anytime for violation of any provisions of Law, Rules and Regulations or if public order and safety so demands and the same shall be valid only upon payment of the corresponding Permit/License fees.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="31"
+						y="552"
+						width="550"
+						height="16"
+						key="staticText-20"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<text><![CDATA[                      ISSUED this __________________________ in the City of Tagbilaran, Philippines]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="31"
+						y="575"
+						width="155"
+						height="101"
+						key="staticText-21"/>
+					<box>					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="34"
+						y="578"
+						width="149"
+						height="95"
+						key="staticText-22"/>
+					<box>					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement>
+						<font size="9" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="192"
+						y="575"
+						width="172"
+						height="101"
+						key="staticText-23"/>
+					<box>					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="195"
+						y="578"
+						width="166"
+						height="95"
+						key="staticText-24"/>
+					<box>					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement>
+						<font size="9" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="370"
+						y="575"
+						width="211"
+						height="101"
+						key="staticText-25"/>
+					<box>					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="373"
+						y="578"
+						width="205"
+						height="95"
+						key="staticText-26"/>
+					<box>					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#C1E784"/>
+</box>
+					<textElement>
+						<font size="9" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="40"
+						y="580"
+						width="88"
+						height="12"
+						key="staticText-27"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica" size="9" isBold="false" isUnderline="true"/>
+					</textElement>
+				<text><![CDATA[PAYMENT DETAILS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="201"
+						y="580"
+						width="88"
+						height="12"
+						key="staticText-28"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica" size="9" isBold="false" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[ENDORSED BY:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="379"
+						y="580"
+						width="56"
+						height="12"
+						key="staticText-29"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica" size="9" isBold="false" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[APPROVED:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="210"
+						y="636"
+						width="137"
+						height="17"
+						key="staticText-30"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[SAMUEL S. BELDEROL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="210"
+						y="655"
+						width="137"
+						height="17"
+						key="staticText-31"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="7" isBold="true" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[Supervising Administrative Officer Permit & License Division]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="373"
+						y="634"
+						width="204"
+						height="24"
+						key="staticText-32"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Impact" pdfFontName="Helvetica-Bold" size="18" isBold="true" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[JOHN GEESNELL L. YAP II]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="407"
+						y="655"
+						width="137"
+						height="17"
+						key="staticText-33"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="11" isBold="true" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[CITY MAYOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="31"
+						y="687"
+						width="71"
+						height="12"
+						key="staticText-34"/>
+					<box></box>
+					<textElement textAlignment="Justified" verticalAlignment="Top">
+						<font fontName="Arial" pdfFontName="Helvetica" size="9" isBold="false" isUnderline="false"/>
+					</textElement>
+				<text><![CDATA[CONTROL NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="474"
+						y="34"
+						width="100"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font fontName="Arial Narrow"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Year"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="475"
+						y="62"
+						width="99"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font fontName="Arial Narrow"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Permit No"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="117"
+						y="146"
+						width="460"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Operator Name"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="117"
+						y="165"
+						width="460"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Address"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="117"
+						y="184"
+						width="460"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Motor Cab No."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="117"
+						y="202"
+						width="215"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["MTOP No."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="416"
+						y="202"
+						width="160"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement verticalAlignment="Bottom">
+						<font fontName="Arial Narrow" size="11"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Expiry Date"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="146"
+						y="355"
+						width="423"
+						height="93"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font fontName="Arial Narrow" size="12"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Some remarks here"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="220"
+						y="509"
+						width="110"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Expiry Date"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="153"
+						y="551"
+						width="145"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Issued Date"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="42"
+						y="598"
+						width="133"
+						height="68"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font fontName="Arial" size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Payment Details here"]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

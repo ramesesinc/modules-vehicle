@@ -11,16 +11,20 @@ import com.rameses.enterprise.models.*;
 
 public class ApplicationModel extends WorkflowTaskModel {
     
-    @Service(value="VehiclePermitService")
-    def permitSvc;
-    
     @Service(value="VehicleApplicationService")
     def appSvc;
+    
+    @Service("VehicleAssessmentService")
+    def assmtSvc;
+
+    @Service(value="VehiclePermitService")
+    def permitSvc;
 
     //boolean viewReportAllowed = true; 
     def selectedUnit;
     def unitHandler;
     def infos;
+    def total = 0;
     
     String getFormName() {
         return getSchemaName() + ":form";
@@ -46,14 +50,17 @@ public class ApplicationModel extends WorkflowTaskModel {
     The following are workflow state properties that is included in design time
     ***************************************************************************/
     def getShowAssessAction() {
-        if(! task?.properties?.show_assess) return false;
-        return task.properties.show_assess;
+        return (task.state == 'assessment' && task?.assignee?.objid ==  user.objid);
+    }
+    
+    def getShowBillingAction() {
+        return (task.state != 'draft')
     }
     
     def getShowIssuePermitAction() {
-        if(! task?.properties?.show_issue_permit) return false;
-        return task.properties.show_issue_permit;
+        return (task.state == 'release' && entity.permitid == null)
     }
+    
     
     void afterOpen() {
         infoListModel.reload();
@@ -81,6 +88,31 @@ public class ApplicationModel extends WorkflowTaskModel {
         Modal.show( "show_vehicle_trackingno", [appno: entity.appno] );
     }
  
+    //ASSESSMENT AND BILLING FACILITIES
+    def feeListModel = [
+        fetchList: { o->
+            def items = assmtSvc.getItems([appid: entity.objid ] );
+            total = items.sum{ it.amount };
+            binding.refresh("total");
+            return items;
+        }
+    ] as BasicListModel;
+    
+    void assess() {
+        def p = [:];
+        p.params = [appid : entity.objid ]
+        p.handler = { o->
+            feeListModel.reload();
+        }
+        Modal.show( "vehicle_assessment_rule", p );
+    }
+    
+    def viewBill() {
+        def h =[:];
+        h.put("query.appid", entity.objid);
+        return Inv.lookupOpener("vehicle_billing", h );
+    }
+    
     /*
     public boolean beforeSignal( def tsk ) {
         if(tsk.taskstate == "assessment") {
@@ -93,21 +125,16 @@ public class ApplicationModel extends WorkflowTaskModel {
     }
     */
     
-    //PRINTOUTS
+    //PERMITTING FACILITIES
     def viewPermit() { 
-        def m = [:];
-        m.vehicletype = entity.vehicletype;
-        m.permitid = entity.permitid;
-        m.query = [permitid: entity.permitid];
-        
-        def pname = "vehicle:"+entity.vehicletype.objid+":print";        
-        def opener = null;
-        try {
-            opener = Inv.lookupOpener( pname, m );
-        }catch(e){;}
-        
-        if(!opener) opener = Inv.lookupOpener('vehicle_permit:print',m);
-        opener.target = 'self'; 
+        def h =   entity.vehicletype.permithandler;
+        if(!h) h = "vehicle_basic_permit";
+        def p = [:];
+        p.put("query.appid", entity.objid );
+        p.put("query.permitid", entity.permitid );
+        p.put("query.vehicletype", entity.vehicletype.objid );
+        def opener = Inv.lookupOpener(h, p );
+        opener.target = "self";
         return opener;
     }
     
