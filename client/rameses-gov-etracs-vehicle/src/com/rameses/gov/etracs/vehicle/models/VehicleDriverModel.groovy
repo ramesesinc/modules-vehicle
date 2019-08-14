@@ -10,6 +10,11 @@ import com.rameses.util.*;
 
 public class VehicleDriverModel extends CrudFormModel  {
     
+    @Caller
+    def caller;
     
+    void afterCreate() {
+        entity.vehicletypeid = caller.vehicletype.objid;
+    }
     
 }

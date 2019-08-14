@@ -32,28 +32,35 @@ public class VehicleDriverPage extends javax.swing.JPanel {
     private void initComponents() {
 
         xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
+        xTextField1 = new com.rameses.rcp.control.XTextField();
         xLabel4 = new com.rameses.rcp.control.XLabel();
         entityLookup1 = new com.rameses.entity.components.EntityLookup();
         entityAddressLookup1 = new com.rameses.entity.components.EntityAddressLookup();
 
         xFormPanel3.setCaptionWidth(150);
 
+        xTextField1.setCaption("Control No");
+        xTextField1.setName("entity.controlno"); // NOI18N
+        xFormPanel3.add(xTextField1);
+
         xLabel4.setCaption("Control No");
         xLabel4.setExpression("#{entity.controlno}");
-        xLabel4.setVisibleWhen("#{ entity.txnmode != 'CAPTURE' && apptype != 'NEW'  }");
+        xLabel4.setVisibleWhen("#{ false }");
         xLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel4.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel3.add(xLabel4);
 
-        entityLookup1.setCaption("Owner");
+        entityLookup1.setCaption("Driver Name");
+        entityLookup1.setEntityType("individual");
         entityLookup1.setName("entity.entity"); // NOI18N
         entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
         entityLookup1.setRequired(true);
         xFormPanel3.add(entityLookup1);
 
         entityAddressLookup1.setCaption("Home Address");
-        entityAddressLookup1.setDepends(new String[] {"entity.owner"});
+        entityAddressLookup1.setDepends(new String[] {"entity.entity"});
         entityAddressLookup1.setName("entity.entity.address"); // NOI18N
+        entityAddressLookup1.setParentIdName("entity.entity.objid");
         entityAddressLookup1.setPreferredSize(new java.awt.Dimension(0, 40));
         entityAddressLookup1.setRequired(true);
         xFormPanel3.add(entityAddressLookup1);
@@ -65,14 +72,14 @@ public class VehicleDriverPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -82,5 +89,6 @@ public class VehicleDriverPage extends javax.swing.JPanel {
     private com.rameses.entity.components.EntityLookup entityLookup1;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XLabel xLabel4;
+    private com.rameses.rcp.control.XTextField xTextField1;
     // End of variables declaration//GEN-END:variables
 }

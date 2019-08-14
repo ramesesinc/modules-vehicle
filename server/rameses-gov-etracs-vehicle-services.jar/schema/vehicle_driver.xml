@@ -1,10 +1,10 @@
 <schema adapter="vehicledb">
 	<element tablename="vehicle_driver">
 		<field name="objid" primary="true" prefix="VDRVR" />
-		<field name="controlno" required="true" />
+		<field name="controlno" required="true" caption="Control No"/>
 		<field name="vehicletypeid" required="true" />
 		<field name="entity_objid" required="true" />
-		<field name="entity_name" required="true" />
+		<field name="entity_name" required="true" caption="Driver Name"/>
 		<field name="entity_address_objid" required="true" />
 		<field name="entity_address_text" required="true" />
 	</element>
