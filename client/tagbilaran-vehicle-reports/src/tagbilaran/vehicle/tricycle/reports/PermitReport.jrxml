@@ -24,17 +24,18 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="application.year" class="java.lang.String"/>
-	<field name="application.permitno" class="java.lang.String"/>
-	<field name="application.operator" class="java.lang.String"/>
-	<field name="application.address" class="java.lang.String"/>
-	<field name="application.motorcabno" class="java.lang.String"/>
+	<field name="year" class="java.lang.Number"/>
+	<field name="permitno" class="java.lang.String"/>
+	<field name="owner.name" class="java.lang.String"/>
+	<field name="owner.address.text" class="java.lang.String"/>
+	<field name="bodyno" class="java.lang.String"/>
 	<field name="application.mtopno" class="java.lang.String"/>
 	<field name="application.expirydate" class="java.lang.String"/>
 	<field name="application.remarks" class="java.lang.String"/>
 	<field name="application.permitexpirydate" class="java.lang.String"/>
-	<field name="application.permitissueddate" class="java.lang.String"/>
-	<field name="application.paymentdetails" class="java.lang.String"/>
+	<field name="dtissued" class="java.util.Date"/>
+	<field name="appno" class="java.lang.String"/>
+	<field name="controlno" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -157,9 +158,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="488"
+						x="475"
 						y="46"
-						width="72"
+						width="99"
 						height="14"
 						key="staticText-6"/>
 					<box></box>
@@ -170,9 +171,9 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="488"
+						x="475"
 						y="74"
-						width="72"
+						width="99"
 						height="14"
 						key="staticText-7"/>
 					<box></box>
@@ -629,8 +630,8 @@
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="474"
-						y="34"
+						x="475"
+						y="33"
 						width="100"
 						height="12"
 						key="textField"/>
@@ -638,7 +639,7 @@
 					<textElement textAlignment="Center">
 						<font fontName="Arial Narrow"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Year"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Number"><![CDATA[$F{year}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -651,7 +652,7 @@
 					<textElement textAlignment="Center">
 						<font fontName="Arial Narrow"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Permit No"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{permitno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -664,7 +665,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Operator Name"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{owner.name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -677,7 +678,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Address"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{owner.address.text}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -690,7 +691,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Motor Cab No."]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{bodyno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -703,7 +704,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["MTOP No."]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{controlno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -744,7 +745,7 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["Expiry Date"]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="153"
 						y="551"
@@ -755,7 +756,7 @@
 					<textElement textAlignment="Center">
 						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Issued Date"]]></textFieldExpression>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{dtissued}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -769,6 +770,19 @@
 						<font fontName="Arial" size="10"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["Payment Details here"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="102"
+						y="687"
+						width="99"
+						height="12"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{appno}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>

@@ -10,8 +10,8 @@ SELECT
    vg.owner_address_text,
    vg.phoneno,
    vg.email,
-   vg.mobileno
-    
+   vg.mobileno,
+   vfy.year 
 FROM vehicle_permit vp
 INNER JOIN vehicle_application va ON vp.appid = va.objid
 INNER JOIN vehicle_franchise_generalinfo vg ON va.geninfoid = vg.objid

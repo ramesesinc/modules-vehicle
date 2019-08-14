@@ -19,6 +19,7 @@
 		<field name="phoneno" />
 		<field name="email" />
 		<field name="mobileno" />
+		<field name="year" />
 
 		<complex name="units" ref="vw_vehicle_unit_snapshot" jointype="one-to-many">
 			<key field="objid" target="permitid" />

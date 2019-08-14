@@ -7,4 +7,5 @@
             target="popup"
             action="preview"/>
     </invokers>
+    <code class="tagbilaran.vehicle.tricycle.models.PermitModel" />
 </workunit>
