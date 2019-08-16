@@ -28,9 +28,6 @@
 "entity.sidecarcolor" [ !"sidecarcolor".matches(vehicletype.allowedfields) ] {
     visible:false;
 }
-"entity.driver" [ !"driver".matches(vehicletype.allowedfields) ] {
-    visible:false;
-}
 
 "entity.*" [ mode == 'read' ] {
     enabled:false;

@@ -44,7 +44,6 @@ public class VehicleUnitPage extends javax.swing.JPanel {
         xTextField13 = new com.rameses.rcp.control.XTextField();
         xTextField1 = new com.rameses.rcp.control.XTextField();
         xTextField11 = new com.rameses.rcp.control.XTextField();
-        entityLookup1 = new com.rameses.entity.components.EntityLookup();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
 
@@ -96,13 +95,6 @@ public class VehicleUnitPage extends javax.swing.JPanel {
         xTextField11.setName("entity.sidecarcolor"); // NOI18N
         xFormPanel2.add(xTextField11, java.awt.BorderLayout.CENTER);
 
-        entityLookup1.setCaption("Driver");
-        entityLookup1.setEntityType("entityindividual");
-        entityLookup1.setName("entity.driver"); // NOI18N
-        entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
-        entityLookup1.setRequired(true);
-        xFormPanel2.add(entityLookup1, java.awt.BorderLayout.CENTER);
-
         jScrollPane1.setName("entity.remarks"); // NOI18N
         jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 65));
 
@@ -132,7 +124,6 @@ public class VehicleUnitPage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.rameses.entity.components.EntityLookup entityLookup1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XTextArea xTextArea1;

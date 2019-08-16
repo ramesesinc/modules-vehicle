@@ -12,8 +12,6 @@
 		<field name="chassisno" caption="Chassis No" included="true"/>
 		<field name="sidecarcolor" caption="Sidecar Color" included="true"/>
 		<field name="crname" caption="CR Name" included="true"/>
-		<field name="driver_objid" visible="false"/>
-		<field name="driver_name" caption="Driver" included="true"/>
 		<field name="remarks" caption="Remarks" included="true"/>
 		<field name="supersederid" />		
 	</element>

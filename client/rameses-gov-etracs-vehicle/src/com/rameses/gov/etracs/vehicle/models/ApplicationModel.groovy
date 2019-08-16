@@ -17,9 +17,6 @@ public class ApplicationModel extends WorkflowTaskModel {
     @Service("VehicleAssessmentService")
     def assmtSvc;
 
-    @Service(value="VehiclePermitService")
-    def permitSvc;
-
     //boolean viewReportAllowed = true; 
     def selectedUnit;
     def unitHandler;
@@ -138,34 +135,13 @@ public class ApplicationModel extends WorkflowTaskModel {
         return opener;
     }
     
-    void issuePermit() {
-        if(entity.txnmode == 'CAPTURE' ) {
-            def p = [:]
-            p.fields = [
-                [name:'permitno', caption:'Permit No'],
-                [name:'permittype', type:'lov', caption:'Permit Type', listName: 'VEHICLE_PERMIT_TYPE', required: true],                
-                [name:'dtissued', type:'date', caption:'Date Issued', required: true],
-            ];
-            p.data = [:];
-            p.handler = { o->
-                def pmt = [appid: entity.objid];
-                pmt.putAll( o );
-                pmt.txnmode = "CAPTURE";
-                pmt = permitSvc.create( pmt );
-                entity.permitid = pmt.objid;
-                entity.permit = pmt;
-                binding.refresh("entity.permit.*");
-            }
-            Modal.show("dynamic:form", p, [title:'Enter Permit Details']);
-        }
-        else {
-            def pmt = [appid: entity.objid];
-            pmt.txnmode = 'ONLINE';
-            pmt = permitSvc.create( pmt );
+    def issuePermit() {
+        def h = { pmt->
             entity.permitid = pmt.objid;
             entity.permit = pmt;
-            binding.refresh("entity.permit.*");
+            binding.refresh();
         }
+        return Inv.lookupOpener("permit_issuance", [handler: h, app:entity]);
     }
 
     def viewUnit() {

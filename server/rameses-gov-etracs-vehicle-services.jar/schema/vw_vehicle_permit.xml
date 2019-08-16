@@ -25,5 +25,9 @@
 			<key field="objid" target="permitid" />
 		</complex>
 		
+		<complex name="payments" ref="vehicle_payment" jointype="one-to-many" required="false">
+			<key field="appid" target="appid" />
+		</complex>
+		
 	</element>
 </schema>

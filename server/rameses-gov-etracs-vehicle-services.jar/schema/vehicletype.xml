@@ -8,7 +8,6 @@
 		<field name="permitnopattern" required="true" />
 		<field name="drivernopattern" required="true" />
 
-		<field name="issued" type="integer" required="true" defaultValue="0"/>
 		<field name="icon" /> 
 		<field name="allowedfields" required="true"/> 
 		<field name="renewalfrequency" required="true" caption="Renewal Frequency" defaultValue="YEAR"/> 

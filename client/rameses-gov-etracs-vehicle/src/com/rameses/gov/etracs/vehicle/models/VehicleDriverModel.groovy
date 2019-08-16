@@ -14,7 +14,11 @@ public class VehicleDriverModel extends CrudFormModel  {
     def caller;
     
     void afterCreate() {
-        entity.vehicletypeid = caller.vehicletype.objid;
+        entity.vehicletype = caller.vehicletype;
+    }
+    
+    def viewUnit() {
+        return Inv.lookupOpener("vehicle_unit:open", [ entity: entity.unit.unit, vehicletype: entity.vehicletype ] );
     }
     
 }

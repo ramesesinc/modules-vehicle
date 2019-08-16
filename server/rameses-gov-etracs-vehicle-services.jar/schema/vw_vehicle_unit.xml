@@ -14,8 +14,6 @@
 		<field name="chassisno" visible="false"/>
 		<field name="sidecarcolor" visible="false"/>
 		<field name="crname" visible="false"/>
-		<field name="driver_objid" visible="false"/>
-		<field name="driver_name" caption="Driver Name"/>
 		<field name="remarks" visible="false"/>
 		
 		<field name="owner_objid" visible="false"/>

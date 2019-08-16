@@ -34,8 +34,11 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
         xTextField1 = new com.rameses.rcp.control.XTextField();
         xLabel4 = new com.rameses.rcp.control.XLabel();
+        xLabel1 = new com.rameses.rcp.control.XLabel();
         entityLookup1 = new com.rameses.entity.components.EntityLookup();
         entityAddressLookup1 = new com.rameses.entity.components.EntityAddressLookup();
+        xLookupField1 = new com.rameses.rcp.control.XLookupField();
+        xButton1 = new com.rameses.rcp.control.XButton();
 
         xFormPanel3.setCaptionWidth(150);
 
@@ -50,7 +53,12 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xLabel4.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel3.add(xLabel4);
 
+        xLabel1.setCaption("");
+        xLabel1.setExpression("Leave controlno as blank to generate automated number");
+        xFormPanel3.add(xLabel1);
+
         entityLookup1.setCaption("Driver Name");
+        entityLookup1.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
         entityLookup1.setEntityType("individual");
         entityLookup1.setName("entity.entity"); // NOI18N
         entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
@@ -65,21 +73,37 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         entityAddressLookup1.setRequired(true);
         xFormPanel3.add(entityAddressLookup1);
 
+        xLookupField1.setCaption("Unit");
+        xLookupField1.setExpression("Plateno: #{ entity.unit.unit.plateno } Body No:#{ entity.unit.unit.bodyno }");
+        xLookupField1.setHandler("vehicle_unit_active:lookup");
+        xLookupField1.setName("entity.unit"); // NOI18N
+        xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
+        xLookupField1.setRequired(true);
+        xFormPanel3.add(xLookupField1);
+
+        xButton1.setCaption("");
+        xButton1.setDepends(new String[] {"entity.unit"});
+        xButton1.setName("viewUnit"); // NOI18N
+        xButton1.setVisibleWhen("#{ entity.unit != null }");
+        xButton1.setImmediate(true);
+        xButton1.setText("View Unit");
+        xFormPanel3.add(xButton1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -87,8 +111,11 @@ public class VehicleDriverPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rameses.entity.components.EntityAddressLookup entityAddressLookup1;
     private com.rameses.entity.components.EntityLookup entityLookup1;
+    private com.rameses.rcp.control.XButton xButton1;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
+    private com.rameses.rcp.control.XLabel xLabel1;
     private com.rameses.rcp.control.XLabel xLabel4;
+    private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XTextField xTextField1;
     // End of variables declaration//GEN-END:variables
 }

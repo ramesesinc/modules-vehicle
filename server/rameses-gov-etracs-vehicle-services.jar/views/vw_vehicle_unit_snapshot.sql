@@ -20,8 +20,6 @@ SELECT
    vu.chassisno AS unit_chassisno,
    vu.sidecarcolor AS unit_sidecarcolor,
    vu.crname AS unit_crname,
-   vu.driver_objid AS unit_driver_objid,
-   vu.driver_name AS unit_driver_name,
    vu.remarks AS unit_remarks   
 FROM vehicle_application va 
 INNER JOIN vehicle_application va2 ON va2.franchiseyearid = va.franchiseyearid

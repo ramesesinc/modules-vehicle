@@ -21,6 +21,9 @@ class VehiclePermitService {
 	@Service("ControlnoGeneratorService")
 	def controlNoSvc;
 
+	@Service("BillingRuleService")
+	def billingRuleSvc;
+
 	@ProxyMethod 
 	public def create( def perm ) { 
 		def app = appEm.find([objid: perm.appid]).first();
@@ -35,10 +38,30 @@ class VehiclePermitService {
 		if(!perm.permittype) perm.permittype = "STANDARD";
 		perm.state = "ACTIVE";
 		perm.issuedby = [objid: env.USERID, name: env.FULLNAME ];
+		perm.expirydate = getExpiryDate( [appid: perm.appid ] ); 
 		perm = permitEm.create( perm );
 		appEm.find( [objid:perm.appid] ).update( [permitid: perm.objid ] );
 		franYearEm.find( [objid: app.franchiseyearid ] ).update([permitid: perm.objid ] );
 		return perm;
+	}
+
+	@ProxyMethod
+	public def getExpiryDate( def o ) {
+		def app = appEm.find( [objid: o.appid ] ).first();
+
+		def req = [rulename: "vehicledates", params: [appid: app.objid ]];
+		req.factBuilder = new treasury.utils.FactBuilder();
+		req.factBuilder.variableInfoProvider = new enterprise.utils.DefaultVariableInfoProvider(
+			schemaName:"vehicle_variable"
+		);
+		req.factBuilder.facts << new vehicle.facts.VehicleApplication( app ); 
+		req.factBuilder.facts << new vehicle.facts.VehicleFranchise( app );
+
+		def res = billingRuleSvc.execute(req);
+		def v = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'permitexpirydate' };
+		if( !v ) throw new Exception("There is no rule defined for renewal date that matches conditions");
+		def df = new java.text.SimpleDateFormat("yyyy-MM-dd");
+		return df.format( v.date );
 	}
 
 }

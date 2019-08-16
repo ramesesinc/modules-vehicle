@@ -43,7 +43,7 @@ public class VehicleTypePage extends javax.swing.JPanel {
         xTextField2 = new com.rameses.rcp.control.XTextField();
         xTextField4 = new com.rameses.rcp.control.XTextField();
         xTextField5 = new com.rameses.rcp.control.XTextField();
-        xLabel2 = new com.rameses.rcp.control.XLabel();
+        xTextField7 = new com.rameses.rcp.control.XTextField();
         jLabel1 = new javax.swing.JLabel();
         xPanel2 = new com.rameses.rcp.control.XPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -126,11 +126,12 @@ public class VehicleTypePage extends javax.swing.JPanel {
         xTextField5.setTextCase(com.rameses.rcp.constant.TextCase.NONE);
         xFormPanel2.add(xTextField5);
 
-        xLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        xLabel2.setCaption("Issuances");
-        xLabel2.setExpression("#{entity.issued}");
-        xLabel2.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel2.add(xLabel2);
+        xTextField7.setCaption("Driver No Pattern");
+        xTextField7.setName("entity.drivernopattern"); // NOI18N
+        xTextField7.setPreferredSize(new java.awt.Dimension(0, 20));
+        xTextField7.setRequired(true);
+        xTextField7.setTextCase(com.rameses.rcp.constant.TextCase.NONE);
+        xFormPanel2.add(xTextField7);
 
         jLabel1.setText("<html>[org] = org code <br>  [yyyy] = year<br> [MM] = month <br>  [%06d]   = number with 6 leading 0s<br> ex: <i>MTOP[yyyy][MM][%06d]</i> <i>will result to MTOP20160100001</i> </html>");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -309,7 +310,6 @@ public class VehicleTypePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XLabel xLabel1;
-    private com.rameses.rcp.control.XLabel xLabel2;
     private com.rameses.rcp.control.XList xList1;
     private com.rameses.rcp.control.XList xList2;
     private com.rameses.rcp.control.XPanel xPanel1;
@@ -322,5 +322,6 @@ public class VehicleTypePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XTextField xTextField4;
     private com.rameses.rcp.control.XTextField xTextField5;
     private com.rameses.rcp.control.XTextField xTextField6;
+    private com.rameses.rcp.control.XTextField xTextField7;
     // End of variables declaration//GEN-END:variables
 }

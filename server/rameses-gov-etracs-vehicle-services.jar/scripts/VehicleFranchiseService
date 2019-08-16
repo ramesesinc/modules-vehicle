@@ -23,10 +23,10 @@ class VehicleFranchiseService {
 	@Env
 	def env;
 
+	//this service is found in treasury common
 	@Service("ControlnoGeneratorService")
 	def controlNoGenerator;
 	
-
 	@ProxyMethod
 	public void generate( def o ) {
 		if(!o.qty) throw new Exception("Please indicate qty in VehicleFranchiseService");
@@ -39,22 +39,17 @@ class VehicleFranchiseService {
 		if(!g) throw new Exception("vehicletype " + vehicletype + " not found");
 		if(!g.controlpattern) throw new Exception("controlpattern is required in vehicletype");
 
-		//find the qty issued found in cluster
-		int issued = g.issued;
-
 		int qty = (o.qty+"").toInteger();
 		def dt = dateSvc.getServerDate();
 
-		for(int i=(issued+1); i < (qty+issued+1); i++ ) {
+		(1..qty).each {
 			def m = [vehicletypeid: g.objid];
-		    m.controlno = controlNoGenerator.generate( g.controlpattern, i );
+		    m.controlno = controlNoGenerator.getNextNo( g.controlpattern );
 		    m.objid = m.controlno;
 		    m.state = 'OPEN';
 			franchiseEm.create( m );
-		}
-
-		//update the issued in vehicle type
-		vt.find( [objid: vehicletype] ).update( [issued: issued + qty] );
+		} 
+		
 	}
 
 

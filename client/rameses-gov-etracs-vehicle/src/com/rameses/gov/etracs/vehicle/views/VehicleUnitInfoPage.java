@@ -38,7 +38,6 @@ public class VehicleUnitInfoPage extends javax.swing.JPanel {
         xLabel20 = new com.rameses.rcp.control.XLabel();
         xLabel21 = new com.rameses.rcp.control.XLabel();
         xLabel22 = new com.rameses.rcp.control.XLabel();
-        xLabel23 = new com.rameses.rcp.control.XLabel();
         xLabel24 = new com.rameses.rcp.control.XLabel();
 
         xFormPanel5.setCaptionWidth(150);
@@ -113,13 +112,6 @@ public class VehicleUnitInfoPage extends javax.swing.JPanel {
         xLabel22.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel5.add(xLabel22);
 
-        xLabel23.setCaption("Driver");
-        xLabel23.setExpression("#{entity.vehicleunit.driver.name}");
-        xLabel23.setName("entity.vehicleunit.driver"); // NOI18N
-        xLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel23.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel5.add(xLabel23);
-
         xLabel24.setCaption("Remarks");
         xLabel24.setExpression("#{entity.vehicleunit.remarks}");
         xLabel24.setName("entity.vehicleunit.remarks"); // NOI18N
@@ -160,7 +152,6 @@ public class VehicleUnitInfoPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel20;
     private com.rameses.rcp.control.XLabel xLabel21;
     private com.rameses.rcp.control.XLabel xLabel22;
-    private com.rameses.rcp.control.XLabel xLabel23;
     private com.rameses.rcp.control.XLabel xLabel24;
     private com.rameses.rcp.control.XLabel xLabel6;
     private com.rameses.rcp.control.XLabel xLabel9;

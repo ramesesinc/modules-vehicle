@@ -30,12 +30,13 @@
 	<field name="owner.address.text" class="java.lang.String"/>
 	<field name="bodyno" class="java.lang.String"/>
 	<field name="application.mtopno" class="java.lang.String"/>
-	<field name="application.expirydate" class="java.lang.String"/>
-	<field name="application.remarks" class="java.lang.String"/>
+	<field name="expirydate" class="java.util.Date"/>
+	<field name="remarks" class="java.lang.String"/>
 	<field name="application.permitexpirydate" class="java.lang.String"/>
 	<field name="dtissued" class="java.util.Date"/>
 	<field name="appno" class="java.lang.String"/>
 	<field name="controlno" class="java.lang.String"/>
+	<field name="payments" class="java.lang.Object"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -706,7 +707,7 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{controlno}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="416"
 						y="202"
@@ -717,7 +718,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Expiry Date"]]></textFieldExpression>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{expirydate}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -730,20 +731,20 @@
 					<textElement>
 						<font fontName="Arial Narrow" size="12"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Some remarks here"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{remarks}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="220"
+						x="195"
 						y="509"
-						width="110"
+						width="135"
 						height="12"
 						key="textField"/>
 					<box></box>
 					<textElement textAlignment="Center">
 						<font fontName="Arial" pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Expiry Date"]]></textFieldExpression>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{expirydate}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="MMMMM dd, yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -760,19 +761,6 @@
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="42"
-						y="598"
-						width="133"
-						height="68"
-						key="textField"/>
-					<box></box>
-					<textElement>
-						<font fontName="Arial" size="10"/>
-					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["Payment Details here"]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
-					<reportElement
 						x="102"
 						y="687"
 						width="99"
@@ -784,6 +772,16 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{appno}]]></textFieldExpression>
 				</textField>
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="40"
+						y="597"
+						width="134"
+						height="20"
+						key="subreport-1"/>
+					<dataSourceExpression><![CDATA[$F{payments}]]></dataSourceExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["PermitPaymentReport.jasper"]]></subreportExpression>
+				</subreport>
 			</band>
 		</title>
 		<pageHeader>
