@@ -14,10 +14,10 @@ class VehicleApplicationWorkflowInterceptor {
 	def appEm;
 
 	@DataContext("vehicle_application_unit")
-	def unitEm;
+	def appUnitEm;
 
-	@DataContext("vehicle_application_unit_dropped")
-	def dropUnitEm;
+	@DataContext("vehicle_unit")
+	def unitEm;
 
 	@DataContext("vehicle_franchise")
 	def franchiseEm;
@@ -25,33 +25,38 @@ class VehicleApplicationWorkflowInterceptor {
 	@DataContext("vehicle_franchise_year")
 	def franchiseYearEm;
 
-	@Service("VehiclePermitService")
-	def permitSvc;
 
 	@Service("DateService")
 	def dateSvc;
 
-	@Service("BillingRuleService")
-	def billRuleSvc;
-
 
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'release' && args[0].action == 'release' }")
-	public void beforeSubmittingDraft( def evt ) {
+	public void beforeRelease( def evt ) {
+		def t = evt.args[0];
+		def app = appEm.find([ objid: t.refid ]).first(); 
+		if(!app.permitid) throw new Exception("Permit (new or updated) must be issued before releasing")
+	}
+
+	@After(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'release' && args[0].action == 'release' }")
+	public void afterRelease( def evt ) {
 		def t = evt.args[0];
 		def app = appEm.find([ objid: t.refid ]).first(); 
 
 		if ( app.apptype == 'CHANGE_OWNER' ) {
-			def m = [geninfoid: app.geninfoid]; 
-			franchiseYearEm.debug = true;
-			franchiseYearEm.find([ objid: app.franchiseyearid ]).update( m ); 
+			franchiseYearEm.find([ objid: app.franchiseyearid ]).update( [geninfoid: app.geninfoid] ); 
 		}
 		else if ( app.apptype == 'DROP_FRANCHISE' ) {
-			franchiseEm.debug = true;
 			franchiseEm.find([ objid: app.franchiseid ]).update([ currentyearid: '{NULL}' ]); 
 		} 
 
-		//throw new Exception('stop');
+		//update all the linked units to the current year. No discrimination.
+		def appUnitList = appUnitEm.find( [appid: app.objid ] ).list();
+		appUnitList.each {
+			unitEm.find([objid:it.unitid]).update( [franchiseyearid: app.franchiseyearid ] );
+		}
 	}
+
+
 
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'payment' && args[0].action == 'post' }")
 	public void beforePayment( def evt ) {

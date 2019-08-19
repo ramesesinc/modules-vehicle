@@ -51,9 +51,6 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xLabel17 = new com.rameses.rcp.control.XLabel();
         xLabel18 = new com.rameses.rcp.control.XLabel();
         xLabel21 = new com.rameses.rcp.control.XLabel();
-        xLabel12 = new com.rameses.rcp.control.XLabel();
-        xLabel23 = new com.rameses.rcp.control.XLabel();
-        xButton2 = new com.rameses.rcp.control.XButton();
         vehicleUnitList1 = new com.rameses.gov.etracs.vehicle.components.VehicleUnitList();
         xButton1 = new com.rameses.rcp.control.XButton();
         xPanel3 = new com.rameses.rcp.control.XPanel();
@@ -160,23 +157,6 @@ public class ApplicationFormPage extends javax.swing.JPanel {
         xLabel21.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel6.add(xLabel21);
 
-        xLabel12.setCaption("Date Approved");
-        xLabel12.setExpression("#{entity.dtapproved}");
-        xLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel12.setPreferredSize(new java.awt.Dimension(150, 20));
-        xFormPanel6.add(xLabel12);
-
-        xLabel23.setCaption("Renewal Date");
-        xLabel23.setExpression("#{entity.renewaldate}");
-        xLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel23.setPreferredSize(new java.awt.Dimension(150, 20));
-        xFormPanel6.add(xLabel23);
-
-        xButton2.setCaption("");
-        xButton2.setName("setRenewalDate"); // NOI18N
-        xButton2.setText("Change Renewal Date");
-        xFormPanel6.add(xButton2);
-
         vehicleUnitList1.setHandler("unitHandler");
         vehicleUnitList1.setItems("entity.units");
         vehicleUnitList1.setName("selectedUnit"); // NOI18N
@@ -213,7 +193,7 @@ public class ApplicationFormPage extends javax.swing.JPanel {
                 .addComponent(vehicleUnitList1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(xButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         xTabbedPane1.addTab("General Info", jPanel1);
@@ -517,7 +497,6 @@ public class ApplicationFormPage extends javax.swing.JPanel {
     private com.rameses.seti2.components.SchemaList schemaList1;
     private com.rameses.gov.etracs.vehicle.components.VehicleUnitList vehicleUnitList1;
     private com.rameses.rcp.control.XButton xButton1;
-    private com.rameses.rcp.control.XButton xButton2;
     private com.rameses.rcp.control.XDataTable xDataTable6;
     private com.rameses.rcp.control.XDataTable xDataTable7;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
@@ -525,14 +504,12 @@ public class ApplicationFormPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XFormPanel xFormPanel6;
     private com.rameses.rcp.control.XLabel xLabel1;
     private com.rameses.rcp.control.XLabel xLabel11;
-    private com.rameses.rcp.control.XLabel xLabel12;
     private com.rameses.rcp.control.XLabel xLabel13;
     private com.rameses.rcp.control.XLabel xLabel15;
     private com.rameses.rcp.control.XLabel xLabel16;
     private com.rameses.rcp.control.XLabel xLabel17;
     private com.rameses.rcp.control.XLabel xLabel18;
     private com.rameses.rcp.control.XLabel xLabel21;
-    private com.rameses.rcp.control.XLabel xLabel23;
     private com.rameses.rcp.control.XLabel xLabel24;
     private com.rameses.rcp.control.XLabel xLabel5;
     private com.rameses.rcp.control.XLabel xLabel6;

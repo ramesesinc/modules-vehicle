@@ -12,6 +12,7 @@ class VehicleDriverPersistenceInterceptor {
 	@Service("DateService")
 	def dateSvc;
 
+
 	@Before(pattern="PersistenceService.create", eval="#{args[0]._schemaname == 'vehicle_driver' }")
 	public void beforeCreateDriver( def evt ) {
 		def entity = evt.args[0];
@@ -21,8 +22,6 @@ class VehicleDriverPersistenceInterceptor {
 			if(!pttn) throw new Exception("Please define a drivernopattern");
 			entity.controlno = controlNoSvc.getNextNo( pttn );
 		}
-		
-
 	}
 
 

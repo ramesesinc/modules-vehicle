@@ -1,0 +1,53 @@
+import com.rameses.annotations.*;
+import com.rameses.util.*;
+
+class VehiclePrintReportInterceptor {
+	
+	@DataContext("vw_vehicle_franchise_unit_active")
+	def vwUnitEm;	
+
+	@DataContext("vw_vehicle_permit")
+	def vwPermitEm;
+
+
+	@DataContext("vw_vehicle_application")
+	def vwAppEm;
+
+	@Service(value="EntityFinderService", connection="entity-server")
+	def entityFinder;
+
+	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_application' }")
+	public void getAppData( def evt ) {
+		def t = evt.args[0];
+		def result = evt.result;
+		def appid = t.parameters.objid;
+		def app = vwAppEm.find( [objid: appid ]).first(1);
+		app.owner = entityFinder.find([objid: app.owner.objid]);
+		if( app.owner.type.toUpperCase() == 'INDIVIDUAL') {
+			def mi = "";
+			if( app.owner.middlename ) {
+				mi = " " + app.owner.middlename.substring(0,1) + ". ";
+			}
+			app.owner.fullname = app.owner.firstname + mi + app.owner.lastname;
+		}
+		else {
+			app.owner.fullname = app.owner.name;
+		};
+		app.unitcount = app.units.size();
+		result.data = app;
+	}
+
+	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_permit' }")
+	public void getPermitData( def evt ) {
+		def t = evt.args[0];
+		def result = evt.result;
+		def permitid = t.parameters.permitid;
+		def perm = vwPermitEm.find( [objid: permitid ]).first(1);
+		app.owner = entityFinder.find([objid: perm.owner.objid]);
+		perm.unitcount = perm.units.size();
+		result.data = perm;
+	}
+
+
+
+}

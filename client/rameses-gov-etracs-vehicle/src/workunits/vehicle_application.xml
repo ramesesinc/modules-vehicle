@@ -28,7 +28,7 @@
         -->
         <invoker type="formActions" action="viewReport" tooltip="View Reports" 
                  caption="Reports" 
-                 visibleWhen="#{task.state == 'end' }"  />
+                 xvisibleWhen="#{task.state == 'end' }"  />
 
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.ApplicationModel" />

@@ -42,6 +42,7 @@
         <Component class="com.rameses.rcp.control.XTextField" name="xTextField1">
           <Properties>
             <Property name="caption" type="java.lang.String" value="Control No"/>
+            <Property name="disableWhen" type="java.lang.String" value="#{ mode != &apos;create&apos; }"/>
             <Property name="name" type="java.lang.String" value="entity.controlno" noResource="true"/>
           </Properties>
         </Component>
@@ -66,6 +67,7 @@
           <Properties>
             <Property name="caption" type="java.lang.String" value=""/>
             <Property name="expression" type="java.lang.String" value="Leave controlno as blank to generate automated number"/>
+            <Property name="visibleWhen" type="java.lang.String" value="#{ mode == &apos;create&apos; }"/>
           </Properties>
         </Component>
         <Component class="com.rameses.entity.components.EntityLookup" name="entityLookup1">
@@ -101,8 +103,8 @@
         <Component class="com.rameses.rcp.control.XLookupField" name="xLookupField1">
           <Properties>
             <Property name="caption" type="java.lang.String" value="Unit"/>
-            <Property name="expression" type="java.lang.String" value="Plateno: #{ entity.unit.unit.plateno } Body No:#{ entity.unit.unit.bodyno }"/>
-            <Property name="handler" type="java.lang.String" value="vehicle_unit_active:lookup"/>
+            <Property name="expression" type="java.lang.String" value="Plateno: #{ entity.unit.plateno } Body No:#{ entity.unit.bodyno }"/>
+            <Property name="handler" type="java.lang.String" value="vw_vehicle_unit:lookup"/>
             <Property name="name" type="java.lang.String" value="entity.unit" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 20]"/>

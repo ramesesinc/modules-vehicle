@@ -13,6 +13,13 @@
 		<field name="sidecarcolor" caption="Sidecar Color" included="true"/>
 		<field name="crname" caption="CR Name" included="true"/>
 		<field name="remarks" caption="Remarks" included="true"/>
+		<field name="insurancepolicyno" caption="Insurance Policy No" included="true"/>
+		<field name="insurer" caption="Insurer" included="true"/>
+
+		<field name="crname" caption="CR Name" included="true"/>
 		<field name="supersederid" />		
+
+		<!-- we really need this to link to the current active year. otherwise it would be very difficult to link it--> 
+		<field name="franchiseyearid" />
 	</element>
 </schema>

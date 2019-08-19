@@ -33,9 +33,9 @@
 
 	<field name="owner.name" class="java.lang.String"/>
 	<field name="appno" class="java.lang.String"/>
-	<field name="franchise.controlno" class="java.lang.String"/>
+	<field name="controlno" class="java.lang.String"/>
 	<field name="gender" class="java.lang.String"/>
-	<field name="vehicleunits" class="java.lang.Object"/>
+	<field name="units" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
 
 		<background>
@@ -230,7 +230,7 @@
 						width="503"
 						height="40"
 						key="subreport-1"/>
-					<dataSourceExpression><![CDATA[$F{vehicleunits}]]></dataSourceExpression>
+					<dataSourceExpression><![CDATA[$F{units}]]></dataSourceExpression>
 					<subreportExpression  class="java.lang.String"><![CDATA["vehicleunits.jasper"]]></subreportExpression>
 				</subreport>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
@@ -257,7 +257,7 @@
 					<textElement>
 						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{franchise.controlno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{controlno}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement

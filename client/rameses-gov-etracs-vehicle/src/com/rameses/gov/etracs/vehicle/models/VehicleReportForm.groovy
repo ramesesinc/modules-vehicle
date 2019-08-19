@@ -31,6 +31,7 @@ public class VehicleReportForm extends FormReportModel {
     }
     */
    
+    /*
     public def getReportData() {
         def o = super.getReportData();
         o.each {
@@ -38,6 +39,7 @@ public class VehicleReportForm extends FormReportModel {
         }
         return o;
     }
+    */
    
     public def preview() {
         def entity =  caller.entityContext;

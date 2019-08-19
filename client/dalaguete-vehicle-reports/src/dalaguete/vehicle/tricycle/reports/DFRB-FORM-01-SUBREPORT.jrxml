@@ -31,7 +31,7 @@
 	<field name="unit.chassisno" class="java.lang.String"/>
 	<field name="unit.bodyno" class="java.lang.String"/>
 	<field name="unit.plateno" class="java.lang.String"/>
-	<field name="unit.insuranceno" class="java.lang.String"/>
+	<field name="unit.insurancepolicyno" class="java.lang.String"/>
 	<field name="unit.insurer" class="java.lang.String"/>
 
 		<background>
@@ -285,7 +285,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font size="8"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.insuranceno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.insurancepolicyno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement

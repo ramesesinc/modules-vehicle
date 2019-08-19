@@ -18,7 +18,7 @@ public class VehicleDriverModel extends CrudFormModel  {
     }
     
     def viewUnit() {
-        return Inv.lookupOpener("vehicle_unit:open", [ entity: entity.unit.unit, vehicletype: entity.vehicletype ] );
+        return Inv.lookupOpener("vehicle_unit:open", [ entity: entity.unit, vehicletype: entity.vehicletype ] );
     }
     
 }

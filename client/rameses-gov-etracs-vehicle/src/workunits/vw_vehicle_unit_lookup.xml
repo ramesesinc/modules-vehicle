@@ -1,0 +1,8 @@
+<workunit extends="com/rameses/seti2/templates/CrudLookup.xml" 
+          schemaName="vw_vehicle_unit" 
+          cols="controlno,year,plateno,bodyno,make,model,remarks"
+          allowCreate="false" allowOpen="false" allowDelete="false">
+    <invokers>
+        <invoker type="vw_vehicle_unit:lookup" caption="Lookup Units"  action="init"/>
+    </invokers>
+</workunit>

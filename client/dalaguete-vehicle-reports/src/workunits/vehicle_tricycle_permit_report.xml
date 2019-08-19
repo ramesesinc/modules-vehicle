@@ -1,0 +1,10 @@
+<workunit extends="com/rameses/seti2/templates/FormReport.xml">
+    <invokers>
+        <invoker type="tricycle_permit" 
+            caption="View Permit" index="-9" 
+            reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-01.jasper" 
+            reportId="vehicle_permit"
+            target="popup"
+            action="preview"/>
+    </invokers>
+</workunit>

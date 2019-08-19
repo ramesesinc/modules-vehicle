@@ -43,6 +43,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xFormPanel3.setCaptionWidth(150);
 
         xTextField1.setCaption("Control No");
+        xTextField1.setDisableWhen("#{ mode != 'create' }");
         xTextField1.setName("entity.controlno"); // NOI18N
         xFormPanel3.add(xTextField1);
 
@@ -55,6 +56,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
 
         xLabel1.setCaption("");
         xLabel1.setExpression("Leave controlno as blank to generate automated number");
+        xLabel1.setVisibleWhen("#{ mode == 'create' }");
         xFormPanel3.add(xLabel1);
 
         entityLookup1.setCaption("Driver Name");
@@ -74,8 +76,8 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xFormPanel3.add(entityAddressLookup1);
 
         xLookupField1.setCaption("Unit");
-        xLookupField1.setExpression("Plateno: #{ entity.unit.unit.plateno } Body No:#{ entity.unit.unit.bodyno }");
-        xLookupField1.setHandler("vehicle_unit_active:lookup");
+        xLookupField1.setExpression("Plateno: #{ entity.unit.plateno } Body No:#{ entity.unit.bodyno }");
+        xLookupField1.setHandler("vw_vehicle_unit:lookup");
         xLookupField1.setName("entity.unit"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
         xLookupField1.setRequired(true);

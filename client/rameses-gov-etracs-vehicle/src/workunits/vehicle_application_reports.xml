@@ -14,7 +14,7 @@
                  caption="Print Assessment" 
                  target="popup" 
                  action="preview"
-                 index="100"
+                 index="20"
                  svisibleWhen="#{entity.dtapproved != null}"
                  reportName="com/rameses/gov/etracs/vehicle/reports/assessment.jasper"
                  reportId="vehicle_assessment"
@@ -24,7 +24,7 @@
                  caption="Print Bill" 
                  target="popup" 
                  action="preview"
-                 index="200"
+                 index="30"
                  reportName="billing"
                  reportId="vehicle_billing"
                  />
