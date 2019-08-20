@@ -7,7 +7,7 @@
                  index="100"
                  separator="true"
                  reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-01.jasper"
-                 xvisibleWhen="#{ task.state == 'end' }"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
          
         <invoker type="vw_vehicle_application:form:reports" 
@@ -16,7 +16,7 @@
                  action="preview"
                  index="101"
                  reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-02.jasper"
-                 xvisibleWhen="#{ task.state == 'draft' }"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
 
         <invoker type="vw_vehicle_application:form:reports" 
@@ -25,7 +25,7 @@
                  action="preview"
                  index="102"
                  reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-03.jasper"
-                 xvisibleWhen="#{ task.state == 'end' }"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
                 
         <invoker type="vw_vehicle_application:form:reports" 
@@ -34,7 +34,7 @@
                  action="preview"
                  index="103"
                  reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-04.jasper"
-                 xvisibleWhen="#{ task.state == 'end' }"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
 
         <invoker type="vw_vehicle_application:form:reports" 
@@ -43,9 +43,8 @@
                  action="preview"
                  index="104"
                  reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-05.jasper"
-                 xvisibleWhen="#{ task.state == 'end' }"
+                 visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
-
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleReportForm" /> 
 </workunit>

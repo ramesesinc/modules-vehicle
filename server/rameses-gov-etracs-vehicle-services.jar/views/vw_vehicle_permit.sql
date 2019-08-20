@@ -3,6 +3,7 @@ CREATE VIEW vw_vehicle_permit AS
 SELECT 
    vp.*,
    vf.controlno,
+   va.objid AS appid,
    va.appno, 
    va.appdate,
    vg.owner_objid,
@@ -13,7 +14,7 @@ SELECT
    vg.mobileno,
    vfy.year 
 FROM vehicle_permit vp
-INNER JOIN vehicle_application va ON vp.appid = va.objid
+INNER JOIN vehicle_application va ON vp.objid = va.permitid
 INNER JOIN vehicle_franchise_generalinfo vg ON va.geninfoid = vg.objid
 INNER JOIN vehicle_franchise_year vfy ON va.franchiseyearid = vfy.objid
 INNER JOIN vehicle_franchise vf ON vfy.franchiseid = vf.objid

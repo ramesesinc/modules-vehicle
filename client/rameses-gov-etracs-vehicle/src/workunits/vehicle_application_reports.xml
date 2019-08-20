@@ -15,7 +15,7 @@
                  target="popup" 
                  action="preview"
                  index="20"
-                 svisibleWhen="#{entity.dtapproved != null}"
+                 visibleWhen="#{task.state != 'draft'}"
                  reportName="com/rameses/gov/etracs/vehicle/reports/assessment.jasper"
                  reportId="vehicle_assessment"
                  />

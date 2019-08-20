@@ -23,7 +23,6 @@ vat.assignee_objid AS task_assignee_objid,
 vat.assignee_name AS task_assignee_name,
 vat.actor_objid AS task_actor_objid,
 vat.actor_name AS task_actor_name,
-vfy.renewaldate,
 
 vp.permitno as permit_permitno,
 vp.permittype as permit_permittype,

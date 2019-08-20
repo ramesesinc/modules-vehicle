@@ -7,6 +7,6 @@
 
 		<!-- this is the new or renew that initiated this entry-->
 		<field name="appid"  />	
-		<field name="renewaldate"  />			
+		<field name="permitid"  />	
 	</element>
 </schema>

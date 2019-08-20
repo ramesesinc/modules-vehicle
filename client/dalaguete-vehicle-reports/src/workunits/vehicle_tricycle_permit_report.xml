@@ -2,7 +2,7 @@
     <invokers>
         <invoker type="tricycle_permit" 
             caption="View Permit" index="-9" 
-            reportName="dalaguete/vehicle/tricycle/reports/DFRB-FORM-01.jasper" 
+            reportName="dalaguete/vehicle/tricycle/reports/PermitReport.jasper" 
             reportId="vehicle_permit"
             target="popup"
             action="preview"/>

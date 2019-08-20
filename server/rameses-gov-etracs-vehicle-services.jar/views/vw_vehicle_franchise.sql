@@ -14,10 +14,18 @@ SELECT
 	vfgi.owner_address_objid,
 	vfgi.owner_type,
 	vfgi.owner_address_text,
-	vfy.renewaldate,
 	vt.state AS appstate, 
-	vfgi.startdate 
+	vfgi.startdate,
+
+	vp.permitno as permit_permitno,
+	vp.permittype as permit_permittype,
+	vp.dtissued as permit_dtissued,
+	vp.expirydate as permit_expirydate,
+	vp.issuedby_name as permit_issuedby_name
+
 FROM vehicle_franchise vf 
 LEFT JOIN vehicle_franchise_year vfy ON vf.currentyearid = vfy.objid
 LEFT JOIN vehicle_franchise_generalinfo vfgi ON vfy.geninfoid = vfgi.objid
-LEFT JOIN vehicle_application_task vt ON vfy.appid = vt.refid;
+LEFT JOIN vehicle_application va ON vfy.appid = va.objid 
+LEFT JOIN vehicle_application_task vt ON va.taskid = vt.taskid
+LEFT JOIN vehicle_permit vp ON vfy.permitid = vp.objid 

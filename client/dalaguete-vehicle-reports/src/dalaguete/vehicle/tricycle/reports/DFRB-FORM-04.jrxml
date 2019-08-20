@@ -37,6 +37,7 @@
 	<field name="units" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
 	<field name="owner.address.text" class="java.lang.String"/>
+	<field name="controlno" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -253,7 +254,7 @@ of Municipality of Dalaguete
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{appno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{controlno}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>

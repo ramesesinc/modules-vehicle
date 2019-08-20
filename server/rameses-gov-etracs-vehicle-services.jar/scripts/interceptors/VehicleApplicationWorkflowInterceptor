@@ -29,7 +29,6 @@ class VehicleApplicationWorkflowInterceptor {
 	@Service("DateService")
 	def dateSvc;
 
-
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'release' && args[0].action == 'release' }")
 	public void beforeRelease( def evt ) {
 		def t = evt.args[0];
@@ -54,8 +53,10 @@ class VehicleApplicationWorkflowInterceptor {
 		appUnitList.each {
 			unitEm.find([objid:it.unitid]).update( [franchiseyearid: app.franchiseyearid ] );
 		}
-	}
 
+		//update the permitid in the vehicle_franchise_year 
+		franchiseYearEm.find([ objid: app.franchiseyearid ]).update( [permitid: app.permitid] ); 
+	}
 
 
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'payment' && args[0].action == 'post' }")

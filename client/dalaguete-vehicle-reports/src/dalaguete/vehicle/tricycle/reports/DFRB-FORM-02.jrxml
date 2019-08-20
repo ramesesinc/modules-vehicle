@@ -38,6 +38,7 @@
 	<field name="franchise.controlno" class="java.lang.String"/>
 	<field name="units" class="java.lang.Object"/>
 	<field name="owner.address.text" class="java.lang.String"/>
+	<field name="controlno" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -250,7 +251,7 @@ Series of  _______
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[       "I, "+ $F{owner.fullname} + " , Filipino citizen, a resident of " +  $F{owner.address.text} + 
+				<textFieldExpression   class="java.lang.String"><![CDATA["I, "+ $F{owner.fullname} + " , Filipino citizen, a resident of " +  $F{owner.address.text} + 
     ", after having been duly sworn to in accordance with law do hereby depose and say : \n" + 
 
       "1.   I am the present applicant for the Renewal/Change Unit of the DFRB Case No. " + $F{appno} +

@@ -13,15 +13,16 @@ class VehiclePrintReportInterceptor {
 	@DataContext("vw_vehicle_application")
 	def vwAppEm;
 
+	@DataContext("vehicle_assessment_item")
+	def vwFees;
+
+	@DataContext("vw_vehicle_permit_unit")
+	def vwPermitUnit;
+
 	@Service(value="EntityFinderService", connection="entity-server")
 	def entityFinder;
 
-	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_application' }")
-	public void getAppData( def evt ) {
-		def t = evt.args[0];
-		def result = evt.result;
-		def appid = t.parameters.objid;
-		def app = vwAppEm.find( [objid: appid ]).first(1);
+	private void loadOwnerInfo(def app) {
 		app.owner = entityFinder.find([objid: app.owner.objid]);
 		if( app.owner.type.toUpperCase() == 'INDIVIDUAL') {
 			def mi = "";
@@ -33,6 +34,30 @@ class VehiclePrintReportInterceptor {
 		else {
 			app.owner.fullname = app.owner.name;
 		};
+	}
+
+	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_application' }")
+	public void getAppData( def evt ) {
+		def t = evt.args[0];
+		def result = evt.result;
+		def appid = t.parameters.objid;
+		def app = vwAppEm.find( [objid: appid ]).first(1);
+		loadOwnerInfo( app );
+		app.unitcount = app.units.size();
+		result.data = app;
+	}
+
+	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_assessment' }")
+	public void getAssessmentData( def evt ) {
+		def t = evt.args[0];
+		def result = evt.result;
+		def appid = t.parameters.objid;
+		def app = vwAppEm.find( [objid: appid ]).first(1);
+		loadOwnerInfo(app);
+		app.billitems = vwFees.where( "parent.appid = :appid", [appid: appid ]).list();
+		app.billitems.each {
+			it.year = it.parent.year;
+		}
 		app.unitcount = app.units.size();
 		result.data = app;
 	}
@@ -43,7 +68,10 @@ class VehiclePrintReportInterceptor {
 		def result = evt.result;
 		def permitid = t.parameters.permitid;
 		def perm = vwPermitEm.find( [objid: permitid ]).first(1);
-		app.owner = entityFinder.find([objid: perm.owner.objid]);
+		loadOwnerInfo(perm);
+
+		perm.units = vwPermitUnit.find( [permitid: perm.objid ] ).where( " dtcreated <= :appdate AND dtdropped <= :appdate ", [appdate: perm.appdate] ).list();
+
 		perm.unitcount = perm.units.size();
 		result.data = perm;
 	}

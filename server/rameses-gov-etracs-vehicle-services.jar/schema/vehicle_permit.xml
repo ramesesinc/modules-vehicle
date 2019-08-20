@@ -8,7 +8,6 @@
 		<field name="issuedby_objid" required="true"/>
 		<field name="issuedby_name" required="true"/>
 		<field name="expirydate" />
-		<field name="appid" required="true"/>
 		<field name="txnmode" required="true"/>
 
 		<complex name="units" ref="vw_vehicle_unit_snapshot" jointype="one-to-many" required="false">

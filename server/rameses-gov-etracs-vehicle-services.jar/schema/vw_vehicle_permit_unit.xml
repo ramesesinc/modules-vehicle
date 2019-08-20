@@ -1,0 +1,23 @@
+<schema adapter="vehicledb">
+	<element tablename="vw_vehicle_permit_unit">
+		<field name="objid" primary="true" />
+		<field name="plateno" />
+		<field name="engineno" />
+		<field name="bodyno" />
+		<field name="sidecarno" />
+		<field name="make" />
+		<field name="model" />
+		<field name="color" />
+		<field name="chassisno" />
+		<field name="sidecarcolor" />
+		<field name="crname" />
+		<field name="insurancepolicyno" />
+		<field name="insurer" />
+		<field name="remarks" />
+		<field name="supersederid" />
+		<field name="franchiseyearid" />
+		<field name="permitid" />
+		<field name="dtcreated" />
+		<field name="dtdropped" />
+	</element>
+</schema>

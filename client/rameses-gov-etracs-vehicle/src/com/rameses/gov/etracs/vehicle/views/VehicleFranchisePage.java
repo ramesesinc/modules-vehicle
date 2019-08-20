@@ -168,7 +168,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "appyear"}
+                new Object[]{"name", "year"}
                 , new Object[]{"caption", "Year"}
                 , new Object[]{"width", 50}
                 , new Object[]{"minWidth", 50}

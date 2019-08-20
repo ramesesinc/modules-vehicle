@@ -18,6 +18,9 @@ class VehicleBillingInterceptor {
 		def result = evt.result;
 
 		def appid = t.parameters.appid;
+		if(appid==null) {
+			appid = t.parameters.objid;
+		}	
 
 		def app = vwAppEm.find( [objid: appid ] ).first();
 		def units = vwUnitEm.find( [franchiseid: app.franchiseid ] ).list();

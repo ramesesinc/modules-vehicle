@@ -34,7 +34,7 @@ class VehicleFranchiseListInterceptor {
 
 			case 'active':
 				m.year = dateSvc.getServerYear();
-				str = " NOT(currentyearid IS NULL) AND year = :year AND appstate='end'  ";  //vw_vehicle_franchise_unit_active
+				str = " NOT(currentyearid IS NULL) AND appstate = 'end' AND ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate >= NOW()))  ";  
 				break;
 
 			case 'processing':
@@ -43,7 +43,7 @@ class VehicleFranchiseListInterceptor {
 
 			case 'forrenewal':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(currentyearid IS NULL) AND year  = :year "; // AND expirydate <= NOW()
+				str = " NOT(currentyearid IS NULL) AND  ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate < NOW())) ";
 				break;
 
 			case 'delinquent':

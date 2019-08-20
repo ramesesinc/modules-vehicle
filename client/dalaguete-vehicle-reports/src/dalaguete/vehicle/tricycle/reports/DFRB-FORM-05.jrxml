@@ -36,6 +36,7 @@
 	<field name="franchise.controlno" class="java.lang.String"/>
 	<field name="vehicleunits" class="java.lang.Object"/>
 	<field name="vehicletype.title" class="java.lang.String"/>
+	<field name="controlno" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -244,7 +245,7 @@
 					<textElement>
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{appno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{controlno}]]></textFieldExpression>
 				</textField>
 			</band>
 		</title>
