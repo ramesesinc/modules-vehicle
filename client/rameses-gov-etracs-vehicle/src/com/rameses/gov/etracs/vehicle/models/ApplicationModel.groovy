@@ -55,7 +55,7 @@ public class ApplicationModel extends WorkflowTaskModel {
     }
     
     def getShowIssuePermitAction() {
-        return (task.state == 'release' && entity.permitid == null)
+        return (entity.permitid == null) &&  (task.state == 'release' || entity.txnmode == 'CAPTURE' );
     }
     
     

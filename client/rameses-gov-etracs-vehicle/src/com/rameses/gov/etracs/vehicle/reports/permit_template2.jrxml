@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="permit"
+		 name="permit_template2"
 
 		 language="groovy"		 columnCount="1"
 		 printOrder="Vertical"
@@ -100,7 +100,7 @@
 					<textElement textAlignment="Center">
 						<font pdfFontName="Helvetica" size="11" isBold="false"/>
 					</textElement>
-				<text><![CDATA[Republic of the Philippines1]]></text>
+				<text><![CDATA[Republic of the Philippines]]></text>
 				</staticText>
 				<staticText>
 					<reportElement

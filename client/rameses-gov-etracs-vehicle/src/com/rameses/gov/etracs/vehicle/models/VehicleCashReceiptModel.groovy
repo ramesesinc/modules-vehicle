@@ -7,9 +7,6 @@ import com.rameses.osiris2.client.*;
 
 public class VehicleCashReceiptModel extends com.rameses.treasury.common.models.BasicBillingCashReceiptModel {
     
-    void loadInfo1( def p ) {
-        MsgBox.alert("1")
-    }
     
     def loadInfo( def p ) {
         p.collectiontype = entity.collectiontype;
@@ -42,7 +39,7 @@ public class VehicleCashReceiptModel extends com.rameses.treasury.common.models.
         }
         
         entity.putAll( info ); 
-        billItemList = info.items;
+        billItemList = info.billitems;
         reloadItems(); 
         return super.start("entry");
     }    

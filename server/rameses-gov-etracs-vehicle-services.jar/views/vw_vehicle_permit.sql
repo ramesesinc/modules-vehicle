@@ -12,9 +12,12 @@ SELECT
    vg.phoneno,
    vg.email,
    vg.mobileno,
-   vfy.year 
+   vfy.year,
+    vt.objid AS vehicletype_objid,
+    vt.title AS vehicletype_title 
 FROM vehicle_permit vp
 INNER JOIN vehicle_application va ON vp.objid = va.permitid
 INNER JOIN vehicle_franchise_generalinfo vg ON va.geninfoid = vg.objid
 INNER JOIN vehicle_franchise_year vfy ON va.franchiseyearid = vfy.objid
 INNER JOIN vehicle_franchise vf ON vfy.franchiseid = vf.objid
+INNER JOIN vehicletype vt ON vf.vehicletypeid = vt.objid

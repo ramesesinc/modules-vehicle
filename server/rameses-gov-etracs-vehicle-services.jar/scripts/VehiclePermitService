@@ -41,7 +41,6 @@ class VehiclePermitService {
 		perm.expirydate = getExpiryDate( [appid: perm.appid ] ); 
 		perm = permitEm.create( perm );
 		appEm.find( [objid:perm.appid] ).update( [permitid: perm.objid ] );
-		franYearEm.find( [objid: app.franchiseyearid ] ).update([permitid: perm.objid ] );
 		return perm;
 	}
 

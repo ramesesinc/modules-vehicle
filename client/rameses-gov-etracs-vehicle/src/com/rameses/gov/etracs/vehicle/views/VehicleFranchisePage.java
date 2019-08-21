@@ -48,6 +48,8 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         jPanel3 = new javax.swing.JPanel();
         schemaList1 = new com.rameses.seti2.components.SchemaList();
 
+        xTabbedPane1.setName("sections"); // NOI18N
+
         xFormPanel5.setCaptionWidth(150);
 
         xLabel8.setCaption("Active Year");

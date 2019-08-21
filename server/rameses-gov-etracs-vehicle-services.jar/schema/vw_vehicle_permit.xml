@@ -20,6 +20,10 @@
 		<field name="email" />
 		<field name="mobileno" />
 		<field name="year" />
+		<field name="remarks" />
+
+		<field name="vehicletype_objid" />
+		<field name="vehicletype_title" />
 
 		<complex name="payments" ref="vehicle_payment" jointype="one-to-many" required="false">
 			<key field="appid" target="appid" />

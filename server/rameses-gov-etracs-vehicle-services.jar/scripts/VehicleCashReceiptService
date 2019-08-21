@@ -24,8 +24,10 @@ public class VehicleCashReceiptService {
 
 		// compute bill items 
 		def res = billingSvc.getBillItems( [appid: info.objid ] );
-		def items = res.billitems;
-		items.each {
+
+		def items = [];
+		res.billitems.each {
+			items << [ item: it.item, amount: it.amount, remarks: it.year ];
 			it.remarks = it.year;
 		}
 
@@ -34,7 +36,7 @@ public class VehicleCashReceiptService {
 			throw new Exception("This transaction is not available for payment");
 		}
 		// build results 
-		def resp = [items: items, billitems: items]; 
+		def resp = [items: items, billitems: res.billitems ]; 
 		resp.app = [appid: app.objid, taskid: app.taskid ];
 		resp.payer = app.owner;
 		resp.paidby = app.owner?.name; 

@@ -8,7 +8,7 @@
                  formId="#{vehicletype.objid}:vehicleunit:list"
                  role="MASTER" 
                  index="5"
-                 orderBy="appyear,controlno"
+                 orderBy="year,controlno"
                  /> 
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleUnitListModel" />

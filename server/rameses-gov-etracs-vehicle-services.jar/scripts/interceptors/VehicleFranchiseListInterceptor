@@ -15,6 +15,7 @@ class VehicleFranchiseListInterceptor {
 		result << [ title: 'Processing', id:'processing'];
 		result << [ title: 'For Renewal', id:'forrenewal'];
 		result << [ title: 'Delinquent', id:'delinquent'];
+		result << [ title: 'Dropped', id:'dropped'];
 	}
 
 	@Before(pattern="QueryService.getList", eval="#{args[0]._schemaname == 'vw_vehicle_franchise' }")
@@ -34,7 +35,7 @@ class VehicleFranchiseListInterceptor {
 
 			case 'active':
 				m.year = dateSvc.getServerYear();
-				str = " NOT(currentyearid IS NULL) AND appstate = 'end' AND ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate >= NOW()))  ";  
+				str = " NOT(currentyearid IS NULL) AND NOT(state='DROPPED') AND appstate = 'end' AND ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate >= NOW()))  ";  
 				break;
 
 			case 'processing':
@@ -43,13 +44,17 @@ class VehicleFranchiseListInterceptor {
 
 			case 'forrenewal':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(currentyearid IS NULL) AND  ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate < NOW())) ";
+				str = " NOT(currentyearid IS NULL) AND  NOT(state = 'DROPPED') AND  ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate < NOW())) ";
 				break;
 
 			case 'delinquent':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(currentyearid IS NULL) AND year < :year";
+				str = " NOT(currentyearid IS NULL) AND  NOT(state = 'DROPPED') AND year < :year";
 				break;
+
+			case 'dropped':
+				str = " state = 'DROPPED' ";
+				break;					
 		}
 
 		//add to first position of where

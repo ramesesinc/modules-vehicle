@@ -2,7 +2,7 @@
     <invokers>
         <invoker type="vehicle_basic_permit" 
             caption="View Permit" index="-9" 
-            reportName="com/rameses/gov/etracs/vehicle/reports/permit.jasper" 
+            reportName="com/rameses/gov/etracs/vehicle/reports/permit_template1.jasper" 
             reportId="vehicle_permit"
             target="popup"
             action="preview"/>

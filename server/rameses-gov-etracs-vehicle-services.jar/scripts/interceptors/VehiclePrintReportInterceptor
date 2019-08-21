@@ -69,9 +69,7 @@ class VehiclePrintReportInterceptor {
 		def permitid = t.parameters.permitid;
 		def perm = vwPermitEm.find( [objid: permitid ]).first(1);
 		loadOwnerInfo(perm);
-
-		perm.units = vwPermitUnit.find( [permitid: perm.objid ] ).where( " dtcreated <= :appdate AND dtdropped <= :appdate ", [appdate: perm.appdate] ).list();
-
+		perm.units = vwPermitUnit.find( [permitid: perm.objid ] ).where( " dtcreated <= :appdate AND (dtdropped IS NULL OR dtdropped <= :appdate)", [appdate: perm.appdate] ).list();
 		perm.unitcount = perm.units.size();
 		result.data = perm;
 	}

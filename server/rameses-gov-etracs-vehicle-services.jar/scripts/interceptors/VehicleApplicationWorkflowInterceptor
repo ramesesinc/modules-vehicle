@@ -45,8 +45,11 @@ class VehicleApplicationWorkflowInterceptor {
 			franchiseYearEm.find([ objid: app.franchiseyearid ]).update( [geninfoid: app.geninfoid] ); 
 		}
 		else if ( app.apptype == 'DROP_FRANCHISE' ) {
-			franchiseEm.find([ objid: app.franchiseid ]).update([ currentyearid: '{NULL}' ]); 
+			franchiseEm.find([ objid: app.franchiseid ]).update([ state: 'DROPPED' ]); 
 		} 
+		else {
+			franchiseEm.find([ objid: app.franchiseid ]).update([ state: 'ACTIVE' ]); 		
+		}
 
 		//update all the linked units to the current year. No discrimination.
 		def appUnitList = appUnitEm.find( [appid: app.objid ] ).list();

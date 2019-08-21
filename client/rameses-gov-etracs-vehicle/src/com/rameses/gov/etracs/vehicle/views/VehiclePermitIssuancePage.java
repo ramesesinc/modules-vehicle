@@ -53,6 +53,7 @@ public class VehiclePermitIssuancePage extends javax.swing.JPanel {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 60));
 
         xTextArea1.setCaption("Remarks");
+        xTextArea1.setLineWrap(true);
         xTextArea1.setName("entity.remarks"); // NOI18N
         jScrollPane1.setViewportView(xTextArea1);
 

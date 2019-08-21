@@ -27,7 +27,7 @@ public class VehiclePaymentService {
 		pmt.voided = 0;
 		pmt.txnmode = o.txnmode;
 		pmt.remarks = o.remarks;
-		pmt.items = o.items.collect{ [refid: it.refid, amount: it.amount, discount: it.discount, surcharge: it.surcharge, interest: it.interest, remarks: it.remarks]  };
+		pmt.items = o.billitems.collect{ [refid: it.refid, amount: it.amount, discount: it.discount, surcharge: it.surcharge, interest: it.interest, remarks: it.remarks]  };
 		paymentEm.create( pmt );
 
 		//post the amounts into the respective ledgers
