@@ -22,7 +22,9 @@ public class VehicleBillingService {
 		def sel = "billcode:{item.objid},amount:{amount-amtpaid},sortorder:{item.sortorder},account_objid:{item.item.objid},account_title:{item.item.title},account_code:{item.item.code},account_fund_objid:{item.item.fund.objid},year:{parent.year},refid:{objid}";	
 		def items = feeEm.select(sel).where( "parent.appid = :appid AND amount-amtpaid > 0 ", [appid: pp.appid ] ).orderBy("parent.year, item.sortorder" ).list();
 		
-		def req = [rulename: 'vehiclebilling', params: [appid: pp.appid ] ];
+		def req = [rulename: 'vehiclebilling', params: [appid: pp.appid] ];
+		if( pp.include_items ) req.include_items = true;
+
 		def app = vwAppEm.find( [objid: pp.appid ] ).first();
 		def facts = [];
 		facts << new vehicle.facts.VehicleApplication( app );

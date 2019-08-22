@@ -9,6 +9,12 @@ public class VehicleCashReceiptService {
 	@Service("VehicleBillingService")
 	def billingSvc;
 
+	@DataContext("vehicle_itemaccount")
+	def itemAcct;
+
+	@Service("NumberService")
+	def numSvc;
+
 	@ProxyMethod
 	public def getBilling( pp ) {
 
@@ -18,23 +24,24 @@ public class VehicleCashReceiptService {
 		if ( !param?.id ) throw new Exception('id parameter is required in VehicleBillingService'); 
 		if ( !param?.action ) throw new Exception('action parameter is required in VehicleBillingService'); 
 
-		def info = vwappEm.find([ appno: param.id ]).select('objid').first();
-		if ( !info ) info = vwappEm.find([ franchiseid: param.id ]).select('objid').first(); 
-		if ( !info ) throw new Exception('Transaction number not found');  
+		def info = vwappEm.find([ appno: param.id ]).where(" task.state = 'payment' ").first();
+		if ( !info ) info = vwappEm.find([ franchiseid: param.id ]).where(" task.state = 'payment' ").first(); 
+		if ( !info ) throw new Exception('Transaction not found or is not yet available for payment');  
 
 		// compute bill items 
-		def res = billingSvc.getBillItems( [appid: info.objid ] );
-
-		def items = [];
+		def res = billingSvc.getBillItems( [appid: info.objid, include_items: true ] );
 		res.billitems.each {
-			items << [ item: it.item, amount: it.amount, remarks: it.year ];
 			it.remarks = it.year;
 		}
 
-		def app = vwappEm.find([ objid: info.objid ]).first();
-		if( app.task.state != 'payment') {
-			throw new Exception("This transaction is not available for payment");
+		def itemGrp = res.items.groupBy{ it.billcode };
+		def items = [];
+		itemGrp.each { k,lst->
+			def acct = itemAcct.find( [objid: k] ).first();
+			items << [ item: acct.item, amount: numSvc.round( lst.sum{ it.amount } ) ];
 		}
+
+		def app = info;
 		// build results 
 		def resp = [items: items, billitems: res.billitems ]; 
 		resp.app = [appid: app.objid, taskid: app.taskid ];

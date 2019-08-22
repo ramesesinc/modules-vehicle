@@ -4,6 +4,7 @@ import com.rameses.rcp.annotations.*;
 import com.rameses.rcp.common.*;
 import com.rameses.osiris2.common.*;
 import com.rameses.osiris2.client.*;
+import com.rameses.util.*;
 
 public class VehicleCashReceiptModel extends com.rameses.treasury.common.models.BasicBillingCashReceiptModel {
     
@@ -40,7 +41,7 @@ public class VehicleCashReceiptModel extends com.rameses.treasury.common.models.
         
         entity.putAll( info ); 
         billItemList = info.billitems;
-        reloadItems(); 
+        entity.amount = NumberUtil.round( entity.items.sum{ it.amount } );
         return super.start("entry");
     }    
 }
