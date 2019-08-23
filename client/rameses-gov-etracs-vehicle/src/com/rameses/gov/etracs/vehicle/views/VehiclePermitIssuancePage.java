@@ -41,13 +41,13 @@ public class VehiclePermitIssuancePage extends javax.swing.JPanel {
 
         xTextField1.setCaption("Permit No");
         xTextField1.setName("entity.permitno"); // NOI18N
-        xTextField1.setVisibleWhen("#{ app.txnmode == 'CAPTURE'  || !app.apptype.matches('NEW|RENEW') }");
+        xTextField1.setVisibleWhen("#{ app.txnmode == 'CAPTURE'  }");
         xTextField1.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel1.add(xTextField1);
 
         xDateField1.setCaption("Date Issued");
         xDateField1.setName("entity.dtissued"); // NOI18N
-        xDateField1.setVisibleWhen("#{ app.txnmode == 'CAPTURE' || !app.apptype.matches('NEW|RENEW')  }");
+        xDateField1.setVisibleWhen("#{ app.txnmode == 'CAPTURE'  }");
         xFormPanel1.add(xDateField1);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(0, 60));

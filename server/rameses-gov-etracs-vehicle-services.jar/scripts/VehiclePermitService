@@ -21,6 +21,9 @@ class VehiclePermitService {
 	@Service("ControlnoGeneratorService")
 	def controlNoSvc;
 
+	@DataContext("vw_vehicle_franchise_year")
+	def vwFranchiseYear;
+
 	@Service("BillingRuleService")
 	def billingRuleSvc;
 
@@ -28,9 +31,20 @@ class VehiclePermitService {
 	public def create( def perm ) { 
 		def app = appEm.find([objid: perm.appid]).first();
 		if( !perm.permitno ) {
-			if( !app?.vehicletype?.permitnopattern )
-				throw new Exception("Please specify permitnopattern in vehicletype");
-			perm.permitno = controlNoSvc.getNextNo( app.vehicletype.permitnopattern );	
+
+			if(!app.apptype.matches('NEW|RENEW')) {
+				//get the previous permit no from the current year and simply add version.
+				def old =  vwFranchiseYear.find( [objid: app.franchiseyearid ] ).first();
+				def pttn = old.permit?.permitno;
+				if(!pttn) throw new Exception("There is no previous permit issued");
+				pttn = pttn + "-[%02d]";
+				perm.permitno = controlNoSvc.getNextNo( pttn );	
+			}
+			else {
+				if( !app?.vehicletype?.permitnopattern )
+					throw new Exception("Please specify permitnopattern in vehicletype");
+				perm.permitno = controlNoSvc.getNextNo( app.vehicletype.permitnopattern );				
+			}
 		}
 		if(!perm.dtissued) {
 			perm.dtissued = dateSvc.getServerDate();

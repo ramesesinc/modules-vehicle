@@ -1,0 +1,27 @@
+import com.rameses.annotations.*
+import com.rameses.common.*
+
+class TestNotificationService {
+    	
+    @XConnection('socketio')
+    def socketio;
+
+    @ProxyMethod
+    public void send(data) {
+        println 'notify => ' + data 
+        def event = data.event ? data.event : 'notification';
+        socketio.send(event, data)
+    }
+
+    @ProxyMethod
+    public def getData(params) {
+        println "entering .... " + params;
+        return params ;
+        /*
+        return [
+            [state: 'DRAFT', count: 100],
+            [state: 'CURRENT', count: 100],
+        ]
+        */
+    }
+}
