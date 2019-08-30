@@ -1,6 +1,10 @@
 <schema adapter="vehicledb">
 	<element tablename="vw_vehicle_permit">
 		<field name="objid" primary="true"/>
+
+		<field name="controlno" />
+		<field name="year" />
+
 		<field name="state" />
 		<field name="permitno" />
 		<field name="permittype" />
@@ -10,7 +14,6 @@
 		<field name="expirydate" />
 		<field name="appid" />
 		<field name="txnmode" />
-		<field name="controlno" />
 		<field name="appno" />
 		<field name="appdate" />
 		<field name="owner_objid" />
@@ -19,9 +22,7 @@
 		<field name="phoneno" />
 		<field name="email" />
 		<field name="mobileno" />
-		<field name="year" />
 		<field name="remarks" />
-
 		<field name="vehicletype_objid" />
 		<field name="vehicletype_title" />
 

@@ -36,6 +36,14 @@ class VehicleApplicationWorkflowInterceptor {
 		if(!app.permitid) throw new Exception("Permit (new or updated) must be issued before releasing")
 	}
 
+	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'assessment' && args[0].action == 'submit' }")
+	public void checkHasFees( def evt ) {
+		def t = evt.args[0];
+		//check there has to be at least one fee assessed.
+		def cnt = vFee.where("parent.appid = :appid", [appid: t.refid ]).select("cnt:{COUNT(*)}").val();
+		if(!cnt) throw new Exception("There must be at least one assessment item");
+	}
+
 	@After(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'release' && args[0].action == 'release' }")
 	public void afterRelease( def evt ) {
 		def t = evt.args[0];
