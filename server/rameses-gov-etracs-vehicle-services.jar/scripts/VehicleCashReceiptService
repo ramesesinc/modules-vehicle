@@ -3,8 +3,8 @@ import com.rameses.annotations.*;
 
 public class VehicleCashReceiptService {
 	
-	@DataContext("vw_vehicle_application")
-	def vwappEm;
+	@DataContext("vehicle_application")
+	def appEm;
 
 	@Service("VehicleBillingService")
 	def billingSvc;
@@ -17,37 +17,25 @@ public class VehicleCashReceiptService {
 
 	@ProxyMethod
 	public def getBilling( pp ) {
-
 		def param = pp.params;
 		if ( !param ) throw new Exception('params argument is required in VehicleBillingService'); 
 
 		if ( !param?.id ) throw new Exception('id parameter is required in VehicleBillingService'); 
 		if ( !param?.action ) throw new Exception('action parameter is required in VehicleBillingService'); 
 
-		def info = vwappEm.find([ appno: param.id ]).where(" task.state = 'payment' ").first();
-		if ( !info ) info = vwappEm.find([ franchiseid: param.id ]).where(" task.state = 'payment' ").first(); 
-		if ( !info ) throw new Exception('Transaction not found or is not yet available for payment');  
+		def app = appEm.find([ appno: param.id ]).where(" task.state = 'payment' ").first();
+		if ( !app ) app = appEm.find([ franchiseid: param.id ]).where(" task.state = 'payment' ").first(); 
+		if ( !app ) throw new Exception('Transaction not found or is not yet available for payment');  
 
 		// compute bill items 
-		def res = billingSvc.getBillItems( [appid: info.objid, include_items: true ] );
-		res.billitems.each {
-			it.remarks = it.year;
-		}
+		def res = billingSvc.getBillItems( [appid: app.objid, include_items: true, amtpaid: param.amtpaid ] );
 
-		def itemGrp = res.items.groupBy{ it.billcode };
-		def items = [];
-		itemGrp.each { k,lst->
-			def acct = itemAcct.find( [objid: k] ).first();
-			items << [ item: acct.item, amount: numSvc.round( lst.sum{ it.amount } ) ];
-		}
+		def resp = [items: res.items, billitems: res.billitems ]; 
+		resp.app = [appid: app.objid ];
+		resp.payer = app.account.owner;
+		resp.paidby = app.account.owner?.name  +  ' (' + app.franchise.controlno + ')';
+		resp.paidbyaddress = app.account.owner?.address?.text; 
 
-		def app = info;
-		// build results 
-		def resp = [items: items, billitems: res.billitems ]; 
-		resp.app = [appid: app.objid, taskid: app.taskid ];
-		resp.payer = app.owner;
-		resp.paidby = app.owner?.name; 
-		resp.paidbyaddress = app.owner?.address?.text; 
 		return resp; 
 	}
 

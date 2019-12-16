@@ -1,20 +1,34 @@
 <workunit schemaName="vehicle_application">
     <invokers>
         <invoker folderid="menucategory/vehicle/application"  apptype="NEW"
-                 action="startOnline" caption="New Application"  index="10" role="INFO"/>
+                 action="startNew" caption="New Vehicle Application"  index="10" role="INFO"/>
+        
+        <invoker folderid="menucategory/vehicle/application"
+                 action="startCapture" caption="Capture Application"  index="10" role="INFO"/>
+        
+        <invoker folderid="menucategory/vehicle/application"  apptype="RENEW"
+                 action="startSearch" caption="Vehicle Renewal"  index="11" role="INFO"/>
+        
+        <invoker folderid="menucategory/vehicle/application"  apptype="CHANGE_OWNER"
+                 action="startSearch" caption="Change Owner"  index="20" role="INFO"/>
+
+        <invoker folderid="menucategory/vehicle/application"  apptype="CHANGE_UNIT"
+                 action="startSearch" caption="Change Unit"  index="21" role="INFO"/>
+
+        <invoker folderid="menucategory/vehicle/application"  apptype="CHANGE_OWNER_UNIT"
+                 action="startSearch" caption="Change Owner Unit"  index="22" role="INFO"/>
+
+        <invoker folderid="menucategory/vehicle/application"  apptype="DROP"
+                action="startSearch" caption="Drop Unit"  index="23" role="INFO"/>
+
+        <!-- actions -->
+        <invoker type="formActions" action="doNext" caption="Next" visibleWhen="#{mode == 'search' }" />        
+        <invoker type="formActions" action="save" caption="Save" visibleWhen="#{ mode == 'initial' }" />
+        
     </invokers>
-    <code class="com.rameses.gov.etracs.vehicle.models.ApplicationEntryModel" />
-    <pageflow>
-        <start>
-            <transition to="entry" />
-        </start>
-        <page name="entry" title="#{vehicletype.title} Application Initial (#{entity.apptype} #{entity.txnmode})">
-            <transition to="end" caption="Submit" action="save"  
-                        confirm="You are about to create this application. Proceed?"/>
-        </page>
-        <end/>
-    </pageflow>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleApplicationInitialModel" />
     <pages>
-        <page name="entry" template="com.rameses.gov.etracs.vehicle.views.ApplicationEntryPage" />
+        <page name="search" template="com.rameses.gov.etracs.vehicle.views.VehicleApplicationSearchPage" />        
+        <page name="initial" template="com.rameses.gov.etracs.vehicle.views.VehicleApplicationInitialPage" />
     </pages>
 </workunit>

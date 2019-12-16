@@ -6,7 +6,7 @@ class VehicleFranchiseListInterceptor {
 	@Service("DateService")
 	def dateSvc;
 
-	@After(pattern="QueryService.getNodeList", eval="#{args[0]._schemaname == 'vw_vehicle_franchise' }")
+	@After(pattern="QueryService.getNodeList", eval="#{args[0]._schemaname == 'vehicle_franchise' }")
 	public void getNodeList(def evt) {
 		def result = evt.result;
 		result << [ title: 'All', id:'all'];
@@ -18,7 +18,7 @@ class VehicleFranchiseListInterceptor {
 		result << [ title: 'Dropped', id:'dropped'];
 	}
 
-	@Before(pattern="QueryService.getList", eval="#{args[0]._schemaname == 'vw_vehicle_franchise' }")
+	@Before(pattern="QueryService.getList", eval="#{args[0]._schemaname == 'vehicle_franchise' }")
 	public void loadList(def evt) {
 		def o = evt.args[0];
 		//o.debug = true;
@@ -30,26 +30,26 @@ class VehicleFranchiseListInterceptor {
 
 		switch( o.node.id ) {
 			case 'unassigned':
-				str = " currentyearid IS NULL ";
+				str = " unitid IS NULL ";
 				break;
 
 			case 'active':
 				m.year = dateSvc.getServerYear();
-				str = " NOT(currentyearid IS NULL) AND NOT(state='DROPPED') AND appstate = 'end' AND ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate >= NOW()))  ";  
+				str = " NOT(unitid IS NULL) AND app.task.state = 'end' AND NOT(permitid IS NULL) AND (permit.expirydate > NOW() ) ";  
 				break;
 
 			case 'processing':
-				str = " NOT(appstate = 'end') ";
+				str = "  NOT(appid IS NULL) AND NOT(app.task.state = 'end') ";
 				break;
 
 			case 'forrenewal':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(currentyearid IS NULL) AND  NOT(state = 'DROPPED') AND  ((permit.expirydate IS NULL AND year =:year) OR (permit.expirydate < NOW())) ";
+				str = " NOT(unitid IS NULL) AND  ( permit.expirydate < NOW() ) "
 				break;
 
 			case 'delinquent':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(currentyearid IS NULL) AND  NOT(state = 'DROPPED') AND year < :year";
+				str = " NOT(unitid IS NULL) AND app.appyear < :year";
 				break;
 
 			case 'dropped':

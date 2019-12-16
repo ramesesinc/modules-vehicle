@@ -1,0 +1,17 @@
+<workunit extends="com/rameses/seti2/templates/FormReport.xml">
+    <invokers>
+        
+        <invoker type="vehicle_application:form:appActions" 
+                 caption="View Billing" 
+                 target="popup" 
+                 action="preview"
+                 index="30"
+                 reportId="vehicle_billing" 
+                 visibleWhen="#{
+                    task.state.matches('assessment|approval|billing') 
+                    &amp;&amp; task.assignee.objid!=null 
+                    &amp;&amp; task.assignee.objid == userid }"/>
+        
+    </invokers> 
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel"/>
+</workunit>

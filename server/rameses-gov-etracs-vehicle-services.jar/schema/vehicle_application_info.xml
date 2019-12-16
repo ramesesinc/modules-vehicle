@@ -1,23 +1,26 @@
-<schema adapter="vehicledb">
+<schema>
 	<element tablename="vehicle_application_info">
-		<field name="objid" primary="true" prefix="VAPPI"/>
-		<field name="appid" required="true" />
-		<field name="name" required="true" />
+		<field name="objid" primary="true" prefix="VAPPINFO"/>
+		<field name="appid" required="true"/>
+		<field name="name" />
 		<field name="stringvalue" />
 		<field name="decimalvalue" type="decimal"/>
 		<field name="intvalue" type="integer"/>
-		<field name="booleanvalue" type="boolean"/>
-		<field name="datevalue" type="date"/>
+		<field name="datevalue"  type="date"/>
+		<field name="booleanvalue"  type="boolean"/>
 		<field name="lov_objid" />
 		<field name="lookup_objid" />
 		<field name="lookup_title" />
-		<complex name="objvalue" required="false" serializer="default"/>
-		<field name="sortorder" />
+		<field name="objvalue" />
+		<field name="sortorder" type="integer"/>
 
-		<complex name="variable" ref="vehicle_variable" jointype="many-to-one" required="false" includefields="datatype,caption,arrayvalues,category,sortorder">
+		<complex name="type" ref="vehicle_variable" jointype="many-to-one">
 			<key field="name" target="objid" />
-		</complex> 	
+		</complex>	
+
+		<field name="value" expr=" CASE type.datatype WHEN 'boolean' THEN booleanvalue WHEN 'integer' THEN intvalue WHEN 'decimal' THEN decimalvalue WHEN 'datevalue' THEN datevalue ELSE stringvalue  END" />
+
 	</element>
-
-
 </schema>
+
+

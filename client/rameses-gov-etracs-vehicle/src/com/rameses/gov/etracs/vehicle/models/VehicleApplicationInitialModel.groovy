@@ -1,0 +1,188 @@
+package com.rameses.gov.etracs.vehicle.models;
+
+import com.rameses.rcp.annotations.*;
+import com.rameses.rcp.common.*;
+import com.rameses.osiris2.common.*;
+import com.rameses.osiris2.common.*;
+import com.rameses.osiris2.client.*;
+import com.rameses.seti2.models.*;
+import com.rameses.util.*;
+
+public class VehicleApplicationInitialModel   {
+    
+    @Service("VehicleApplicationService")
+    def appSvc;
+
+    @Service("DateService")
+    def dateSvc;
+    
+    @Service("SchemaService")
+    def schemaSvc;
+    
+    @Service("QueryService")
+    def querySvc;
+
+    @Invoker 
+    def invoker;
+    
+    @Binding
+    def binding;
+    
+    def mode = "initial";
+    def owner;
+    def searchOption = "controlno";
+    def vehicletype;
+    def entity;
+    def appTypes = ["NEW", "RENEW"]; 
+    def controlno;
+    def apptype;
+    def formControls = [];
+    boolean editableUnit = false;
+    boolean editableOwner = false;
+    def franchise;
+    
+    
+    
+    public String getTitle() {
+        return invoker?.caption + " " + vehicletype.title + " Initial";
+    }
+    
+    @FormId
+    public String getFormId() {
+        return vehicletype.objid + ":" +entity.apptype +":" + entity.txnmode + ":new"; 
+    }
+    
+    @PropertyChangeListener
+    def listener = [
+        "entity.account.owner" : { o->
+            entity.account.contact.phoneno = o.phoneno;
+            entity.account.contact.mobileno = o.mobileno;
+            entity.account.contact.email = o.email;
+            binding.refresh("entity.account.contact.(phoneno|mobileno|email)");
+        },
+        "apptype" : { o->
+            entity.apptype = o;
+        },
+        "entity.appdate" : { o->
+            def r = appSvc.getExpiryDate( [appdate:o, vehicletype: vehicletype, apptype: entity.apptype ] );   
+            entity.appyear = r.appyear;
+            binding.refresh("entity.appyear");
+        }
+    ]
+
+    void initNew(def tmode) {
+        entity = [:];
+        entity.unit = [:];        
+        entity.account = [contact:[:]];
+        entity.txnmode = tmode;
+        apptype = invoker.properties.apptype;
+        entity.apptype = apptype;
+        mode = "initial";
+        if(tmode!="CAPTURE") {
+            if( apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT") ) editableUnit = true;
+            if( apptype.matches("NEW|CHANGE_OWNER|CHANGE_OWNER_UNIT") ) editableOwner = true;            
+        }
+        else {
+            editableUnit = true;
+            editableOwner = true;
+        }
+        
+        buildControls();
+    }
+
+    def startCapture() {
+        initNew("CAPTURE");
+        appTypes = ["NEW", "RENEW"]; 
+        entity.apptype = "NEW";
+        return mode;
+    }
+    
+    def startNew() {
+        initNew("ONLINE");
+        entity.appdate = dateSvc.getServerDate();
+        def r = appSvc.getExpiryDate( [appdate:entity.appdate, vehicletype: vehicletype, apptype: "NEW" ] );   
+        entity.appyear = r.appyear;
+        return mode;
+    }
+    
+    def startSearch() {
+        initNew("ONLINE");
+        appTypes = ["NEW", "RENEW", "CHANGE_UNIT", "CHANGE_OWNER", "CHANGE_OWNER_UNIT", "DROP"]; //this is a dummy routine to fix combo error
+        mode = "search";
+        return mode;
+    }
+    
+    def doNext() {
+        def o = searchFranchise();
+        if(o==null) {
+            return null;
+        }
+        entity.franchise = o;
+        entity.appyear = o.remove("appyear");
+        entity.appdate = o.remove("appdate");        
+        entity.account = o.remove("account");
+        entity.unit = o.remove("unit");
+        entity.apptype = apptype;
+        if( apptype.matches("CHANGE_UNIT|CHANGE_OWNER_UNIT") ) {
+            entity.unit = [:];
+        }
+        if( apptype.matches("CHANGE_OWNER|CHANGE_OWNER_UNIT") ) {
+            entity.account = [:];
+            entity.account.owner = [:];
+            entity.account.contact = [:];            
+        }
+        mode = "initial";
+        return mode;
+    }
+    
+    def searchFranchise() {
+        if( searchOption == "owner" ) {
+            controlno = null;
+            def p = [:];
+            p.put("query.ownerid", owner.objid );
+            p.put("query.vehicletypeid", vehicletype.objid );
+            p.onselect = { o->
+                controlno = o.objid;
+                return "_close";
+            }
+            Modal.show("vehicle_franchise:byowner:lookup", p );
+        }
+        if(!controlno) return null;
+        return appSvc.findControlNoForApplication( [controlno: controlno, apptype: apptype ] );
+    }
+
+    def getLookupFranchise() {
+        def p = [:];
+        p.query = [ vehicletypeid: vehicletype.objid ];    
+        return Inv.lookupOpener("vehicle_franchise:available:lookup", p );
+    }
+    
+    public def save() {
+        if(!MsgBox.confirm("You are about to save this entry. Proceed?")) return ;
+        entity = appSvc.create( entity );
+        def op =  Inv.lookupOpener("vehicle_application:open", [entity: entity ] );
+        op.target = "topwindow";
+        return op;
+    }
+    
+    void buildControls() {
+        def schemaFields = schemaSvc.getSchema( [name: "vehicle_unit"] ).fields;
+        def xfields = vehicletype.allowedfields.split("\\|");
+        xfields.each { fname->
+            def fld = schemaFields.find{ it.name == fname };
+            if( fld ) {
+                def dt = [caption: fld.caption, name: 'entity.unit.'+fld.name, type:fld.type ];
+                if(!dt.type) dt.type = "text";
+                if(fld.width) 
+                    dt.width = fld.width.toInteger()*2;
+                else
+                    dt.width = 100;
+                if(!editableUnit) dt.enabled = false;
+                dt.captionWidth = 150;
+                formControls << dt;
+            }
+        }
+    }
+    
+    
+}

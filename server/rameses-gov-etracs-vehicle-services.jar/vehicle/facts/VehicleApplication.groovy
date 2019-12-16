@@ -20,18 +20,23 @@ public class VehicleApplication {
 		return dt;
 	}
 
+	public VehicleApplication() {
+	}		
+
 	public VehicleApplication( def m ) {
-		controlno = m.controlno;
+		controlno = m.franchise.controlno;
 		apptype = m.apptype;
-		objid = m.objid;		
-		vehicletype  = m.vehicletypeid;
+		objid = m.objid;
+		vehicletype  = m.franchise.vehicletype.objid;
 		if( m.appyear ) appyear = m.appyear;
 		if( m.year ) appyear = m.year;
-		
 		if( m.appdate ) {
 			appdate = fixDate( m.appdate );
 		}	
+	}
 
+	public void setAppdate( def dt ) {
+		appdate = fixDate( dt );		
 	}
 
 }

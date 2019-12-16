@@ -15,7 +15,7 @@ public class VehicleApplicationListModel extends WorkflowTaskListModel {
     }
  
     public def getCustomFilter() {
-        return ["vehicletypeid = :id", [id:  vehicletype.objid ] ];
+        return ["franchise.vehicletypeid = :id", [id:  vehicletype.objid ] ];
     }
     
 }

@@ -16,6 +16,8 @@ public class VehicleFranchiseModel extends CrudFormModel {
     @Service("SchemaService")
     def schemaSvc;
     
+    def formControls;
+    
     public String getTitle() {
         return entity.controlno ;
     }
@@ -36,29 +38,27 @@ public class VehicleFranchiseModel extends CrudFormModel {
         return entity.vehicletype;
     }
 
-    def fields;
     void afterOpen() {
-        fields = [];
-        if( !vehicletype.allowedfields ) throw new Exception("Error in opening application form. vehicletype allowed fields must not be null");
-        schemaSvc.getSchema( [name:"vehicle_unit" ] )?.fields.collect{
-            if(!it.included) return;
-            def n = it.name;
-            if(n.contains("_")) n = it.name.split("_")[0];
-            if( n.matches(vehicletype.allowedfields)) {
-                it.name = "unit."+it.name;
-                fields << it;
+        if(!vehicletype.allowedfields) 
+            throw new Exception("Please configure allowed fields in vehicletype")
+        formControls = [];
+        def schemaFields = schemaSvc.getSchema( [name: "vehicle_unit"] ).fields;
+        def xfields = vehicletype.allowedfields.split("\\|");
+        xfields.each { fname->
+            def fld = schemaFields.find{ it.name == fname };
+            if( fld ) {
+                def dt = [caption: fld.caption, name: 'entity.unit.'+fld.name, type:fld.type ];
+                if(!dt.type) dt.type = "text";
+                if(fld.width) 
+                    dt.width = fld.width.toInteger()*2;
+                else
+                    dt.width = 100;
+                dt.enabled = false;
+                dt.captionWidth = 150;
+                formControls << dt;
             }
-        };
+        }
+        
     }
     
-    def unitListModel = [
-        getColumnList: {
-            return fields;
-        },
-        fetchList : { o->
-            def m = [_schemaname: "vw_vehicle_franchise_unit_active" ];
-            m.findBy = [ franchiseid: entity.objid ];
-            return queryService.getList( m );
-        }
-    ] as BasicListModel;
 }

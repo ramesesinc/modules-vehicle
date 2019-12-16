@@ -8,20 +8,22 @@ public class VehiclePaymentService {
 	@DataContext("vehicle_payment")
 	def paymentEm;
 
-	@DataContext("vehicle_assessment_item")
+	@DataContext("vehicle_application_fee")
 	def feeEm;
 
-	@DataContext("vw_vehicle_application")
-	def vwAppEm;
+	@DataContext("vehicle_application")
+	def appEm;
 
 	@ProxyMethod
 	public void postPayment(def o ) {
+		if(!o.reftype) o.reftype = "cashreceipt";
+
 		def pmt = [:];
 		pmt.txndate = o.txndate;
 		pmt.appid = o.app.appid;
 		pmt.refdate = o.receiptdate;
 		pmt.refno = o.receiptno;
-		pmt.reftype = "cashreceipt";
+		pmt.reftype = o.reftype;
 		pmt.refid = o.objid;
 		pmt.amount = o.amount;
 		pmt.voided = 0;
@@ -35,37 +37,36 @@ public class VehiclePaymentService {
 			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid + :amt}"], [amt: it.amount] );
 		}
 
-		if( o.app.taskid !=null ) {
-			def m = [processname: 'vehicle_application'];
-			m.taskid = o.app.taskid;
-			m.refid = o.app.appid;
-			m.taskstate = 'payment';
-			m.action = 'post';
-			taskSvc.signal( m );
-		}
+		def app = appEm.find( [objid: o.app.appid ] ).first();
+		def m = [processname: 'vehicle_application'];
+		m.taskid = app.taskid;
+		m.refid = app.objid;
+		m.taskstate = 'payment';
+		m.action = 'post';
+		taskSvc.signal( m );
 
 	}
 
 	@ProxyMethod
 	public void voidPayment(def o ) {
 		//check first if we can still void the transaction
-
 		def pmt = paymentEm.find( [refid: o.receipt.objid  ]).first(1);
-		def app = vwAppEm.find( [objid: pmt.appid ] ).first();
-		if(!app) throw new Exception("applixation refered in payment does not exist");
+		def app = appEm.find( [objid: pmt.appid ] ).first();
+		if(!app) throw new Exception("application refered in payment does not exist");
 
 		pmt.items.each {
 			feeEm.find( [objid: it.refid] ).update( [amtpaid: "{amtpaid - :amt}"], [amt: it.amount] );
 		}
+		paymentEm.find( [objid: pmt.objid] ).update( [voided: 1 ] );
 
-		if( app.taskid !=null ) {
+		if(app.task.state!='payment') {
 			def m = [processname: 'vehicle_application'];
 			m.taskid = app.taskid;
 			m.refid = app.objid;
 			m.action = 'void-payment';
-			taskSvc.signal( m );
+			taskSvc.signal( m );		
 		}
-		paymentEm.find( [objid: pmt.objid] ).update( [voided: 1 ] );
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-<schema adapter="vehicledb">
+<schema>
 	<element tablename="vehicle_variable">
 	    <field name="objid" primary="true" style="code"/>
 		<field name="state" required="true" defaultValue="DRAFT"/>

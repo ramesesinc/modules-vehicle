@@ -12,6 +12,8 @@ SELECT
    vg.phoneno,
    vg.email,
    vg.mobileno,
+   vg.barangay_objid,
+   vg.barangay_name,   
    vfy.year,
     vt.objid AS vehicletype_objid,
     vt.title AS vehicletype_title 

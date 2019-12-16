@@ -47,7 +47,6 @@ class VehiclePermitService {
 		permit.objid = "VPERM"+ new UID();
 		permit.app = app; 
 		permit.state = 'ACTIVE';
-		permit.activeyear = app.appyear;
 		permit.controlid = app.controlid;
 		permit.issuedby = [objid: env.USERID, name: env.FULLNAME];
 

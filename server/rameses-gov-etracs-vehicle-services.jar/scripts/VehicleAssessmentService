@@ -4,26 +4,22 @@ import enterprise.utils.*;
 import java.rmi.server.*;
 import com.rameses.rules.common.*;
 import java.text.*;
+import vehicle.facts.*;
 
 public class VehicleAssessmentService  {
 
 	@Service("DateService")
 	def dateSvc;
 
-	@DataContext("vw_vehicle_application")
-	def vwAppEm;
+	@DataContext("vehicle_application")
+	def appEm;
 
-	@DataContext("vw_vehicle_franchise_unit_active")
-	def appUnitEm;	
 
-	@DataContext("vehicle_assessment")
-	def assessmentEm;	
-
-	@DataContext("vehicle_assessment_item")
+	@DataContext("vehicle_application_fee")
 	def feeEm;	
 
 	@DataContext("vehicle_application_info")
-	def infoEm;
+	def infoEm;	
 
 	@DataContext("vehicle_itemaccount")
  	def itemAcctEm;	
@@ -35,25 +31,8 @@ public class VehicleAssessmentService  {
 	def vehicleBillingSvc;
 
 
-	void saveInfos( def appid, def infos ) {
-		infoEm.find([appid: appid] ).delete();
-		infos.each {
-			def m = [appid: appid, name: it.name ];
-			if(it.datatype == 'decimal' ) m.decimalvalue = it.value;
-			else if(it.datatype == 'integer' ) m.intvalue = it.value;
-			else if(it.datatype == 'boolean' )m.booleanvalue = it.value;
-			else if(it.datatype == 'datevalue' )m.datevalue = it.value;
-			else m.stringvalue = it.value;
-			infoEm.create( m );
-		}
-	}
-
-	void saveBillItems( def assessments, def items ) {
-		//delete first all items
-		assessments.each {
-			feeEm.find( [parentid:it.objid ] ).delete();
-			assessmentEm.find([objid: it.objid]).update( [state: 'ACTIVE' ] );
-		}
+	void saveBillItems( def appid, def items ) {
+		feeEm.find( [appid: appid]).delete();
 
 		def itemMap = [:];
 		def findAcct = { id->
@@ -64,28 +43,55 @@ public class VehicleAssessmentService  {
 		}
 		items.each {
 			def m = [:];
-			m.item = findAcct( it.itemid );
+			m.item = findAcct( it.billcode );
+			m.year = it.year;
 			m.amount = it.amount;
 			m.amtpaid = 0;
-			m.parent = it.parent;
+			m.appid = appid;
 			feeEm.create( m );
+		}
+	}
+
+	void saveInfos( def appid, def infos ) {
+		infoEm.find( [appid: appid]).delete();
+		infos.each {
+			def m = [:];
+			m.appid = appid;
+			m.name = it.name;
+			if( it.datatype == 'boolean' ) m.booleanvalue = it.value;
+			else if( it.datatype == 'decimal' ) m.decimalvalue = it.value;
+			else if( it.datatype == 'integer' ) m.integervalue = it.value;
+			else it.stringvalue = m.value;
+			m.type = [objid: it.name];
+			infoEm.create( m );
 		}
 	}
 
 	@ProxyMethod
 	public def execute( def req ) {
+		def app = appEm.find( [objid: req.params.appid ] ).first();
+		int start_renew_year = app.appyear; 
 
-		def app = vwAppEm.find( [objid: req.params.appid ] ).first();
-		def vehicleFact = new vehicle.facts.VehicleApplication( app );
-		def vehicleFranchise = new vehicle.facts.VehicleFranchise( app );
+		//find the last year renewed
+		if(app.apptype == 'RENEW') {
+			def xu = [xappid: app.objid]
+			def last = appEm.find( [franchiseid: app.franchise.objid ] ).where( "NOT(objid = :xappid) AND apptype IN ('NEW','RENEW') AND task.state ='end' ", xu ).orderBy("appyear DESC").first();
+			if(last.appyear < (app.appyear-1) ) {
+				start_renew_year = last.appyear + 1;
+			}			
+		}
 
+		//run the rules first to test the infos
 		def facts = [];
-		facts << vehicleFact;
-		facts << vehicleFranchise;
+		facts << new vehicle.facts.VehicleApplication( app );
+		facts << new vehicle.facts.VehicleFranchise( app );;
+		facts << new vehicle.facts.VehicleUnit( app.unit );
+		facts << new vehicle.facts.VehicleAssessYear( year: app.appyear );
 
-		def units = appUnitEm.find( [franchiseid : app.franchiseid ] ).list();
-		units.each {
-			facts << new vehicle.facts.VehicleUnit( it );
+		if( start_renew_year != app.appyear ) {
+			(start_renew_year..(app.appyear-1)).each {
+				facts << new VehicleAssessYear( year: it );
+			} 
 		}
 
 		req.factBuilder = new treasury.utils.FactBuilder();
@@ -97,6 +103,14 @@ public class VehicleAssessmentService  {
 		def res = billingRuleSvc.execute(req);
 		if(res.askinfos) return res;
 
+
+		saveInfos( app.objid, res.infos );
+		saveBillItems( app.objid, res.billitems );
+		return [
+			infos: [],
+			billitems: res.billitems
+		]
+		/*
 		def infos = res.infos;
 		if( infos ) saveInfos( app.objid, infos );
 
@@ -131,11 +145,12 @@ public class VehicleAssessmentService  {
 			infos: res.infos,
 			billitems: billitems
 		];
+		*/
 	}
 
 	@ProxyMethod
 	public def getItems( def o ) {
-		return feeEm.where( "parent.appid = :appid", [appid: o.appid ] ).orderBy("parent.year, item.sortorder" ).list();
+		return feeEm.where( "appid = :appid", [appid: o.appid ] ).orderBy("year, item.sortorder" ).list();
 	}
 
 

@@ -3,36 +3,32 @@ import com.rameses.util.*;
 
 class VehiclePrintReportInterceptor {
 	
-	@DataContext("vw_vehicle_franchise_unit_active")
-	def vwUnitEm;	
+	@DataContext("vehicle_application")
+	def appEm;
 
-	@DataContext("vw_vehicle_permit")
-	def vwPermitEm;
+	@DataContext("vehicle_application_fee")
+	def appFee;
 
+	@DataContext("vehicle_permit")
+	def permitEm;
 
-	@DataContext("vw_vehicle_application")
-	def vwAppEm;
+	@Service("VehicleBillingService")
+	def billingSvc;
 
-	@DataContext("vehicle_assessment_item")
-	def vwFees;
-
-	@DataContext("vw_vehicle_permit_unit")
-	def vwPermitUnit;
-
-	@Service(value="EntityFinderService", connection="entity-server")
+	@Service(value="EntityFinderService", connection="local-entity-server")
 	def entityFinder;
 
 	private void loadOwnerInfo(def app) {
-		app.owner = entityFinder.find([objid: app.owner.objid]);
-		if( app.owner.type.toUpperCase() == 'INDIVIDUAL') {
+		app.account.owner = entityFinder.find([objid: app.account.owner.objid]);
+		if( app.account.owner.type.toUpperCase() == 'INDIVIDUAL') {
 			def mi = "";
-			if( app.owner.middlename ) {
-				mi = " " + app.owner.middlename.substring(0,1) + ". ";
+			if( app.account.owner.middlename ) {
+				mi = " " + app.account.owner.middlename.substring(0,1) + ". ";
 			}
-			app.owner.fullname = app.owner.firstname + mi + app.owner.lastname;
+			app.account.owner.fullname = app.account.owner.firstname + mi + app.account.owner.lastname;
 		}
 		else {
-			app.owner.fullname = app.owner.name;
+			app.account.owner.fullname = app.account.owner.name;
 		};
 	}
 
@@ -41,24 +37,21 @@ class VehiclePrintReportInterceptor {
 		def t = evt.args[0];
 		def result = evt.result;
 		def appid = t.parameters.objid;
-		def app = vwAppEm.find( [objid: appid ]).first(1);
-		loadOwnerInfo( app );
-		app.unitcount = app.units.size();
+		def app = appEm.find( [objid: appid ]).first();
+		//loadOwnerInfo( app );
 		result.data = app;
 	}
 
-	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_assessment' }")
-	public void getAssessmentData( def evt ) {
+	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_billing' }")
+	public void getBillingData( def evt ) {
 		def t = evt.args[0];
 		def result = evt.result;
 		def appid = t.parameters.objid;
-		def app = vwAppEm.find( [objid: appid ]).first(1);
-		loadOwnerInfo(app);
-		app.billitems = vwFees.where( "parent.appid = :appid", [appid: appid ]).list();
-		app.billitems.each {
-			it.year = it.parent.year;
-		}
-		app.unitcount = app.units.size();
+		def app = appEm.find( [objid: appid ]).first();
+		def res = billingSvc.getBillItems( [appid: appid , include_billitems: false, include_items: true ] );
+		//loadOwnerInfo(app);
+
+		app.items = res.items;
 		result.data = app;
 	}
 
@@ -67,10 +60,11 @@ class VehiclePrintReportInterceptor {
 		def t = evt.args[0];
 		def result = evt.result;
 		def permitid = t.parameters.permitid;
-		def perm = vwPermitEm.find( [objid: permitid ]).first(1);
-		loadOwnerInfo(perm);
-		perm.units = vwPermitUnit.find( [controlno: perm.controlno, year: perm.year ] ).where( " dtcreated <= :appdate AND (dtdropped IS NULL OR dtdropped <= :appdate)", [appdate: perm.appdate] ).list();
-		perm.unitcount = perm.units.size();
+		def perm = permitEm.find( [objid: permitid ]).first();
+
+		//loadOwnerInfo(perm);
+		def app = appEm.find([appid: perm.appid]).first();
+		perm.putAll( app );
 		result.data = perm;
 	}
 

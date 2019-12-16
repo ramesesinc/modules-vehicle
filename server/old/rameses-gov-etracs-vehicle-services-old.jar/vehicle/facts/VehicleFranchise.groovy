@@ -13,7 +13,7 @@ public class VehicleFranchise {
 		controlno = m.controlno;
 		objid = m.objid;
 		if( m.startdate ) startdate = m.startdate;
-		if( m.activeyear ) activeyear = m.activeyear;
+		if( m.activeyear ) activeyear = m.app.appyear;
 	}
 
 }

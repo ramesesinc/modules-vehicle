@@ -1,4 +1,4 @@
-<schema adapter="vehicledb">
+<schema>
 	<element tablename="vehicle_payment_item">
 		<field name="objid" primary="true" prefix="VPMTI"/>
 		<field name="parentid" required="false" />		

@@ -15,23 +15,16 @@ public class VehicleUnit {
 	String chassisno;
 	String sidecarcolor;
 
-	String appid;
-	String apptype;
-
 	public VehicleUnit( def m ) {
-		if(m.unit) {
-			this.plateno = m.unit.plateno;
-			this.engineno = m.unit.engineno;
-			this.bodyno = m.unit.bodyno;
-			this.sidecarno = m.unit.sidecarno;
-			this.make = m.unit.make;
-			this.model = m.unit.model;
-			this.color = m.unit.color;
-			this.chassisno = m.unit.chassisno;
-			this.sidecarcolor = m.unit.sidecarcolor;			
-		}
-		this.appid = m.appid;
-		this.apptype = m.apptype;
+		this.plateno = m.plateno;
+		this.engineno = m.engineno;
+		this.bodyno = m.bodyno;
+		this.sidecarno = m.sidecarno;
+		this.make = m.make;
+		this.model = m.model;
+		this.color = m.color;
+		this.chassisno = m.chassisno;
+		this.sidecarcolor = m.sidecarcolor;			
 	}
 
 }

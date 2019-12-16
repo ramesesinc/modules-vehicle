@@ -36,65 +36,35 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
 
         xTabbedPane1 = new com.rameses.rcp.control.XTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
+        jPanel4 = new javax.swing.JPanel();
         xFormPanel5 = new com.rameses.rcp.control.XFormPanel();
+        xLabel7 = new com.rameses.rcp.control.XLabel();
+        xLabel14 = new com.rameses.rcp.control.XLabel();
         xLabel8 = new com.rameses.rcp.control.XLabel();
         xLabel15 = new com.rameses.rcp.control.XLabel();
         xLabel16 = new com.rameses.rcp.control.XLabel();
-        xFormPanel6 = new com.rameses.rcp.control.XFormPanel();
-        xLabel7 = new com.rameses.rcp.control.XLabel();
-        xLabel14 = new com.rameses.rcp.control.XLabel();
-        jPanel2 = new javax.swing.JPanel();
-        xDataTable4 = new com.rameses.rcp.control.XDataTable();
+        xLabel17 = new com.rameses.rcp.control.XLabel();
+        xLabel18 = new com.rameses.rcp.control.XLabel();
+        xLabel19 = new com.rameses.rcp.control.XLabel();
+        xLabel20 = new com.rameses.rcp.control.XLabel();
+        xLabel21 = new com.rameses.rcp.control.XLabel();
+        xLabel22 = new com.rameses.rcp.control.XLabel();
         jPanel3 = new javax.swing.JPanel();
         schemaList1 = new com.rameses.seti2.components.SchemaList();
 
+        setLayout(new java.awt.BorderLayout());
+
         xTabbedPane1.setName("sections"); // NOI18N
 
-        xFormPanel5.setCaptionWidth(150);
-
-        xLabel8.setCaption("Active Year");
-        xLabel8.setExpression("#{entity.year}");
-        xLabel8.setName("entity.year"); // NOI18N
-        xLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel8.setPreferredSize(new java.awt.Dimension(0, 18));
-        xFormPanel5.add(xLabel8);
-
-        xLabel15.setCaption("Owner");
-        xLabel15.setExpression("#{entity.owner.name} ");
-        xLabel15.setName("entity.owner"); // NOI18N
-        xLabel15.setVisibleWhen("");
-        xLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel15.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel5.add(xLabel15);
-
-        xLabel16.setCaption("Owner Address");
-        xLabel16.setExpression("#{entity.owner.address.text}");
-        xLabel16.setName("entity.owner.address"); // NOI18N
-        xLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel16.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel5.add(xLabel16);
-
-        xFormPanel6.setCaptionWidth(150);
-
-        xLabel7.setCaption("Franchise Control No");
-        xLabel7.setExpression("#{entity.objid}");
-        xLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel7.setPreferredSize(new java.awt.Dimension(0, 18));
-        xFormPanel6.add(xLabel7);
-
-        xLabel14.setCaption("Vehice Type");
-        xLabel14.setExpression("#{entity.vehicletype.objid}");
-        xLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel14.setPreferredSize(new java.awt.Dimension(0, 18));
-        xFormPanel6.add(xLabel14);
-
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
-        xTitledBorder1.setTitle("Vehicle Info");
+        xTitledBorder1.setTitle("Unit Information");
         jPanel2.setBorder(xTitledBorder1);
 
-        xDataTable4.setHandler("unitListModel");
-        xDataTable4.setItems("");
-        xDataTable4.setName("selectedUnit"); // NOI18N
+        xFormPanel1.setName("formControls"); // NOI18N
+        xFormPanel1.setCellpadding(new java.awt.Insets(1, 1, 1, 1));
+        xFormPanel1.setOpaque(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -102,15 +72,115 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xDataTable4, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder2 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder2.setTitle("General Info");
+        jPanel4.setBorder(xTitledBorder2);
+
+        xFormPanel5.setCaptionWidth(150);
+
+        xLabel7.setCaption("Franchise Control No");
+        xLabel7.setExpression("#{entity.objid}");
+        xLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel7.setPreferredSize(new java.awt.Dimension(0, 18));
+        xFormPanel5.add(xLabel7);
+
+        xLabel14.setCaption("Vehice Type");
+        xLabel14.setExpression("#{entity.vehicletype.objid}");
+        xLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel14.setPreferredSize(new java.awt.Dimension(0, 18));
+        xFormPanel5.add(xLabel14);
+
+        xLabel8.setCaption("Active Year");
+        xLabel8.setExpression("#{entity.app.appyear}");
+        xLabel8.setName("entity.app.appyear"); // NOI18N
+        xLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel8.setPreferredSize(new java.awt.Dimension(0, 18));
+        xFormPanel5.add(xLabel8);
+
+        xLabel15.setCaption("Owner");
+        xLabel15.setExpression("#{entity.account.owner.name} ");
+        xLabel15.setVisibleWhen("");
+        xLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel15.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
+        xLabel15.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel15);
+
+        xLabel16.setCaption("Owner Address");
+        xLabel16.setExpression("#{entity.account.owner.address.text}");
+        xLabel16.setName("entity.account.owner.address"); // NOI18N
+        xLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel16.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel16);
+
+        xLabel17.setCaption("Barangay");
+        xLabel17.setExpression("#{entity.account.barangay.name}");
+        xLabel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel17.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel17);
+
+        xLabel18.setCaption("Phone No");
+        xLabel18.setExpression("#{entity.account.contact.phoneno} ");
+        xLabel18.setVisibleWhen("");
+        xLabel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel18.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
+        xLabel18.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel18);
+
+        xLabel19.setCaption("Mobile No");
+        xLabel19.setExpression("#{entity.account.contact.mobileno} ");
+        xLabel19.setVisibleWhen("");
+        xLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel19.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel19);
+
+        xLabel20.setCaption("Email");
+        xLabel20.setExpression("#{entity.account.contact.email} ");
+        xLabel20.setVisibleWhen("");
+        xLabel20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel20.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel20);
+
+        xLabel21.setCaption("Permit No");
+        xLabel21.setExpression("#{entity.permit.permitno} ");
+        xLabel21.setVisibleWhen("");
+        xLabel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel21.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
+        xLabel21.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel21);
+
+        xLabel22.setCaption("Expiry Date");
+        xLabel22.setExpression("#{entity.permit.expirydate} ");
+        xLabel22.setVisibleWhen("");
+        xLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel22.setPreferredSize(new java.awt.Dimension(0, 20));
+        xFormPanel5.add(xLabel22);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -118,22 +188,21 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xFormPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(xFormPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(xFormPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(55, 55, 55))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 76, Short.MAX_VALUE))
         );
 
         xTabbedPane1.addTab("General Info", jPanel1);
@@ -170,7 +239,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "year"}
+                new Object[]{"name", "appyear"}
                 , new Object[]{"caption", "Year"}
                 , new Object[]{"width", 50}
                 , new Object[]{"minWidth", 50}
@@ -185,7 +254,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.IntegerColumnHandler(null, -1, -1)}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "owner.name"}
+                new Object[]{"name", "account.owner.name"}
                 , new Object[]{"caption", "Owner"}
                 , new Object[]{"width", 250}
                 , new Object[]{"minWidth", 250}
@@ -215,10 +284,10 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             })
         });
-        schemaList1.setCustomFilter("franchiseid = :objid");
+        schemaList1.setCustomFilter("unit.franchiseid = :objid");
         schemaList1.setOrderBy("dtcreated DESC");
         schemaList1.setQueryName("query");
-        schemaList1.setSchemaName("vw_vehicle_application");
+        schemaList1.setSchemaName("vehicle_application");
         schemaList1.setAllowCreate(true);
         schemaList1.setAllowDelete(true);
 
@@ -228,46 +297,37 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(schemaList1, javax.swing.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+                .addComponent(schemaList1, javax.swing.GroupLayout.DEFAULT_SIZE, 1049, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(schemaList1, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(schemaList1, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         xTabbedPane1.addTab("Transaction History", jPanel3);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        add(xTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private com.rameses.seti2.components.SchemaList schemaList1;
-    private com.rameses.rcp.control.XDataTable xDataTable4;
+    private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel5;
-    private com.rameses.rcp.control.XFormPanel xFormPanel6;
     private com.rameses.rcp.control.XLabel xLabel14;
     private com.rameses.rcp.control.XLabel xLabel15;
     private com.rameses.rcp.control.XLabel xLabel16;
+    private com.rameses.rcp.control.XLabel xLabel17;
+    private com.rameses.rcp.control.XLabel xLabel18;
+    private com.rameses.rcp.control.XLabel xLabel19;
+    private com.rameses.rcp.control.XLabel xLabel20;
+    private com.rameses.rcp.control.XLabel xLabel21;
+    private com.rameses.rcp.control.XLabel xLabel22;
     private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XLabel xLabel8;
     private com.rameses.rcp.control.XTabbedPane xTabbedPane1;

@@ -6,10 +6,10 @@ class VehicleBillingInterceptor {
 	@Service("VehicleBillingService")
 	def billSvc;
 
-	@DataContext("vw_vehicle_application")
-	def vwAppEm;
+	@DataContext("vehicle_application")
+	def appEm;
 
-	@DataContext("vw_vehicle_franchise_unit_active")
+	@DataContext("vehicle_franchise")
 	def vwUnitEm;	
 
 	@After(pattern="FormReportService.getData", eval="#{ args[0].reportid == 'vehicle_billing' }")
@@ -22,8 +22,7 @@ class VehicleBillingInterceptor {
 			appid = t.parameters.objid;
 		}	
 
-		def app = vwAppEm.find( [objid: appid ] ).first();
-		def units = vwUnitEm.find( [franchiseid: app.franchiseid ] ).list();
+		def app = appEm.find( [objid: appid ] ).first();
 		def res = billSvc.getBillItems( [appid: appid ] );
 
 		if( !res.billitems )
@@ -31,7 +30,6 @@ class VehicleBillingInterceptor {
 
 		def data = [:];
 		data.putAll( app );
-		data.vehicleunits = units; 
 		data.billitems = res.billitems.sort{ it.year };
 		data.billdate = res.billdate;
 		result.data = data;

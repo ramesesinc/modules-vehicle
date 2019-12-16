@@ -5,7 +5,17 @@
                  orderBy="controlno"
                  target="popup"
                  cols="controlno"
-                 customFilter="vehicletypeid = :vehicletypeid AND currentyearid IS NULL"
+                 customFilter="vehicletypeid = :vehicletypeid AND unitid IS NULL"
                  action="init"/>
+        
+        <invoker type="vehicle_franchise:byowner:lookup" 
+                 caption="Select Unit for Owner" 
+                 orderBy="controlno"
+                 target="popup"
+                 cols="controlno,owner.name,unit.plateno"
+                 hiddenCols="account.*,unit.*,account.owner.*,account.owner.address.*"
+                 customFilter="vehicletypeid = :vehicletypeid AND account.owner.objid = :ownerid"
+                 action="init"/>
+        
     </invokers>
 </workunit>

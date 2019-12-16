@@ -2,7 +2,8 @@
 SQLyog Ultimate v9.51 
 MySQL - 5.5.39 : Database - vehicledb
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -369,7 +370,6 @@ DROP TABLE IF EXISTS `vehicle_franchise_tricycle`;
  `expirydate` date ,
  `appid` varchar(50) ,
  `dtregistered` date ,
- `activeyear` int(11) ,
  `owner_objid` varchar(50) ,
  `owner_name` varchar(255) ,
  `owner_address_objid` varchar(50) ,

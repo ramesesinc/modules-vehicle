@@ -37,8 +37,10 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xLabel1 = new com.rameses.rcp.control.XLabel();
         entityLookup1 = new com.rameses.entity.components.EntityLookup();
         entityAddressLookup1 = new com.rameses.entity.components.EntityAddressLookup();
-        xLookupField1 = new com.rameses.rcp.control.XLookupField();
-        xButton1 = new com.rameses.rcp.control.XButton();
+        xTextField2 = new com.rameses.rcp.control.XTextField();
+        xDateField1 = new com.rameses.rcp.control.XDateField();
+        xTabbedPane1 = new com.rameses.rcp.control.XTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
 
         xFormPanel3.setCaptionWidth(150);
 
@@ -75,21 +77,27 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         entityAddressLookup1.setRequired(true);
         xFormPanel3.add(entityAddressLookup1);
 
-        xLookupField1.setCaption("Unit");
-        xLookupField1.setExpression("Plateno: #{ entity.unit.plateno } Body No:#{ entity.unit.bodyno }");
-        xLookupField1.setHandler("vw_vehicle_unit:lookup");
-        xLookupField1.setName("entity.unit"); // NOI18N
-        xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
-        xLookupField1.setRequired(true);
-        xFormPanel3.add(xLookupField1);
+        xTextField2.setCaption("License No");
+        xTextField2.setName("entity.license_refno"); // NOI18N
+        xTextField2.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
+        xFormPanel3.add(xTextField2);
 
-        xButton1.setCaption("");
-        xButton1.setDepends(new String[] {"entity.unit"});
-        xButton1.setName("viewUnit"); // NOI18N
-        xButton1.setVisibleWhen("#{ entity.unit != null }");
-        xButton1.setImmediate(true);
-        xButton1.setText("View Unit");
-        xFormPanel3.add(xButton1);
+        xDateField1.setCaption("License Expiry Date");
+        xDateField1.setName("entity.license_expirydate"); // NOI18N
+        xFormPanel3.add(xDateField1);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 549, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 177, Short.MAX_VALUE)
+        );
+
+        xTabbedPane1.addTab("Vehicles", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -97,7 +105,9 @@ public class VehicleDriverPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(xFormPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                    .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,7 +115,9 @@ public class VehicleDriverPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -113,11 +125,13 @@ public class VehicleDriverPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rameses.entity.components.EntityAddressLookup entityAddressLookup1;
     private com.rameses.entity.components.EntityLookup entityLookup1;
-    private com.rameses.rcp.control.XButton xButton1;
+    private javax.swing.JPanel jPanel1;
+    private com.rameses.rcp.control.XDateField xDateField1;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XLabel xLabel1;
     private com.rameses.rcp.control.XLabel xLabel4;
-    private com.rameses.rcp.control.XLookupField xLookupField1;
+    private com.rameses.rcp.control.XTabbedPane xTabbedPane1;
     private com.rameses.rcp.control.XTextField xTextField1;
+    private com.rameses.rcp.control.XTextField xTextField2;
     // End of variables declaration//GEN-END:variables
 }

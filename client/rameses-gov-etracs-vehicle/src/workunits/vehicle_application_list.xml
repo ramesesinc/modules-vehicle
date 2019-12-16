@@ -1,6 +1,6 @@
 <workunit extends="com/rameses/seti2/templates/WorkflowTaskList.xml" 
           processName="vehicle_application"
-          schemaName="vw_vehicle_application" 
+          schemaName="vehicle_application" 
           allowCreate="false"
           allowDelete="false"
           allowNotify="true">
@@ -11,7 +11,7 @@
                  formId="#{vehicletype.objid}:app:list"
                  role="MASTER" 
                  index="-1"
-                 cols="appno,appdate,controlno,year,apptype,txnmode,owner.name,permit.permitno"/>
+                 cols="appno,appdate,franchise.controlno,appyear,apptype,txnmode,account.owner.name,permit.permitno"/>
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleApplicationListModel" />
 </workunit>

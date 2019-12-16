@@ -1,6 +1,8 @@
-<schema adapter="vehicledb">
+<schema>
 	<element tablename="vehicle_unit">
 		<field name="objid" primary="true" prefix="VUNIT"/>
+		<field name="franchiseid" required="true"/>		
+
 		<!-- additional infos -->
 		<field name="plateno" caption="Plate No" searchable="true"  indexed="true" included="true"/>
 		<field name="engineno" caption="Engine No" searchable="true" indexed="true" included="true"/>
@@ -12,15 +14,11 @@
 		<field name="chassisno" caption="Chassis No" included="true"/>
 		<field name="sidecarcolor" caption="Sidecar Color" included="true"/>
 		<field name="crname" caption="CR Name" included="true" width="250"/>
-		<field name="remarks" caption="Remarks" included="true" width="250"/>
 		<field name="insurancepolicyno" caption="Insurance Policy No" included="true"/>
 		<field name="insurer" caption="Insurer" included="true" width="250"/>
 
 		<field name="crname" caption="CR Name" included="true"/>
 		<field name="supersederid" />		
-
-		<!-- we really need this to link to the current active year. otherwise it would be very difficult to link it--> 
-		<field name="franchiseyearid" />
 
 	</element>
 </schema>

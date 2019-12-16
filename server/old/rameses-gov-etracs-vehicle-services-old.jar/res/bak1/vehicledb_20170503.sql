@@ -2,7 +2,8 @@
 SQLyog Ultimate v9.51 
 MySQL - 5.5.39 : Database - vehicledb
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -185,7 +186,6 @@ CREATE TABLE `vehicle_franchise` (
   `vehicletype` varchar(50) DEFAULT NULL,
   `expirydate` date DEFAULT NULL,
   `appid` varchar(50) DEFAULT NULL,
-  `activeyear` int(11) DEFAULT NULL,
   `startdate` date DEFAULT NULL,
   PRIMARY KEY (`objid`),
   KEY `fk_vehicle_franchise_clusterid` (`clusterid`),

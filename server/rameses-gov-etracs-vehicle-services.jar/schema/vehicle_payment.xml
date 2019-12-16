@@ -1,4 +1,4 @@
-<schema adapter="vehicledb">
+<schema>
 	<element tablename="vehicle_payment" autopost="true">
 		<field name="objid" primary="true" prefix="VPMT"/>
 		<field name="appid" required="true" />
