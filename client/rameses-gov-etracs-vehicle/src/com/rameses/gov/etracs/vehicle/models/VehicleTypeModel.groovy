@@ -29,12 +29,9 @@ public class VehicleTypeModel extends CrudFormModel {
     def excludedFields = [];
     def excludedField;
     
-    
-    
     void loadFields() {
         schemaSvc.getSchema( [name:"vehicle_unit" ] )?.fields.findAll{it.included == "true"}.collect{
             if (it.name.contains("_")) it.name = it.name.split("_")[0];
-            
             def m = [name: it.name, caption: it.caption];           
             def mstr = ".*(" + entity.allowedfields + ")";
             if( m.name.matches(mstr)) {
@@ -96,7 +93,7 @@ public class VehicleTypeModel extends CrudFormModel {
             else names << arr[0]; 
         }
         
-        def str = names.join("|");
+        def str = names.unique().join("|");
         entity.allowedfields = str;
         //println '** allowedfields -> '+ entity.allowedfields;
     }

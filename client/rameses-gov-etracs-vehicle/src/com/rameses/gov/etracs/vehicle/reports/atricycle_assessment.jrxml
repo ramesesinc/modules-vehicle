@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="vehicle_assessment"
+		 name="tricycle_assessment"
 
 		 language="groovy"		 columnCount="1"
 		 printOrder="Vertical"
@@ -317,7 +317,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Tahoma" pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[ "MTOP ASSESSMENT RECORD"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["MTOP TRICYCLE ASSESSMENT RECORD"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement

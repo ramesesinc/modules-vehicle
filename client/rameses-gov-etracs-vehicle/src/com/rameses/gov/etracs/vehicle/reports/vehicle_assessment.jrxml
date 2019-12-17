@@ -54,9 +54,12 @@
 	<field name="year" class="java.lang.Number"/>
 	<field name="controlno" class="java.lang.String"/>
 	<field name="account.owner.address.text" class="java.lang.String"/>
-	<field name="filedby.name" class="java.lang.String"/>
-	<field name="filedby.jobtitle" class="java.lang.String"/>
 	<field name="franchise.vehicletype.title" class="java.lang.String"/>
+	<field name="unit.engineno" class="java.lang.String"/>
+	<field name="unit.make" class="java.lang.String"/>
+	<field name="unit.model" class="java.lang.String"/>
+	<field name="unit.color" class="java.lang.String"/>
+	<field name="unit.plateno" class="java.lang.String"/>
 
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -482,6 +485,156 @@
 					</textElement>
 				<text><![CDATA[Fees]]></text>
 				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="145"
+						width="92"
+						height="23"
+						key="staticText-59"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[ENGINE NO]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="16"
+						y="163"
+						width="92"
+						height="25"
+						key="textField-26"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.engineno}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="120"
+						y="145"
+						width="80"
+						height="23"
+						key="staticText-61"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[MAKE]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="120"
+						y="163"
+						width="80"
+						height="25"
+						key="textField-28"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.make}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="310"
+						y="145"
+						width="80"
+						height="23"
+						key="staticText-62"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[COLOR]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="310"
+						y="163"
+						width="80"
+						height="25"
+						key="textField-29"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.color}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="406"
+						y="145"
+						width="101"
+						height="23"
+						key="staticText-63"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[PLATE NO]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="406"
+						y="163"
+						width="101"
+						height="25"
+						key="textField-30"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.plateno}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="207"
+						y="145"
+						width="99"
+						height="23"
+						key="staticText-64"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[MODEL]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="207"
+						y="163"
+						width="99"
+						height="25"
+						key="textField-31"
+						positionType="Float"/>
+					<box topPadding="3">					<leftPen lineWidth="0.0"/>
+</box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.model}]]></textFieldExpression>
+				</textField>
 			</band>
 		</title>
 		<pageHeader>

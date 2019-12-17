@@ -70,7 +70,7 @@ public class VehicleApplicationService  {
 		o.appno = generateAppNo( o.franchise.objid, o.apptype );
 		o = appEm.create( o );
 
-		u.appid = o.objid;
+		upd.appid = o.objid;
 		franchiseEm.find( [objid: o.franchise.objid] ).update( upd );
 
 		def p = [:];

@@ -10,30 +10,30 @@ import com.rameses.util.*;
 import com.rameses.seti2.models.*;
 import com.rameses.rcp.framework.ClientContext;
 
-public class VehicleFormReportModel extends FormReportModel {
+public class VehiclePermitFormReportModel extends FormReportModel {
     
     def entity;
     def vehicletype;
+    def template;
     
     String reportPath = "com/rameses/gov/etracs/vehicle/reports/"; 
     String _reportName;
     
     def getQuery() {
         if( !entity ) entity = caller.entity;
-        return [objid: entity.objid];
+        return [permitid: entity.permit.objid];
     }
     
     public String getReportName() {
         return _reportName;
     }
     
-    def preview(def inv) {
+    def preview() {
         vehicletype = caller.vehicletype.objid;
-        _reportName = reportPath + vehicletype + "_assessment.jasper"; 
-        def r = getClass().classLoader.getResource( _reportName );
-        if(!r) {
-            _reportName = reportPath + "vehicle_assessment.jasper";             
-        }
+        template = caller.vehicletype.permithandler;
+        if(!template) template = "vehicle_permit"
+        _reportName = reportPath + template + ".jasper";
+        if( !caller.entity.permit ) throw new Exception("Permit not issued");
         return super.preview();
     }
     

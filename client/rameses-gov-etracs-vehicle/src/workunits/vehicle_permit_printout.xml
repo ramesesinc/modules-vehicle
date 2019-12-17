@@ -7,8 +7,9 @@
                  action="preview"
                  index="30"
                  reportId="vehicle_permit" 
-                 visibleWhen="#{entity.permitid !=null }"/>
+                 reportName="com/rameses/gov/etracs/vehicle/reports/permit_template1.jasper"
+                 visibleWhen="#{entity.permit !=null }"/>
         
     </invokers> 
-    <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel"/>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehiclePermitFormReportModel"/>
 </workunit>

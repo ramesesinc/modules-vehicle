@@ -17,5 +17,13 @@
                  customFilter="vehicletypeid = :vehicletypeid AND account.owner.objid = :ownerid"
                  action="init"/>
         
+        <invoker type="vehicle_franchise:active:lookup" 
+                 caption="Select Available Franchise" 
+                 orderBy="controlno"
+                 target="popup"
+                 cols="controlno,owner.name,unit.plateno"
+                 customFilter="vehicletypeid = :vehicletypeid AND NOT(unitid IS NULL)"
+                 action="init"/>
+        
     </invokers>
 </workunit>

@@ -75,34 +75,8 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
         return Inv.lookupOpener("vehicle_billing", h );
     }
     
-    /*
-    public boolean beforeSignal( def tsk ) {
-        if(tsk.taskstate == "assessment") {
-            if( feeList == null ) loadFees();
-            if(feeList.size() == 0 ) {
-                if( !MsgBox.confirm("There are no fees assessed. Proceed to continue?") ) return false;
-            }
-        }
-        return true;
-    }
-    */
-    
-    //PERMITTING FACILITIES
-    def viewPermit() { 
-        def h =   entity.vehicletype.permithandler;
-        if(!h) h = "vehicle_basic_permit";
-        def p = [:];
-        p.put("query.appid", entity.objid );
-        p.put("query.permitid", entity.permitid );
-        p.put("query.vehicletype", entity.vehicletype.objid );
-        def opener = Inv.lookupOpener(h, p );
-        opener.target = "self";
-        return opener;
-    }
-    
     def issuePermit() {
         def h = { pmt->
-            entity.permitid = pmt.objid;
             entity.permit = pmt;
             binding.refresh();
         }
@@ -115,12 +89,6 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
         return "_close";
     }
     
-    void setRenewalDate() {
-        def renewaldate = appSvc.setRenewalDate( [appid: entity.objid ] );
-        entity.renewaldate = renewaldate;
-        binding.refresh();
-    }
-    
     void afterOpen() {
         vehicletype = entity.franchise.vehicletype;
         if(entity.total) total = entity.total;
@@ -128,9 +96,14 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
     }
     
     void buildControls() {
+        formControls.clear();
         def schemaFields = schemaSvc.getSchema( [name: "vehicle_unit"] ).fields;
-        def xfields = vehicletype.allowedfields.split("\\|");
-        xfields.each { fname->
+        def arr = vehicletype.allowedfields.split("\\|");
+        def xfields = [];
+        arr.each {
+            xfields << it;
+        }
+        xfields.unique().each { fname->
             def fld = schemaFields.find{ it.name == fname };
             if( fld ) {
                 def dt = [caption: fld.caption, name: 'entity.unit.'+fld.name, type:fld.type ];

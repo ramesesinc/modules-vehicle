@@ -41,19 +41,21 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xDateField1 = new com.rameses.rcp.control.XDateField();
         xTabbedPane1 = new com.rameses.rcp.control.XTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        schemaList1 = new com.rameses.seti2.components.SchemaList();
 
         xFormPanel3.setCaptionWidth(150);
 
         xTextField1.setCaption("Control No");
         xTextField1.setDisableWhen("#{ mode != 'create' }");
         xTextField1.setName("entity.controlno"); // NOI18N
+        xTextField1.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel3.add(xTextField1);
 
         xLabel4.setCaption("Control No");
         xLabel4.setExpression("#{entity.controlno}");
         xLabel4.setVisibleWhen("#{ false }");
         xLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        xLabel4.setPreferredSize(new java.awt.Dimension(150, 20));
+        xLabel4.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel3.add(xLabel4);
 
         xLabel1.setCaption("");
@@ -78,24 +80,70 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         xFormPanel3.add(entityAddressLookup1);
 
         xTextField2.setCaption("License No");
-        xTextField2.setName("entity.license_refno"); // NOI18N
+        xTextField2.setName("entity.license.refno"); // NOI18N
         xTextField2.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
+        xTextField2.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel3.add(xTextField2);
 
         xDateField1.setCaption("License Expiry Date");
-        xDateField1.setName("entity.license_expirydate"); // NOI18N
+        xDateField1.setName("entity.license.expirydate"); // NOI18N
+        xDateField1.setPreferredSize(new java.awt.Dimension(150, 20));
         xFormPanel3.add(xDateField1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 177, Short.MAX_VALUE)
-        );
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        schemaList1.setColumns(new com.rameses.rcp.common.Column[]{
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "controlno"}
+                , new Object[]{"caption", "Franchise No"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 150}
+                , new Object[]{"maxWidth", 200}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"visible", true}
+                , new Object[]{"visibleWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "account.owner.name"}
+                , new Object[]{"caption", "Owner"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"visible", true}
+                , new Object[]{"visibleWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "unit.plateno"}
+                , new Object[]{"caption", "Plate No"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 150}
+                , new Object[]{"maxWidth", 200}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"visible", true}
+                , new Object[]{"visibleWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            })
+        });
+        schemaList1.setCustomFilter("driverid = :objid");
+        schemaList1.setHandlerName("listHandler");
+        schemaList1.setQueryName("entity");
+        schemaList1.setSchemaName("vehicle_driver_franchise");
+        jPanel1.add(schemaList1, java.awt.BorderLayout.CENTER);
 
         xTabbedPane1.addTab("Vehicles", jPanel1);
 
@@ -104,11 +152,12 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(xFormPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
-                    .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 56, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +165,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addComponent(xTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -126,6 +175,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
     private com.rameses.entity.components.EntityAddressLookup entityAddressLookup1;
     private com.rameses.entity.components.EntityLookup entityLookup1;
     private javax.swing.JPanel jPanel1;
+    private com.rameses.seti2.components.SchemaList schemaList1;
     private com.rameses.rcp.control.XDateField xDateField1;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XLabel xLabel1;

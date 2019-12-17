@@ -2,6 +2,11 @@
     <invokers>
         <invoker type="vehicle_driver:create" caption="Vehicle Driver" action="create" index="1" target="popup"/>
         <invoker type="vehicle_driver:open" caption="Vehicle Driver" action="open" index="1" target="popup"/>
+        
+        <!-- formActions -->
+        <invoker type="formActions" caption="Add Franchise" action="addFranchise" 
+                    visibleWhen="#{mode == 'read' }"/>
+        
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleDriverModel" />
      <pages>

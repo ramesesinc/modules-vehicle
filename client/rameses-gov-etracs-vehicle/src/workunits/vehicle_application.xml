@@ -25,7 +25,7 @@
                         
         <invoker type="appActions" 
                 action="issuePermit" caption="Issue Permit" 
-                visibleWhen="#{ entity.permitid == null 
+                visibleWhen="#{ entity.permit == null 
                     &amp;&amp; entity.apptype.matches('NEW|RENEW')                
                     &amp;&amp; task.state == 'release'
                     &amp;&amp; task.assignee.objid != null

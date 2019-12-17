@@ -23,7 +23,7 @@
 
         <!-- actions -->
         <invoker type="formActions" action="doNext" caption="Next" visibleWhen="#{mode == 'search' }" />        
-        <invoker type="formActions" action="save" caption="Save" visibleWhen="#{ mode == 'initial' }" />
+        <invoker type="formActions" action="save" caption="Submit" visibleWhen="#{ mode == 'initial' }" />
         
     </invokers>
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleApplicationInitialModel" />

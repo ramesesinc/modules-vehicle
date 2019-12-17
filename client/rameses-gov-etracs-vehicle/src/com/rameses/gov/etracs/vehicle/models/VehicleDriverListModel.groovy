@@ -18,4 +18,5 @@ public class VehicleDriverListModel extends CrudListModel {
         return ["vehicletypeid = :id", [id:  vehicletype.objid ] ];
     }
     
+    
 }

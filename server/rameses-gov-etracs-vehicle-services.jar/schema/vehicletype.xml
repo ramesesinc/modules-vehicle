@@ -11,6 +11,6 @@
 		<field name="icon" /> 
 		<field name="allowedfields" required="true"/> 
 		<field name="renewalfrequency" required="true" caption="Renewal Frequency" defaultValue="YEAR"/> 
-		<field name="permithandler" required="true"/> 
+		<field name="permithandler"/> 
 	</element>
 </schema>

@@ -167,8 +167,12 @@ public class VehicleApplicationInitialModel   {
     
     void buildControls() {
         def schemaFields = schemaSvc.getSchema( [name: "vehicle_unit"] ).fields;
-        def xfields = vehicletype.allowedfields.split("\\|");
-        xfields.each { fname->
+        def arr = vehicletype.allowedfields.split("\\|");
+        def xfields = [];
+        arr.each {
+            xfields << it;
+        }        
+        xfields.unique().each { fname->
             def fld = schemaFields.find{ it.name == fname };
             if( fld ) {
                 def dt = [caption: fld.caption, name: 'entity.unit.'+fld.name, type:fld.type ];

@@ -1,7 +1,5 @@
 <workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="vehicle_driver">
     <invokers>
-        <invoker folderid="explorer/master/vehicle"  caption="Vehicle Drivers" action="init" index="30"
-            cols="objid,controlno,entity.name,unit.unit.plateno,unit.unit.bodyno" orderBy="controlno" role="MASTER" />
         <invoker folderid="menucategory/vehicle/master"  caption="Vehicle Drivers" action="init" index="30"
             cols="objid,controlno,entity.name,unit.plateno,unit.bodyno,unit.year" orderBy="controlno" role="MASTER" />
     </invokers>
