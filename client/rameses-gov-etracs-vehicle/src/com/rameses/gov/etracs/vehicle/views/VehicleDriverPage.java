@@ -94,7 +94,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
 
         schemaList1.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "controlno"}
+                new Object[]{"name", "franchise.controlno"}
                 , new Object[]{"caption", "Franchise No"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 150}
@@ -109,7 +109,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "account.owner.name"}
+                new Object[]{"name", "franchise.account.owner.name"}
                 , new Object[]{"caption", "Owner"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
@@ -124,7 +124,7 @@ public class VehicleDriverPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "unit.plateno"}
+                new Object[]{"name", "franchise.unit.plateno"}
                 , new Object[]{"caption", "Plate No"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 150}
@@ -143,6 +143,8 @@ public class VehicleDriverPage extends javax.swing.JPanel {
         schemaList1.setHandlerName("listHandler");
         schemaList1.setQueryName("entity");
         schemaList1.setSchemaName("vehicle_driver_franchise");
+        schemaList1.setAllowDelete(true);
+        schemaList1.setAllowOpen(false);
         jPanel1.add(schemaList1, java.awt.BorderLayout.CENTER);
 
         xTabbedPane1.addTab("Vehicles", jPanel1);
