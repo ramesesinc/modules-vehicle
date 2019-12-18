@@ -15,11 +15,27 @@ class VehiclePrintReportInterceptor {
 	@DataContext("vehicle_permit")
 	def permitEm;
 
+	@DataContext("vehicle_unit_info")
+	def unitInfoEm;
+
 	@Service("VehicleBillingService")
 	def billingSvc;
 
 	@Service(value="EntityFinderService", connection="local-entity-server")
 	def entityFinder;
+
+	void loadUnit( def unit ) {
+		def infos = unitInfoEm.find( [unitid: unit.objid ] ).list();
+		infos.each {
+			def val = null;
+			if(it.field.datatype == "decimal") val = it.decimalvalue;
+			else if(it.field.datatype == "integer") val = it.intvalue;
+			else if(it.field.datatype == "date") val = it.datevalue;
+			else if(it.field.datatype == "boolean") val = it.booleanvalue;
+			else val = it.stringvalue;
+			unit.put( it.field.name, val );
+		}
+	}
 
 	private void loadOwnerInfo(def app) {
 		app.account.owner = entityFinder.find([objid: app.account.owner.objid]);
@@ -42,6 +58,7 @@ class VehiclePrintReportInterceptor {
 		def appid = t.parameters.objid;
 		def app = appEm.find( [objid: appid ]).first();
 		//loadOwnerInfo( app );
+		loadUnit( app.unit );
 		result.data = app;
 	}
 
@@ -55,6 +72,7 @@ class VehiclePrintReportInterceptor {
 		//loadOwnerInfo(app);
 
 		app.items = res.items;
+		loadUnit( app.unit );
 		result.data = app;
 	}
 
@@ -77,6 +95,8 @@ class VehiclePrintReportInterceptor {
 		perm.payments = paymentEm.find( [appid: app.objid ] ).where("voided = 0").select("refno,refdate,amount").list();
 
 		//perm.endorser = [name:null, jobtitle: null];
+
+		loadUnit( perm.unit );
 		result.data = perm;
 	}
 

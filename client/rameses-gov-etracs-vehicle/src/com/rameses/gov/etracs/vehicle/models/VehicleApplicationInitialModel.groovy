@@ -86,8 +86,6 @@ public class VehicleApplicationInitialModel   {
             editableUnit = true;
             editableOwner = true;
         }
-        
-        buildControls();
     }
 
     def startCapture() {
@@ -100,6 +98,7 @@ public class VehicleApplicationInitialModel   {
     def startNew() {
         initNew("ONLINE");
         entity.appdate = dateSvc.getServerDate();
+        entity.unit = [:];
         def r = appSvc.getExpiryDate( [appdate:entity.appdate, vehicletype: vehicletype, apptype: "NEW" ] );   
         entity.appyear = r.appyear;
         return mode;
@@ -165,28 +164,6 @@ public class VehicleApplicationInitialModel   {
         return op;
     }
     
-    void buildControls() {
-        def schemaFields = schemaSvc.getSchema( [name: "vehicle_unit"] ).fields;
-        def arr = vehicletype.allowedfields.split("\\|");
-        def xfields = [];
-        arr.each {
-            xfields << it;
-        }        
-        xfields.unique().each { fname->
-            def fld = schemaFields.find{ it.name == fname };
-            if( fld ) {
-                def dt = [caption: fld.caption, name: 'entity.unit.'+fld.name, type:fld.type ];
-                if(!dt.type) dt.type = "text";
-                if(fld.width) 
-                    dt.width = fld.width.toInteger()*2;
-                else
-                    dt.width = 100;
-                if(!editableUnit) dt.enabled = false;
-                dt.captionWidth = 150;
-                formControls << dt;
-            }
-        }
-    }
     
     
 }

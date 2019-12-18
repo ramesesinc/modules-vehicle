@@ -17,13 +17,9 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
     @Service("VehicleAssessmentService")
     def assmtSvc;
     
-    @Service("SchemaService")
-    def schemaSvc;
-    
     
     //boolean viewReportAllowed = true; 
     def total = 0;
-    def formControls = [];
     def vehicletype;
     
     String getFormName() {
@@ -92,32 +88,8 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
     void afterOpen() {
         vehicletype = entity.franchise.vehicletype;
         if(entity.total) total = entity.total;
-        buildControls();
     }
     
-    void buildControls() {
-        formControls.clear();
-        def schemaFields = schemaSvc.getSchema( [name: "vehicle_unit"] ).fields;
-        def arr = vehicletype.allowedfields.split("\\|");
-        def xfields = [];
-        arr.each {
-            xfields << it;
-        }
-        xfields.unique().each { fname->
-            def fld = schemaFields.find{ it.name == fname };
-            if( fld ) {
-                def dt = [caption: fld.caption, name: 'entity.unit.'+fld.name, type:fld.type ];
-                if(!dt.type) dt.type = "text";
-                if(fld.width) 
-                    dt.width = fld.width.toInteger()*2;
-                else
-                    dt.width = 100;
-                dt.enabled = false;
-                dt.captionWidth = 150;
-                formControls << dt;
-            }
-        }
-    }
 
     
     

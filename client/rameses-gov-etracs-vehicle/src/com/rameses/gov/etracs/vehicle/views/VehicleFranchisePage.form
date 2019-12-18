@@ -79,7 +79,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="xFormPanel1" pref="533" max="32767" attributes="0"/>
+                          <Component id="vehicleInfoPanel1" pref="484" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -88,22 +88,20 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="xFormPanel1" max="32767" attributes="0"/>
+                          <Component id="vehicleInfoPanel1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="com.rameses.rcp.control.XFormPanel" name="xFormPanel1">
+                <Component class="com.rameses.gov.etracs.vehicle.components.VehicleInfoPanel" name="vehicleInfoPanel1">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="formControls" noResource="true"/>
-                    <Property name="cellpadding" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                      <Insets value="[1, 1, 1, 1]"/>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="true"/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                    <Property name="name" type="java.lang.String" value="entity.unit" noResource="true"/>
+                    <Property name="vehicletypename" type="java.lang.String" value="entity.vehicletype.objid"/>
                   </Properties>
-                </Container>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel4">

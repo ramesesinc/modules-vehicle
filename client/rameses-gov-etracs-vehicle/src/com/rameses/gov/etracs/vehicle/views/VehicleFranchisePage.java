@@ -37,7 +37,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xTabbedPane1 = new com.rameses.rcp.control.XTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
+        vehicleInfoPanel1 = new com.rameses.gov.etracs.vehicle.components.VehicleInfoPanel();
         jPanel4 = new javax.swing.JPanel();
         xFormPanel5 = new com.rameses.rcp.control.XFormPanel();
         xLabel7 = new com.rameses.rcp.control.XLabel();
@@ -62,9 +62,9 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xTitledBorder1.setTitle("Unit Information");
         jPanel2.setBorder(xTitledBorder1);
 
-        xFormPanel1.setName("formControls"); // NOI18N
-        xFormPanel1.setCellpadding(new java.awt.Insets(1, 1, 1, 1));
-        xFormPanel1.setOpaque(true);
+        vehicleInfoPanel1.setEnabled(false);
+        vehicleInfoPanel1.setName("entity.unit"); // NOI18N
+        vehicleInfoPanel1.setVehicletypename("entity.vehicletype.objid");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -72,14 +72,14 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addComponent(vehicleInfoPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(vehicleInfoPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -317,7 +317,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private com.rameses.seti2.components.SchemaList schemaList1;
-    private com.rameses.rcp.control.XFormPanel xFormPanel1;
+    private com.rameses.gov.etracs.vehicle.components.VehicleInfoPanel vehicleInfoPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel5;
     private com.rameses.rcp.control.XLabel xLabel14;
     private com.rameses.rcp.control.XLabel xLabel15;

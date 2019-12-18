@@ -19,39 +19,7 @@ import javax.imageio.ImageIO;
 
 public class VehicleTypeModel extends CrudFormModel {
     
-    @Service("SchemaService")
-    def schemaSvc;
-    
-    def selectedCluster;
-    
-    def includedFields = [];
-    def includedField;
-    def excludedFields = [];
-    def excludedField;
-    
-    void loadFields() {
-        schemaSvc.getSchema( [name:"vehicle_unit" ] )?.fields.findAll{it.included == "true"}.collect{
-            if (it.name.contains("_")) it.name = it.name.split("_")[0];
-            def m = [name: it.name, caption: it.caption];           
-            def mstr = ".*(" + entity.allowedfields + ")";
-            if( m.name.matches(mstr)) {
-                includedFields << m;
-            }
-            else {
-                excludedFields << m;
-            }
-        };
-    }
-    
-    void afterCreate() {
-        entity.issued = 0;
-        entity.allowedfields = ".*";
-        loadFields();
-    }
-
-    void afterOpen() {
-        loadFields();
-    }
+    def fieldList;
     
     void addImage() {
         def jfc = new JFileChooser();
@@ -70,31 +38,5 @@ public class VehicleTypeModel extends CrudFormModel {
     }
     
     
-    void addField() {
-        if( !excludedField) return;
-        if( includedFields.contains(excludedField) ) return;
-        includedFields << excludedField;
-        excludedFields.remove( excludedField );
-    }
     
-    void removeField() {
-        if( !includedField ) return;
-        if(excludedFields.contains(includedField)) return;
-        excludedFields << includedField;
-        includedFields.remove( includedField );
-    }
-    
-    void beforeSave( def o ) {
-        def names = []; 
-        includedFields.each{
-            def arr = it.name.split("\\."); 
-            if ( arr.length > 2 ) names << (arr[1] + '.*'); 
-            else if ( arr.length > 1 ) names << arr[1]; 
-            else names << arr[0]; 
-        }
-        
-        def str = names.unique().join("|");
-        entity.allowedfields = str;
-        //println '** allowedfields -> '+ entity.allowedfields;
-    }
 }

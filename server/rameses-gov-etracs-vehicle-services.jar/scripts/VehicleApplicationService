@@ -25,6 +25,12 @@ public class VehicleApplicationService  {
 	@DataContext("vehicle_unit")
 	def unitEm;
 
+	@DataContext("vehicle_unit_info")
+	def unitInfoEm;
+
+	@DataContext("vehicletype_field")
+	def vFieldEm;
+
 	@DataContext("vehicle_application_task")
 	def vtaskEm;
 
@@ -47,6 +53,28 @@ public class VehicleApplicationService  {
 		return controlNoSvc.getNextNo( fran.vehicletype.appnopattern );	
 	}
 
+	def createUnit( def unit, def vehicletypeid ) {
+		def u = unitEm.create( unit );
+		unit.each { k,v->
+			if(!k.matches('objid|franchiseid')) {
+				def fld = vFieldEm.find([vehicletypeid:vehicletypeid, name:k] ).first();
+				if(fld) {
+					def uinfo = [:];
+					uinfo.unitid = u.objid;
+					uinfo.field = fld;
+					if(fld.datatype == 'decimal') uinfo.decimalvalue = v; 
+					else if(fld.datatype == 'integer') uinfo.intvalue = v; 
+					else if(fld.datatype == 'date') uinfo.datevalue = v; 
+					else if(fld.datatype == 'boolean') {
+						uinfo.booleanvalue = v; 					
+					}	
+					else uinfo.stringvalue = v;
+					unitInfoEm.create( uinfo );
+				}
+			}
+		}
+	}
+
 	@ProxyMethod
 	public def create( def o ) {
 		def upd = [:];
@@ -57,11 +85,10 @@ public class VehicleApplicationService  {
 			o.account = acctEm.create( o.account );
 			upd.acctid = o.account.objid;
 		}
-		
 		if(o.txnmode == "CAPTURE" || o.apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT")  ) {
 			if(o.unit.objid) throw new Exception("Unit already exists. This may have been doubled saved");
 			o.unit.franchiseid = o.franchise.objid;
-			o.unit = unitEm.create( o.unit );		
+			o.unit = createUnit( o.unit, o.franchise.vehicletype.objid );		
 			upd.unitid = o.unit.objid;
 		}
 
@@ -109,7 +136,7 @@ public class VehicleApplicationService  {
 			if(z) allowed_days = z.toInteger();
 
 			//deduct no. of days from expirydate and compare with current date
-			def testDate = DateUtil.add( app.permit.expirydate, "-" + allowed_days + "d"  );
+			def testDate = DateUtil.add( vf.permit.expirydate, "-" + allowed_days + "d"  );
 			if( testDate.after( currDate ) ) {
 				throw new Exception("Vehicle is not yet applicable for renewal");
 			}

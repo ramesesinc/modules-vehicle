@@ -1,0 +1,10 @@
+<workunit schemaName="vehicletype_field">
+    <invokers>
+        <invoker type="vehicletype_field:create" action="create" caption="Add Field" target="popup"/>
+        <invoker type="vehicletype_field:open" action="open" caption="Update Field"  target="popup"/>
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleTypeFieldModel" />
+    <pages>
+        <page template="com.rameses.gov.etracs.vehicle.views.VehicleTypeFieldPage" />
+    </pages>
+</workunit>

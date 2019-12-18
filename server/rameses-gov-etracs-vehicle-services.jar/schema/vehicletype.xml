@@ -1,7 +1,7 @@
 <schema>
 	<element tablename="vehicletype">
-		<field name="objid" primary="true" visible="true" editable="false" caption="Name"/>
-		<field name="title" required="true" caption="Title"/>
+		<field name="objid" primary="true" visible="true" editable="false" caption="Name" searchable="true"/>
+		<field name="title" required="true" caption="Title"  searchable="true"/>
 		
 		<field name="controlpattern" required="true" />
 		<field name="appnopattern" required="true" />
@@ -9,7 +9,6 @@
 		<field name="drivernopattern" required="true" />
 
 		<field name="icon" /> 
-		<field name="allowedfields" required="true"/> 
 		<field name="renewalfrequency" required="true" caption="Renewal Frequency" defaultValue="YEAR"/> 
 		<field name="permithandler"/> 
 	</element>
