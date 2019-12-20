@@ -8,5 +8,6 @@
 		<field name="sortorder" required="true"/>
 		<field name="category" />
 		<field name="required" />
+		<field name="textwidth" type="integer" />
 	</element>
 </schema>

@@ -53,14 +53,14 @@ public class VehicleApplicationService  {
 		return controlNoSvc.getNextNo( fran.vehicletype.appnopattern );	
 	}
 
-	def createUnit( def unit, def vehicletypeid ) {
-		def u = unitEm.create( unit );
+	def updateUnitInfo( def unit, def vehicletypeid ) {
+		if(!unit.objid) throw new Exception("Error VehicleApplicationService.updateUnitInfo. unit must have objid")
 		unit.each { k,v->
 			if(!k.matches('objid|franchiseid')) {
 				def fld = vFieldEm.find([vehicletypeid:vehicletypeid, name:k] ).first();
 				if(fld) {
 					def uinfo = [:];
-					uinfo.unitid = u.objid;
+					uinfo.unitid = unit.objid;
 					uinfo.field = fld;
 					if(fld.datatype == 'decimal') uinfo.decimalvalue = v; 
 					else if(fld.datatype == 'integer') uinfo.intvalue = v; 
@@ -88,7 +88,8 @@ public class VehicleApplicationService  {
 		if(o.txnmode == "CAPTURE" || o.apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT")  ) {
 			if(o.unit.objid) throw new Exception("Unit already exists. This may have been doubled saved");
 			o.unit.franchiseid = o.franchise.objid;
-			o.unit = createUnit( o.unit, o.franchise.vehicletype.objid );		
+			unitEm.create( o.unit );
+			updateUnitInfo( o.unit, o.franchise.vehicletype.objid );		
 			upd.unitid = o.unit.objid;
 		}
 
@@ -105,6 +106,7 @@ public class VehicleApplicationService  {
 		p.refid = o.objid;
 		p.startdate = o.dtcreated;
 		p.info = o;
+		p.assignee = [objid: env.USERID,name: env.FULLNAME];
 		taskSvc.start(p);
 
 		return o;
@@ -148,6 +150,19 @@ public class VehicleApplicationService  {
 			vf.appdate = currDate;
 			vf.appyear = app.appyear;
 		}
+		//unit info
+		def unit = vf.unit;
+		def infos = unitInfoEm.find( [unitid: vf.unit.objid ] ).list();
+		infos.each {
+			def val = null;
+			if(it.field.datatype == "decimal") val = it.decimalvalue;
+			else if(it.field.datatype == "integer") val = it.intvalue;
+			else if(it.field.datatype == "date") val = it.datevalue;
+			else if(it.field.datatype == "boolean") val = it.booleanvalue;
+			else val = it.stringvalue;
+			unit.put( it.field.name, val );
+		}
+
 		return vf;
 	}
 
@@ -193,37 +208,43 @@ public class VehicleApplicationService  {
 		}
 	}
 
+	@ProxyMethod
+	public void updateApplication( def app ) {
+		if( app.txnmode == "CAPTURE" || app.apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT") ) {
+			//remove all so we can simply replace all infos
+			def unit = app.unit;
+			unitInfoEm.find( [unitid: unit.objid ] ).delete();
+			updateUnitInfo( unit, app.franchise.vehicletype.objid )
+		}
+		if( app.txnmode =="CAPTURE" || app.apptype.matches("NEW|CHANGE_OWNER|CHANGE_OWNER_UNIT") ) {
+			//change acct info
+			acctEm.find( [objid: app.account.objid ] ).update( app.account );
+			appEm.find( [objid: app.objid] ).update( [particulars: app.particulars ] );
+		}		
+	}
 
 	@ProxyMethod
 	public void cancelApplication( def o ) {
-		def app = appEm.find( [objid: o.appid ]).first();
+		def app = appEm.find( [objid: o.objid ]).first();
 		if( app.txnmode!='CAPTURE' && app.task.state == 'end') throw new Exception("Cannot cancel the application that is already completed");
 
 		if( app.apptype == "NEW" || app.txnmode == "CAPTURE" ) {
 			franchiseEm.find([objid: app.franchiseid] ).update([unitid: "{NULL}", appid:"{NULL}", acctid: "{NULL}" ]);
 		}
-		else if(app.apptype == "RENEW") {
+		else {
 			def u = [excludeid: app.objid];
-			def prevapp = appEm.find( [franchiseid: app.franchiseid] ).where(" NOT(objid = :excludeid) AND apptype IN ('NEW','RENEW')", u ).orderBy("appdate DESC").first();
-			franchiseEm.find([objid: app.franchiseid] ).update([appid: prevapp.objid]);
+			def prevapp = appEm.find( [franchiseid: app.franchiseid] ).where(" NOT(objid = :excludeid) ", u ).orderBy("appdate DESC").first();
+			def upd = [appid: prevapp.objid, unitid: prevapp.unitid, acctid: prevapp.acctid ];
+			franchiseEm.find([objid: app.franchiseid] ).update(upd);
 		}
-		else if( app.apptype == "CHANGE_UNIT" ) {
-			def u = [excludeid: app.objid];
-			def prevapp = appEm.find( [franchiseid: app.franchiseid] ).where(" NOT(objid = :excludeid) ", u).orderBy("appdate DESC").first();
-			franchiseEm.find([objid: app.franchiseid] ).update([unitid: prevapp.unitid]);
-		}
-		else if( app.apptype == "CHANGE_OWNER" ) {
-			def u = [excludeid: app.objid];
-			def prevapp = appEm.find( [franchiseid: app.franchiseid] ).where(" NOT(objid = :excludeid) ", u).orderBy("appdate DESC").first();
-			franchiseEm.find([objid: app.franchiseid] ).update([acctid: prevapp.acctid]);
-		}
-
+		
 		appEm.find( [objid: app.objid] ).update( [taskid: "{NULL}", unitid: "{NULL}", acctid: "{NULL}"]);
 		vtaskEm.find([refid: app.objid]).delete();
 		appEm.find( [objid: app.objid] ).delete();
 
 		//delete only 
 		if( app.apptype == "NEW" || app.txnmode == "CAPTURE" ) {
+			unitInfoEm.find( [unitid: app.unitid ] ).delete();
 			unitEm.find( [objid: app.unitid] ).delete();
 			acctEm.find( [objid: app.acctid] ).delete();
 		}

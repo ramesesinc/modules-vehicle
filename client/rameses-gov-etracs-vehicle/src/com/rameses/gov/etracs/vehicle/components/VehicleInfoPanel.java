@@ -14,6 +14,7 @@ import com.rameses.rcp.control.XComponentPanel;
 public class VehicleInfoPanel extends XComponentPanel {
 
     private String vehicletypename;
+    private String editmode;
     
     /**
      * Creates new form UnitInfoModel
@@ -37,7 +38,7 @@ public class VehicleInfoPanel extends XComponentPanel {
         setLayout(new java.awt.BorderLayout());
 
         xFormPanel2.setName("formControls"); // NOI18N
-        xFormPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        xFormPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         xFormPanel2.setCellpadding(new java.awt.Insets(1, 1, 1, 1));
         xFormPanel2.setDynamic(true);
         xFormPanel2.setShowCategory(true);
@@ -49,7 +50,13 @@ public class VehicleInfoPanel extends XComponentPanel {
         WorkUnitUIController wu = (WorkUnitUIController)bean.getCallerBinding().getController();
         String conn = (String)wu.getWorkunit().getModule().getProperties().get("connection");
         bean.setProperty("connection", conn); 
-        bean.setProperty("enabled", this.isEnabled() );
+        if( getEditmode() == null ) {
+            bean.setProperty("enabled", this.isEnabled() );            
+        }
+        else {
+            boolean b = Boolean.parseBoolean(super.getProperty(getEditmode() ) + "");
+            bean.setProperty("enabled", b );
+        }
         bean.setProperty("vehicletype", super.getProperty( getVehicletypename() ) );
         //bean.setProperty("ui", this);  
     } 
@@ -92,5 +99,19 @@ public class VehicleInfoPanel extends XComponentPanel {
      */
     public void setVehicletypename(String vehicletypename) {
         this.vehicletypename = vehicletypename;
+    }
+
+    /**
+     * @return the editmode
+     */
+    public String getEditmode() {
+        return editmode;
+    }
+
+    /**
+     * @param editmode the editmode to set
+     */
+    public void setEditmode(String editmode) {
+        this.editmode = editmode;
     }
 }

@@ -32,12 +32,15 @@ public class VehicleInfoPanelModel extends ComponentBean {
         p.orderBy = "category,sortorder";
         def flds = queryService.getList( p );
         flds.each { fld ->
+            if(!unit.containsKey(fld.name)) unit.put(fld.name, null);
             def dt = [caption: fld.caption, name: 'unit.'+fld.name, type:fld.datatype ];
             dt.categoryid = fld.category;
             if(!dt.type) dt.type = "text";
-            if(dt.type == "longtext") {
-                dt.type = "textarea";
-                dt.width = 250;
+            if(dt.type == "text") {
+                dt.width = 100;
+                if( fld.textwidth ) {
+                    dt.width = fld.textwidth;
+                }
             }
             else {
                 dt.width = 100;
@@ -47,7 +50,7 @@ public class VehicleInfoPanelModel extends ComponentBean {
                 dt.checkValue = 1;
                 dt.uncheckValue = 0;
             }
-            if( fld.required == 1 ) dt.required = true;
+            //if( fld.required == 1 ) dt.required = true;
             dt.enabled = enabled;
             dt.captionWidth = 150;
             formControls << dt;

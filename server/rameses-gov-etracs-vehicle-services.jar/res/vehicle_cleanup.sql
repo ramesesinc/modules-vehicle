@@ -13,3 +13,6 @@ delete from vehicle_unit_info;
 delete from vehicle_unit;
 delete from vehicle_application_info;	
 delete from vehicle_application;
+
+DELETE FROM vehicle_driver_franchise;
+DELETE FROM vehicle_driver;

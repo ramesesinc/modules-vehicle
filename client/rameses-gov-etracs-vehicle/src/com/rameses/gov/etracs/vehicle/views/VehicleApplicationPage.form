@@ -499,6 +499,7 @@
                         <Property name="customFilter" type="java.lang.String" value="appid = :objid"/>
                         <Property name="entityName" type="java.lang.String" value=""/>
                         <Property name="formActions" type="java.lang.String" value="feeActions"/>
+                        <Property name="handlerName" type="java.lang.String" value="feeListModel"/>
                         <Property name="orderBy" type="java.lang.String" value="year, item.sortorder"/>
                         <Property name="queryName" type="java.lang.String" value="entity"/>
                         <Property name="schemaName" type="java.lang.String" value="vehicle_application_fee"/>

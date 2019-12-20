@@ -36,12 +36,11 @@ public class VehicleApplicationInitialModel   {
     def appTypes = ["NEW", "RENEW"]; 
     def controlno;
     def apptype;
-    def formControls = [];
-    boolean editableUnit = false;
-    boolean editableOwner = false;
+    
+    boolean editableUnit = true;
+    boolean editableAccount = true;
+    
     def franchise;
-    
-    
     
     public String getTitle() {
         return invoker?.caption + " " + vehicletype.title + " Initial";
@@ -79,12 +78,8 @@ public class VehicleApplicationInitialModel   {
         entity.apptype = apptype;
         mode = "initial";
         if(tmode!="CAPTURE") {
-            if( apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT") ) editableUnit = true;
-            if( apptype.matches("NEW|CHANGE_OWNER|CHANGE_OWNER_UNIT") ) editableOwner = true;            
-        }
-        else {
-            editableUnit = true;
-            editableOwner = true;
+            if( !apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT") ) editableUnit = false;
+            if( !apptype.matches("NEW|CHANGE_OWNER|CHANGE_OWNER_UNIT") ) editableAccount = false;            
         }
     }
 
@@ -124,12 +119,12 @@ public class VehicleApplicationInitialModel   {
         entity.apptype = apptype;
         if( apptype.matches("CHANGE_UNIT|CHANGE_OWNER_UNIT") ) {
             entity.unit = [:];
-        }
+        };
         if( apptype.matches("CHANGE_OWNER|CHANGE_OWNER_UNIT") ) {
             entity.account = [:];
             entity.account.owner = [:];
             entity.account.contact = [:];            
-        }
+        };
         mode = "initial";
         return mode;
     }

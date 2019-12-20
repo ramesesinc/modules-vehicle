@@ -11,6 +11,7 @@ public class VehicleApplication {
 	String vehicletype;
 	String objid;
 	String controlno;
+	Date lastfranchisedatepaid;
 
 	def fixDate( def dt ) {
 		if( dt instanceof String ) {
@@ -33,6 +34,9 @@ public class VehicleApplication {
 		if( m.appdate ) {
 			appdate = fixDate( m.appdate );
 		}	
+		if(m.lastfranchisedatepaid) {
+			lastfranchisedatepaid = fixDate( m.lastfranchisedatepaid );
+		}
 	}
 
 	public void setAppdate( def dt ) {

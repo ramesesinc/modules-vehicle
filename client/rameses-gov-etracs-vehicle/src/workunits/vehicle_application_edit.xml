@@ -1,0 +1,13 @@
+<workunit>
+    <invokers>
+        <invoker type="vehicle_application:edit" caption="Edit Vehicle Application" action="init"/>
+        
+        <!-- app actions -->
+        <invoker type="formActions" action="cancel" caption="Cancel" />        
+        <invoker type="formActions" action="save" caption="Save" />
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleApplicationEditModel" />
+    <pages>
+        <page template="com.rameses.gov.etracs.vehicle.views.VehicleApplicationInitialPage" />        
+    </pages>
+</workunit>

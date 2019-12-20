@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : cloud-mysql
+ Source Server         : etracs-mysql
  Source Server Type    : MySQL
  Source Server Version : 50640
  Source Host           : localhost:3306
@@ -11,10 +11,10 @@
  Target Server Version : 50640
  File Encoding         : 65001
 
- Date: 08/08/2019 13:06:00
+ Date: 20/12/2019 15:15:58
 */
 
-SET NAMES utf8;
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -47,13 +47,19 @@ CREATE TABLE `sys_rule` (
 -- Records of sys_rule
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_rule` VALUES ('RUL-33134f90:164ab2ede1c:-7e5d', 'DEPLOYED', 'VEHICLE_COUNT', 'vehicleassessment', 'initial', 'vehicle count', NULL, 50000, NULL, NULL, '2018-07-18 10:47:12', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
 INSERT INTO `sys_rule` VALUES ('RUL-57c2d992:164ee592b63:-7e1f', 'DEPLOYED', 'MOTORCYCLE_RENEWAL_DATE', 'vehicledates', 'initial', 'MOTORCYCLE RENEWAL DATE', NULL, 50000, NULL, NULL, '2018-07-31 11:29:18', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
-INSERT INTO `sys_rule` VALUES ('RUL-65f47c69:164ab007b19:-7bac', 'DEPLOYED', 'MOTORFEES', 'vehicleassessment', 'compute-fee', 'motorfees', NULL, 50000, NULL, NULL, '2018-07-18 09:53:45', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
-INSERT INTO `sys_rule` VALUES ('RUL-6edb29df:1644165c650:-7e71', 'APPROVED', 'COMPUTE_SURCHARGE', 'vehiclebilling', 'surcharge', 'compute surcharge', NULL, 50000, NULL, NULL, '2018-06-27 21:28:38', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
-INSERT INTO `sys_rule` VALUES ('RUL-76667e5d:16440b3c84b:-7dba', 'DEPLOYED', 'MTOP_FEES', 'vehicleassessment', 'compute-fee', 'mtop fees', NULL, 50000, NULL, NULL, '2018-06-27 18:21:32', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
-INSERT INTO `sys_rule` VALUES ('RUL7cad66dc:1643f542faa:-7e2d', 'DEPLOYED', 'ASK_NUM_EMPLOYEE', 'vehicleassessment', 'ask-info', 'ASK_NUM_EMPLOYEE', NULL, 50000, NULL, NULL, '2018-06-27 11:45:43', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
-INSERT INTO `sys_rule` VALUES ('RULdf6c2d8:164d540df24:-7ddd', 'DEPLOYED', 'SET_DUE_DATE', 'vehiclebilling', 'initial', 'SET DUE DATE', NULL, 50000, NULL, NULL, '2018-07-26 14:28:10', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL-63d80782:16f0ef8d63b:-7da6', 'DEPLOYED', 'DROP_UNIT', 'vehicleassessment', 'compute-fee', 'DROP UNIT', NULL, 50000, NULL, NULL, '2019-12-16 21:52:56', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL-79820a3e:16f0c625123:-6529', 'APPROVED', 'MTOP_EXPIRYDATE', 'vehicledates', 'initial', 'MTOP EXPIRY DATE', NULL, 50000, NULL, NULL, '2019-12-16 11:01:30', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL17933c33:16f0d58ef1c:-710c', 'DEPLOYED', 'MTOP_NEW_FEES', 'vehicleassessment', 'compute-fee', 'MTOP_NEW_FEES', NULL, 50000, NULL, NULL, '2019-12-16 14:45:58', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL17933c33:16f0d58ef1c:-78e5', 'DEPLOYED', 'MTOP_NEW_AND_RENEW_FEES', 'vehicleassessment', 'compute-fee', 'MTOP_NEW_AND_RENEW_FEES', NULL, 50000, NULL, NULL, '2019-12-16 14:39:24', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL25a92016:16f12b9d331:-6cd9', 'DEPLOYED', 'MOTORBOAT_FEE', 'vehicleassessment', 'compute-fee', 'MOTORBOAT FEE	', NULL, 50000, NULL, NULL, '2019-12-17 15:41:03', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL25a92016:16f12b9d331:-7494', 'DEPLOYED', 'MOTORBOAT_EXPIRY_DATE', 'vehicledates', 'initial', 'MOTORBOAT_EXPIRY_DATE', NULL, 50000, NULL, NULL, '2019-12-17 15:25:38', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL351e5058:16f0df7bfd7:-73ce', 'DEPLOYED', 'CHANGE_OWNER_UNIT', 'vehicleassessment', 'compute-fee', 'CHANGE OWNER UNIT', NULL, 50000, NULL, NULL, '2019-12-16 17:18:10', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL351e5058:16f0df7bfd7:-74c0', 'DEPLOYED', 'CHANGE_OWNER', 'vehicleassessment', 'compute-fee', 'CHANGE OWNER', NULL, 50000, NULL, NULL, '2019-12-16 17:17:26', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL351e5058:16f0df7bfd7:-7864', 'DEPLOYED', 'CHANGE_UNIT', 'vehicleassessment', 'compute-fee', 'CHANGE UNIT', NULL, 50000, NULL, NULL, '2019-12-16 17:15:43', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL3cf2bbd6:16ef4232a61:-7d8e', 'APPROVED', 'APPLY_PAYMENT', 'vehiclebilling', 'apply-payment', 'APPLY PAYMENT TO HANDLE PARTIAL PAYMENT', NULL, 50000, NULL, NULL, '2019-12-12 10:30:15', 'anzanoe', 'ANZANOE', 1);
+INSERT INTO `sys_rule` VALUES ('RUL4adb13dd:16c88dfc11c:-7b80', 'APPROVED', 'SET_BILL_ITEM_DUE_DATE', 'vehiclebilling', 'initial', 'set billitem due dates', NULL, 50000, NULL, NULL, '2019-08-13 11:02:50', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
+INSERT INTO `sys_rule` VALUES ('RUL9c39035:16f0d95ddf6:-7cf8', 'DEPLOYED', 'MTOP_SURCHARGE_PER_YEAR', 'vehiclebilling', 'surcharge', 'MTOP_SURCHARGE_PER_YEAR', NULL, 50000, NULL, NULL, '2019-12-16 15:28:05', 'USR-6bf98eba:1254696a2c9:-7ff6', 'ADMIN', 1);
 COMMIT;
 
 -- ----------------------------
@@ -77,14 +83,23 @@ CREATE TABLE `sys_rule_action` (
 -- Records of sys_rule_action
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_rule_action` VALUES ('RA-1c7c09d1:164ee5525b1:-7fd1', 'RUL-57c2d992:164ee592b63:-7e1f', 'treasury.actions.AddDueDate', 'add-duedate', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACT-2a56c5cd:164ac391848:-7ddd', 'RUL-33134f90:164ab2ede1c:-7e5d', 'enterprise.actions.AddSystemInfo', 'add-systeminfo', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACT-65f47c69:164ab007b19:-7917', 'RUL-65f47c69:164ab007b19:-7bac', 'treasury.actions.AddBillItem', 'add-billitem', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACT-76667e5d:16440b3c84b:-7c83', 'RUL-76667e5d:16440b3c84b:-7dba', 'treasury.actions.AddBillItem', 'add-billitem', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACT-dfb3c52:1643f92cbeb:-7e06', 'RUL7cad66dc:1643f542faa:-7e2d', 'enterprise.actions.AskInfo', 'ask-info', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACT31768105:16440d16692:-7e12', 'RUL-76667e5d:16440b3c84b:-7dba', 'treasury.actions.AddBillItem', 'add-billitem', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACTdf6c2d8:164d540df24:-760b', 'RUL-6edb29df:1644165c650:-7e71', 'treasury.actions.AddSurchargeItem', 'add-surcharge-item', 0);
-INSERT INTO `sys_rule_action` VALUES ('RACTdf6c2d8:164d540df24:-7c93', 'RULdf6c2d8:164d540df24:-7ddd', 'treasury.actions.AddDueDate', 'add-duedate', 0);
+INSERT INTO `sys_rule_action` VALUES ('RA437a7884:16f0efafa31:-7ff8', 'RUL-63d80782:16f0ef8d63b:-7da6', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RA716ac8c6:16f0db01197:-7f9e', 'RUL351e5058:16f0df7bfd7:-73ce', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RA716ac8c6:16f0db01197:-7fa7', 'RUL351e5058:16f0df7bfd7:-74c0', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT-13e7ffc3:16c88adffee:-7a6a', 'RUL-57c2d992:164ee592b63:-7e1f', 'treasury.actions.AddVarDate', 'add-vardate', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT-79820a3e:16f0c625123:-63da', 'RUL-79820a3e:16f0c625123:-6529', 'treasury.actions.AddVarDate', 'add-vardate', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT17933c33:16f0d58ef1c:-6f00', 'RUL17933c33:16f0d58ef1c:-710c', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT17933c33:16f0d58ef1c:-71f9', 'RUL17933c33:16f0d58ef1c:-78e5', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT17933c33:16f0d58ef1c:-72fd', 'RUL17933c33:16f0d58ef1c:-78e5', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT17933c33:16f0d58ef1c:-740a', 'RUL17933c33:16f0d58ef1c:-78e5', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT17933c33:16f0d58ef1c:-7519', 'RUL17933c33:16f0d58ef1c:-78e5', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT17933c33:16f0d58ef1c:-7627', 'RUL17933c33:16f0d58ef1c:-78e5', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT25a92016:16f12b9d331:-6a80', 'RUL25a92016:16f12b9d331:-6cd9', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT25a92016:16f12b9d331:-7371', 'RUL25a92016:16f12b9d331:-7494', 'treasury.actions.AddVarDate', 'add-vardate', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT351e5058:16f0df7bfd7:-75a2', 'RUL351e5058:16f0df7bfd7:-7864', 'treasury.actions.AddBillItem', 'add-billitem', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT3cf2bbd6:16ef4232a61:-7bfe', 'RUL3cf2bbd6:16ef4232a61:-7d8e', 'treasury.actions.ApplyPayment', 'apply-payment', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT4adb13dd:16c88dfc11c:-7475', 'RUL4adb13dd:16c88dfc11c:-7b80', 'treasury.actions.SetBillItemProperty', 'set-billitem-property', 0);
+INSERT INTO `sys_rule_action` VALUES ('RACT4e9b2048:16f0da608f1:-7c28', 'RUL9c39035:16f0d95ddf6:-7cf8', 'treasury.actions.AddBillItem', 'add-billitem', 0);
 COMMIT;
 
 -- ----------------------------
@@ -120,28 +135,52 @@ CREATE TABLE `sys_rule_action_param` (
 -- Records of sys_rule_action_param
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_rule_action_param` VALUES ('RAP-1c7c09d1:164ee5525b1:-7fcf', 'RA-1c7c09d1:164ee5525b1:-7fd1', 'treasury.actions.AddDueDate.date', NULL, NULL, NULL, NULL, 'return @DATE( YR , 12, 31 );\n ', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RAP-1c7c09d1:164ee5525b1:-7fd0', 'RA-1c7c09d1:164ee5525b1:-7fd1', 'treasury.actions.AddDueDate.tag', 'renewaldate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-2a56c5cd:164ac391848:-7d8c', 'RACT-2a56c5cd:164ac391848:-7ddd', 'enterprise.actions.AddSystemInfo.aggtype', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'COUNT', NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-2a56c5cd:164ac391848:-7dc5', 'RACT-2a56c5cd:164ac391848:-7ddd', 'enterprise.actions.AddSystemInfo.name', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NUM_UNITS', 'NUM_UNITS', NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-57c2d992:164ee592b63:-7b5b', 'RACT31768105:16440d16692:-7e12', 'treasury.actions.AddBillItem.month', NULL, NULL, NULL, NULL, '1', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-57c2d992:164ee592b63:-7bc7', 'RACT-76667e5d:16440b3c84b:-7c83', 'treasury.actions.AddBillItem.month', NULL, NULL, NULL, NULL, '1', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-57c2d992:164ee592b63:-7c67', 'RACT-65f47c69:164ab007b19:-7917', 'treasury.actions.AddBillItem.month', NULL, NULL, NULL, NULL, '1', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-615daaf4:164b01f32ef:-7a30', 'RACT31768105:16440d16692:-7e12', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-615daaf4:164b01f32ef:-7ab0', 'RACT-76667e5d:16440b3c84b:-7c83', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-615daaf4:164b01f32ef:-7cfb', 'RACT-65f47c69:164ab007b19:-7917', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-65f47c69:164ab007b19:-7887', 'RACT-65f47c69:164ab007b19:-7917', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '150 * NUM_UNITS', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-65f47c69:164ab007b19:-78e1', 'RACT-65f47c69:164ab007b19:-7917', 'treasury.actions.AddBillItem.account', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'REVITEM-46b788af:140b8f5265d:-7f5e', 'PERMIT FOR MOTORCADE/PARADE/RALLY', NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-76667e5d:16440b3c84b:-7c3b', 'RACT-76667e5d:16440b3c84b:-7c83', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-76667e5d:16440b3c84b:-7c6c', 'RACT-76667e5d:16440b3c84b:-7c83', 'treasury.actions.AddBillItem.account', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'REVITEM217a91b:1409e6ae44e:-7ea7', 'FRANCHISE TAX - MTOP', NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-dfb3c52:1643f92cbeb:-7ceb', 'RACT-dfb3c52:1643f92cbeb:-7e06', 'enterprise.actions.AskInfo.value', NULL, NULL, NULL, NULL, '0', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT-dfb3c52:1643f92cbeb:-7df5', 'RACT-dfb3c52:1643f92cbeb:-7e06', 'enterprise.actions.AskInfo.name', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'NO_OF_EMPLOYEE', 'NO_OF_EMPLOYEE', NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT31768105:16440d16692:-7dc8', 'RACT31768105:16440d16692:-7e12', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, 'NUMEMPLOYEE * 50', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACT31768105:16440d16692:-7dfb', 'RACT31768105:16440d16692:-7e12', 'treasury.actions.AddBillItem.account', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'REVITEM-46b788af:140b8f5265d:-7f48', 'OCCUPATION FEES - EMPLOYEES/PERSONNEL', NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACTdf6c2d8:164d540df24:-74a1', 'RACTdf6c2d8:164d540df24:-760b', 'ACTPARAM68129e35:15876a50bc6:-7e3f', NULL, NULL, 'RCOND-6edb29df:1644165c650:-7dd2', 'BILLITEM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACTdf6c2d8:164d540df24:-75a7', 'RACTdf6c2d8:164d540df24:-760b', 'ACTPARAM68129e35:15876a50bc6:-7e1d', NULL, NULL, NULL, NULL, 'AMT * 0.25', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACTdf6c2d8:164d540df24:-75e5', 'RACTdf6c2d8:164d540df24:-760b', 'ACTPARAM68129e35:15876a50bc6:-7e30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'REVITEM217a91b:1409e6ae44e:-7e84', 'BUSINESS TAX - SURCHARGE', NULL, NULL, NULL);
-INSERT INTO `sys_rule_action_param` VALUES ('RULACTdf6c2d8:164d540df24:-7c81', 'RACTdf6c2d8:164d540df24:-7c93', 'treasury.actions.AddDueDate.date', NULL, NULL, NULL, NULL, '@DATE(  YR, 1, 20 )', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP437a7884:16f0efafa31:-7ff5', 'RA437a7884:16f0efafa31:-7ff8', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP437a7884:16f0efafa31:-7ff6', 'RA437a7884:16f0efafa31:-7ff8', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CHANGE_OWNERSHIP', 'CHANGE OF OWNERSHIP', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP437a7884:16f0efafa31:-7ff7', 'RA437a7884:16f0efafa31:-7ff8', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '1000', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP716ac8c6:16f0db01197:-7f9b', 'RA716ac8c6:16f0db01197:-7f9e', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '1000', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP716ac8c6:16f0db01197:-7f9c', 'RA716ac8c6:16f0db01197:-7f9e', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CHANGE_OWNERSHIP', 'CHANGE OF OWNERSHIP', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP716ac8c6:16f0db01197:-7f9d', 'RA716ac8c6:16f0db01197:-7f9e', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP716ac8c6:16f0db01197:-7fa4', 'RA716ac8c6:16f0db01197:-7fa7', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP716ac8c6:16f0db01197:-7fa5', 'RA716ac8c6:16f0db01197:-7fa7', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CHANGE_OWNERSHIP', 'CHANGE OF OWNERSHIP', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RAP716ac8c6:16f0db01197:-7fa6', 'RA716ac8c6:16f0db01197:-7fa7', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '500', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT-13e7ffc3:16c88adffee:-7a42', 'RACT-13e7ffc3:16c88adffee:-7a6a', 'treasury.actions.AddVarDate.date', NULL, NULL, NULL, NULL, 'int yr = @YEAR( APPDATE  );\nint mon = @MONTH( APPDATE  );\nint day = @DAY( APPDATE  );\nif( mon < 10 ) {\n     return @DATE( yr , 10,  31 );    \n};\nelse {\n     return @DATE( yr + 1, 10, 31 );\n};', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT-13e7ffc3:16c88adffee:-7a58', 'RACT-13e7ffc3:16c88adffee:-7a6a', 'treasury.actions.AddVarDate.tag', 'expirydate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT-79820a3e:16f0c625123:-63b2', 'RACT-79820a3e:16f0c625123:-63da', 'treasury.actions.AddVarDate.date', NULL, NULL, NULL, NULL, '@DATE( YR + 1, 10, 31 )', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT-79820a3e:16f0c625123:-63c8', 'RACT-79820a3e:16f0c625123:-63da', 'treasury.actions.AddVarDate.tag', 'permitexpirydate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-6e13', 'RACT17933c33:16f0d58ef1c:-6f00', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-6e45', 'RACT17933c33:16f0d58ef1c:-6f00', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SIDECAR_PLATENO', 'PLATENO FOR SIDECAR', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-6e92', 'RACT17933c33:16f0d58ef1c:-6f00', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-7149', 'RACT17933c33:16f0d58ef1c:-71f9', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-717a', 'RACT17933c33:16f0d58ef1c:-71f9', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'STICKER', 'STICKER', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-71c6', 'RACT17933c33:16f0d58ef1c:-71f9', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-724d', 'RACT17933c33:16f0d58ef1c:-72fd', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-727e', 'RACT17933c33:16f0d58ef1c:-72fd', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'DRIVERS_AFFIDAVIT', 'DRIVERS AFFIDAVIT', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-72ca', 'RACT17933c33:16f0d58ef1c:-72fd', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-7352', 'RACT17933c33:16f0d58ef1c:-740a', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-7387', 'RACT17933c33:16f0d58ef1c:-740a', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TARIFF_FEE', 'TARIFF FEE', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-73d7', 'RACT17933c33:16f0d58ef1c:-740a', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-7453', 'RACT17933c33:16f0d58ef1c:-7519', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-749a', 'RACT17933c33:16f0d58ef1c:-7519', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ANNUAL_BUSINESS_PERMIT', 'ANNUAL BUSINESS PERMIT', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-74e6', 'RACT17933c33:16f0d58ef1c:-7519', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-7575', 'RACT17933c33:16f0d58ef1c:-7627', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '1000', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-75a8', 'RACT17933c33:16f0d58ef1c:-7627', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'FRANCHISE_FEE', 'FRANCHISE FEE', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT17933c33:16f0d58ef1c:-75f4', 'RACT17933c33:16f0d58ef1c:-7627', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT25a92016:16f12b9d331:-69ca', 'RACT25a92016:16f12b9d331:-6a80', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '100', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT25a92016:16f12b9d331:-69ff', 'RACT25a92016:16f12b9d331:-6a80', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'MOTORBOAT_FEE', 'MOTOR BOAT', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT25a92016:16f12b9d331:-6a4d', 'RACT25a92016:16f12b9d331:-6a80', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT25a92016:16f12b9d331:-7349', 'RACT25a92016:16f12b9d331:-7371', 'treasury.actions.AddVarDate.date', NULL, NULL, NULL, NULL, 'int yr = @YEAR(   APPDATE );\nint mon = @MONTH( APPDATE  );\n\nif( mon < 3 ) {\n     return @DATE( yr-1, 3, 31 );\n};\nelse {\n     return @DATE( yr , 3, 31); \n};\n', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT25a92016:16f12b9d331:-735f', 'RACT25a92016:16f12b9d331:-7371', 'treasury.actions.AddVarDate.tag', 'expirydate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT351e5058:16f0df7bfd7:-74ee', 'RACT351e5058:16f0df7bfd7:-75a2', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '500', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT351e5058:16f0df7bfd7:-7523', 'RACT351e5058:16f0df7bfd7:-75a2', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CHANGE_MOTOR_VEHICLE', 'CHANGE OF MOTOR VEHICLE', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT351e5058:16f0df7bfd7:-756f', 'RACT351e5058:16f0df7bfd7:-75a2', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT3cf2bbd6:16ef4232a61:-7bf2', 'RACT3cf2bbd6:16ef4232a61:-7bfe', 'treasury.actions.ApplyPayment.payment', NULL, NULL, 'RCOND3cf2bbd6:16ef4232a61:-7cd0', 'PMT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT47877165:16c88fc2ebc:-7be1', 'RACT4adb13dd:16c88dfc11c:-7475', 'treasury.actions.SetBillItemProperty.billitem', NULL, NULL, 'RCOND4adb13dd:16c88dfc11c:-7ac9', 'BILLITEM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT4adb13dd:16c88dfc11c:-7424', 'RACT4adb13dd:16c88dfc11c:-7475', 'treasury.actions.SetBillItemProperty.value', NULL, NULL, NULL, NULL, '@DATE( YR + 1, 1 , 20 )', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT4adb13dd:16c88dfc11c:-7456', 'RACT4adb13dd:16c88dfc11c:-7475', 'treasury.actions.SetBillItemProperty.fieldname', 'duedate', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT4e9b2048:16f0da608f1:-71fc', 'RACT4e9b2048:16f0da608f1:-7c28', 'treasury.actions.AddBillItem.amount', NULL, NULL, NULL, NULL, '@MONTHDIFF(  @DATE( YR-1 , 11 , 1 ),  CDATE, 1 )  * 300', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT4e9b2048:16f0da608f1:-722f', 'RACT4e9b2048:16f0da608f1:-7c28', 'treasury.actions.AddBillItem.billcode', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'VEHICLE_PENALTY', 'PENALTY', NULL, NULL, NULL);
+INSERT INTO `sys_rule_action_param` VALUES ('RULACT4e9b2048:16f0da608f1:-7bee', 'RACT4e9b2048:16f0da608f1:-7c28', 'treasury.actions.AddBillItem.year', NULL, NULL, NULL, NULL, 'YR', 'expression', NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -163,8 +202,8 @@ CREATE TABLE `sys_rule_actiondef` (
 -- Records of sys_rule_actiondef
 -- ----------------------------
 BEGIN;
+INSERT INTO `sys_rule_actiondef` VALUES ('enterprise.actions.AddInfo', 'add-info', 'Add Info', 0, 'add-info', 'ENTERPRISE', 'enterprise.actions.AddInfo');
 INSERT INTO `sys_rule_actiondef` VALUES ('enterprise.actions.AddRequirement', 'add-requirement', 'Add Requirement', 1, 'add-requirement', 'ENTERPRISE', 'enterprise.actions.AddRequirement');
-INSERT INTO `sys_rule_actiondef` VALUES ('enterprise.actions.AddSystemInfo', 'add-systeminfo', 'Add System Info', 0, 'add-systeminfo', 'ENTERPRISE', 'enterprise.actions.AddSystemInfo');
 INSERT INTO `sys_rule_actiondef` VALUES ('enterprise.actions.AskInfo', 'ask-info', 'Ask Info', 0, 'ask-info', 'ENTERPRISE', 'enterprise.actions.AskInfo');
 INSERT INTO `sys_rule_actiondef` VALUES ('enterprise.actions.ThrowException', 'throw-exeception', 'Throw Exception', 1, 'throw-exeception', 'ENTERPRISE', 'enterprise.actions.ThrowException');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddBillItem', 'add-billitem', 'Add Bill Item', 2, 'add-billitem', 'TREASURY', 'treasury.actions.AddBillItem');
@@ -172,8 +211,6 @@ INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddDiscountItem', 'ad
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddDueDate', 'add-duedate', 'Add Due Date', 1, 'add-duedate', 'TREASURY', 'treasury.actions.AddDueDate');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddExcessBillItem', 'add-excess-billitem', 'Add Excess Bill Item', 2, 'add-excess-billitem', 'TREASURY', 'treasury.actions.AddExcessBillItem');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddInterestItem', 'add-interest-item', 'Add Interest', 3, 'add-interest-item', 'TREASURY', 'treasury.actions.AddInterestItem');
-INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddRevenueShare', 'add-share', 'Add Revenue Share', 1, 'add-share', 'TREASURY', 'treasury.actions.AddRevenueShare');
-INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddRevenueShareByOrg', 'add-share-by-org', 'Add Revenue Share By Org', 1, 'add-share-by-org', 'TREASURY', 'treasury.actions.AddRevenueShareByOrg');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddSurchargeItem', 'add-surcharge-item', 'Add Surcharge', 3, 'add-surcharge-item', 'TREASURY', 'treasury.actions.AddSurchargeItem');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddVarDate', 'add-vardate', 'Add Variable Date', 1, 'add-vardate', 'TREASURY', 'treasury.actions.AddVarDate');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.AddVarDecimal', 'add-var-decimal', 'Add Var Decimal', 1, 'add-var-decimal', 'TREASURY', 'treasury.actions.AddVarDecimal');
@@ -184,7 +221,6 @@ INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.SetBillItemAccount', 
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.SetBillItemProperty', 'set-billitem-property', 'Set BillItem Property Value', 10, 'set-billitem-property', 'TREASURY', 'treasury.actions.SetBillItemProperty');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.SummarizeBillItem', 'summarize-item', 'Summarize Bill Item', 5, 'summarize-item', 'TREASURY', 'treasury.actions.SummarizeBillItem');
 INSERT INTO `sys_rule_actiondef` VALUES ('treasury.actions.UpdateFieldValue', 'update-field-value', 'Update Field Value', 0, 'update-field-value', 'TREASURY', 'treasury.actions.UpdateFieldValue');
-INSERT INTO `sys_rule_actiondef` VALUES ('treasury.sample.ComputeBill', 'compute_bill1', 'Compute Bill 1', 1, 'compute_bill1', NULL, 'treasury.sample.ComputeBill');
 COMMIT;
 
 -- ----------------------------
@@ -213,49 +249,31 @@ CREATE TABLE `sys_rule_actiondef_param` (
 -- Records of sys_rule_actiondef_param
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_rule_actiondef_param` VALUES ('2ecbcac2:15f2d21e588:-7ff2', 'treasury.actions.AddVarDate', 'tag', 1, 'Tag', 'string', 'string', NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('2ecbcac2:15f2d21e588:-7ff3', 'treasury.actions.AddVarDate', 'date', 2, 'Date', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM-1a90cae7:15f130ef553:-6df2', 'treasury.actions.AddSurchargeItem', 'txntype', 4, 'Txn Type', NULL, 'lookup', 'billitem_txntype:lookup', 'objid', 'title', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM2fc067f3:151cc3fac96:-7e8f', 'treasury.actions.AddDiscountItem', 'amount', 3, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM2fc067f3:151cc3fac96:-7e97', 'treasury.actions.AddDiscountItem', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM62888c28:151cc92197a:-7f6b', 'treasury.actions.AddDiscountItem', 'account', 2, 'Discount Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM68129e35:15876a50bc6:-7e1d', 'treasury.actions.AddSurchargeItem', 'amount', 3, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM68129e35:15876a50bc6:-7e30', 'treasury.actions.AddSurchargeItem', 'account', 2, 'Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('ACTPARAM68129e35:15876a50bc6:-7e3f', 'treasury.actions.AddSurchargeItem', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddInfo.aggtype', 'enterprise.actions.AddInfo', 'aggtype', 3, 'Aggregate Type', NULL, 'lov', NULL, NULL, NULL, NULL, 'INFO_AGGREGATE_TYPES');
+INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddInfo.name', 'enterprise.actions.AddInfo', 'name', 1, 'Name', NULL, 'lookup', 'variableinfo:lookup', 'name', 'name', 'string', NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddInfo.value', 'enterprise.actions.AddInfo', 'value', 2, 'Value', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddRequirement.type', 'enterprise.actions.AddRequirement', 'type', 1, 'Type', NULL, 'lookup', 'requirementtype:lookup', 'objid', 'title', NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddSystemInfo.aggtype', 'enterprise.actions.AddSystemInfo', 'aggtype', 3, 'Aggregate Type', NULL, 'lov', NULL, NULL, NULL, NULL, 'INFO_AGGREGATE_TYPES');
-INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddSystemInfo.name', 'enterprise.actions.AddSystemInfo', 'name', 1, 'Name', NULL, 'lookup', 'variableinfo:lookup', 'name', 'name', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AddSystemInfo.value', 'enterprise.actions.AddSystemInfo', 'value', 2, 'Value', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AskInfo.name', 'enterprise.actions.AskInfo', 'name', 1, 'Name', NULL, 'lookup', 'variableinfo:lookup', 'name', 'name', 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.AskInfo.value', 'enterprise.actions.AskInfo', 'value', 2, 'Default Value', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('enterprise.actions.ThrowException.msg', 'enterprise.actions.ThrowException', 'msg', 1, 'Message', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.account', 'treasury.actions.AddBillItem', 'account', 1, 'Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.amount', 'treasury.actions.AddBillItem', 'amount', 2, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.fromdate', 'treasury.actions.AddBillItem', 'fromdate', 6, 'From Date', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.month', 'treasury.actions.AddBillItem', 'month', 5, 'Month', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.refid', 'treasury.actions.AddBillItem', 'refid', 9, 'Ref ID', NULL, 'var', NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.remarks', 'treasury.actions.AddBillItem', 'remarks', 8, 'Remarks', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.todate', 'treasury.actions.AddBillItem', 'todate', 7, 'To Date', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.txntype', 'treasury.actions.AddBillItem', 'txntype', 3, 'Txn Type', NULL, 'lookup', 'billitem_txntype:lookup', 'objid', 'title', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.year', 'treasury.actions.AddBillItem', 'year', 4, 'Year', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDiscountItem.account', 'treasury.actions.AddDiscountItem', 'account', 2, 'Discount Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDiscountItem.amount', 'treasury.actions.AddDiscountItem', 'amount', 3, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.amount', 'treasury.actions.AddBillItem', 'amount', 1, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.billcode', 'treasury.actions.AddBillItem', 'billcode', 4, 'Item code', NULL, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', 'string', NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.refid', 'treasury.actions.AddBillItem', 'refid', 3, 'Ref ID', NULL, 'var', NULL, NULL, NULL, 'string', NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.remarks', 'treasury.actions.AddBillItem', 'remarks', 2, 'Remarks', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddBillItem.year', 'treasury.actions.AddBillItem', 'year', 5, 'Year', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDiscountItem.amount', 'treasury.actions.AddDiscountItem', 'amount', 2, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDiscountItem.billcode', 'treasury.actions.AddDiscountItem', 'billcode', 3, 'Item code', NULL, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDiscountItem.billitem', 'treasury.actions.AddDiscountItem', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDueDate.date', 'treasury.actions.AddDueDate', 'date', 1, 'Date', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddDueDate.tag', 'treasury.actions.AddDueDate', 'tag', 2, 'Tag', 'string', 'string', NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddExcessBillItem.account', 'treasury.actions.AddExcessBillItem', 'account', 1, 'Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddExcessBillItem.amount', 'treasury.actions.AddExcessBillItem', 'amount', 2, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddInterestItem.account', 'treasury.actions.AddInterestItem', 'account', 2, 'Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddInterestItem.amount', 'treasury.actions.AddInterestItem', 'amount', 3, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddExcessBillItem.amount', 'treasury.actions.AddExcessBillItem', 'amount', 1, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddExcessBillItem.billcode', 'treasury.actions.AddExcessBillItem', 'billcode', 2, 'Item code', NULL, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', 'string', NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddInterestItem.amount', 'treasury.actions.AddInterestItem', 'amount', 2, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddInterestItem.billcode', 'treasury.actions.AddInterestItem', 'billcode', 3, 'Item code', NULL, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddInterestItem.billitem', 'treasury.actions.AddInterestItem', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddRevenueShareByOrg.amount', 'treasury.actions.AddRevenueShare', 'amount', 4, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddRevenueShareByOrg.org', 'treasury.actions.AddRevenueShare', 'org', 3, 'Org', NULL, 'var', NULL, NULL, NULL, 'enterprise.facts.Org', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddRevenueShareByOrg.payableaccount', 'treasury.actions.AddRevenueShare', 'payableaccount', 2, 'Payable Account', NULL, 'lookup', 'payableaccount:lookup', 'objid', 'title', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddRevenueShareByOrg.refitem', 'treasury.actions.AddRevenueShare', 'refitem', 1, 'Ref Item', NULL, 'var', 'revenueitem:lookup', 'objid', 'title', 'treasury.facts.AbstractBillItem', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddSurchargeItem.account', 'treasury.actions.AddSurchargeItem', 'account', 2, 'Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', 'string', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddSurchargeItem.amount', 'treasury.actions.AddSurchargeItem', 'amount', 3, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddSurchargeItem.amount', 'treasury.actions.AddSurchargeItem', 'amount', 2, 'Amount', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddSurchargeItem.billcode', 'treasury.actions.AddSurchargeItem', 'billcode', 3, 'Item code', NULL, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddSurchargeItem.billitem', 'treasury.actions.AddSurchargeItem', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddSurchargeItem.txntype', 'treasury.actions.AddSurchargeItem', 'txntype', 4, 'Txn Type', NULL, 'lookup', 'billitem_txntype:lookup', 'objid', 'title', 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddVarDate.date', 'treasury.actions.AddVarDate', 'date', 2, 'Date', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddVarDate.tag', 'treasury.actions.AddVarDate', 'tag', 1, 'Tag', 'string', 'string', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddVarDecimal.tag', 'treasury.actions.AddVarDecimal', 'tag', 2, 'Tag', 'string', 'string', NULL, NULL, NULL, 'string', NULL);
@@ -265,10 +283,10 @@ INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddVarInteger.v
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddVarString.tag', 'treasury.actions.AddVarString', 'tag', 2, 'Tag', 'string', 'string', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.AddVarString.value', 'treasury.actions.AddVarString', 'value', 1, 'Value', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.ApplyPayment.payment', 'treasury.actions.ApplyPayment', 'payment', 1, 'Payment', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.Payment', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemAccount.account', 'treasury.actions.SetBillItemAccount', 'account', 2, 'Account', NULL, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemAccount.billcode', 'treasury.actions.SetBillItemAccount', 'billcode', 2, 'Item code', NULL, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemAccount.billitem', 'treasury.actions.SetBillItemAccount', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemProperty.billitem', 'treasury.actions.SetBillItemProperty', 'billitem', 1, 'Bill Item', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.BillItem', NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemProperty.fieldname', 'treasury.actions.SetBillItemProperty', 'fieldname', 2, 'Property Field Name', NULL, 'fieldlist', NULL, 'billitem', NULL, NULL, NULL);
+INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemProperty.fieldname', 'treasury.actions.SetBillItemProperty', 'fieldname', 2, 'Property Field Name', 'string', 'string', NULL, 'billitem', NULL, 'string', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SetBillItemProperty.value', 'treasury.actions.SetBillItemProperty', 'value', 3, 'Value', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SummarizeBillItem.aggtype', 'treasury.actions.SummarizeBillItem', 'aggtype', 2, 'Aggregate Type', NULL, 'lov', NULL, NULL, NULL, NULL, 'SUMMARY_AGGREGATE_TYPE');
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SummarizeBillItem.billitem', 'treasury.actions.SummarizeBillItem', 'billitem', 1, 'BillItem', NULL, 'var', NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
@@ -277,8 +295,6 @@ INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.SummarizeBillIt
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.UpdateFieldValue.fieldname', 'treasury.actions.UpdateFieldValue', 'fieldname', 2, 'Field name', NULL, 'fieldlist', NULL, 'object', NULL, NULL, NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.UpdateFieldValue.object', 'treasury.actions.UpdateFieldValue', 'object', 1, 'Object', NULL, 'var', NULL, NULL, NULL, 'obj', NULL);
 INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.actions.UpdateFieldValue.value', 'treasury.actions.UpdateFieldValue', 'value', 3, 'Value', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.sample.ComputeBill.name', 'treasury.sample.ComputeBill', 'name', 2, 'Name', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `sys_rule_actiondef_param` VALUES ('treasury.sample.ComputeBill.unit', 'treasury.sample.ComputeBill', 'unit', 1, 'Unit', NULL, 'expression', NULL, NULL, NULL, NULL, NULL);
 COMMIT;
 
 -- ----------------------------
@@ -311,16 +327,26 @@ CREATE TABLE `sys_rule_condition` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_rule_condition` VALUES ('RC-1c7c09d1:164ee5525b1:-7fd5', 'RUL-57c2d992:164ee592b63:-7e1f', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND-33134f90:164ab2ede1c:-7d14', 'RUL-33134f90:164ab2ede1c:-7e5d', 'vehicle.facts.VehicleUnit', 'vehicle.facts.VehicleUnit', 'VU', 0, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND-65f47c69:164ab007b19:-7a63', 'RUL-65f47c69:164ab007b19:-7bac', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND-6edb29df:1644165c650:-7dd2', 'RUL-6edb29df:1644165c650:-7e71', 'treasury.facts.BillItem', 'treasury.facts.BillItem', 'BILLITEM', 0, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND-76667e5d:16440b3c84b:-7d21', 'RUL-76667e5d:16440b3c84b:-7dba', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND-dfb3c52:1643f92cbeb:-7e4c', 'RUL7cad66dc:1643f542faa:-7e2d', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND31768105:16440d16692:-7e9c', 'RUL-76667e5d:16440b3c84b:-7dba', 'enterprise.facts.IntegerInfo', 'enterprise.facts.IntegerInfo', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCOND6ce1407b:164ac6fb0fc:-7dce', 'RUL-65f47c69:164ab007b19:-7bac', 'enterprise.facts.IntegerInfo', 'enterprise.facts.IntegerInfo', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCONDdf6c2d8:164d540df24:-7975', 'RUL-6edb29df:1644165c650:-7e71', 'treasury.facts.DueDate', 'treasury.facts.DueDate', NULL, 2, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCONDdf6c2d8:164d540df24:-7a82', 'RUL-6edb29df:1644165c650:-7e71', 'treasury.facts.BillDate', 'treasury.facts.BillDate', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition` VALUES ('RCONDdf6c2d8:164d540df24:-7d3d', 'RULdf6c2d8:164d540df24:-7ddd', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RC437a7884:16f0efafa31:-7ffb', 'RUL-63d80782:16f0ef8d63b:-7da6', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RC437a7884:16f0efafa31:-7ffd', 'RUL-63d80782:16f0ef8d63b:-7da6', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RC716ac8c6:16f0db01197:-7fa0', 'RUL351e5058:16f0df7bfd7:-73ce', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RC716ac8c6:16f0db01197:-7fa3', 'RUL351e5058:16f0df7bfd7:-73ce', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RC716ac8c6:16f0db01197:-7faa', 'RUL351e5058:16f0df7bfd7:-74c0', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RC716ac8c6:16f0db01197:-7fac', 'RUL351e5058:16f0df7bfd7:-74c0', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND-79820a3e:16f0c625123:-64d9', 'RUL-79820a3e:16f0c625123:-6529', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND17933c33:16f0d58ef1c:-707a', 'RUL17933c33:16f0d58ef1c:-710c', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND17933c33:16f0d58ef1c:-769b', 'RUL17933c33:16f0d58ef1c:-78e5', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND17933c33:16f0d58ef1c:-7853', 'RUL17933c33:16f0d58ef1c:-78e5', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND25a92016:16f12b9d331:-6af4', 'RUL25a92016:16f12b9d331:-6cd9', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND25a92016:16f12b9d331:-6c47', 'RUL25a92016:16f12b9d331:-6cd9', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND25a92016:16f12b9d331:-744e', 'RUL25a92016:16f12b9d331:-7494', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND351e5058:16f0df7bfd7:-7616', 'RUL351e5058:16f0df7bfd7:-7864', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND351e5058:16f0df7bfd7:-77d2', 'RUL351e5058:16f0df7bfd7:-7864', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND3cf2bbd6:16ef4232a61:-7cd0', 'RUL3cf2bbd6:16ef4232a61:-7d8e', 'treasury.facts.Payment', 'treasury.facts.Payment', 'PMT', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND4adb13dd:16c88dfc11c:-7ac9', 'RUL4adb13dd:16c88dfc11c:-7b80', 'treasury.facts.BillItem', 'treasury.facts.BillItem', 'BILLITEM', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND4e9b2048:16f0da608f1:-7382', 'RUL9c39035:16f0d95ddf6:-7cf8', 'com.rameses.rules.common.CurrentDate', 'com.rameses.rules.common.CurrentDate', NULL, 2, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND4e9b2048:16f0da608f1:-7b2b', 'RUL9c39035:16f0d95ddf6:-7cf8', 'vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'VAPP', 1, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition` VALUES ('RCOND4e9b2048:16f0da608f1:-7cab', 'RUL9c39035:16f0d95ddf6:-7cf8', 'vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', NULL, 0, NULL, NULL, NULL, NULL, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -357,22 +383,39 @@ CREATE TABLE `sys_rule_condition_constraint` (
 -- Records of sys_rule_condition_constraint
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC-1c7c09d1:164ee5525b1:-7fd2', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'vehicle.facts.VehicleApplication.appyear', 'appyear', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC-1c7c09d1:164ee5525b1:-7fd4', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcycle\",value:\"motorcycle\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-615daaf4:164b01f32ef:-7b78', 'RCOND-76667e5d:16440b3c84b:-7d21', 'vehicle.facts.VehicleApplication.appyear', 'appyear', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-615daaf4:164b01f32ef:-7dbb', 'RCOND-65f47c69:164ab007b19:-7a63', 'vehicle.facts.VehicleApplication.appyear', 'appyear', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-65f47c69:164ab007b19:-7a3d', 'RCOND-65f47c69:164ab007b19:-7a63', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcycle\",value:\"motorcycle\"]]', NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-6edb29df:1644165c650:-7d40', 'RCOND-6edb29df:1644165c650:-7dd2', 'treasury.facts.BillItem.amount', 'amount', 'AMT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-6edb29df:1644165c650:-7da3', 'RCOND-6edb29df:1644165c650:-7dd2', 'treasury.facts.BillItem.account', 'account', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"REVITEM217a91b:1409e6ae44e:-7ea7\",value:\"FRANCHISE TAX - MTOP\"]]', NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-76667e5d:16440b3c84b:-7d0a', 'RCOND-76667e5d:16440b3c84b:-7d21', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"tricycle\",value:\"tricycle\"],[key:\"motorcycle\",value:\"motorcycle\"]]', NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-76667e5d:16440b3c84b:-7e2a', 'RCOND-dfb3c52:1643f92cbeb:-7e4c', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"tricycle\",value:\"tricycle\"],[key:\"motorcycle\",value:\"motorcycle\"]]', NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST31768105:16440d16692:-7e9a', 'RCOND31768105:16440d16692:-7e9c', 'enterprise.facts.IntegerInfo.value', 'value', 'NUMEMPLOYEE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST31768105:16440d16692:-7e9b', 'RCOND31768105:16440d16692:-7e9c', 'enterprise.facts.IntegerInfo.name', 'name', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"NO_OF_EMPLOYEE\",value:\"NO_OF_EMPLOYEE\"]]', NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST6ce1407b:164ac6fb0fc:-7dcc', 'RCOND6ce1407b:164ac6fb0fc:-7dce', 'enterprise.facts.IntegerInfo.value', 'value', 'NUM_UNITS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST6ce1407b:164ac6fb0fc:-7dcd', 'RCOND6ce1407b:164ac6fb0fc:-7dce', 'enterprise.facts.IntegerInfo.name', 'name', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"NUM_UNITS\",value:\"NUM_UNITS\"]]', NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONSTdf6c2d8:164d540df24:-794d', 'RCONDdf6c2d8:164d540df24:-7975', 'treasury.facts.DueDate.date', 'date', NULL, 'before', '<', 1, 'RCONSTdf6c2d8:164d540df24:-7a5a', 'BILLDATE', NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONSTdf6c2d8:164d540df24:-7a5a', 'RCONDdf6c2d8:164d540df24:-7a82', 'treasury.facts.BillDate.date', 'date', 'BILLDATE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONSTdf6c2d8:164d540df24:-7d0a', 'RCONDdf6c2d8:164d540df24:-7d3d', 'vehicle.facts.VehicleApplication.appyear', 'appyear', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC-1c7c09d1:164ee5525b1:-7fd4', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"pedicab\",value:\"pedicab\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC437a7884:16f0efafa31:-7ff9', 'RC437a7884:16f0efafa31:-7ffb', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcad\",value:\"motorcad\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC437a7884:16f0efafa31:-7ffa', 'RC437a7884:16f0efafa31:-7ffb', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"DROP\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC437a7884:16f0efafa31:-7ffc', 'RC437a7884:16f0efafa31:-7ffd', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC716ac8c6:16f0db01197:-7f9f', 'RC716ac8c6:16f0db01197:-7fa0', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC716ac8c6:16f0db01197:-7fa1', 'RC716ac8c6:16f0db01197:-7fa3', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"CHANGE_OWNER_UNIT\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC716ac8c6:16f0db01197:-7fa2', 'RC716ac8c6:16f0db01197:-7fa3', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcad\",value:\"motorcad\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC716ac8c6:16f0db01197:-7fa8', 'RC716ac8c6:16f0db01197:-7faa', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcad\",value:\"motorcad\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC716ac8c6:16f0db01197:-7fa9', 'RC716ac8c6:16f0db01197:-7faa', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"CHANGE_OWNER\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCC716ac8c6:16f0db01197:-7fab', 'RC716ac8c6:16f0db01197:-7fac', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-79820a3e:16f0c625123:-6436', 'RCOND-79820a3e:16f0c625123:-64d9', 'vehicle.facts.VehicleApplication.appyear', 'appyear', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST-79820a3e:16f0c625123:-64af', 'RCOND-79820a3e:16f0c625123:-64d9', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcad\",value:\"motorcad\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST17933c33:16f0d58ef1c:-6f99', 'RCOND17933c33:16f0d58ef1c:-707a', 'vehicle.facts.VehicleApplication.appyear', 'appyear', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST17933c33:16f0d58ef1c:-6ff9', 'RCOND17933c33:16f0d58ef1c:-707a', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"NEW\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST17933c33:16f0d58ef1c:-7050', 'RCOND17933c33:16f0d58ef1c:-707a', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"tricycle\",value:\"tricycle\"],[key:\"motorcad\",value:\"motorcad\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST17933c33:16f0d58ef1c:-768b', 'RCOND17933c33:16f0d58ef1c:-769b', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST17933c33:16f0d58ef1c:-77d2', 'RCOND17933c33:16f0d58ef1c:-7853', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"NEW\",\"RENEW\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST17933c33:16f0d58ef1c:-7829', 'RCOND17933c33:16f0d58ef1c:-7853', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"tricycle\",value:\"tricycle\"],[key:\"motorcad\",value:\"motorcad\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST23693274:16f0cc4aae6:-7da1', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'vehicle.facts.VehicleApplication.appdate', 'appdate', 'APPDATE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST25a92016:16f12b9d331:-6ae4', 'RCOND25a92016:16f12b9d331:-6af4', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST25a92016:16f12b9d331:-6bc2', 'RCOND25a92016:16f12b9d331:-6c47', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"NEW\",\"RENEW\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST25a92016:16f12b9d331:-6c1d', 'RCOND25a92016:16f12b9d331:-6c47', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorboat\",value:\"motorboat\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST25a92016:16f12b9d331:-73cb', 'RCOND25a92016:16f12b9d331:-744e', 'vehicle.facts.VehicleApplication.appdate', 'appdate', 'APPDATE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST25a92016:16f12b9d331:-7424', 'RCOND25a92016:16f12b9d331:-744e', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorboat\",value:\"motorboat\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST351e5058:16f0df7bfd7:-7606', 'RCOND351e5058:16f0df7bfd7:-7616', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST351e5058:16f0df7bfd7:-7714', 'RCOND351e5058:16f0df7bfd7:-77d2', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"CHANGE_UNIT\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST351e5058:16f0df7bfd7:-7798', 'RCOND351e5058:16f0df7bfd7:-77d2', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"motorcad\",value:\"motorcad\"],[key:\"tricycle\",value:\"tricycle\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST3cf2bbd6:16ef4232a61:-7cc0', 'RCOND3cf2bbd6:16ef4232a61:-7cd0', 'treasury.facts.Payment.amount', 'amount', 'AMT', 'greater than', '>', NULL, NULL, NULL, 0.00, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST4adb13dd:16c88dfc11c:-7734', 'RCOND4adb13dd:16c88dfc11c:-7ac9', 'treasury.facts.BillItem.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST4e9b2048:16f0da608f1:-7346', 'RCOND4e9b2048:16f0da608f1:-7382', 'com.rameses.rules.common.CurrentDate.date', 'date', 'CDATE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST4e9b2048:16f0da608f1:-7aaa', 'RCOND4e9b2048:16f0da608f1:-7b2b', 'vehicle.facts.VehicleApplication.apptype', 'apptype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[\"RENEW\"]', NULL, 1);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST4e9b2048:16f0da608f1:-7b01', 'RCOND4e9b2048:16f0da608f1:-7b2b', 'vehicle.facts.VehicleApplication.vehicletype', 'vehicletype', NULL, 'is any of the ff.', 'matches', NULL, NULL, NULL, NULL, NULL, NULL, '[[key:\"tricycle\",value:\"tricycle\"],[key:\"motorcad\",value:\"motorcad\"]]', NULL, 0);
+INSERT INTO `sys_rule_condition_constraint` VALUES ('RCONST4e9b2048:16f0da608f1:-7c9b', 'RCOND4e9b2048:16f0da608f1:-7cab', 'vehicle.facts.VehicleAssessYear.year', 'year', 'YR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 COMMIT;
 
 -- ----------------------------
@@ -396,20 +439,32 @@ CREATE TABLE `sys_rule_condition_var` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_rule_condition_var` VALUES ('RC-1c7c09d1:164ee5525b1:-7fd5', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'RUL-57c2d992:164ee592b63:-7e1f', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCC-1c7c09d1:164ee5525b1:-7fd2', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'RUL-57c2d992:164ee592b63:-7e1f', 'YR', 'integer', 1);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCOND-33134f90:164ab2ede1c:-7d14', 'RCOND-33134f90:164ab2ede1c:-7d14', 'RUL-33134f90:164ab2ede1c:-7e5d', 'VU', 'vehicle.facts.VehicleUnit', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCOND-65f47c69:164ab007b19:-7a63', 'RCOND-65f47c69:164ab007b19:-7a63', 'RUL-65f47c69:164ab007b19:-7bac', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCOND-6edb29df:1644165c650:-7dd2', 'RCOND-6edb29df:1644165c650:-7dd2', 'RUL-6edb29df:1644165c650:-7e71', 'BILLITEM', 'treasury.facts.BillItem', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCOND-76667e5d:16440b3c84b:-7d21', 'RCOND-76667e5d:16440b3c84b:-7d21', 'RUL-76667e5d:16440b3c84b:-7dba', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCOND-dfb3c52:1643f92cbeb:-7e4c', 'RCOND-dfb3c52:1643f92cbeb:-7e4c', 'RUL7cad66dc:1643f542faa:-7e2d', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONDdf6c2d8:164d540df24:-7d3d', 'RCONDdf6c2d8:164d540df24:-7d3d', 'RULdf6c2d8:164d540df24:-7ddd', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONST-615daaf4:164b01f32ef:-7b78', 'RCOND-76667e5d:16440b3c84b:-7d21', 'RUL-76667e5d:16440b3c84b:-7dba', 'YR', 'integer', 1);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONST-615daaf4:164b01f32ef:-7dbb', 'RCOND-65f47c69:164ab007b19:-7a63', 'RUL-65f47c69:164ab007b19:-7bac', 'YR', 'integer', 1);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONST-6edb29df:1644165c650:-7d40', 'RCOND-6edb29df:1644165c650:-7dd2', 'RUL-6edb29df:1644165c650:-7e71', 'AMT', 'decimal', 1);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONST31768105:16440d16692:-7e9a', 'RCOND31768105:16440d16692:-7e9c', 'RUL-76667e5d:16440b3c84b:-7dba', 'NUMEMPLOYEE', 'integer', 1);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONST6ce1407b:164ac6fb0fc:-7dcc', 'RCOND6ce1407b:164ac6fb0fc:-7dce', 'RUL-65f47c69:164ab007b19:-7bac', 'NUM_UNITS', 'integer', 1);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONSTdf6c2d8:164d540df24:-7a5a', 'RCONDdf6c2d8:164d540df24:-7a82', 'RUL-6edb29df:1644165c650:-7e71', 'BILLDATE', 'date', 0);
-INSERT INTO `sys_rule_condition_var` VALUES ('RCONSTdf6c2d8:164d540df24:-7d0a', 'RCONDdf6c2d8:164d540df24:-7d3d', 'RULdf6c2d8:164d540df24:-7ddd', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RC437a7884:16f0efafa31:-7ffb', 'RC437a7884:16f0efafa31:-7ffb', 'RUL-63d80782:16f0ef8d63b:-7da6', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RC716ac8c6:16f0db01197:-7fa3', 'RC716ac8c6:16f0db01197:-7fa3', 'RUL351e5058:16f0df7bfd7:-73ce', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RC716ac8c6:16f0db01197:-7faa', 'RC716ac8c6:16f0db01197:-7faa', 'RUL351e5058:16f0df7bfd7:-74c0', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCC437a7884:16f0efafa31:-7ffc', 'RC437a7884:16f0efafa31:-7ffd', 'RUL-63d80782:16f0ef8d63b:-7da6', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCC716ac8c6:16f0db01197:-7f9f', 'RC716ac8c6:16f0db01197:-7fa0', 'RUL351e5058:16f0df7bfd7:-73ce', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCC716ac8c6:16f0db01197:-7fab', 'RC716ac8c6:16f0db01197:-7fac', 'RUL351e5058:16f0df7bfd7:-74c0', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND-79820a3e:16f0c625123:-64d9', 'RCOND-79820a3e:16f0c625123:-64d9', 'RUL-79820a3e:16f0c625123:-6529', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND17933c33:16f0d58ef1c:-707a', 'RCOND17933c33:16f0d58ef1c:-707a', 'RUL17933c33:16f0d58ef1c:-710c', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND17933c33:16f0d58ef1c:-7853', 'RCOND17933c33:16f0d58ef1c:-7853', 'RUL17933c33:16f0d58ef1c:-78e5', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND25a92016:16f12b9d331:-6c47', 'RCOND25a92016:16f12b9d331:-6c47', 'RUL25a92016:16f12b9d331:-6cd9', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND25a92016:16f12b9d331:-744e', 'RCOND25a92016:16f12b9d331:-744e', 'RUL25a92016:16f12b9d331:-7494', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND351e5058:16f0df7bfd7:-77d2', 'RCOND351e5058:16f0df7bfd7:-77d2', 'RUL351e5058:16f0df7bfd7:-7864', 'VAPP', 'vehicle.facts.VehicleApplication', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND3cf2bbd6:16ef4232a61:-7cd0', 'RCOND3cf2bbd6:16ef4232a61:-7cd0', 'RUL3cf2bbd6:16ef4232a61:-7d8e', 'PMT', 'treasury.facts.Payment', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND4adb13dd:16c88dfc11c:-7ac9', 'RCOND4adb13dd:16c88dfc11c:-7ac9', 'RUL4adb13dd:16c88dfc11c:-7b80', 'BILLITEM', 'treasury.facts.BillItem', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCOND4e9b2048:16f0da608f1:-7b2b', 'RCOND4e9b2048:16f0da608f1:-7b2b', 'RUL9c39035:16f0d95ddf6:-7cf8', 'VAPP', 'vehicle.facts.VehicleApplication', 1);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST-79820a3e:16f0c625123:-6436', 'RCOND-79820a3e:16f0c625123:-64d9', 'RUL-79820a3e:16f0c625123:-6529', 'YR', 'integer', 1);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST17933c33:16f0d58ef1c:-6f99', 'RCOND17933c33:16f0d58ef1c:-707a', 'RUL17933c33:16f0d58ef1c:-710c', 'YR', 'integer', 2);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST17933c33:16f0d58ef1c:-768b', 'RCOND17933c33:16f0d58ef1c:-769b', 'RUL17933c33:16f0d58ef1c:-78e5', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST23693274:16f0cc4aae6:-7da1', 'RC-1c7c09d1:164ee5525b1:-7fd5', 'RUL-57c2d992:164ee592b63:-7e1f', 'APPDATE', 'date', 1);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST25a92016:16f12b9d331:-6ae4', 'RCOND25a92016:16f12b9d331:-6af4', 'RUL25a92016:16f12b9d331:-6cd9', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST25a92016:16f12b9d331:-73cb', 'RCOND25a92016:16f12b9d331:-744e', 'RUL25a92016:16f12b9d331:-7494', 'APPDATE', 'date', 1);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST351e5058:16f0df7bfd7:-7606', 'RCOND351e5058:16f0df7bfd7:-7616', 'RUL351e5058:16f0df7bfd7:-7864', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST3cf2bbd6:16ef4232a61:-7cc0', 'RCOND3cf2bbd6:16ef4232a61:-7cd0', 'RUL3cf2bbd6:16ef4232a61:-7d8e', 'AMT', 'decimal', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST4adb13dd:16c88dfc11c:-7734', 'RCOND4adb13dd:16c88dfc11c:-7ac9', 'RUL4adb13dd:16c88dfc11c:-7b80', 'YR', 'integer', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST4e9b2048:16f0da608f1:-7346', 'RCOND4e9b2048:16f0da608f1:-7382', 'RUL9c39035:16f0d95ddf6:-7cf8', 'CDATE', 'date', 0);
+INSERT INTO `sys_rule_condition_var` VALUES ('RCONST4e9b2048:16f0da608f1:-7c9b', 'RCOND4e9b2048:16f0da608f1:-7cab', 'RUL9c39035:16f0d95ddf6:-7cf8', 'YR', 'integer', 0);
 COMMIT;
 
 -- ----------------------------
@@ -427,12 +482,16 @@ CREATE TABLE `sys_rule_deployed` (
 -- Records of sys_rule_deployed
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_rule_deployed` VALUES ('RUL-33134f90:164ab2ede1c:-7e5d', '\npackage vehicleassessment.VEHICLE_COUNT;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"VEHICLE_COUNT\"\n	agenda-group \"initial\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VU: vehicle.facts.VehicleUnit (   ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VU\", VU );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"name\", new KeyValue(\"NUM_UNITS\", \"NUM_UNITS\") );\n_p0.put( \"aggtype\", \"COUNT\" );\naction.execute( \"add-systeminfo\",_p0,drools);\n\nend\n\n\n	');
-INSERT INTO `sys_rule_deployed` VALUES ('RUL-57c2d992:164ee592b63:-7e1f', '\npackage vehicledates.MOTORCYCLE_RENEWAL_DATE;\nimport vehicledates.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MOTORCYCLE_RENEWAL_DATE\"\n	agenda-group \"initial\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  YR:appyear,vehicletype matches \"motorcycle|tricycle\" ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"date\", (new ActionExpression(\"return @DATE( YR , 12, 31 );  \", bindings)) );\n_p0.put( \"tag\", \"renewaldate\" );\naction.execute( \"add-duedate\",_p0,drools);\n\nend\n\n\n	');
-INSERT INTO `sys_rule_deployed` VALUES ('RUL-65f47c69:164ab007b19:-7bac', '\npackage vehicleassessment.MOTORFEES;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MOTORFEES\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorcycle\",YR:appyear ) \n		\n		 enterprise.facts.IntegerInfo (  name matches \"NUM_UNITS\",NUM_UNITS:value ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n		bindings.put(\"NUM_UNITS\", NUM_UNITS );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"account\", new KeyValue(\"REVITEM-46b788af:140b8f5265d:-7f5e\", \"PERMIT FOR MOTORCADE/PARADE/RALLY\") );\n_p0.put( \"amount\", (new ActionExpression(\"150 * NUM_UNITS\", bindings)) );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\n_p0.put( \"month\", (new ActionExpression(\"1\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
-INSERT INTO `sys_rule_deployed` VALUES ('RUL-76667e5d:16440b3c84b:-7dba', '\npackage vehicleassessment.MTOP_FEES;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MTOP_FEES\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"tricycle|motorcycle\",YR:appyear ) \n		\n		 enterprise.facts.IntegerInfo (  name matches \"NO_OF_EMPLOYEE\",NUMEMPLOYEE:value ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n		bindings.put(\"NUMEMPLOYEE\", NUMEMPLOYEE );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"account\", new KeyValue(\"REVITEM217a91b:1409e6ae44e:-7ea7\", \"FRANCHISE TAX - MTOP\") );\n_p0.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\n_p0.put( \"month\", (new ActionExpression(\"1\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\nMap _p1 = new HashMap();\n_p1.put( \"account\", new KeyValue(\"REVITEM-46b788af:140b8f5265d:-7f48\", \"OCCUPATION FEES - EMPLOYEES/PERSONNEL\") );\n_p1.put( \"amount\", (new ActionExpression(\"NUMEMPLOYEE * 50\", bindings)) );\n_p1.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\n_p1.put( \"month\", (new ActionExpression(\"1\", bindings)) );\naction.execute( \"add-billitem\",_p1,drools);\n\nend\n\n\n	');
-INSERT INTO `sys_rule_deployed` VALUES ('RUL7cad66dc:1643f542faa:-7e2d', '\npackage vehicleassessment.ASK_NUM_EMPLOYEE;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"ASK_NUM_EMPLOYEE\"\n	agenda-group \"ask-info\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"tricycle|motorcycle\" ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"name\", new KeyValue(\"NO_OF_EMPLOYEE\", \"NO_OF_EMPLOYEE\") );\n_p0.put( \"value\", (new ActionExpression(\"0\", bindings)) );\naction.execute( \"ask-info\",_p0,drools);\n\nend\n\n\n	');
-INSERT INTO `sys_rule_deployed` VALUES ('RULdf6c2d8:164d540df24:-7ddd', '\npackage vehiclebilling.SET_DUE_DATE;\nimport vehiclebilling.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"SET_DUE_DATE\"\n	agenda-group \"initial\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  YR:appyear ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"date\", (new ActionExpression(\"@DATE(  YR, 1, 20 )\", bindings)) );\naction.execute( \"add-duedate\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL-57c2d992:164ee592b63:-7e1f', '\npackage vehicledates.MOTORCYCLE_RENEWAL_DATE;\nimport vehicledates.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MOTORCYCLE_RENEWAL_DATE\"\n	agenda-group \"initial\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"pedicab|tricycle\",APPDATE:appdate ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"APPDATE\", APPDATE );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"tag\", \"expirydate\" );\n_p0.put( \"date\", (new ActionExpression(\"int yr = @YEAR( APPDATE  ); int mon = @MONTH( APPDATE  ); int day = @DAY( APPDATE  ); if( mon < 10 ) {      return @DATE( yr , 10,  31 );     }; else {      return @DATE( yr + 1, 10, 31 ); };\", bindings)) );\naction.execute( \"add-vardate\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL-63d80782:16f0ef8d63b:-7da6', '\npackage vehicleassessment.DROP_UNIT;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"DROP_UNIT\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorcad|tricycle\",apptype matches \"DROP\" ) \n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"1000\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"CHANGE_OWNERSHIP\", \"CHANGE OF OWNERSHIP\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL17933c33:16f0d58ef1c:-710c', '\npackage vehicleassessment.MTOP_NEW_FEES;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MTOP_NEW_FEES\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"tricycle|motorcad\",apptype matches \"NEW\",YR:appyear ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"SIDECAR_PLATENO\", \"PLATENO FOR SIDECAR\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL17933c33:16f0d58ef1c:-78e5', '\npackage vehicleassessment.MTOP_NEW_AND_RENEW_FEES;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MTOP_NEW_AND_RENEW_FEES\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"tricycle|motorcad\",apptype matches \"NEW|RENEW\" ) \n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"STICKER\", \"STICKER\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\nMap _p1 = new HashMap();\n_p1.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p1.put( \"billcode\", new KeyValue(\"DRIVERS_AFFIDAVIT\", \"DRIVERS AFFIDAVIT\") );\n_p1.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p1,drools);\nMap _p2 = new HashMap();\n_p2.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p2.put( \"billcode\", new KeyValue(\"TARIFF_FEE\", \"TARIFF FEE\") );\n_p2.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p2,drools);\nMap _p3 = new HashMap();\n_p3.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p3.put( \"billcode\", new KeyValue(\"ANNUAL_BUSINESS_PERMIT\", \"ANNUAL BUSINESS PERMIT\") );\n_p3.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p3,drools);\nMap _p4 = new HashMap();\n_p4.put( \"amount\", (new ActionExpression(\"1000\", bindings)) );\n_p4.put( \"billcode\", new KeyValue(\"FRANCHISE_FEE\", \"FRANCHISE FEE\") );\n_p4.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p4,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL25a92016:16f12b9d331:-6cd9', '\npackage vehicleassessment.MOTORBOAT_FEE;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MOTORBOAT_FEE\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorboat\",apptype matches \"NEW|RENEW\" ) \n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"100\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"MOTORBOAT_FEE\", \"MOTOR BOAT\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL25a92016:16f12b9d331:-7494', '\npackage vehicledates.MOTORBOAT_EXPIRY_DATE;\nimport vehicledates.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MOTORBOAT_EXPIRY_DATE\"\n	agenda-group \"initial\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorboat\",APPDATE:appdate ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"APPDATE\", APPDATE );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"tag\", \"expirydate\" );\n_p0.put( \"date\", (new ActionExpression(\"int yr = @YEAR(   APPDATE ); int mon = @MONTH( APPDATE  );  if( mon < 3 ) {      return @DATE( yr-1, 3, 31 ); }; else {      return @DATE( yr , 3, 31);  }; \", bindings)) );\naction.execute( \"add-vardate\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL351e5058:16f0df7bfd7:-73ce', '\npackage vehicleassessment.CHANGE_OWNER_UNIT;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"CHANGE_OWNER_UNIT\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorcad|tricycle\",apptype matches \"CHANGE_OWNER_UNIT\" ) \n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"1000\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"CHANGE_OWNERSHIP\", \"CHANGE OF OWNERSHIP\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL351e5058:16f0df7bfd7:-74c0', '\npackage vehicleassessment.CHANGE_OWNER;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"CHANGE_OWNER\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorcad|tricycle\",apptype matches \"CHANGE_OWNER\" ) \n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"500\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"CHANGE_OWNERSHIP\", \"CHANGE OF OWNERSHIP\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL351e5058:16f0df7bfd7:-7864', '\npackage vehicleassessment.CHANGE_UNIT;\nimport vehicleassessment.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"CHANGE_UNIT\"\n	agenda-group \"compute-fee\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"motorcad|tricycle\",apptype matches \"CHANGE_UNIT\" ) \n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n		bindings.put(\"YR\", YR );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"500\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"CHANGE_MOTOR_VEHICLE\", \"CHANGE OF MOTOR VEHICLE\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
+INSERT INTO `sys_rule_deployed` VALUES ('RUL9c39035:16f0d95ddf6:-7cf8', '\npackage vehiclebilling.MTOP_SURCHARGE_PER_YEAR;\nimport vehiclebilling.*;\nimport java.util.*;\nimport com.rameses.rules.common.*;\n\nglobal RuleAction action;\n\nrule \"MTOP_SURCHARGE_PER_YEAR\"\n	agenda-group \"surcharge\"\n	salience 50000\n	no-loop\n	when\n		\n		\n		 vehicle.facts.VehicleAssessYear (  YR:year ) \n		\n		VAPP: vehicle.facts.VehicleApplication (  vehicletype matches \"tricycle|motorcad\",apptype matches \"RENEW\" ) \n		\n		 com.rameses.rules.common.CurrentDate (  CDATE:date ) \n		\n	then\n		Map bindings = new HashMap();\n		\n		bindings.put(\"CDATE\", CDATE );\n		\n		bindings.put(\"YR\", YR );\n		\n		bindings.put(\"VAPP\", VAPP );\n		\n	Map _p0 = new HashMap();\n_p0.put( \"amount\", (new ActionExpression(\"@MONTHDIFF(  @DATE( YR-1 , 11 , 1 ),  CDATE, 1 )  * 300\", bindings)) );\n_p0.put( \"billcode\", new KeyValue(\"VEHICLE_PENALTY\", \"PENALTY\") );\n_p0.put( \"year\", (new ActionExpression(\"YR\", bindings)) );\naction.execute( \"add-billitem\",_p0,drools);\n\nend\n\n\n	');
 COMMIT;
 
 -- ----------------------------
@@ -467,25 +526,19 @@ INSERT INTO `sys_rule_fact` VALUES ('com.rameses.rules.common.CurrentDate', 'com
 INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.BooleanInfo', 'enterprise.facts.BooleanInfo', 'Boolean (Yes No) Info', 'enterprise.facts.BooleanInfo', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', 'enterprise.facts.VariableInfo');
 INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.DateInfo', 'enterprise.facts.DateInfo', 'Date Info', 'enterprise.facts.DateInfo', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', 'enterprise.facts.VariableInfo');
 INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.IntegerInfo', 'enterprise.facts.IntegerInfo', 'Integer Info', 'enterprise.facts.IntegerInfo', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', 'enterprise.facts.VariableInfo');
-INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.Org', 'enterprise.facts.Org', 'Org', 'enterprise.facts.Org', 1, NULL, 'ORG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.Requirement', 'enterprise.facts.Requirement', 'Requirement', 'enterprise.facts.Requirement', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.StringArrayInfo', 'enterprise.facts.StringArrayInfo', 'String Array Info', 'enterprise.facts.StringArrayInfo', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', 'enterprise.facts.VariableInfo');
 INSERT INTO `sys_rule_fact` VALUES ('enterprise.facts.StringInfo', 'enterprise.facts.StringInfo', 'String Info', 'enterprise.facts.StringInfo', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', 'enterprise.facts.VariableInfo');
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.AppDate', 'treasury.facts.AppDate', 'Application Date', 'treasury.facts.AppDate', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.Attribute', 'treasury.facts.Attribute', 'Attribute', 'treasury.facts.Attribute', 1, NULL, 'ATT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.BillDate', 'treasury.facts.BillDate', 'Bill Date', 'treasury.facts.BillDate', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
-INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.BillingPeriod', 'treasury.facts.BillingPeriod', 'Billing Period', 'treasury.facts.BillingPeriod', 1, NULL, 'BILPRD', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.BillItem', 'treasury.facts.BillItem', 'Bill Item', 'treasury.facts.BillItem', 1, NULL, 'BILLITEM', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', 'treasury.facts.AbstractBillItem');
-INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.CollectionGroup', 'treasury.facts.CollectionGroup', 'Collection Group', 'treasury.facts.CollectionGroup', 0, NULL, 'CG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.DecimalInfo', 'treasury.facts.DecimalInfo', 'Decimal Info', 'treasury.facts.DecimalInfo', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ENTERPRISE', 'enterprise.facts.VariableInfo');
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.DueDate', 'treasury.facts.DueDate', 'Due Date', 'treasury.facts.DueDate', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.ExcessPayment', 'treasury.facts.ExcessPayment', 'Excess Payment', 'treasury.facts.ExcessPayment', 5, NULL, 'EXPMT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.HolidayFact', 'treasury.facts.HolidayFact', 'Holidays', 'treasury.facts.HolidayFact', 1, NULL, 'HOLIDAYS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.InterestItem', 'treasury.facts.InterestItem', 'Interest Item', 'treasury.facts.InterestItem', 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', 'treasury.facts.AbstractBillItem');
-INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.MonthEntry', 'treasury.facts.MonthEntry', 'Month Entry', 'treasury.facts.MonthEntry', 1, NULL, 'MONTHENTRY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.Payment', 'treasury.facts.Payment', 'Payment', 'treasury.facts.Payment', 5, NULL, 'PMT', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
-INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.RevenueShare', 'treasury.facts.RevenueShare', 'Revenue Share', 'treasury.facts.RevenueShare', 1, NULL, 'RS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
-INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.SampleItem', 'treasury.facts.SampleItem', 'Bill Item class', 'treasury.facts.SampleItem', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.SurchargeItem', 'treasury.facts.SurchargeItem', 'Surcharge Item', 'treasury.facts.SurchargeItem', 4, NULL, 'SUR', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', 'treasury.facts.AbstractBillItem');
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.SystemDate', 'treasury.facts.SystemDate', 'System Date', 'treasury.facts.SystemDate', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.VarDate', 'treasury.facts.VarDate', 'Variable Date', 'treasury.facts.VarDate', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
@@ -493,6 +546,7 @@ INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.VarDecimal', 'treasury.facts
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.VarInteger', 'treasury.facts.VarInteger', 'Var Integer', 'treasury.facts.VarInteger', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('treasury.facts.VarString', 'treasury.facts.VarString', 'Var String', 'treasury.facts.VarString', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TREASURY', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('vehicle.facts.VehicleApplication', 'vehicle.facts.VehicleApplication', 'Vehicle Application', 'vehicle.facts.VehicleApplication', 1, NULL, 'VAPP', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'VEHICLE', NULL);
+INSERT INTO `sys_rule_fact` VALUES ('vehicle.facts.VehicleAssessYear', 'vehicle.facts.VehicleAssessYear', 'Vehicle Assess Year', 'vehicle.facts.VehicleAssessYear', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'VEHICLE', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('vehicle.facts.VehicleFranchise', 'vehicle.facts.VehicleFranchise', 'Vehicle Franchise', 'vehicle.facts.VehicleFranchise', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'VEHICLE', NULL);
 INSERT INTO `sys_rule_fact` VALUES ('vehicle.facts.VehicleUnit', 'vehicle.facts.VehicleUnit', 'Vehicle Unit', 'vehicle.facts.VehicleUnit', 1, NULL, 'VU', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'VEHICLE', NULL);
 COMMIT;
@@ -541,7 +595,6 @@ INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.DateInfo.value', 'en
 INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.DateInfo.year', 'enterprise.facts.DateInfo', 'year', 'Year', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.IntegerInfo.name', 'enterprise.facts.IntegerInfo', 'name', 'Name', 'string', 1, 'lookup', 'variableinfo_integer:lookup', 'name', 'name', NULL, NULL, 1, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.IntegerInfo.value', 'enterprise.facts.IntegerInfo', 'value', 'Value', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, 1, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.Org.orgid', 'enterprise.facts.Org', 'orgid', 'Org ID', 'string', 1, 'lookup', 'org:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.Requirement.completed', 'enterprise.facts.Requirement', 'completed', 'Completed', 'boolean', 2, 'boolean', NULL, NULL, NULL, NULL, NULL, NULL, 'boolean', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.Requirement.expirydate', 'enterprise.facts.Requirement', 'expirydate', 'Expiry Date', 'date', 3, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('enterprise.facts.Requirement.type', 'enterprise.facts.Requirement', 'type', 'Type', 'string', 1, 'lookup', 'requirementtype:lookup', 'objid', 'title', NULL, 1, NULL, 'string', NULL);
@@ -560,10 +613,6 @@ INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillDate.day', 'treasu
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillDate.month', 'treasury.facts.BillDate', 'month', 'Month', 'integer', 3, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillDate.qtr', 'treasury.facts.BillDate', 'qtr', 'Qtr', 'integer', 5, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillDate.year', 'treasury.facts.BillDate', 'year', 'Year', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillingPeriod.fromdate', 'treasury.facts.BillingPeriod', 'fromdate', 'From Date', 'date', 3, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillingPeriod.month', 'treasury.facts.BillingPeriod', 'month', 'Month', 'integer', 1, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillingPeriod.todate', 'treasury.facts.BillingPeriod', 'todate', 'To Date', 'date', 4, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillingPeriod.year', 'treasury.facts.BillingPeriod', 'year', 'Year', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.account', 'treasury.facts.BillItem', 'account', 'Account', 'string', 3, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL, NULL, 'object', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.account.objid', 'treasury.facts.BillItem', 'account.objid', 'Account ID', 'string', 2, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.amount', 'treasury.facts.BillItem', 'amount', 'Amount', 'decimal', 1, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
@@ -584,7 +633,6 @@ INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.tag', 'treasu
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.todate', 'treasury.facts.BillItem', 'todate', 'To Date', 'date', 15, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.txntype', 'treasury.facts.BillItem', 'txntype', 'Txn Type', 'string', 6, 'lookup', 'billitem_txntype:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.BillItem.year', 'treasury.facts.BillItem', 'year', 'Year', 'integer', 12, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.CollectionGroup.objid', 'treasury.facts.CollectionGroup', 'objid', 'Name', 'string', 1, 'lookup', 'collectiongroup:lookup', 'objid', 'name', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.DecimalInfo.name', 'treasury.facts.DecimalInfo', 'name', 'Name', 'string', 1, 'lookup', 'variableinfo_decimal:lookup', 'name', 'name', NULL, NULL, 1, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.DecimalInfo.value', 'treasury.facts.DecimalInfo', 'value', 'Value', 'decimal', 2, 'decimal', NULL, NULL, NULL, NULL, NULL, 1, 'decimal', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.DueDate.date', 'treasury.facts.DueDate', 'date', 'Date', 'date', 1, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
@@ -594,33 +642,13 @@ INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.DueDate.qtr', 'treasur
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.DueDate.year', 'treasury.facts.DueDate', 'year', 'Year', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.ExcessPayment.amount', 'treasury.facts.ExcessPayment', 'amount', 'Amount', 'decimal', 1, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.HolidayFact.id', 'treasury.facts.HolidayFact', 'id', 'ID', 'string', 1, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.InterestItem.account', 'treasury.facts.InterestItem', 'account', 'Account', 'string', 2, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL, NULL, 'object', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.InterestItem.amount', 'treasury.facts.InterestItem', 'amount', 'Amount', 'decimal', 3, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.InterestItem.amount', 'treasury.facts.InterestItem', 'amount', 'Amount', 'decimal', 2, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.InterestItem.billcode', 'treasury.facts.InterestItem', 'billcode', 'Item code', 'string', 3, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.InterestItem.parent', 'treasury.facts.InterestItem', 'parent', 'Parent BillItem', 'string', 1, 'var', NULL, NULL, NULL, NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.duedate', 'treasury.facts.MonthEntry', 'duedate', 'Due date', 'date', 13, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.first', 'treasury.facts.MonthEntry', 'first', 'First', 'boolean', 11, 'boolean', NULL, NULL, NULL, NULL, NULL, NULL, 'boolean', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.fromdate', 'treasury.facts.MonthEntry', 'fromdate', 'From Date', 'date', 4, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.fromday', 'treasury.facts.MonthEntry', 'fromday', 'From Day', 'integer', 6, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.index', 'treasury.facts.MonthEntry', 'index', 'Index', 'integer', 10, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.last', 'treasury.facts.MonthEntry', 'last', 'Last', 'boolean', 12, 'boolean', NULL, NULL, NULL, NULL, NULL, NULL, 'boolean', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.maxdays', 'treasury.facts.MonthEntry', 'maxdays', 'Month Max Days', 'integer', 9, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.month', 'treasury.facts.MonthEntry', 'month', 'Month', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.numdays', 'treasury.facts.MonthEntry', 'numdays', 'No. of Days', 'integer', 8, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.qtr', 'treasury.facts.MonthEntry', 'qtr', 'Qtr', 'integer', 3, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.todate', 'treasury.facts.MonthEntry', 'todate', 'To Date', 'date', 5, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.today', 'treasury.facts.MonthEntry', 'today', 'To Day', 'integer', 7, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.MonthEntry.year', 'treasury.facts.MonthEntry', 'year', 'Year', 'integer', 1, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.Payment.amount', 'treasury.facts.Payment', 'amount', 'Amount', 'decimal', 1, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.RevenueShare.amount', 'treasury.facts.RevenueShare', 'amount', 'Amount', 'decimal', 3, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.RevenueShare.payableaccount', 'treasury.facts.RevenueShare', 'payableaccount', 'Payable Account', 'string', 2, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.RevenueShare.refaccount', 'treasury.facts.RevenueShare', 'refaccount', 'Reference Account', 'string', 1, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SampleItem.name', 'treasury.facts.SampleItem', 'name', 'Name', 'string', 1, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SampleItem.numunit', 'treasury.facts.SampleItem', 'numunit', 'No. of Units', 'integer', 3, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SampleItem.status', 'treasury.facts.SampleItem', 'status', 'Status', 'integer', 2, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SurchargeItem.account', 'treasury.facts.SurchargeItem', 'account', 'Account', 'string', 2, 'lookup', 'revenueitem:lookup', 'objid', 'title', NULL, NULL, NULL, 'object', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SurchargeItem.amount', 'treasury.facts.SurchargeItem', 'amount', 'Amount', 'decimal', 3, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SurchargeItem.amount', 'treasury.facts.SurchargeItem', 'amount', 'Amount', 'decimal', 2, 'decimal', NULL, NULL, NULL, NULL, NULL, NULL, 'decimal', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SurchargeItem.billcode', 'treasury.facts.SurchargeItem', 'billcode', 'Item code', 'string', 3, 'lookup', 'vehicle_itemaccount:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SurchargeItem.parent', 'treasury.facts.SurchargeItem', 'parent', 'Parent Bill Item', 'string', 1, 'var', NULL, NULL, NULL, NULL, NULL, NULL, 'treasury.facts.AbstractBillItem', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SurchargeItem.txntype', 'treasury.facts.SurchargeItem', 'txntype', 'Txn Type', 'string', 4, 'lookup', 'billitem_txntype:lookup', 'objid', 'title', NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SystemDate.date', 'treasury.facts.SystemDate', 'date', 'Date', 'date', 1, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SystemDate.day', 'treasury.facts.SystemDate', 'day', 'Day', 'integer', 4, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.SystemDate.month', 'treasury.facts.SystemDate', 'month', 'Month', 'integer', 3, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
@@ -641,10 +669,13 @@ INSERT INTO `sys_rule_fact_field` VALUES ('treasury.facts.VarString.value', 'tre
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleApplication.appdate', 'vehicle.facts.VehicleApplication', 'appdate', 'App Date', 'date', 4, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleApplication.apptype', 'vehicle.facts.VehicleApplication', 'apptype', 'App Type', 'string', 1, 'lov', NULL, NULL, NULL, NULL, NULL, NULL, 'string', 'VEHICLE_APP_TYPE');
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleApplication.appyear', 'vehicle.facts.VehicleApplication', 'appyear', 'App Year', 'integer', 3, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleApplication.prevexpirydate', 'vehicle.facts.VehicleApplication', 'prevexpirydate', 'Prev Expiry Date', 'date', 5, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleApplication.lastfranchisedatepaid', 'vehicle.facts.VehicleApplication', 'lastfranchisedatepaid', 'Last Franchise Date Paid', 'date', 5, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleApplication.vehicletype', 'vehicle.facts.VehicleApplication', 'vehicletype', 'Vehicle Type', 'string', 2, 'lookup', 'vehicletype:lookup', 'objid', 'objid', NULL, NULL, NULL, 'string', 'VEHICLE_TXNTYPE');
+INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleAssessYear.year', 'vehicle.facts.VehicleAssessYear', 'year', 'Year', 'integer', 1, 'integer', NULL, NULL, NULL, NULL, NULL, NULL, 'integer', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleFranchise.controlno', 'vehicle.facts.VehicleFranchise', 'controlno', 'Control No', 'string', 1, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
-INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleFranchise.dtregistered', 'vehicle.facts.VehicleFranchise', 'dtregistered', 'Date Registered', 'date', 2, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleFranchise.startdate', 'vehicle.facts.VehicleFranchise', 'startdate', 'Start Date', 'date', 2, 'date', NULL, NULL, NULL, NULL, NULL, NULL, 'date', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleUnit.appid', 'vehicle.facts.VehicleUnit', 'appid', 'App ID', 'string', 11, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
+INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleUnit.apptype', 'vehicle.facts.VehicleUnit', 'apptype', 'App Type', 'string', 12, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleUnit.bodyno', 'vehicle.facts.VehicleUnit', 'bodyno', 'Body No', 'string', 4, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleUnit.chassisno', 'vehicle.facts.VehicleUnit', 'chassisno', 'Chassis No', 'string', 9, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
 INSERT INTO `sys_rule_fact_field` VALUES ('vehicle.facts.VehicleUnit.color', 'vehicle.facts.VehicleUnit', 'color', 'Color', 'string', 8, 'string', NULL, NULL, NULL, NULL, NULL, NULL, 'string', NULL);
@@ -712,7 +743,7 @@ CREATE TABLE `sys_ruleset` (
 BEGIN;
 INSERT INTO `sys_ruleset` VALUES ('vehicleassessment', 'Vehicle Assessment', 'vehicleassessment', 'VEHICLE', 'RULE_AUTHOR', NULL);
 INSERT INTO `sys_ruleset` VALUES ('vehiclebilling', 'Vehicle Reg. Billing', 'vehiclebilling', 'VEHICLE', 'RULE_AUTHOR', NULL);
-INSERT INTO `sys_ruleset` VALUES ('vehicledates', 'Vehicle Expiry Dates', 'vehicledates', 'VEHICLE', 'RULE_AUTHOR', NULL);
+INSERT INTO `sys_ruleset` VALUES ('vehicledates', 'Vehicle Dates', 'vehicledates', 'VEHICLE', 'RULE_AUTHOR', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -732,7 +763,7 @@ CREATE TABLE `sys_ruleset_actiondef` (
 -- Records of sys_ruleset_actiondef
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicleassessment', 'enterprise.actions.AddSystemInfo');
+INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicleassessment', 'enterprise.actions.AddInfo');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicleassessment', 'enterprise.actions.AskInfo');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehiclebilling', 'enterprise.actions.AskInfo');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicleassessment', 'enterprise.actions.ThrowException');
@@ -742,6 +773,7 @@ INSERT INTO `sys_ruleset_actiondef` VALUES ('vehiclebilling', 'treasury.actions.
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehiclebilling', 'treasury.actions.AddDueDate');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicledates', 'treasury.actions.AddDueDate');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehiclebilling', 'treasury.actions.AddSurchargeItem');
+INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicledates', 'treasury.actions.AddVarDate');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehiclebilling', 'treasury.actions.ApplyPayment');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehiclebilling', 'treasury.actions.SetBillItemProperty');
 INSERT INTO `sys_ruleset_actiondef` VALUES ('vehicleassessment', 'treasury.actions.SummarizeBillItem');
@@ -766,6 +798,7 @@ CREATE TABLE `sys_ruleset_fact` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicleassessment', 'com.rameses.rules.common.CurrentDate');
+INSERT INTO `sys_ruleset_fact` VALUES ('vehiclebilling', 'com.rameses.rules.common.CurrentDate');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicledates', 'com.rameses.rules.common.CurrentDate');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicleassessment', 'enterprise.facts.BooleanInfo');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehiclebilling', 'enterprise.facts.BooleanInfo');
@@ -796,6 +829,8 @@ INSERT INTO `sys_ruleset_fact` VALUES ('vehicledates', 'treasury.facts.SystemDat
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicleassessment', 'vehicle.facts.VehicleApplication');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehiclebilling', 'vehicle.facts.VehicleApplication');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicledates', 'vehicle.facts.VehicleApplication');
+INSERT INTO `sys_ruleset_fact` VALUES ('vehicleassessment', 'vehicle.facts.VehicleAssessYear');
+INSERT INTO `sys_ruleset_fact` VALUES ('vehiclebilling', 'vehicle.facts.VehicleAssessYear');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicleassessment', 'vehicle.facts.VehicleFranchise');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehiclebilling', 'vehicle.facts.VehicleFranchise');
 INSERT INTO `sys_ruleset_fact` VALUES ('vehicleassessment', 'vehicle.facts.VehicleUnit');
@@ -812,100 +847,6 @@ CREATE TABLE `sys_sequence` (
   `nextSeries` int(11) DEFAULT NULL,
   PRIMARY KEY (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of sys_sequence
--- ----------------------------
-BEGIN;
-INSERT INTO `sys_sequence` VALUES ('08-003', 2);
-INSERT INTO `sys_sequence` VALUES ('AFSERIALFORWARD', 288);
-INSERT INTO `sys_sequence` VALUES ('ASSESSMENT_NOTICE-2017', 2);
-INSERT INTO `sys_sequence` VALUES ('ASSESSMENT_NOTICE-2018', 2);
-INSERT INTO `sys_sequence` VALUES ('B154201611', 4767);
-INSERT INTO `sys_sequence` VALUES ('B154201612', 134);
-INSERT INTO `sys_sequence` VALUES ('B154201701', 692);
-INSERT INTO `sys_sequence` VALUES ('B154201702', 182);
-INSERT INTO `sys_sequence` VALUES ('B154201703', 171);
-INSERT INTO `sys_sequence` VALUES ('B154201704', 94);
-INSERT INTO `sys_sequence` VALUES ('B154201705', 95);
-INSERT INTO `sys_sequence` VALUES ('B154201706', 107);
-INSERT INTO `sys_sequence` VALUES ('B154201707', 66);
-INSERT INTO `sys_sequence` VALUES ('B154201708', 71);
-INSERT INTO `sys_sequence` VALUES ('B154201709', 64);
-INSERT INTO `sys_sequence` VALUES ('B154201710', 46);
-INSERT INTO `sys_sequence` VALUES ('B154201711', 48);
-INSERT INTO `sys_sequence` VALUES ('B154201712', 13);
-INSERT INTO `sys_sequence` VALUES ('B154201801', 165);
-INSERT INTO `sys_sequence` VALUES ('B154201802', 114);
-INSERT INTO `sys_sequence` VALUES ('B154201803', 84);
-INSERT INTO `sys_sequence` VALUES ('B154201804', 70);
-INSERT INTO `sys_sequence` VALUES ('B154201805', 41);
-INSERT INTO `sys_sequence` VALUES ('B1542019000000', 3);
-INSERT INTO `sys_sequence` VALUES ('B1732019000000', 5);
-INSERT INTO `sys_sequence` VALUES ('BCnull2019000000', 5);
-INSERT INTO `sys_sequence` VALUES ('Bnull2019000000', 4);
-INSERT INTO `sys_sequence` VALUES ('Bnull2019000001N', 2);
-INSERT INTO `sys_sequence` VALUES ('BP-2016', 5);
-INSERT INTO `sys_sequence` VALUES ('BP-2017', 5690);
-INSERT INTO `sys_sequence` VALUES ('BP-2018', 5351);
-INSERT INTO `sys_sequence` VALUES ('BP1732019000000', 4);
-INSERT INTO `sys_sequence` VALUES ('BP_AMEND_LOG', 4322);
-INSERT INTO `sys_sequence` VALUES ('BUSINESS_REDFLAG', 1169);
-INSERT INTO `sys_sequence` VALUES ('CHANGEINFO201811', 66);
-INSERT INTO `sys_sequence` VALUES ('CM', 4);
-INSERT INTO `sys_sequence` VALUES ('DV', 15);
-INSERT INTO `sys_sequence` VALUES ('INDIVIDUAL_ENTITY', 65630);
-INSERT INTO `sys_sequence` VALUES ('IRAF', 5);
-INSERT INTO `sys_sequence` VALUES ('JURIDICAL_ENTITY', 2727);
-INSERT INTO `sys_sequence` VALUES ('LIQ', 3);
-INSERT INTO `sys_sequence` VALUES ('LIQ-GLT', 2);
-INSERT INTO `sys_sequence` VALUES ('LIQ-GMG', 18);
-INSERT INTO `sys_sequence` VALUES ('LOANAPP', 2);
-INSERT INTO `sys_sequence` VALUES ('MAPP0201C1', 2);
-INSERT INTO `sys_sequence` VALUES ('MAPP2017', 2);
-INSERT INTO `sys_sequence` VALUES ('MAPP2017C1', 2);
-INSERT INTO `sys_sequence` VALUES ('MAPP2017null', 2);
-INSERT INTO `sys_sequence` VALUES ('MAPP2018', 14);
-INSERT INTO `sys_sequence` VALUES ('MAPP2018C1', 3);
-INSERT INTO `sys_sequence` VALUES ('MMM2018', 18);
-INSERT INTO `sys_sequence` VALUES ('MTOP-2018', 74);
-INSERT INTO `sys_sequence` VALUES ('MULTIPLE_ENTITY', 17850);
-INSERT INTO `sys_sequence` VALUES ('nullN', 2);
-INSERT INTO `sys_sequence` VALUES ('PED-2018-06', 5);
-INSERT INTO `sys_sequence` VALUES ('REM', 11);
-INSERT INTO `sys_sequence` VALUES ('REM-AA', 356);
-INSERT INTO `sys_sequence` VALUES ('REM-AJUEGO', 7);
-INSERT INTO `sys_sequence` VALUES ('REM-CA', 334);
-INSERT INTO `sys_sequence` VALUES ('REM-CBS', 3);
-INSERT INTO `sys_sequence` VALUES ('REM-CG', 3);
-INSERT INTO `sys_sequence` VALUES ('REM-GLT', 52);
-INSERT INTO `sys_sequence` VALUES ('REM-MNIZAG', 2);
-INSERT INTO `sys_sequence` VALUES ('REM-NB', 345);
-INSERT INTO `sys_sequence` VALUES ('REM-TBM', 340);
-INSERT INTO `sys_sequence` VALUES ('REM-VOM', 32);
-INSERT INTO `sys_sequence` VALUES ('RPTBILL-17', 58);
-INSERT INTO `sys_sequence` VALUES ('RPTBILL-18', 6);
-INSERT INTO `sys_sequence` VALUES ('RPTCERTIFICATION', 4);
-INSERT INTO `sys_sequence` VALUES ('RT154', 33590);
-INSERT INTO `sys_sequence` VALUES ('TRI-2019010000', 11);
-INSERT INTO `sys_sequence` VALUES ('TRI-2019020000', 28);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-01-001', 945);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-01-002', 2543);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-01-003', 2039);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-01-004', 2554);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-01-011', 1560);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-02-005', 2771);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-02-010', 1154);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-02-013', 1125);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-02-015', 951);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-03-007', 6053);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-03-008', 4410);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-04-006', 580);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-04-009', 4352);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-04-012', 1706);
-INSERT INTO `sys_sequence` VALUES ('UNIQUE_TDNO-154-04-014', 927);
-INSERT INTO `sys_sequence` VALUES ('VP-2018', 9);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for sys_usergroup
@@ -925,8 +866,30 @@ CREATE TABLE `sys_usergroup` (
 -- Records of sys_usergroup
 -- ----------------------------
 BEGIN;
+INSERT INTO `sys_usergroup` VALUES ('VEHICLE.ADMIN', 'VEHICLE ADMIN', 'VEHICLE', NULL, NULL, 'ADMIN');
+INSERT INTO `sys_usergroup` VALUES ('VEHICLE.INFO', 'VEHICLE INFO', 'VEHICLE', NULL, NULL, 'INFO');
 INSERT INTO `sys_usergroup` VALUES ('VEHICLE.MASTER', 'VEHICLE MASTER', 'VEHICLE', NULL, NULL, 'MASTER');
 INSERT INTO `sys_usergroup` VALUES ('VEHICLE.RULE_AUTHOR', 'VEHICLE RULE_AUTHOR', 'VEHICLE', NULL, NULL, 'RULE_AUTHOR');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for sys_var
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_var`;
+CREATE TABLE `sys_var` (
+  `name` varchar(50) NOT NULL,
+  `value` longtext,
+  `description` varchar(255) DEFAULT NULL,
+  `datatype` varchar(15) DEFAULT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_var
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_var` VALUES ('early_renewal_allowed_days', '30', NULL, 'integer', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -971,14 +934,15 @@ CREATE TABLE `sys_wf_node` (
 -- Records of sys_wf_node
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_wf_node` VALUES ('approval', 'vehicle_application', 'For Approval', 'state', 4, 0, 'VEHICLE', NULL, '[fillColor:\"#c0c0c0\",type:\"state\",pos:[422,122],size:[100,50]]', '[:]', 1);
-INSERT INTO `sys_wf_node` VALUES ('assessment', 'vehicle_application', 'Assessment', 'state', 3, 0, 'VEHICLE', NULL, '[fillColor:\"#c0c0c0\",type:\"state\",pos:[278,39],size:[96,56]]', '[show_assess:true]', 1);
-INSERT INTO `sys_wf_node` VALUES ('decide-payment', 'vehicle_application', 'Payment Decision', 'decision', 6, 0, NULL, NULL, '[fillColor:\"#c0c0c0\",type:\"decision\",pos:[765,183],size:[90,65]]', '[:]', NULL);
-INSERT INTO `sys_wf_node` VALUES ('draft', 'vehicle_application', 'Draft', 'state', 2, 0, 'VEHICLE', NULL, '[fillColor:\"#c0c0c0\",type:\"state\",pos:[135,79],size:[87,50]]', '[:]', NULL);
-INSERT INTO `sys_wf_node` VALUES ('end', 'vehicle_application', 'End', 'end', 8, 0, 'VEHICLE', NULL, '[fillColor:\"#ff0000\",type:\"end\",pos:[1099,210],size:[32,32]]', '[:]', NULL);
-INSERT INTO `sys_wf_node` VALUES ('payment', 'vehicle_application', 'For Payment', 'state', 5, 0, 'VEHICLE', NULL, '[fillColor:\"#c0c0c0\",type:\"state\",pos:[594,146],size:[100,50]]', '[:]', 1);
-INSERT INTO `sys_wf_node` VALUES ('release', 'vehicle_application', 'For Release', 'state', 7, 0, 'VEHICLE', NULL, '[fillColor:\"#c0c0c0\",type:\"state\",pos:[951,99],size:[100,50]]', '[show_issue_permit:true]', 1);
-INSERT INTO `sys_wf_node` VALUES ('start', 'vehicle_application', 'Start', 'start', 1, 0, 'VEHICLE', NULL, '[fillColor:\"#00ff00\",type:\"start\",pos:[62,37],size:[32,32]]', '[:]', NULL);
+INSERT INTO `sys_wf_node` VALUES ('approval', 'vehicle_application', 'For Approval', 'state', 4, 0, 'VEHICLE', 'APPROVER', '[type:\"state\",fillColor:\"#c0c0c0\",pos:[422,122],size:[100,50]]', '[:]', 1);
+INSERT INTO `sys_wf_node` VALUES ('assessment', 'vehicle_application', 'Assessment', 'state', 3, 0, 'VEHICLE', 'ASSESSOR', '[type:\"state\",fillColor:\"#c0c0c0\",pos:[278,39],size:[96,56]]', '[:]', 1);
+INSERT INTO `sys_wf_node` VALUES ('billing', 'vehicle_application', 'Billing', 'state', 5, 0, 'VEHICLE', 'ASSESSOR', '[type:\"state\",fillColor:\"#c0c0c0\",pos:[511,234],size:[103,55]]', '[:]', 1);
+INSERT INTO `sys_wf_node` VALUES ('decide-payment', 'vehicle_application', 'Payment Decision', 'decision', 7, 0, NULL, NULL, '[type:\"decision\",fillColor:\"#c0c0c0\",pos:[765,183],size:[90,65]]', '[:]', NULL);
+INSERT INTO `sys_wf_node` VALUES ('draft', 'vehicle_application', 'Draft', 'state', 2, 0, 'VEHICLE', 'RECEIVER', '[type:\"state\",fillColor:\"#c0c0c0\",pos:[135,79],size:[87,50]]', '[:]', 1);
+INSERT INTO `sys_wf_node` VALUES ('end', 'vehicle_application', 'End', 'end', 9, 0, 'VEHICLE', NULL, '[type:\"end\",fillColor:\"#ff0000\",pos:[1099,210],size:[32,32]]', '[:]', NULL);
+INSERT INTO `sys_wf_node` VALUES ('payment', 'vehicle_application', 'For Payment', 'state', 6, 0, 'VEHICLE', 'ADMIN', '[type:\"state\",fillColor:\"#c0c0c0\",pos:[594,146],size:[100,50]]', '[:]', 0);
+INSERT INTO `sys_wf_node` VALUES ('release', 'vehicle_application', 'For Release', 'state', 8, 0, 'VEHICLE', 'RELEASER', '[type:\"state\",fillColor:\"#c0c0c0\",pos:[956,84],size:[100,50]]', '[:]', 1);
+INSERT INTO `sys_wf_node` VALUES ('start', 'vehicle_application', 'Start', 'start', 1, 0, 'VEHICLE', NULL, '[type:\"start\",fillColor:\"#00ff00\",pos:[62,37],size:[32,32]]', '[:]', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -1005,19 +969,44 @@ CREATE TABLE `sys_wf_transition` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_wf_transition` VALUES ('approval', 'vehicle_application', 'revert', 'assessment', 0, NULL, '[:]', NULL, 'Revert', '[points:[422,151,316,151,316,94],type:\"arrow\",pos:[316,94],size:[106,57]]');
-INSERT INTO `sys_wf_transition` VALUES ('approval', 'vehicle_application', 'submit', 'payment', 0, NULL, '[:]', NULL, 'Approve for Payment', '[points:[522,148,594,169],type:\"arrow\",pos:[522,148],size:[72,21]]');
-INSERT INTO `sys_wf_transition` VALUES ('approval', 'vehicle_application', 'approve-capture', 'release', 0, NULL, '[visibleWhen:\"#{  entity.txnmode == \'CAPTURE\' }\"]', NULL, 'Approve (Capture Paid)', '[points:[482,172,551,338,717,405,980,287,976,150,976,149],type:\"arrow\",pos:[482,149],size:[498,256]]');
+INSERT INTO `sys_wf_transition` VALUES ('approval', 'vehicle_application', 'approve', 'billing', 0, NULL, '[showConfirm:true,confirmMessage:\"You are about to approve this application. Proceed?\"]', NULL, 'Approve', '[points:[495,172,536,234],type:\"arrow\",pos:[495,172],size:[41,62]]');
+INSERT INTO `sys_wf_transition` VALUES ('approval', 'vehicle_application', 'approve-capture', 'release', 0, NULL, '[visibleWhen:\"#{  entity.txnmode == \'CAPTURE\' }\"]', NULL, 'Approve (Capture Paid)', '[points:[482,172,506,316,723,339,904,275,976,150,981,134],type:\"arrow\",pos:[482,134],size:[499,205]]');
 INSERT INTO `sys_wf_transition` VALUES ('assessment', 'vehicle_application', 'submit', 'approval', 0, NULL, '[:]', NULL, 'Submit for Approval', '[points:[375,63,474,62,477,125],type:\"arrow\",pos:[375,62],size:[102,63]]');
 INSERT INTO `sys_wf_transition` VALUES ('assessment', 'vehicle_application', 'revert', 'draft', 1, NULL, '[:]', NULL, 'Revert', '[points:[278,80,222,96],type:\"arrow\",pos:[222,80],size:[56,16]]');
+INSERT INTO `sys_wf_transition` VALUES ('billing', 'vehicle_application', 'submit', 'payment', 0, NULL, '[:]', NULL, 'Submit for Payment', '[points:[593,234,602,196],type:\"arrow\",pos:[593,196],size:[9,38]]');
 INSERT INTO `sys_wf_transition` VALUES ('decide-payment', 'vehicle_application', 'fail', 'payment', 0, 'amtdue != 0', '[:]', NULL, 'Payment Failed', '[points:[809,249,810,298,644,299,642,196],type:\"arrow\",pos:[642,196],size:[168,103]]');
-INSERT INTO `sys_wf_transition` VALUES ('decide-payment', 'vehicle_application', 'success', 'release', 0, 'amtdue == 0', '[:]', NULL, 'Success Pay', '[points:[809,185,809,142,954,124],type:\"arrow\",pos:[809,124],size:[145,61]]');
+INSERT INTO `sys_wf_transition` VALUES ('decide-payment', 'vehicle_application', 'success', 'release', 0, 'amtdue == 0', '[:]', NULL, 'Success Pay', '[points:[809,185,809,142,959,109],type:\"arrow\",pos:[809,109],size:[150,76]]');
 INSERT INTO `sys_wf_transition` VALUES ('draft', 'vehicle_application', 'forapproval', 'approval', 5, NULL, '[visibleWhen:\"#{  entity.txnmode == \'CAPTURE\' }\"]', NULL, 'For Approval (Capture)', '[points:[189,129,223,203,349,234,436,172],type:\"arrow\",pos:[189,129],size:[247,105]]');
 INSERT INTO `sys_wf_transition` VALUES ('draft', 'vehicle_application', 'submit', 'assessment', 0, NULL, '[:]', NULL, 'Submit for Assessment', '[points:[222,113,243,119,278,56],type:\"arrow\",pos:[222,56],size:[56,63]]');
 INSERT INTO `sys_wf_transition` VALUES ('payment', 'vehicle_application', 'reverse-payment', 'approval', 10, NULL, '[:]', NULL, 'Reverse Payment', '[points:[627,146,629,95,533,72,518,122],type:\"arrow\",pos:[518,72],size:[111,74]]');
 INSERT INTO `sys_wf_transition` VALUES ('payment', 'vehicle_application', 'post', 'decide-payment', 0, NULL, '[visible:false]', NULL, 'Post Payment', '[points:[694,184,727,185,729,218,769,219],type:\"arrow\",pos:[694,184],size:[75,35]]');
-INSERT INTO `sys_wf_transition` VALUES ('release', 'vehicle_application', 'submit', 'end', 0, NULL, '[:]', NULL, 'Release', '[points:[1020,149,1102,210],type:\"arrow\",pos:[1020,149],size:[82,61]]');
-INSERT INTO `sys_wf_transition` VALUES ('start', 'vehicle_application', 'start', 'draft', 0, NULL, '[:]', NULL, 'Submit', '[points:[94,57,135,91],type:\"arrow\",pos:[94,57],size:[41,34]]');
+INSERT INTO `sys_wf_transition` VALUES ('release', 'vehicle_application', 'release', 'end', 0, NULL, '[:]', NULL, 'Release', '[points:[1025,134,1102,210],type:\"arrow\",pos:[1025,134],size:[77,76]]');
+INSERT INTO `sys_wf_transition` VALUES ('release', 'vehicle_application', 'void-payment', 'payment', 0, NULL, '[visibleWhen:\"#{ false }\"]', NULL, 'Void Payment', '[points:[972,84,878,33,741,72,668,146],type:\"arrow\",pos:[668,33],size:[304,113]]');
+INSERT INTO `sys_wf_transition` VALUES ('start', 'vehicle_application', 'start', 'draft', 0, 'txnmode != \'CAPTURE\'', '[:]', NULL, 'Submit', '[points:[94,57,135,91],type:\"arrow\",pos:[94,57],size:[41,34]]');
+INSERT INTO `sys_wf_transition` VALUES ('start', 'vehicle_application', 'start-capture', 'release', 0, 'txnmode == \'CAPTURE\'', '[:]', NULL, 'Start Capture', '[points:[85,69,208,337,747,385,984,335,991,134],type:\"arrow\",pos:[85,69],size:[906,316]]');
 COMMIT;
+
+-- ----------------------------
+-- Table structure for vehicle_account
+-- ----------------------------
+DROP TABLE IF EXISTS `vehicle_account`;
+CREATE TABLE `vehicle_account` (
+  `objid` varchar(50) NOT NULL,
+  `franchiseid` varchar(50) DEFAULT NULL,
+  `owner_objid` varchar(50) DEFAULT NULL,
+  `owner_type` varchar(50) DEFAULT NULL,
+  `owner_name` varchar(255) DEFAULT NULL,
+  `owner_address_objid` varchar(50) DEFAULT NULL,
+  `owner_address_text` varchar(255) DEFAULT NULL,
+  `contact_phoneno` varchar(50) DEFAULT NULL,
+  `contact_email` varchar(255) DEFAULT NULL,
+  `contact_mobileno` varchar(50) DEFAULT NULL,
+  `lastfranchisedatepaid` date DEFAULT NULL,
+  `barangay_objid` varchar(50) DEFAULT NULL,
+  `barangay_name` varchar(255) DEFAULT NULL,
+  `supersederid` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for vehicle_application
@@ -1025,9 +1014,11 @@ COMMIT;
 DROP TABLE IF EXISTS `vehicle_application`;
 CREATE TABLE `vehicle_application` (
   `objid` varchar(50) NOT NULL,
-  `franchiseyearid` varchar(50) DEFAULT NULL,
-  `geninfoid` varchar(50) DEFAULT NULL,
+  `franchiseid` varchar(50) DEFAULT NULL,
+  `acctid` varchar(50) DEFAULT NULL,
+  `unitid` varchar(50) DEFAULT NULL,
   `appno` varchar(50) DEFAULT NULL,
+  `appyear` int(255) DEFAULT NULL,
   `appdate` date DEFAULT NULL,
   `apptype` varchar(50) DEFAULT NULL,
   `txnmode` varchar(50) DEFAULT NULL,
@@ -1036,10 +1027,6 @@ CREATE TABLE `vehicle_application` (
   `createdby_name` varchar(255) DEFAULT NULL,
   `particulars` varchar(150) DEFAULT NULL,
   `taskid` varchar(50) DEFAULT NULL,
-  `dtapproved` date DEFAULT NULL,
-  `permitid` varchar(50) DEFAULT NULL,
-  `prevappid` varchar(50) DEFAULT NULL,
-  `amount` decimal(16,2) DEFAULT NULL,
   PRIMARY KEY (`objid`),
   UNIQUE KEY `uix_appno` (`appno`),
   KEY `ix_taskid` (`taskid`),
@@ -1047,27 +1034,10 @@ CREATE TABLE `vehicle_application` (
   KEY `ix_dtfiled` (`dtcreated`),
   KEY `ix_filedby_objid` (`createdby_objid`),
   KEY `ix_filedby_name` (`createdby_name`),
-  KEY `fk_vehicle_application_controlid` (`franchiseyearid`),
-  KEY `fk_vehicle_application_geninfoid` (`geninfoid`),
-  KEY `fk_vehicle_application_prevappid` (`prevappid`),
-  CONSTRAINT `fk_vehicle_application_geninfoid` FOREIGN KEY (`geninfoid`) REFERENCES `vehicle_franchise_generalinfo` (`objid`),
-  CONSTRAINT `fk_vehicle_application_prevappid` FOREIGN KEY (`prevappid`) REFERENCES `vehicle_application` (`objid`),
-  CONSTRAINT `fk_vehicle_application_task` FOREIGN KEY (`taskid`) REFERENCES `vehicle_application_task` (`taskid`)
+  KEY `fk_vehicle_application_geninfoid` (`unitid`),
+  CONSTRAINT `fk_vehicle_application_task` FOREIGN KEY (`taskid`) REFERENCES `vehicle_application_task` (`taskid`),
+  CONSTRAINT `fk_vehicle_application_unitid` FOREIGN KEY (`unitid`) REFERENCES `vehicle_unit` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_application
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_application` VALUES ('VAPP-225dbdaf:1695621ab86:-7ffd', NULL, NULL, 'TRI-2019030001', '2019-03-07', 'NEW', 'ONLINE', '2019-03-07 11:10:41', NULL, NULL, NULL, NULL, '2019-03-07', NULL, NULL, 50.00);
-INSERT INTO `vehicle_application` VALUES ('VAPP-4c143630:169861f4f39:-7fdc', NULL, NULL, 'TRI-2019030004', '2019-03-16', 'NEW', 'ONLINE', '2019-03-16 18:57:12', NULL, NULL, 'asas', NULL, '2019-03-16', 'VPERM3637f4d0:1698665001d:-7fb1', NULL, 50.00);
-INSERT INTO `vehicle_application` VALUES ('VAPP-6182c0b7:1698bc1eaaa:-7fca', NULL, NULL, 'TRI-2019030006', '2019-03-17', 'CHANGE_OWNER', 'ONLINE', '2019-03-17 21:35:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `vehicle_application` VALUES ('VAPP19c565f3:1695c97d599:-7fe3', NULL, NULL, 'TRI-2019030003', '2019-03-08', 'CHANGE_OWNER', 'ONLINE', '2019-03-08 17:24:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50.00);
-INSERT INTO `vehicle_application` VALUES ('VAPP48046b0e:1690a0fb606:-7ff1', NULL, NULL, 'TRI-2019020029', '2019-02-20', 'NEW', 'CAPTURE', '2019-02-20 16:47:06', NULL, NULL, 'sample', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `vehicle_application` VALUES ('VAPP48046b0e:1690a0fb606:-7ffd', NULL, NULL, 'TRI-2019020028', '2019-02-20', 'NEW', 'ONLINE', '2019-02-20 16:39:55', NULL, NULL, NULL, NULL, NULL, 'VPERM-2738a4fe:1691d554d32:-7fff', NULL, 100.00);
-INSERT INTO `vehicle_application` VALUES ('VAPP7435c503:1698be6666b:-7ff6', 'VFYR7435c503:1698be6666b:-7ffa', 'VINFO7435c503:1698be6666b:-7ffb', 'TRI-2019030007', '2019-03-17', 'NEW', 'ONLINE', '2019-03-17 21:47:07', NULL, NULL, 'sample mtop', 'VAPPTSK7435c503:1698be6666b:-7f7c', '2019-03-17', 'VPERM7435c503:1698be6666b:-7f82', NULL, 50.00);
-INSERT INTO `vehicle_application` VALUES ('VAPPb8d288:1691e06eaca:-7ffe', NULL, NULL, 'TRI-2019020031', '2019-02-24', 'CHANGE_OWNER_UNIT', 'ONLINE', '2019-02-24 13:42:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_application_fee
@@ -1076,26 +1046,17 @@ DROP TABLE IF EXISTS `vehicle_application_fee`;
 CREATE TABLE `vehicle_application_fee` (
   `objid` varchar(50) NOT NULL,
   `appid` varchar(50) DEFAULT NULL,
-  `item_objid` varchar(50) DEFAULT NULL,
-  `item_code` varchar(50) DEFAULT NULL,
-  `item_title` varchar(255) DEFAULT NULL,
+  `year` int(255) DEFAULT NULL,
+  `itemid` varchar(50) DEFAULT NULL,
   `amount` decimal(16,4) DEFAULT NULL,
   `amtpaid` decimal(16,4) DEFAULT NULL,
-  `txntype` varchar(50) DEFAULT NULL,
-  `sortorder` int(11) DEFAULT NULL,
   PRIMARY KEY (`objid`),
+  UNIQUE KEY `uix_parentid_itemid` (`appid`,`year`,`itemid`) USING BTREE,
   KEY `ix_appid` (`appid`),
-  KEY `ix_item_objid` (`item_objid`),
-  CONSTRAINT `fk_applicationfee_application` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
+  KEY `ix_item_objid` (`itemid`),
+  CONSTRAINT `fk_vehicle_assessment_item_itemid` FOREIGN KEY (`itemid`) REFERENCES `vehicle_itemaccount` (`objid`),
+  CONSTRAINT `fk_vehicle_assessment_item_parentid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_application_fee
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_application_fee` VALUES ('VAPPF7435c503:1698be6666b:-7fc6', 'VAPP7435c503:1698be6666b:-7ff6', 'REVITEM-46b788af:140b8f5265d:-7f48', '585-0002', 'OCCUPATION FEES - EMPLOYEES/PERSONNEL', 50.0000, 50.0000, NULL, 1000);
-INSERT INTO `vehicle_application_fee` VALUES ('VAPPF7435c503:1698be6666b:-7fc7', 'VAPP7435c503:1698be6666b:-7ff6', 'REVITEM217a91b:1409e6ae44e:-7ea7', '584-0002', 'FRANCHISE TAX - MTOP', 100.0000, 100.0000, NULL, 1000);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_application_info
@@ -1115,23 +1076,11 @@ CREATE TABLE `vehicle_application_info` (
   `lookup_title` varchar(50) DEFAULT NULL,
   `objvalue` mediumtext,
   `sortorder` int(11) DEFAULT NULL,
-  PRIMARY KEY (`objid`),
-  KEY `ix_appid` (`appid`),
-  KEY `ix_name` (`name`),
-  CONSTRAINT `fk_vehcile_variable_name` FOREIGN KEY (`name`) REFERENCES `vehicle_variable` (`objid`),
-  CONSTRAINT `fk_vehicle_application_info_parentid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
+  PRIMARY KEY (`objid`) USING BTREE,
+  KEY `ix_appid` (`appid`) USING BTREE,
+  KEY `ix_name` (`name`) USING BTREE,
+  CONSTRAINT `fk_vehicle_application_info_appid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_application_info
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_application_info` VALUES ('VAPPI-4c143630:169861f4f39:-7f49', 'VAPP-4c143630:169861f4f39:-7fdc', 'NO_OF_EMPLOYEE', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `vehicle_application_info` VALUES ('VAPPI-61d5d657:16956523ddd:-7ffa', 'VAPP-225dbdaf:1695621ab86:-7ffd', 'NO_OF_EMPLOYEE', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `vehicle_application_info` VALUES ('VAPPI-61d5d657:16956523ddd:-8000', 'VAPP48046b0e:1690a0fb606:-7ffd', 'NO_OF_EMPLOYEE', NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `vehicle_application_info` VALUES ('VAPPI19c565f3:1695c97d599:-7fc7', 'VAPP19c565f3:1695c97d599:-7fe3', 'NO_OF_EMPLOYEE', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO `vehicle_application_info` VALUES ('VAPPI7435c503:1698be6666b:-7fc8', 'VAPP7435c503:1698be6666b:-7ff6', 'NO_OF_EMPLOYEE', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_application_task
@@ -1165,74 +1114,40 @@ CREATE TABLE `vehicle_application_task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of vehicle_application_task
+-- Table structure for vehicle_driver
 -- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7f7c', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'end', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-03-17 21:55:04', 'VAPPTSK7435c503:1698be6666b:-7f99');
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7f99', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'release', '2019-03-17 21:48:01', '2019-03-17 21:55:04', NULL, NULL, 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', 'balance unpaid:0.0000', '2019-03-17 21:48:01', 'VAPPTSK7435c503:1698be6666b:-7fae');
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7fae', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'payment', NULL, '2019-03-17 21:48:01', NULL, NULL, 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', NULL, '2019-03-17 21:47:24', 'VAPPTSK7435c503:1698be6666b:-7fbc');
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7fbc', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'approval', NULL, '2019-03-17 21:47:24', NULL, NULL, 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', NULL, '2019-03-17 21:47:21', 'VAPPTSK7435c503:1698be6666b:-7fd8');
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7fd8', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'assessment', NULL, '2019-03-17 21:47:21', NULL, NULL, 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', NULL, '2019-03-17 21:47:12', 'VAPPTSK7435c503:1698be6666b:-7ff0');
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7ff0', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'draft', '2019-03-17 21:47:07', '2019-03-17 21:47:12', NULL, NULL, 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', NULL, '2019-03-17 21:47:08', 'VAPPTSK7435c503:1698be6666b:-7ff4');
-INSERT INTO `vehicle_application_task` VALUES ('VAPPTSK7435c503:1698be6666b:-7ff4', 'VAPP7435c503:1698be6666b:-7ff6', NULL, 'start', '2019-03-17 21:47:08', '2019-03-17 21:47:08', NULL, NULL, 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', NULL, '2019-03-17 21:47:08', NULL);
-COMMIT;
-
--- ----------------------------
--- Table structure for vehicle_application_unit
--- ----------------------------
-DROP TABLE IF EXISTS `vehicle_application_unit`;
-CREATE TABLE `vehicle_application_unit` (
-  `objid` varchar(50) NOT NULL,
-  `appid` varchar(50) DEFAULT NULL,
-  `unitid` varchar(50) DEFAULT NULL,
+DROP TABLE IF EXISTS `vehicle_driver`;
+CREATE TABLE `vehicle_driver` (
+  `objid` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `controlno` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `vehicletypeid` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `entity_objid` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `entity_name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `entity_address_objid` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `entity_address_text` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `license_refno` varchar(50) DEFAULT NULL,
+  `license_expirydate` date DEFAULT NULL,
   PRIMARY KEY (`objid`),
-  KEY `ix_controlid` (`unitid`),
-  KEY `ix_appid` (`appid`),
-  CONSTRAINT `fk_vehicle_application_unit_appid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`),
-  CONSTRAINT `fk_vehicle_application_unit_unitid` FOREIGN KEY (`unitid`) REFERENCES `vehicle_unit` (`objid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `uix_vehicle_driver_controlno` (`controlno`),
+  UNIQUE KEY `uix_vehicle_driver_entityid_vehicletypeid` (`entity_objid`,`vehicletypeid`),
+  KEY `vehicle_driver_vehicletypeid` (`vehicletypeid`),
+  CONSTRAINT `vehicle_driver_vehicletypeid` FOREIGN KEY (`vehicletypeid`) REFERENCES `vehicletype` (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of vehicle_application_unit
+-- Table structure for vehicle_driver_franchise
 -- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_application_unit` VALUES ('VAUNIT7435c503:1698be6666b:-7ff5', 'VAPP7435c503:1698be6666b:-7ff6', 'VUNIT7435c503:1698be6666b:-7ff7');
-COMMIT;
-
--- ----------------------------
--- Table structure for vehicle_application_unit_dropped
--- ----------------------------
-DROP TABLE IF EXISTS `vehicle_application_unit_dropped`;
-CREATE TABLE `vehicle_application_unit_dropped` (
+DROP TABLE IF EXISTS `vehicle_driver_franchise`;
+CREATE TABLE `vehicle_driver_franchise` (
   `objid` varchar(50) NOT NULL,
-  `appid` varchar(50) DEFAULT NULL,
-  `appunitid` varchar(50) DEFAULT NULL,
+  `driverid` varchar(50) DEFAULT NULL,
+  `franchiseid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`objid`),
-  UNIQUE KEY `uix_unitid` (`appunitid`),
-  UNIQUE KEY `uix_vehicle_application_unit_dropped_appunitid` (`appunitid`),
-  KEY `fk_vehicle_application_unit_dropped_appid` (`appid`),
-  CONSTRAINT `fk_vehicle_application_unit_dropped_appid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`),
-  CONSTRAINT `fk_vehicle_application_unit_dropped_appunitid` FOREIGN KEY (`appunitid`) REFERENCES `vehicle_application_unit` (`objid`)
+  UNIQUE KEY `uix_driverid_franchiseid` (`driverid`,`franchiseid`),
+  KEY `fk_vehicle_driver_franchise_franchiseid` (`franchiseid`),
+  CONSTRAINT `fk_vehicle_driver_franchise_driverid` FOREIGN KEY (`driverid`) REFERENCES `vehicle_driver` (`objid`),
+  CONSTRAINT `fk_vehicle_driver_franchise_franchiseid` FOREIGN KEY (`franchiseid`) REFERENCES `vehicle_franchise` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for vehicle_billitem_txntype
--- ----------------------------
-DROP TABLE IF EXISTS `vehicle_billitem_txntype`;
-CREATE TABLE `vehicle_billitem_txntype` (
-  `objid` varchar(50) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`objid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_billitem_txntype
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_billitem_txntype` VALUES ('FEE', 'FEE');
-INSERT INTO `vehicle_billitem_txntype` VALUES ('INTEREST', 'INTEREST');
-INSERT INTO `vehicle_billitem_txntype` VALUES ('SURCHARGE', 'SURCHARGE');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_franchise
@@ -1243,84 +1158,51 @@ CREATE TABLE `vehicle_franchise` (
   `state` varchar(50) DEFAULT NULL,
   `controlno` varchar(50) DEFAULT NULL,
   `vehicletypeid` varchar(50) DEFAULT NULL,
-  `currentyearid` varchar(50) DEFAULT NULL,
+  `acctid` varchar(50) DEFAULT NULL,
+  `unitid` varchar(50) DEFAULT NULL,
+  `appid` varchar(50) DEFAULT NULL,
+  `permitid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`objid`),
   UNIQUE KEY `ix_controlno` (`controlno`),
   KEY `ix_vehicletype` (`vehicletypeid`),
-  KEY `fk_vehicle_franchise_currentyearid` (`currentyearid`),
-  CONSTRAINT `fk_vehicle_franchise_currentyearid` FOREIGN KEY (`currentyearid`) REFERENCES `vehicle_franchise_year` (`objid`)
+  KEY `fk_vehicle_franchise_unitid` (`unitid`),
+  KEY `fk_vehicle_franchise_appid` (`appid`),
+  KEY `fk_vehicle_franchise_permitid` (`permitid`),
+  CONSTRAINT `fk_vehicle_franchise_appid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`),
+  CONSTRAINT `fk_vehicle_franchise_permitid` FOREIGN KEY (`permitid`) REFERENCES `vehicle_permit` (`objid`),
+  CONSTRAINT `fk_vehicle_franchise_unitid` FOREIGN KEY (`unitid`) REFERENCES `vehicle_unit` (`objid`),
+  CONSTRAINT `fk_vehicle_franchise_vehicletypeid` FOREIGN KEY (`vehicletypeid`) REFERENCES `vehicletype` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of vehicle_franchise
+-- Table structure for vehicle_itemaccount
 -- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190001', 'OPEN', 'MTOP-20190001', 'tricycle', 'VFYR7435c503:1698be6666b:-7ffa');
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190002', 'OPEN', 'MTOP-20190002', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190003', 'OPEN', 'MTOP-20190003', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190004', 'OPEN', 'MTOP-20190004', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190005', 'OPEN', 'MTOP-20190005', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190006', 'OPEN', 'MTOP-20190006', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190007', 'OPEN', 'MTOP-20190007', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190008', 'OPEN', 'MTOP-20190008', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190009', 'OPEN', 'MTOP-20190009', 'tricycle', NULL);
-INSERT INTO `vehicle_franchise` VALUES ('MTOP-20190010', 'OPEN', 'MTOP-20190010', 'tricycle', NULL);
-COMMIT;
-
--- ----------------------------
--- Table structure for vehicle_franchise_generalinfo
--- ----------------------------
-DROP TABLE IF EXISTS `vehicle_franchise_generalinfo`;
-CREATE TABLE `vehicle_franchise_generalinfo` (
+DROP TABLE IF EXISTS `vehicle_itemaccount`;
+CREATE TABLE `vehicle_itemaccount` (
   `objid` varchar(50) NOT NULL,
-  `owner_objid` varchar(50) DEFAULT NULL,
-  `owner_name` varchar(255) DEFAULT NULL,
-  `owner_address_objid` varchar(50) DEFAULT NULL,
-  `owner_address_text` varchar(255) DEFAULT NULL,
-  `phoneno` varchar(50) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `mobileno` varchar(50) DEFAULT NULL,
-  `franchiseid` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`objid`),
-  KEY `ix_owner_objid` (`owner_objid`),
-  KEY `ix_owner_name` (`owner_name`),
-  KEY `ix_owner_address_objid` (`owner_address_objid`)
+  `title` varchar(255) DEFAULT NULL,
+  `item_objid` varchar(50) DEFAULT NULL,
+  `item_code` varchar(50) DEFAULT NULL,
+  `item_title` varchar(255) DEFAULT NULL,
+  `item_fund_objid` varchar(50) DEFAULT NULL,
+  `sortorder` int(10) DEFAULT NULL,
+  PRIMARY KEY (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of vehicle_franchise_generalinfo
+-- Records of vehicle_itemaccount
 -- ----------------------------
 BEGIN;
-INSERT INTO `vehicle_franchise_generalinfo` VALUES ('VINFO7435c503:1698be6666b:-7ffb', 'IND-1001d137:15dde15991e:-1488', 'LUNGAT, LIGAYA', 'ADDR-1dd97113:15dde44601e:-19d7', 'DAO, TAGBILARAN CITY', NULL, NULL, NULL, 'MTOP-20190001');
-COMMIT;
-
--- ----------------------------
--- Table structure for vehicle_franchise_year
--- ----------------------------
-DROP TABLE IF EXISTS `vehicle_franchise_year`;
-CREATE TABLE `vehicle_franchise_year` (
-  `objid` varchar(50) NOT NULL,
-  `year` int(11) DEFAULT NULL,
-  `franchiseid` varchar(50) DEFAULT NULL,
-  `geninfoid` varchar(50) DEFAULT NULL,
-  `appid` varchar(50) DEFAULT NULL,
-  `permitid` varchar(11) DEFAULT NULL,
-  `renewaldate` date DEFAULT NULL,
-  PRIMARY KEY (`objid`),
-  UNIQUE KEY `uix_franchiseid_year` (`franchiseid`,`year`),
-  KEY `fk_franchise_year_geninfoid` (`geninfoid`),
-  KEY `fk_vehicle_franchise_year_appid` (`appid`),
-  KEY `fk_vehicle_franchise_year_permitid` (`permitid`),
-  CONSTRAINT `fk_franchise_year_geninfoid` FOREIGN KEY (`geninfoid`) REFERENCES `vehicle_franchise_generalinfo` (`objid`),
-  CONSTRAINT `fk_vehicle_franchise_year_appid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`),
-  CONSTRAINT `fk_vehicle_franchise_year_permitid` FOREIGN KEY (`permitid`) REFERENCES `vehicle_permit` (`objid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_franchise_year
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_franchise_year` VALUES ('VFYR7435c503:1698be6666b:-7ffa', 2019, 'MTOP-20190001', 'VINFO7435c503:1698be6666b:-7ffb', 'VAPP7435c503:1698be6666b:-7ff6', NULL, '2020-01-01');
+INSERT INTO `vehicle_itemaccount` VALUES ('ANNUAL_BUSINESS_PERMIT', 'ANNUAL BUSINESS PERMIT', NULL, NULL, NULL, NULL, 1);
+INSERT INTO `vehicle_itemaccount` VALUES ('CHANGE_MOTOR_VEHICLE', 'CHANGE OF MOTOR VEHICLE', NULL, NULL, NULL, NULL, 6);
+INSERT INTO `vehicle_itemaccount` VALUES ('CHANGE_OWNERSHIP', 'CHANGE OF OWNERSHIP', NULL, NULL, NULL, NULL, 7);
+INSERT INTO `vehicle_itemaccount` VALUES ('DRIVERS_AFFIDAVIT', 'DRIVERS AFFIDAVIT', NULL, NULL, NULL, NULL, 4);
+INSERT INTO `vehicle_itemaccount` VALUES ('FRANCHISE_FEE', 'FRANCHISE FEE', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `vehicle_itemaccount` VALUES ('MOTORBOAT_FEE', 'MOTOR BOAT', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `vehicle_itemaccount` VALUES ('SIDECAR_PLATENO', 'PLATENO FOR SIDECAR', NULL, NULL, NULL, NULL, 2);
+INSERT INTO `vehicle_itemaccount` VALUES ('STICKER', 'STICKER', NULL, NULL, NULL, NULL, 5);
+INSERT INTO `vehicle_itemaccount` VALUES ('TARIFF_FEE', 'TARIFF FEE', NULL, NULL, NULL, NULL, 3);
+INSERT INTO `vehicle_itemaccount` VALUES ('VEHICLE_PENALTY', 'PENALTY', NULL, NULL, NULL, NULL, 8);
 COMMIT;
 
 -- ----------------------------
@@ -1330,7 +1212,6 @@ DROP TABLE IF EXISTS `vehicle_payment`;
 CREATE TABLE `vehicle_payment` (
   `objid` varchar(50) NOT NULL,
   `appid` varchar(50) DEFAULT NULL,
-  `franchiseid` varchar(50) DEFAULT NULL,
   `txndate` datetime DEFAULT NULL,
   `refid` varchar(50) DEFAULT NULL,
   `reftype` varchar(50) DEFAULT NULL,
@@ -1342,20 +1223,12 @@ CREATE TABLE `vehicle_payment` (
   `remarks` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`objid`),
   KEY `ix_appid` (`appid`),
-  KEY `ix_franchiseid` (`franchiseid`),
   KEY `ix_txndate` (`txndate`),
   KEY `ix_refid` (`refid`),
   KEY `ix_refno` (`refno`),
   KEY `ix_refdate` (`refdate`),
-  CONSTRAINT `fk_vehecle_application_payment_ibfk_1` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
+  CONSTRAINT `fk_vehicle_payment_appid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_payment
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_payment` VALUES ('RCT49a1ccb4:1698be7738f:-7ff8', 'VAPP7435c503:1698be6666b:-7ff6', NULL, NULL, 'RCT49a1ccb4:1698be7738f:-7ff8', 'cashreceipt', 'A5100110', '2019-03-17', 150.0000, 0, 'ONLINE', NULL);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_payment_item
@@ -1364,35 +1237,18 @@ DROP TABLE IF EXISTS `vehicle_payment_item`;
 CREATE TABLE `vehicle_payment_item` (
   `objid` varchar(50) NOT NULL,
   `parentid` varchar(50) DEFAULT NULL,
-  `apprefid` varchar(50) DEFAULT NULL,
-  `franchiserefid` varchar(50) DEFAULT NULL,
-  `item_objid` varchar(50) DEFAULT NULL,
-  `item_code` varchar(50) DEFAULT NULL,
-  `item_title` varchar(255) DEFAULT NULL,
   `amount` decimal(16,4) DEFAULT NULL,
   `surcharge` decimal(16,4) DEFAULT NULL,
   `interest` decimal(16,4) DEFAULT NULL,
   `discount` decimal(16,4) DEFAULT NULL,
   `refid` varchar(50) DEFAULT NULL,
-  `reftype` varchar(50) DEFAULT NULL,
   `remarks` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`objid`),
   KEY `ix_parentid` (`parentid`),
-  KEY `ix_apprefid` (`apprefid`),
-  KEY `ix_franchiserefid` (`franchiserefid`),
-  KEY `ix_item_objid` (`item_objid`),
-  CONSTRAINT `fk_franchise_fee_paymentitem` FOREIGN KEY (`franchiserefid`) REFERENCES `vehicle_franchise` (`objid`),
-  CONSTRAINT `fk_vehicle_application_fee_payment` FOREIGN KEY (`apprefid`) REFERENCES `vehicle_application_fee` (`objid`),
-  CONSTRAINT `fk_vehicle_application_payment_item_ibfk_1` FOREIGN KEY (`parentid`) REFERENCES `vehicle_payment` (`objid`)
+  KEY `fk_vehicle_payment_item_refid` (`refid`),
+  CONSTRAINT `fk_vehicle_payment_item_parentid` FOREIGN KEY (`parentid`) REFERENCES `vehicle_payment` (`objid`),
+  CONSTRAINT `fk_vehicle_payment_item_refid` FOREIGN KEY (`refid`) REFERENCES `vehicle_application_fee` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_payment_item
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_payment_item` VALUES ('RCTI49a1ccb4:1698be7738f:-7fef', 'RCT49a1ccb4:1698be7738f:-7ff8', NULL, NULL, 'REVITEM217a91b:1409e6ae44e:-7ea7', '584-0002', 'FRANCHISE TAX - MTOP', 100.0000, 0.0000, 0.0000, 0.0000, 'VAPPF7435c503:1698be6666b:-7fc7', 'vehicle_application_fee', NULL);
-INSERT INTO `vehicle_payment_item` VALUES ('RCTI49a1ccb4:1698be7738f:-7ff0', 'RCT49a1ccb4:1698be7738f:-7ff8', NULL, NULL, 'REVITEM-46b788af:140b8f5265d:-7f48', '585-0002', 'OCCUPATION FEES - EMPLOYEES/PERSONNEL', 50.0000, 0.0000, 0.0000, 0.0000, 'VAPPF7435c503:1698be6666b:-7fc6', 'vehicle_application_fee', NULL);
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_permit
@@ -1401,27 +1257,25 @@ DROP TABLE IF EXISTS `vehicle_permit`;
 CREATE TABLE `vehicle_permit` (
   `objid` varchar(50) NOT NULL,
   `state` varchar(50) DEFAULT NULL,
+  `appid` varchar(50) DEFAULT NULL,
   `permitno` varchar(50) DEFAULT NULL,
   `permittype` varchar(50) DEFAULT NULL,
   `dtissued` date DEFAULT NULL,
   `issuedby_objid` varchar(50) DEFAULT NULL,
   `issuedby_name` varchar(50) DEFAULT NULL,
-  `expirydate` date DEFAULT NULL,
-  `appid` varchar(50) DEFAULT NULL,
   `txnmode` varchar(50) DEFAULT NULL,
+  `remarks` varchar(355) DEFAULT NULL,
+  `supersederid` varchar(50) DEFAULT NULL,
+  `expirydate` date DEFAULT NULL,
   PRIMARY KEY (`objid`),
   UNIQUE KEY `uix_permitno` (`permitno`),
+  UNIQUE KEY `fk_vehicle_permit_unitid` (`appid`) USING BTREE,
   KEY `ix_dtissued` (`dtissued`),
   KEY `ix_issuedby_objid` (`issuedby_objid`),
-  KEY `ix_expirydate` (`expirydate`)
+  KEY `fk_vehicle_permit_supersederid` (`supersederid`),
+  CONSTRAINT `fk_vehicle_permit_supersederid` FOREIGN KEY (`supersederid`) REFERENCES `vehicle_permit` (`objid`),
+  CONSTRAINT `fk_vehicle_permit_unitid` FOREIGN KEY (`appid`) REFERENCES `vehicle_application` (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of vehicle_permit
--- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_permit` VALUES ('VPERM7435c503:1698be6666b:-7f82', 'ACTIVE', 'MTOP-00000002', 'STANDARD', '2019-03-17', 'USR-1b82c604:14cc29913bb:-7fec', 'ADMIN . ADMIN', NULL, 'VAPP7435c503:1698be6666b:-7ff6', 'ONLINE');
-COMMIT;
 
 -- ----------------------------
 -- Table structure for vehicle_unit
@@ -1429,28 +1283,27 @@ COMMIT;
 DROP TABLE IF EXISTS `vehicle_unit`;
 CREATE TABLE `vehicle_unit` (
   `objid` varchar(50) NOT NULL,
-  `plateno` varchar(50) DEFAULT NULL,
-  `engineno` varchar(50) DEFAULT NULL,
-  `bodyno` varchar(50) DEFAULT NULL,
-  `sidecarno` varchar(50) DEFAULT NULL,
-  `make` varchar(50) DEFAULT NULL,
-  `model` varchar(50) DEFAULT NULL,
-  `color` varchar(50) DEFAULT NULL,
-  `chassisno` varchar(50) DEFAULT NULL,
-  `sidecarcolor` varchar(50) DEFAULT NULL,
-  `crname` varchar(50) DEFAULT NULL,
-  `driver_objid` varchar(50) DEFAULT NULL,
-  `driver_name` varchar(255) DEFAULT NULL,
-  `remarks` varchar(255) DEFAULT NULL,
+  `franchiseid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of vehicle_unit
+-- Table structure for vehicle_unit_info
 -- ----------------------------
-BEGIN;
-INSERT INTO `vehicle_unit` VALUES ('VUNIT7435c503:1698be6666b:-7ff7', '888-999-001', 'ENG01', 'BODY777', NULL, 'HONDA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TEST');
-COMMIT;
+DROP TABLE IF EXISTS `vehicle_unit_info`;
+CREATE TABLE `vehicle_unit_info` (
+  `objid` varchar(50) NOT NULL,
+  `unitid` varchar(50) DEFAULT NULL,
+  `fieldid` varchar(50) DEFAULT NULL,
+  `stringvalue` varchar(255) DEFAULT NULL,
+  `decimalvalue` decimal(18,2) DEFAULT NULL,
+  `intvalue` int(11) DEFAULT NULL,
+  `datevalue` date DEFAULT NULL,
+  `booleanvalue` int(11) DEFAULT NULL,
+  PRIMARY KEY (`objid`) USING BTREE,
+  KEY `ix_appid` (`unitid`) USING BTREE,
+  KEY `ix_name` (`fieldid`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for vehicle_variable
@@ -1475,6 +1328,7 @@ CREATE TABLE `vehicle_variable` (
 -- Records of vehicle_variable
 -- ----------------------------
 BEGIN;
+INSERT INTO `vehicle_variable` VALUES ('IS_ADDITIONAL', 'DRAFT', 'IS_ADDITIONAL', 'IS ADDITIONAL', NULL, 'boolean', NULL, 0, 0, '[]');
 INSERT INTO `vehicle_variable` VALUES ('NO_OF_EMPLOYEE', 'DRAFT', 'NO_OF_EMPLOYEE', 'NO. OF EMPLOYEE', NULL, 'integer', NULL, 0, 0, '[]');
 INSERT INTO `vehicle_variable` VALUES ('NO_OF_PERSON', 'DRAFT', 'NO_OF_PERSON', 'NO. OF PERSON', NULL, 'integer', NULL, 0, 0, '[]');
 INSERT INTO `vehicle_variable` VALUES ('NUM_UNITS', 'DRAFT', 'NUM_UNITS', 'NUM UNITS', NULL, 'integer', NULL, 1, 0, '[]');
@@ -1490,11 +1344,11 @@ CREATE TABLE `vehicletype` (
   `controlpattern` varchar(50) DEFAULT NULL,
   `indexno` int(11) DEFAULT NULL,
   `appnopattern` varchar(50) DEFAULT NULL,
-  `issued` int(11) DEFAULT '0',
-  `allowedfields` varchar(300) DEFAULT NULL,
   `icon` blob,
   `permitnopattern` varchar(50) DEFAULT NULL,
   `renewalfrequency` varchar(10) DEFAULT NULL,
+  `permithandler` varchar(100) DEFAULT NULL,
+  `drivernopattern` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`objid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1502,55 +1356,43 @@ CREATE TABLE `vehicletype` (
 -- Records of vehicletype
 -- ----------------------------
 BEGIN;
-INSERT INTO `vehicletype` VALUES ('boat', 'BOAT', NULL, 0, NULL, 0, '.*', NULL, NULL, 'YEAR');
-INSERT INTO `vehicletype` VALUES ('ebike', 'E-BIKE', 'EB-[yyyy][MM][%06d]', NULL, 'EBAPP-[yyyy][MM][%06d]', 0, '.*', NULL, NULL, 'YEAR');
-INSERT INTO `vehicletype` VALUES ('motorcycle', 'MOTORIZED TRICYCLE OPERATORS PERMIT', 'MMM[yyyy][%06d]', NULL, 'MAPP[yyyy][cluster][%06d]', 0, 'plateno|engineno|bodyno|driver.name|remarks', NULL, 'MP[yyyy]-[MM]-[cluster][%06d]', 'YEAR');
-INSERT INTO `vehicletype` VALUES ('pedicab', 'PEDICAB', 'PED-[yyyy]-[MM][%06d]', 2, 'PEDAPP-[yyyy]-[MM][%06d]', 0, 'plateno|engineno|bodyno|sidecarno|make|model|color|chassisno|sidecarcolor|crname|driver.name|remarks', NULL, NULL, 'YEAR');
-INSERT INTO `vehicletype` VALUES ('sikad', 'SIKAD', 'SK-[yyyy][MM][%05d]', NULL, 'SKA-[yyyy][MM][%05d]', 0, '.*', NULL, NULL, 'YEAR');
-INSERT INTO `vehicletype` VALUES ('tricycle', 'MTOP', 'MTOP-[yyyy][%04d]', 1, 'TRI-[yyyy][MM][%04d]', 10, 'plateno|engineno|bodyno|make', NULL, 'MTOP-[%08d]', 'YEAR');
-INSERT INTO `vehicletype` VALUES ('van', 'VAN', 'V[yyyy][%8d]', NULL, 'VA[yyyy][%8d]', 0, 'plateno|engineno|bodyno|sidecarno|make|model|color|chassisno|sidecarcolor|crname|driver.name|remarks', NULL, 'VAN-[yyyy][%8d]', 'YEAR');
+INSERT INTO `vehicletype` VALUES ('tricycle', 'TRICYCLE (MTOP)', 'TRI-[yyyy]-[%06d]', NULL, 'ATRI-[yyyy][MM]-[%04d]', NULL, 'TRIP-[org]-[yyyy]-[%04d]', 'YEAR', '', 'TRIP-[org]-[yyyy]-[%04d]');
 COMMIT;
 
 -- ----------------------------
--- View structure for vw_vehicle_application
+-- Table structure for vehicletype_field
 -- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_application`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_application` AS select `va`.`objid` AS `objid`,`va`.`franchiseyearid` AS `franchiseyearid`,`va`.`geninfoid` AS `geninfoid`,`va`.`appno` AS `appno`,`va`.`appdate` AS `appdate`,`va`.`apptype` AS `apptype`,`va`.`txnmode` AS `txnmode`,`va`.`dtcreated` AS `dtcreated`,`va`.`createdby_objid` AS `createdby_objid`,`va`.`createdby_name` AS `createdby_name`,`va`.`particulars` AS `particulars`,`va`.`taskid` AS `taskid`,`va`.`dtapproved` AS `dtapproved`,`va`.`permitid` AS `permitid`,`va`.`prevappid` AS `prevappid`,`va`.`amount` AS `amount`,`vf`.`objid` AS `franchiseid`,`vf`.`vehicletypeid` AS `vehicletypeid`,`vf`.`controlno` AS `controlno`,`vfy`.`year` AS `year`,`vfgi`.`owner_objid` AS `owner_objid`,`vfgi`.`owner_name` AS `owner_name`,`vfgi`.`owner_address_objid` AS `owner_address_objid`,`vfgi`.`owner_address_text` AS `owner_address_text`,`vfgi`.`mobileno` AS `mobileno`,`vfgi`.`phoneno` AS `phoneno`,`vfgi`.`email` AS `email`,`vat`.`state` AS `task_state`,`vat`.`startdate` AS `task_startdate`,`vat`.`enddate` AS `task_enddate`,`vat`.`assignee_objid` AS `task_assignee_objid`,`vat`.`assignee_name` AS `task_assignee_name`,`vat`.`actor_objid` AS `task_actor_objid`,`vat`.`actor_name` AS `task_actor_name`,`vfy`.`renewaldate` AS `renewaldate`,`vp`.`permitno` AS `permit_permitno`,`vp`.`permittype` AS `permit_permittype`,`vp`.`dtissued` AS `permit_dtissued`,`vp`.`expirydate` AS `permit_expirydate`,`vp`.`issuedby_name` AS `permit_issuedby_name` from (((((`vehicle_application` `va` join `vehicle_franchise_year` `vfy` on((`va`.`franchiseyearid` = `vfy`.`objid`))) join `vehicle_franchise` `vf` on((`vfy`.`franchiseid` = `vf`.`objid`))) join `vehicle_franchise_generalinfo` `vfgi` on((`va`.`geninfoid` = `vfgi`.`objid`))) left join `vehicle_application_task` `vat` on((`va`.`taskid` = `vat`.`taskid`))) left join `vehicle_permit` `vp` on((`vp`.`objid` = `va`.`permitid`)));
+DROP TABLE IF EXISTS `vehicletype_field`;
+CREATE TABLE `vehicletype_field` (
+  `objid` varchar(50) NOT NULL,
+  `vehicletypeid` varchar(50) DEFAULT NULL,
+  `name` varchar(50) NOT NULL,
+  `caption` varchar(100) DEFAULT NULL,
+  `datatype` varchar(50) DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `sortorder` int(11) DEFAULT NULL,
+  `required` smallint(255) DEFAULT NULL,
+  `textwidth` int(11) DEFAULT NULL,
+  PRIMARY KEY (`objid`),
+  UNIQUE KEY `uix_vehicletype_name` (`name`,`vehicletypeid`) USING BTREE,
+  KEY `fk_vehicletype_field_vehicletypeid` (`vehicletypeid`),
+  CONSTRAINT `fk_vehicletype_field_vehicletypeid` FOREIGN KEY (`vehicletypeid`) REFERENCES `vehicletype` (`objid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- View structure for vw_vehicle_franchise
+-- Records of vehicletype_field
 -- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_franchise`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_franchise` AS select `vf`.`objid` AS `objid`,`vf`.`state` AS `state`,`vf`.`controlno` AS `controlno`,`vf`.`vehicletypeid` AS `vehicletypeid`,`vf`.`currentyearid` AS `currentyearid`,`vfy`.`year` AS `year`,`vfgi`.`objid` AS `geninfoid`,`vfgi`.`owner_objid` AS `owner_objid`,`vfgi`.`owner_name` AS `owner_name`,`vfgi`.`owner_address_objid` AS `owner_address_objid`,`vfgi`.`owner_address_text` AS `owner_address_text`,`vfy`.`renewaldate` AS `renewaldate` from ((`vehicle_franchise` `vf` left join `vehicle_franchise_year` `vfy` on((`vf`.`currentyearid` = `vfy`.`objid`))) left join `vehicle_franchise_generalinfo` `vfgi` on((`vfy`.`geninfoid` = `vfgi`.`objid`)));
-
--- ----------------------------
--- View structure for vw_vehicle_franchise_unit_active
--- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_franchise_unit_active`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_franchise_unit_active` AS select `vau`.`objid` AS `objid`,`vau`.`appid` AS `appid`,`vau`.`unitid` AS `unitid`,`vf`.`objid` AS `franchiseid`,`va`.`apptype` AS `apptype`,`va`.`appno` AS `appno` from ((((`vehicle_application_unit` `vau` join `vehicle_application` `va` on((`vau`.`appid` = `va`.`objid`))) join `vehicle_franchise_year` `vfy` on((`va`.`franchiseyearid` = `vfy`.`objid`))) join `vehicle_franchise` `vf` on((`vf`.`currentyearid` = `vfy`.`objid`))) left join `vehicle_application_unit_dropped` `vaud` on((`vaud`.`appunitid` = `vau`.`objid`))) where isnull(`vaud`.`objid`);
-
--- ----------------------------
--- View structure for vw_vehicle_franchise_year
--- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_franchise_year`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_franchise_year` AS select `vfy`.`objid` AS `objid`,`vfy`.`year` AS `year`,`vf`.`controlno` AS `controlno`,`vf`.`vehicletypeid` AS `vehicletypeid`,`vfgi`.`owner_objid` AS `owner_objid`,`vfgi`.`owner_name` AS `owner_name`,`vfgi`.`owner_address_objid` AS `owner_address_objid`,`vfgi`.`owner_address_text` AS `owner_address_text`,`vfy`.`renewaldate` AS `renewaldate` from ((`vehicle_franchise_year` `vfy` join `vehicle_franchise` `vf` on((`vfy`.`franchiseid` = `vf`.`objid`))) join `vehicle_franchise_generalinfo` `vfgi` on((`vfy`.`geninfoid` = `vfgi`.`objid`)));
-
--- ----------------------------
--- View structure for vw_vehicle_permit
--- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_permit`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_permit` AS select `vp`.`objid` AS `objid`,`vp`.`state` AS `state`,`vp`.`permitno` AS `permitno`,`vp`.`permittype` AS `permittype`,`vp`.`dtissued` AS `dtissued`,`vp`.`issuedby_objid` AS `issuedby_objid`,`vp`.`issuedby_name` AS `issuedby_name`,`vp`.`expirydate` AS `expirydate`,`vp`.`appid` AS `appid`,`vp`.`txnmode` AS `txnmode`,`vf`.`controlno` AS `controlno`,`va`.`appno` AS `appno`,`va`.`appdate` AS `appdate`,`vg`.`owner_objid` AS `owner_objid`,`vg`.`owner_name` AS `owner_name`,`vg`.`owner_address_text` AS `owner_address_text`,`vg`.`phoneno` AS `phoneno`,`vg`.`email` AS `email`,`vg`.`mobileno` AS `mobileno` from ((((`vehicle_permit` `vp` join `vehicle_application` `va` on((`vp`.`appid` = `va`.`objid`))) join `vehicle_franchise_generalinfo` `vg` on((`va`.`geninfoid` = `vg`.`objid`))) join `vehicle_franchise_year` `vfy` on((`va`.`franchiseyearid` = `vfy`.`objid`))) join `vehicle_franchise` `vf` on((`vfy`.`franchiseid` = `vf`.`objid`)));
-
--- ----------------------------
--- View structure for vw_vehicle_unit
--- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_unit`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_unit` AS select `fy`.`year` AS `year`,`vf`.`controlno` AS `controlno`,`vgi`.`owner_objid` AS `owner_objid`,`vgi`.`owner_name` AS `owner_name`,`vu`.`objid` AS `objid`,`vu`.`plateno` AS `plateno`,`vu`.`engineno` AS `engineno`,`vu`.`bodyno` AS `bodyno`,`vu`.`sidecarno` AS `sidecarno`,`vu`.`make` AS `make`,`vu`.`model` AS `model`,`vu`.`color` AS `color`,`vu`.`chassisno` AS `chassisno`,`vu`.`sidecarcolor` AS `sidecarcolor`,`vu`.`crname` AS `crname`,`vu`.`driver_objid` AS `driver_objid`,`vu`.`driver_name` AS `driver_name`,`vu`.`remarks` AS `remarks`,`vt`.`objid` AS `vehicletype_objid`,`vt`.`title` AS `vehicletype_title`,`vt`.`allowedfields` AS `vehicletype_allowedfields` from ((((((`vehicle_unit` `vu` join `vehicle_application_unit` `vau` on((`vau`.`unitid` = `vu`.`objid`))) join `vehicle_application` `va` on((`vau`.`appid` = `va`.`objid`))) join `vehicle_franchise_year` `fy` on((`va`.`franchiseyearid` = `fy`.`objid`))) join `vehicle_franchise_generalinfo` `vgi` on((`fy`.`geninfoid` = `vgi`.`objid`))) join `vehicle_franchise` `vf` on((`fy`.`franchiseid` = `vf`.`objid`))) join `vehicletype` `vt` on((`vf`.`vehicletypeid` = `vt`.`objid`))) where (not(`vau`.`objid` in (select `vehicle_application_unit_dropped`.`appunitid` from `vehicle_application_unit_dropped`)));
-
--- ----------------------------
--- View structure for vw_vehicle_unit_snapshot
--- ----------------------------
-DROP VIEW IF EXISTS `vw_vehicle_unit_snapshot`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_vehicle_unit_snapshot` AS select `vau`.`objid` AS `objid`,`va`.`appno` AS `appno`,`va`.`apptype` AS `apptype`,`va`.`objid` AS `appid`,`va`.`permitid` AS `permitid`,`va2`.`appno` AS `histappno`,`va`.`appdate` AS `appdate`,`va`.`franchiseyearid` AS `franchiseyearid`,`vu`.`objid` AS `unit_objid`,`vu`.`plateno` AS `unit_plateno`,`vu`.`engineno` AS `unit_engineno`,`vu`.`bodyno` AS `unit_bodyno`,`vu`.`sidecarno` AS `unit_sidecarno`,`vu`.`make` AS `unit_make`,`vu`.`model` AS `unit_model`,`vu`.`color` AS `unit_color`,`vu`.`chassisno` AS `unit_chassisno`,`vu`.`sidecarcolor` AS `unit_sidecarcolor`,`vu`.`crname` AS `unit_crname`,`vu`.`driver_objid` AS `unit_driver_objid`,`vu`.`driver_name` AS `unit_driver_name`,`vu`.`remarks` AS `unit_remarks` from (((((`vehicle_application` `va` join `vehicle_application` `va2` on((`va2`.`franchiseyearid` = `va`.`franchiseyearid`))) join `vehicle_application_unit` `vau` on((`vau`.`appid` = `va2`.`objid`))) join `vehicle_unit` `vu` on((`vau`.`unitid` = `vu`.`objid`))) left join `vehicle_application_unit_dropped` `vaud` on((`vaud`.`appunitid` = `vau`.`objid`))) left join `vehicle_application` `vauda` on((`vaud`.`appid` = `vauda`.`objid`))) where ((`va2`.`dtcreated` <= `va`.`dtcreated`) and (isnull(`vauda`.`dtcreated`) or (`vauda`.`dtcreated` > `va`.`dtcreated`))) order by `va`.`dtcreated`;
+BEGIN;
+INSERT INTO `vehicletype_field` VALUES ('tricycle-bodyno', 'tricycle', 'bodyno', 'Body No', 'text', NULL, 3, 1, NULL);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-chassisno', 'tricycle', 'chassisno', 'Chassis No', 'text', NULL, 10, NULL, 0);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-color', 'tricycle', 'color', 'Color', 'text', NULL, 6, 1, NULL);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-crname', 'tricycle', 'crname', 'CR Name', 'text', NULL, 7, NULL, 250);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-engineno', 'tricycle', 'engineno', 'Engine No', 'text', NULL, 2, 1, NULL);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-insurername', 'tricycle', 'insurername', 'Insurer Name', 'text', NULL, 8, NULL, 250);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-plateno', 'tricycle', 'plateno', 'Plate No', 'text', NULL, 1, 1, NULL);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-sidecarcolor', 'tricycle', 'sidecarcolor', 'Sidecar Color', 'text', NULL, 4, NULL, NULL);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-sidecarno', 'tricycle', 'sidecarno', 'Sidecar No', 'text', NULL, 5, NULL, NULL);
+INSERT INTO `vehicletype_field` VALUES ('tricycle-toda', 'tricycle', 'toda', 'TODA No', 'text', NULL, 9, NULL, NULL);
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

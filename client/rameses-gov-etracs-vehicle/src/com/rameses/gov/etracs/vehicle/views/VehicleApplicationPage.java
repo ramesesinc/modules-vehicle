@@ -351,6 +351,7 @@ public class VehicleApplicationPage extends javax.swing.JPanel {
         schemaList5.setCustomFilter("appid = :objid");
         schemaList5.setEntityName("");
         schemaList5.setFormActions("feeActions");
+        schemaList5.setHandlerName("feeListModel");
         schemaList5.setOrderBy("year, item.sortorder");
         schemaList5.setQueryName("entity");
         schemaList5.setSchemaName("vehicle_application_fee");

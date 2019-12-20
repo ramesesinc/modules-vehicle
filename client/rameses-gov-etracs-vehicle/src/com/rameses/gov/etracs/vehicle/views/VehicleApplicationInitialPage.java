@@ -59,6 +59,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xTitledBorder1.setTitle("Vehicle Information");
         jPanel2.setBorder(xTitledBorder1);
 
+        vehicleInfoPanel1.setEditmode("editableUnit");
         vehicleInfoPanel1.setName("entity.unit"); // NOI18N
         vehicleInfoPanel1.setVehicletypename("vehicletype.objid");
 
@@ -73,8 +74,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(vehicleInfoPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -83,7 +83,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xTitledBorder2.setTitle("Account Info");
         jPanel3.setBorder(xTitledBorder2);
 
-        xFormPanel3.setCaptionWidth(150);
+        xFormPanel3.setCaptionWidth(180);
 
         xLabel3.setCaption("Vehicle Type");
         xLabel3.setExpression("#{vehicletype.objid}");
@@ -108,8 +108,8 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xComboBox1.setRequired(true);
         xFormPanel3.add(xComboBox1);
 
-        xDateField2.setCaption("Start Franchise Date");
-        xDateField2.setName("entity.account.startdate"); // NOI18N
+        xDateField2.setCaption("Last Franchise Date Paid");
+        xDateField2.setName("entity.account.lastfranchisedatepaid"); // NOI18N
         xDateField2.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' ||  apptype == 'NEW' }");
         xDateField2.setCellPadding(new java.awt.Insets(5, 0, 0, 0));
         xDateField2.setPreferredSize(new java.awt.Dimension(150, 20));
@@ -117,7 +117,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xFormPanel3.add(xDateField2);
 
         xDateField1.setCaption("App date");
-        xDateField1.setDisableWhen("#{ entity.txnmode == 'ONLINE' }");
+        xDateField1.setDisableWhen("#{ entity.txnmode != 'CAPTURE' }");
         xDateField1.setName("entity.appdate"); // NOI18N
         xDateField1.setPreferredSize(new java.awt.Dimension(150, 20));
         xDateField1.setRequired(true);
@@ -148,7 +148,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xFormPanel3.add(xLookupField1);
 
         entityLookup1.setCaption("Owner");
-        entityLookup1.setDisableWhen("#{ !editableOwner  }");
+        entityLookup1.setDisableWhen("#{ !editableAccount  }");
         entityLookup1.setName("entity.account.owner"); // NOI18N
         entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
         entityLookup1.setRequired(true);
@@ -156,7 +156,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
 
         entityAddressLookup1.setCaption("Home Address");
         entityAddressLookup1.setDepends(new String[] {"entity.account.owner"});
-        entityAddressLookup1.setDisableWhen("#{ !editableOwner  }");
+        entityAddressLookup1.setDisableWhen("#{ !editableAccount }");
         entityAddressLookup1.setName("entity.account.owner.address"); // NOI18N
         entityAddressLookup1.setParentIdName("entity.account.owner.objid");
         entityAddressLookup1.setPreferredSize(new java.awt.Dimension(0, 40));
@@ -173,7 +173,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xFormPanel3.add(jScrollPane1);
 
         xLookupField2.setCaption("Barangay");
-        xLookupField2.setDisableWhen("#{ !editableOwner  }");
+        xLookupField2.setDisableWhen("#{ !editableAccount  }");
         xLookupField2.setExpression("#{ entity.account.barangay.name }");
         xLookupField2.setHandler("barangay:lookup");
         xLookupField2.setName("entity.account.barangay"); // NOI18N
@@ -182,20 +182,20 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xFormPanel3.add(xLookupField2);
 
         xTextField1.setCaption("Phone No");
-        xTextField1.setDisableWhen("#{ !editableOwner  }");
+        xTextField1.setDisableWhen("#{ !editableAccount  }");
         xTextField1.setName("entity.account.contact.phoneno"); // NOI18N
         xTextField1.setCellPadding(new java.awt.Insets(20, 0, 0, 0));
         xTextField1.setPreferredSize(new java.awt.Dimension(200, 20));
         xFormPanel3.add(xTextField1);
 
         xTextField2.setCaption("Mobile No");
-        xTextField2.setDisableWhen("#{ !editableOwner  }");
+        xTextField2.setDisableWhen("#{ !editableAccount }");
         xTextField2.setName("entity.account.contact.mobileno"); // NOI18N
         xTextField2.setPreferredSize(new java.awt.Dimension(200, 20));
         xFormPanel3.add(xTextField2);
 
         xTextField3.setCaption("Email");
-        xTextField3.setDisableWhen("#{ !editableOwner  }");
+        xTextField3.setDisableWhen("#{ !editableAccount }");
         xTextField3.setName("entity.account.contact.email"); // NOI18N
         xTextField3.setPreferredSize(new java.awt.Dimension(0, 20));
         xTextField3.setTextCase(com.rameses.rcp.constant.TextCase.NONE);

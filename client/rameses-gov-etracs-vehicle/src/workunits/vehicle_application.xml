@@ -15,14 +15,28 @@
                  index="100"
                  visibleWhen="#{task.state == 'end' }"  />
         
-        <!--
-        <invoker type="appActions" action="cancelApplication" tooltip="Cancel App" 
+        <invoker type="appActions" action="cancelApplication" tooltip="Cancel Application" 
                  caption="Cancel Application" 
                  visibleWhen="#{task.state == 'draft' 
                         &amp;&amp; task.assignee.objid!=null 
                         &amp;&amp; userid == task.assignee.objid}"  />
-        -->
                         
+        <invoker type="appActions" action="editApplication" tooltip="Edit Application" 
+                 caption="Edit" 
+                 visibleWhen="#{
+                        task.state == 'draft' 
+                        &amp;&amp; task.assignee.objid!=null 
+                        &amp;&amp; userid == task.assignee.objid}"  />
+
+        <!-- edit for capture -->                
+        <invoker type="appActions" action="editApplication" tooltip="Edit Application" 
+                 caption="Edit" 
+                 visibleWhen="#{
+                        task.state != 'end'
+                        &amp;&amp; entity.txnmode == 'CAPTURE'  
+                        &amp;&amp; task.assignee.objid!=null 
+                        &amp;&amp; userid == task.assignee.objid}"  />
+
         <invoker type="appActions" 
                 action="issuePermit" caption="Issue Permit" 
                 visibleWhen="#{ entity.permit == null 

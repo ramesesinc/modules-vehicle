@@ -21,6 +21,8 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
     //boolean viewReportAllowed = true; 
     def total = 0;
     def vehicletype;
+    def apptype;
+    def feeListModel;
     
     String getFormName() {
         return getSchemaName() + ":form";
@@ -42,11 +44,18 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
         return entity.objid;
     }
 
+    void afterOpen() {
+        vehicletype = entity.franchise.vehicletype;
+        if(entity.total) total = entity.total;
+        apptype = entity.apptype;
+    }
+
     void viewTrackingno() {
         Modal.show( "show_vehicle_trackingno", [appno: entity.appno] );
     }
  
     //ASSESSMENT AND BILLING FACILITIES
+    /*
     def feeListModel = [
         fetchList: { o->
             def items = assmtSvc.getItems([appid: entity.objid ] );
@@ -55,6 +64,7 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
             return items;
         }
     ] as BasicListModel;
+    */
     
     void assess() {
         def p = [:];
@@ -81,14 +91,15 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
 
     def cancelApplication() {
         if(!MsgBox.confirm("You are about to cancel this application. Proceed?")) return;
-        appSvc.cancelApplication([appid: entity.objid]);
+        appSvc.cancelApplication([objid: entity.objid]);
         return "_close";
     }
     
-    void afterOpen() {
-        vehicletype = entity.franchise.vehicletype;
-        if(entity.total) total = entity.total;
+    def editApplication() {
+        def h = { super.open(false); binding.refresh(); }
+        return Inv.lookupOpener("vehicle_application:edit", [entity: entity, vehicletype: vehicletype, apptype:apptype, handler: h ]);
     }
+    
     
 
     

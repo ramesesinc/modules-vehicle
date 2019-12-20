@@ -1,0 +1,6 @@
+"entity.account.*" [ editableOwner==true ] {
+    enabled:true;
+}
+"entity.account.*" [ editableOwner==false ] {
+    enabled:false;
+}
