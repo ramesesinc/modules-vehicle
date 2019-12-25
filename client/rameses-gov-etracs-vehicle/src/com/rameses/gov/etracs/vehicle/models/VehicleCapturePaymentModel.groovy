@@ -9,39 +9,49 @@ import com.rameses.util.*;
 import com.rameses.gov.etracs.vehicle.models.*;
 import com.rameses.enterprise.models.*;
 
-public class VehicleApplicationEditModel {
+public class VehicleCapturePaymentModel {
     
-    @Service(value="VehicleApplicationService")
-    def appSvc;
+    @Service(value="VehiclePaymentService")
+    def postPaymentSvc;
     
-    def handler;
+    @Service(value="VehicleBillingService")
+    def billingSvc;
+
+    @Binding
+    def binding;
+    
+    @Caller
+    def caller;
+    
     def entity;
-    def vehicletype;
-    def appTypes = ["NEW", "RENEW", "CHANGE_UNIT", "CHANGE_OWNER", "CHANGE_OWNER_UNIT", "DROP"]; //this is a dummy routine to fix combo error
-    def apptype;
+    def receipt;
+    def billing;
     
-    boolean editableUnit = false;
-    boolean editableAccount = false;
-    
-    void init() {
-        if(entity.txnmode=="CAPTURE" || apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT") ) {
-            editableUnit = true;
-        }
-        if(entity.txnmode=="CAPTURE" || apptype.matches("NEW|CHANGE_OWNER|CHANGE_OWNER_UNIT") ) {
-            editableAccount = true;
-        }        
+    void init(inv) {
+        if(!entity) entity = caller.entity;
+        def res = billingSvc.getBillItems( [appid: entity.objid ]);
+        billing = res;
+        receipt = [:];
+        receipt.type ="cashreceipt";
     }
     
-    public def save() {
-        //if(!MsgBox.confirm("You are about to update this application. Proceed?")) return;
-        appSvc.updateApplication(entity);
-        handler();
+    public def doOk() {
+        if(!MsgBox.confirm("You are about to post this payment")) return;
+        def m = [:];
+        m.app = [appid: entity.objid];
+        m.receiptno = receipt.receiptno;
+        m.receiptdate = receipt.receiptdate;        
+        m.amount = billing.amount;
+        m.billitems = billing.billitems;
+        m.txnmode = "CAPTURE";
+        postPaymentSvc.postPayment( m );
+        caller.reload();
         return "_close";
     }
     
-    public def cancel() {
-        handler();
+    public def doCancel() {
         return "_close";
     }
+    
     
 }
