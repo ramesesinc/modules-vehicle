@@ -14,9 +14,17 @@ public class VehiclePaymentService {
 	@DataContext("vehicle_application")
 	def appEm;
 
+	@Service("DateService")
+	def dateSvc;
+
 	@ProxyMethod
 	public void postPayment(def o ) {
+		if(!o.billitems) throw new Exception("Please include billitems");
+		if(!o.app?.appid) throw new Exception("Please app.appid is required");
+
 		if(!o.reftype) o.reftype = "cashreceipt";
+		if(!o.txndate) o.txndate = dateSvc.getServerDate();
+		if(!o.txnmode) o.txnmode = "CAPTURE";
 
 		def pmt = [:];
 		pmt.txndate = o.txndate;

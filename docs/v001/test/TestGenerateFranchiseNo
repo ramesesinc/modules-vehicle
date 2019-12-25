@@ -1,0 +1,12 @@
+def m = [
+    "app.host" : "localhost:8070",
+    "app.cluster" : "osiris3",
+    "app.context" : "etracs25"
+];
+
+def tp = new TestProxy(m)
+def svc = tp.create("VehicleFranchiseService");
+
+def p = [vehicletype:'tricycle', qty:10]
+svc.generate( p )
+

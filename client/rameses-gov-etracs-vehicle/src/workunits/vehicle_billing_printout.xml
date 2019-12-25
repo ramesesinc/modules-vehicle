@@ -11,6 +11,14 @@
                     task.state.matches('assessment|approval|billing') 
                     &amp;&amp; task.assignee.objid!=null 
                     &amp;&amp; task.assignee.objid == userid }"/>
+                    
+       <invoker type="vehicle_application:form:appActions" 
+                 caption="View Billing" 
+                 target="popup" 
+                 action="preview"
+                 index="30"
+                 reportId="vehicle_billing" 
+                 visibleWhen="#{ task.state == 'payment' }"/>             
         
     </invokers> 
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel"/>

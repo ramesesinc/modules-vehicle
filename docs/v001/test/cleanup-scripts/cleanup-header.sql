@@ -1,0 +1,15 @@
+DELETE FROM vehicle_permit;
+UPDATE vehicle_franchise SET currentyearid = null;
+UPDATE vehicle_franchise_year SET franchiseid = null, geninfoid = NULL, appid = NULL;
+UPDATE vehicle_application SET franchiseyearid = null, geninfoid = NULL, taskid = NULL, prevappid = NULL;
+UPDATE vehicle_application_unit SET appid = null, unitid = NULL;
+DELETE FROM vehicle_payment_item;
+DELETE FROM vehicle_payment;
+DELETE FROM vehicle_franchise_generalinfo;
+DELETE FROM vehicle_franchise_year;
+DELETE FROM vehicle_application_task;
+DELETE FROM vehicle_application_unit_dropped;
+DELETE FROM vehicle_application_fee;
+DELETE FROM vehicle_application_unit;
+DELETE FROM vehicle_application;
+DELETE FROM vehicle_unit;

@@ -60,7 +60,8 @@ public class VehicleBillingService {
 			res.billitems.each {
 				if(!it.item) it.item = itemAcct.find([objid: it.billcode] ).first()?.item;
 				it.remarks = it.year;
-			}		
+			}
+			res.amount = numSvc.round( res.billitems.sum{ it.total } );		
 		};
 
 		if( res.items ) {
@@ -83,8 +84,10 @@ public class VehicleBillingService {
 				m.amount =  numSvc.round( v.sum{it.amount } );
 				vitems << m;
 			}
-			res.items = vitems.sort{ it.sortorder };		
+			res.items = vitems.sort{ it.sortorder };	
+			if(!res.amount) res.amount = numSvc.round( vitems.sum{ it.amount } );	
 		}
+
 		return res;
 	}
 

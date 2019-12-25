@@ -88,7 +88,7 @@ public class VehicleApplicationService  {
 		if(o.txnmode == "CAPTURE" || o.apptype.matches("NEW|CHANGE_UNIT|CHANGE_OWNER_UNIT")  ) {
 			if(o.unit.objid) throw new Exception("Unit already exists. This may have been doubled saved");
 			o.unit.franchiseid = o.franchise.objid;
-			unitEm.create( o.unit );
+			o.unit = unitEm.create( o.unit );
 			updateUnitInfo( o.unit, o.franchise.vehicletype.objid );		
 			upd.unitid = o.unit.objid;
 		}

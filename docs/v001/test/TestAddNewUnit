@@ -1,0 +1,23 @@
+def c = [
+    "app.host" : "localhost:8070",
+    "app.cluster" : "osiris3",
+    "app.context" : "etracs25"
+];
+
+def tp = new TestProxy(c);
+def svc = tp.create("PersistenceService");
+
+
+def m = [_schemaname: 'vw_vehicle_franchise' ];
+m.objid = "MTOP-20190001"
+def fran = svc.read(m);
+
+def app = [_schemaname:'vehicle_application'];
+app.franchise = [objid:fran.objid];
+app.txnmode = 'ONLINE';
+app.apptype = 'ADD_UNIT';
+app.particulars = 'ADD NEW UNIT';
+app.units = [];
+app.units << [unit: [ plateno:'888812345', engineno: 'TOYOTA', bodyno: '112456' ]];
+app.units << [unit: [ plateno:'AAF-1187', engineno: 'HONDA', bodyno: '6754321' ]];
+svc.create(app);

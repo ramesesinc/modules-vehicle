@@ -1,0 +1,19 @@
+<workunit>
+    <invokers>
+        
+         <invoker type="vehicle_application:form:appActions" 
+                caption="Capture Payment"
+                action="init" 
+                index="1"
+                target="popup"
+                role="ADMIN"
+                visibleWhen="#{task.state == 'payment'}"/>
+         
+        <!-- actions -->
+        <invoker type="vehicle_capture_payment" caption="Capture Payment" action="init" target="popup" />
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleCapturePaymentModel" />
+    <pages>
+        <page template="com.rameses.gov.etracs.vehicle.views.VehicleCapturePaymentPage" />
+    </pages>
+</workunit>
