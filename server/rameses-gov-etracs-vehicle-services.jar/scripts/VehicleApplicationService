@@ -99,6 +99,14 @@ public class VehicleApplicationService  {
 		o = appEm.create( o );
 
 		upd.appid = o.objid;
+
+		if( o.apptype.matches('NEW|CHANGE.*') ) {
+			upd.lastfranchiseyearpaid = o.appyear;
+		}
+		else if( o.txnmode == 'CAPTURE' ) {
+			if(!o.lastfranchiseyearpaid ) throw new Exception("Please indicate last franchise year paid");
+			upd.lastfranchiseyearpaid = o.lastfranchiseyearpaid;
+		}
 		franchiseEm.find( [objid: o.franchise.objid] ).update( upd );
 
 		def p = [:];

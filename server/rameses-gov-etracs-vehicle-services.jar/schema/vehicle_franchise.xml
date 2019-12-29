@@ -4,6 +4,7 @@
 		<field name="controlno" caption="Control No"/>
 		<field name="state"  required="true" />
 		<field name="appid" />
+		<field name="lastfranchiseyearpaid" />
 
 		<complex name="account" ref="vehicle_account" jointype="many-to-one" required="false">
 			<key field="acctid" target="objid" />

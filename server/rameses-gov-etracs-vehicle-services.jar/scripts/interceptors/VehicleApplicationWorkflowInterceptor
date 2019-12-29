@@ -54,7 +54,7 @@ class VehicleApplicationWorkflowInterceptor {
 		def p = evt.args[0];
 		def app = appEm.find([objid: p.refid]).first();
 		if(app.apptype == 'DROP' ) {
-			franchiseEm.find( [objid: app.franchiseid ] ).update( [unitid: '{NULL}', acctid: '{NULL}', permitid: '{NULL}', appid: '{NULL}'] );
+			franchiseEm.find( [objid: app.franchiseid ] ).update( [unitid: '{NULL}', acctid: '{NULL}', permitid: '{NULL}', appid: '{NULL}', lastfranchiseyearpaid: '{NULL}'] );
 		}
 	}
 
