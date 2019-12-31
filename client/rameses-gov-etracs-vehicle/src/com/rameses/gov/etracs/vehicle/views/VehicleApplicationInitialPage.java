@@ -41,7 +41,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xLabel3 = new com.rameses.rcp.control.XLabel();
         xLabel2 = new com.rameses.rcp.control.XLabel();
         xComboBox1 = new com.rameses.rcp.control.XComboBox();
-        xDateField2 = new com.rameses.rcp.control.XDateField();
+        xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
         xDateField1 = new com.rameses.rcp.control.XDateField();
         xIntegerField2 = new com.rameses.rcp.control.XIntegerField();
         xLabel4 = new com.rameses.rcp.control.XLabel();
@@ -108,13 +108,11 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xComboBox1.setRequired(true);
         xFormPanel3.add(xComboBox1);
 
-        xDateField2.setCaption("Last Franchise Date Paid");
-        xDateField2.setName("entity.account.lastfranchisedatepaid"); // NOI18N
-        xDateField2.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' ||  apptype == 'NEW' }");
-        xDateField2.setCellPadding(new java.awt.Insets(5, 0, 0, 0));
-        xDateField2.setPreferredSize(new java.awt.Dimension(150, 20));
-        xDateField2.setRequired(true);
-        xFormPanel3.add(xDateField2);
+        xIntegerField1.setCaption("Last Franchise Year Paid");
+        xIntegerField1.setName("entity.lastfranchiseyearpaid"); // NOI18N
+        xIntegerField1.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' }");
+        xIntegerField1.setPreferredSize(new java.awt.Dimension(50, 20));
+        xFormPanel3.add(xIntegerField1);
 
         xDateField1.setCaption("App date");
         xDateField1.setDisableWhen("#{ entity.txnmode != 'CAPTURE' }");
@@ -250,8 +248,8 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
     private com.rameses.gov.etracs.vehicle.components.VehicleInfoPanel vehicleInfoPanel1;
     private com.rameses.rcp.control.XComboBox xComboBox1;
     private com.rameses.rcp.control.XDateField xDateField1;
-    private com.rameses.rcp.control.XDateField xDateField2;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
+    private com.rameses.rcp.control.XIntegerField xIntegerField1;
     private com.rameses.rcp.control.XIntegerField xIntegerField2;
     private com.rameses.rcp.control.XLabel xLabel2;
     private com.rameses.rcp.control.XLabel xLabel3;

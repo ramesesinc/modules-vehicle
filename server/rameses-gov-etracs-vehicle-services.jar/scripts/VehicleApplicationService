@@ -28,6 +28,9 @@ public class VehicleApplicationService  {
 	@DataContext("vehicle_unit_info")
 	def unitInfoEm;
 
+	@DataContext("vehicletype")
+	def vtypeEm;
+
 	@DataContext("vehicletype_field")
 	def vFieldEm;
 
@@ -77,6 +80,13 @@ public class VehicleApplicationService  {
 
 	@ProxyMethod
 	public def create( def o ) {
+		def vt = vtypeEm.find( [objid: o.franchise.vehicletype.objid ] ).first();
+		if( vt.maxunitperowner ) {
+			def ownerid = o.account.owner?.objid;
+			def cnt = franchiseEm.find( [vehicletypeid: vt.objid] ).where("account.owner.objid = :oid", [oid: ownerid ] ).select("c:{COUNT(*)}").val();
+			if( cnt >= vt.maxunitperowner ) throw new Exception("No. of units owned by a specific owner should not exceed " + vt.maxunitperowner);
+		}
+
 		def upd = [:];
 		//create the account and unit before saving the application
 		if(o.txnmode == "CAPTURE" || o.apptype.matches('NEW|CHANGE_OWNER|CHANGE_OWNER_UNIT') ) {
@@ -105,6 +115,10 @@ public class VehicleApplicationService  {
 		}
 		else if( o.txnmode == 'CAPTURE' ) {
 			if(!o.lastfranchiseyearpaid ) throw new Exception("Please indicate last franchise year paid");
+			if(o.lastfranchiseyearpaid > dateSvc.getServerYear() ) throw new Exception("Last franchise year paid must be less than current year");
+			//we just assign an arbitrary year
+			if(o.lastfranchiseyearpaid < 2000 ) throw new Exception("Invalid franchise year paid"); 
+
 			upd.lastfranchiseyearpaid = o.lastfranchiseyearpaid;
 		}
 		franchiseEm.find( [objid: o.franchise.objid] ).update( upd );

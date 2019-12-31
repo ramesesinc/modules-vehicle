@@ -1,0 +1,15 @@
+<workunit extends="com/rameses/seti2/templates/FormReport.xml">
+    <invokers>
+        
+        <invoker type="vehicle_application:form:reports" 
+                 caption="View Application" 
+                 target="popup" 
+                 action="preview"
+                 index="30"
+                 reportId="vehicle_application" 
+                 reportType="application"
+                 visibleWhen="#{ task.state != 'draft' }"/>
+                    
+    </invokers> 
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel"/>
+</workunit>

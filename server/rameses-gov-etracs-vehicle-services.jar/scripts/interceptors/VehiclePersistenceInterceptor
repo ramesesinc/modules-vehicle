@@ -38,6 +38,27 @@ class VehiclePersistenceInterceptor {
 		loadUnit( fran.unit ); 			//load the unit
 	}
 
+	@After(pattern="QueryService.getList", eval="#{ args[0]._schemaname=='vehicle_application_info'}")
+	public void loadAppInfos( def evt ) {
+		def list = evt.result;
+		list.each {
+			if( it.type.datatype == 'boolean' ) {
+				it.value = (it.booleanvalue == 1) ? true : false;
+			}
+			else if( it.type.datatype == 'integer' ) {
+				it.value = it.intvalue;
+			}
+			else if( it.type.datatype == 'decimal' ) {
+				it.value = it.decimalvalue;
+			}
+			else if(it.type.datatype == 'date' ) {
+				it.value = it.datevalue;
+			}
+			else {
+				it.value = it.stringvalue;
+			}
+		}
+	}
 
 
 }

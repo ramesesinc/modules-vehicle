@@ -33,4 +33,6 @@ public class VehicleFranchiseModel extends CrudFormModel {
         return entity.vehicletype;
     }
     
+    
+    
 }

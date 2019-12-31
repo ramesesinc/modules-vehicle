@@ -1,0 +1,11 @@
+<workunit extends="com/rameses/seti2/templates/FormReport.xml">
+    <invokers>
+        <invoker type="tricycle_permit" 
+            caption="View Permit" index="-9" 
+            reportName="tagbilaran/vehicle/tricycle/reports/PermitReport.jasper" 
+            reportId="vehicle_permit"
+            target="popup"
+            action="preview"/>
+    </invokers>
+    <code class="tagbilaran.vehicle.tricycle.models.PermitModel" />
+</workunit>

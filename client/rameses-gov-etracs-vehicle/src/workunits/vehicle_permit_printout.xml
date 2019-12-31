@@ -7,9 +7,16 @@
                  action="preview"
                  index="30"
                  reportId="vehicle_permit" 
-                 reportName="com/rameses/gov/etracs/vehicle/reports/permit_template1.jasper"
                  visibleWhen="#{entity.permit !=null }"/>
         
+        <invoker type="vehicle_franchise:form:formActions" 
+                 caption="View Permit" 
+                 target="popup" 
+                 action="preview"
+                 index="30"
+                 reportId="vehicle_permit" 
+                 visibleWhen="#{entity.permit !=null }"/>
+
     </invokers> 
     <code class="com.rameses.gov.etracs.vehicle.models.VehiclePermitFormReportModel"/>
 </workunit>

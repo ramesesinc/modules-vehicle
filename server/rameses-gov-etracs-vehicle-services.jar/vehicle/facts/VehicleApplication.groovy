@@ -34,8 +34,8 @@ public class VehicleApplication {
 		if( m.appdate ) {
 			appdate = fixDate( m.appdate );
 		}	
-		if(m.lastfranchiseyearpaid) {
-			lastfranchiseyearpaid = m.lastfranchiseyearpaid;
+		if(m.franchise?.lastfranchiseyearpaid) {
+			lastfranchiseyearpaid = m.franchise.lastfranchiseyearpaid;
 		}
 	}
 

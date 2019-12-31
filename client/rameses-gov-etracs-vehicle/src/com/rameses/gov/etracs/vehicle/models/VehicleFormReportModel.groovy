@@ -29,10 +29,12 @@ public class VehicleFormReportModel extends FormReportModel {
     
     def preview(def inv) {
         vehicletype = caller.vehicletype.objid;
-        _reportName = reportPath + vehicletype + "_assessment.jasper"; 
+        String reportType = inv.properties.reportType;
+        
+        _reportName = reportPath + vehicletype + "_" + reportType +".jasper"; 
         def r = getClass().classLoader.getResource( _reportName );
         if(!r) {
-            _reportName = reportPath + "vehicle_assessment.jasper";             
+            _reportName = reportPath + "vehicle_" + reportType + ".jasper";             
         }
         return super.preview();
     }

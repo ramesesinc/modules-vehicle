@@ -11,5 +11,7 @@
 		<field name="icon" /> 
 		<field name="renewalfrequency" required="true" caption="Renewal Frequency" defaultValue="YEAR"/> 
 		<field name="permithandler"/> 
+		<field name="maxunitperowner"/> 
+
 	</element>
 </schema>

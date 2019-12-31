@@ -23,6 +23,7 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
     def vehicletype;
     def apptype;
     def feeListModel;
+    def infoListModel;
     
     String getFormName() {
         return getSchemaName() + ":form";
@@ -54,21 +55,18 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
         Modal.show( "show_vehicle_trackingno", [appno: entity.appno] );
     }
  
-    //ASSESSMENT AND BILLING FACILITIES
-    /*
-    def feeListModel = [
-        fetchList: { o->
-            def items = assmtSvc.getItems([appid: entity.objid ] );
-            total = items.sum{ it.amount };
-            binding.refresh("total");
-            return items;
-        }
-    ] as BasicListModel;
-    */
-    
     void assess() {
         def p = [:];
-        p.params = [appid : entity.objid ]
+        p.params = [appid : entity.objid ];
+        def defaultInfos = [];
+        infoListModel.dataList.each {
+            def m = [:];
+            m.name = it.name;
+            m.category = it.type.category;
+            m.value = it.value;
+            defaultInfos << it;
+        }
+        p.defaultInfos = defaultInfos;
         p.handler = { o->
             feeListModel.reload();
         }

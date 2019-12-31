@@ -493,6 +493,7 @@ public class VehicleApplicationPage extends javax.swing.JPanel {
             })
         });
         schemaList6.setCustomFilter("appid = :objid");
+        schemaList6.setHandlerName("infoListModel");
         schemaList6.setName(""); // NOI18N
         schemaList6.setQueryName("entity");
         schemaList6.setSchemaName("vehicle_application_info");

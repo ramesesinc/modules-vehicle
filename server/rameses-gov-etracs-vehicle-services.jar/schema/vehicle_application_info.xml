@@ -17,9 +17,6 @@
 		<complex name="type" ref="vehicle_variable" jointype="many-to-one">
 			<key field="name" target="objid" />
 		</complex>	
-
-		<field name="value" expr=" CASE type.datatype WHEN 'boolean' THEN booleanvalue WHEN 'integer' THEN intvalue WHEN 'decimal' THEN decimalvalue WHEN 'datevalue' THEN datevalue ELSE stringvalue  END" />
-
 	</element>
 </schema>
 

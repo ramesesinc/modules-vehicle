@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="vehicle_permit1"
+		 name="vehicle_permit"
 
 		 language="groovy"		 columnCount="1"
 		 printOrder="Vertical"
@@ -51,9 +51,11 @@
 	<field name="unit.color" class="java.lang.String"/>
 	<field name="unit.plateno" class="java.lang.String"/>
 	<field name="permitno" class="java.lang.String"/>
+	<field name="unit.bodyno" class="java.lang.String"/>
+	<field name="unit.chassisno" class="java.lang.String"/>
 
-	<variable name="permit_expirydate" class="java.lang.String" resetType="None" calculation="Nothing">
-		<variableExpression><![CDATA[new java.text.SimpleDateFormat("MMMM dd, yyyy").format( $F{expirydate} )]]></variableExpression>
+	<variable name="EXPIRYDATE" class="java.lang.String" resetType="Report" calculation="Nothing">
+		<variableExpression><![CDATA["DD->" + $F{expirydate}]]></variableExpression>
 	</variable>
 		<background>
 			<band height="0"  isSplitAllowed="true" >
@@ -61,6 +63,15 @@
 		</background>
 		<title>
 			<band height="642"  isSplitAllowed="true" >
+				<rectangle>
+					<reportElement
+						x="0"
+						y="355"
+						width="552"
+						height="57"
+						key="rectangle-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
@@ -71,7 +82,7 @@
 						positionType="Float"/>
 					<box leftPadding="8"></box>
 					<textElement isStyledText="true">
-						<font size="11"/>
+						<font size="10"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["<b>Route of Operator</b>; * * * <u>WITHIN POBLACION ONLY EXCEPT ALONG NATIONAL HIGHWAY</u>"+
 "\n          * * * <u>route in accordance with the Revised Code of General Ordinance of 2007</u> * * *"+
@@ -160,12 +171,12 @@
 					<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single">
 						<font pdfFontName="Helvetica-Bold" size="18" isBold="true" isUnderline="false"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{vehicletype.title} + " PERMIT"]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["MUNICIPAL PERMIT"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="0"
-						y="97"
+						y="104"
 						width="552"
 						height="24"
 						key="textField-9"
@@ -178,23 +189,23 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="345"
+						x="303"
 						y="138"
 						width="68"
 						height="16"
 						key="staticText-17"
 						positionType="Float"/>
-					<box></box>
+					<box leftPadding="5"></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font size="11"/>
+						<font size="12"/>
 					</textElement>
 				<text><![CDATA[Permit No.]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="402"
-						y="135"
-						width="150"
+						x="373"
+						y="138"
+						width="165"
 						height="20"
 						key="textField-10"
 						positionType="Float"/>
@@ -202,29 +213,29 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
 </box>
 					<textElement verticalAlignment="Middle">
-						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+						<font pdfFontName="Helvetica-Bold" size="10" isBold="true"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{permitno}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
-						x="345"
+						x="303"
 						y="156"
 						width="68"
 						height="16"
 						key="staticText-18"
 						positionType="Float"/>
-					<box></box>
+					<box leftPadding="5"></box>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
-						<font size="11"/>
+						<font size="12"/>
 					</textElement>
 				<text><![CDATA[App Type :]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="402"
-						y="154"
-						width="150"
+						x="373"
+						y="156"
+						width="176"
 						height="20"
 						key="textField-11"
 						positionType="Float"/>
@@ -232,7 +243,7 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
 </box>
 					<textElement verticalAlignment="Middle">
-						<font pdfFontName="Helvetica" size="12" isBold="false"/>
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[""+ $F{apptype} +" ( "+ $F{appyear} +" )"]]></textFieldExpression>
 				</textField>
@@ -368,8 +379,8 @@
 					<textElement textAlignment="Justified" isStyledText="true">
 						<font size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA["This permit is subject to the provisions of existing ordinance governing your business and shall expire on <b>" + $V{permit_expirydate} + "</b> unless sooner revoked for cause, including non payment of license fee \n"+ 
-"P _________________ per annum. In case if failure to pay the corresponding license fee within the time required, penalty of twenty five (25%) per centrum of the impose. This permit is subject to revocation at any good reason of general interest."]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA["This permit is subject to the provisions of existing ordinance governing your business and shall expire on <b>" + ($F{expirydate}==null? "" :(new java.text.SimpleDateFormat("MMMM dd,yyyy")).format($F{expirydate})) + "</b> unless sooner revoked for cause, including non payment of license fee per annum"+ 
+"In case of failure to pay the corresponding license fee within the time required, penalty of twenty five (25%) per centrum of the impose. This permit is subject to revocation at any good reason of general interest."]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
@@ -387,7 +398,7 @@
 				</staticText>
 				<staticText>
 					<reportElement
-						x="32"
+						x="12"
 						y="359"
 						width="92"
 						height="23"
@@ -396,14 +407,14 @@
 					<box topPadding="3">					<leftPen lineWidth="0.0"/>
 </box>
 					<textElement textAlignment="Center">
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[ENGINE NO]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="32"
-						y="377"
+						x="12"
+						y="385"
 						width="92"
 						height="25"
 						key="textField-17"
@@ -417,7 +428,7 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="136"
+						x="254"
 						y="359"
 						width="80"
 						height="23"
@@ -426,14 +437,14 @@
 					<box topPadding="3">					<leftPen lineWidth="0.0"/>
 </box>
 					<textElement textAlignment="Center">
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[MAKE]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="136"
-						y="377"
+						x="254"
+						y="385"
 						width="80"
 						height="25"
 						key="textField-18"
@@ -447,24 +458,24 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="223"
+						x="113"
 						y="359"
-						width="99"
+						width="136"
 						height="23"
 						key="staticText-26"
 						positionType="Float"/>
 					<box topPadding="3">					<leftPen lineWidth="0.0"/>
 </box>
 					<textElement textAlignment="Center">
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
-				<text><![CDATA[MODEL]]></text>
+				<text><![CDATA[CHASSIS NO]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="223"
-						y="377"
-						width="99"
+						x="113"
+						y="385"
+						width="136"
 						height="25"
 						key="textField-19"
 						positionType="Float"/>
@@ -473,11 +484,11 @@
 					<textElement textAlignment="Center">
 						<font/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.model}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.chassisno}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement
-						x="326"
+						x="344"
 						y="359"
 						width="80"
 						height="23"
@@ -486,14 +497,14 @@
 					<box topPadding="3">					<leftPen lineWidth="0.0"/>
 </box>
 					<textElement textAlignment="Center">
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[COLOR]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="326"
-						y="377"
+						x="344"
+						y="385"
 						width="80"
 						height="25"
 						key="textField-20"
@@ -507,7 +518,7 @@
 				</textField>
 				<staticText>
 					<reportElement
-						x="422"
+						x="438"
 						y="359"
 						width="101"
 						height="23"
@@ -516,14 +527,14 @@
 					<box topPadding="3">					<leftPen lineWidth="0.0"/>
 </box>
 					<textElement textAlignment="Center">
-						<font/>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
 					</textElement>
 				<text><![CDATA[PLATE NO]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
-						x="422"
-						y="377"
+						x="438"
+						y="385"
 						width="101"
 						height="25"
 						key="textField-21"
@@ -535,6 +546,95 @@
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.plateno}]]></textFieldExpression>
 				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="81"
+						width="552"
+						height="20"
+						key="textField-22"
+						positionType="Float"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Bottom" lineSpacing="Single">
+						<font pdfFontName="Helvetica" size="12" isBold="false" isUnderline="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["(Motorized Tricycle for Hire)"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="7"
+						y="138"
+						width="57"
+						height="16"
+						key="staticText-29"
+						positionType="Float"/>
+					<box leftPadding="5"></box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[Body No.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="64"
+						y="138"
+						width="150"
+						height="20"
+						key="textField-23"
+						positionType="Float"/>
+					<box leftPadding="5">					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+</box>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Helvetica" size="10" isBold="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.bodyno}]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="110"
+						y="355"
+						width="0"
+						height="57"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="251"
+						y="355"
+						width="0"
+						height="57"
+						key="line-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="340"
+						y="355"
+						width="0"
+						height="57"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="433"
+						y="355"
+						width="0"
+						height="57"
+						key="line-4"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="384"
+						width="552"
+						height="0"
+						key="line-5"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
 			</band>
 		</title>
 		<pageHeader>

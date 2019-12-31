@@ -57,6 +57,8 @@ class VehiclePrintReportInterceptor {
 		def result = evt.result;
 		def appid = t.parameters.objid;
 		def app = appEm.find( [objid: appid ]).first();
+		app.controlno = app.franchise.remove("objid");
+		app.vehicletype = app.franchise.remove("vehicletype");
 		//loadOwnerInfo( app );
 		loadUnit( app.unit );
 		result.data = app;

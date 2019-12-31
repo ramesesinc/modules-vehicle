@@ -43,6 +43,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xLabel7 = new com.rameses.rcp.control.XLabel();
         xLabel14 = new com.rameses.rcp.control.XLabel();
         xLabel8 = new com.rameses.rcp.control.XLabel();
+        xLabel9 = new com.rameses.rcp.control.XLabel();
         xLabel15 = new com.rameses.rcp.control.XLabel();
         xLabel16 = new com.rameses.rcp.control.XLabel();
         xLabel17 = new com.rameses.rcp.control.XLabel();
@@ -87,7 +88,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xTitledBorder2.setTitle("General Info");
         jPanel4.setBorder(xTitledBorder2);
 
-        xFormPanel5.setCaptionWidth(150);
+        xFormPanel5.setCaptionWidth(170);
 
         xLabel7.setCaption("Franchise Control No");
         xLabel7.setExpression("#{entity.objid}");
@@ -107,6 +108,13 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel8.setPreferredSize(new java.awt.Dimension(0, 18));
         xFormPanel5.add(xLabel8);
+
+        xLabel9.setCaption("Last Franchise Year Paid");
+        xLabel9.setExpression("#{entity.lastfranchiseyearpaid}");
+        xLabel9.setName("entity.lastfranchiseyearpaid"); // NOI18N
+        xLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
+        xLabel9.setPreferredSize(new java.awt.Dimension(0, 18));
+        xFormPanel5.add(xLabel9);
 
         xLabel15.setCaption("Owner");
         xLabel15.setExpression("#{entity.account.owner.name} ");
@@ -330,6 +338,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
     private com.rameses.rcp.control.XLabel xLabel22;
     private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XLabel xLabel8;
+    private com.rameses.rcp.control.XLabel xLabel9;
     private com.rameses.rcp.control.XTabbedPane xTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
