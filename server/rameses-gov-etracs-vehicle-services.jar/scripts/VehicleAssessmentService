@@ -100,52 +100,21 @@ public class VehicleAssessmentService  {
 		);
 		req.factBuilder.facts.addAll( facts );
 
+		req.billdate = dateSvc.getServerDate();
 		def res = billingRuleSvc.execute(req);
 		if(res.askinfos) return res;
 
 
 		saveInfos( app.objid, res.infos );
 		saveBillItems( app.objid, res.billitems );
+
+		//update the date assessed
+		appEm.find( [objid:app.objid ] ).update( [dtassessed: req.billdate ] );
+
 		return [
 			infos: [],
 			billitems: res.billitems
 		]
-		/*
-		def infos = res.infos;
-		if( infos ) saveInfos( app.objid, infos );
-
-		def billitems = [];
-		//loop thru each assessment if any, for renewals that have delinquencies
-		def aList = assessmentEm.find( [appid: app.objid ] ).list();
-		if( !aList) {
-			throw new Exception("There is no assessment defined for this application");
-		}
-		else if( aList.size() > 1 ) {
-			aList.each { af->
-				req.factBuilder.facts.clear();
-				vehicleFact.appyear = af.year;
-				req.factBuilder.facts.addAll( facts );			
-				res = billingRuleSvc.execute(req);
-				res.billitems.each { bi->
-					billitems <<  [itemid: bi.billcode, parent: af, amount: bi.amount, year: af.year];
-				}
-			}
-		}
-		else {
-			def ai = aList[0];
-			res.billitems.each {
-				billitems << [itemid: it.billcode, parent: ai, amount: it.amount, year: ai.year ];
-			}
-		}
-
-		//store billitems and appinfos into the database;
-		saveBillItems( aList, billitems );
-
-		return [
-			infos: res.infos,
-			billitems: billitems
-		];
-		*/
 	}
 
 	@ProxyMethod

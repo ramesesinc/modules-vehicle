@@ -1,0 +1,10 @@
+<workunit extends="com/rameses/seti2/templates/CrudList.xml"  schemaName="vehicle_extensiondate">
+    <invokers>
+        <invoker folderid="menucategory/vehicle/settings" 
+                 caption="Vehicle Extension Dates" 
+                 cols="year,month,date"
+                 action="init" 
+                 role="MASTER" permission="vehicle_extensiondate.view"/>
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.CommonVehicleListModel"/>
+</workunit>

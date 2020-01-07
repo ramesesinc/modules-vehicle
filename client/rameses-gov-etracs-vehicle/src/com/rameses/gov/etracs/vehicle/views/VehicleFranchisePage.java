@@ -109,9 +109,9 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xLabel8.setPreferredSize(new java.awt.Dimension(0, 18));
         xFormPanel5.add(xLabel8);
 
-        xLabel9.setCaption("Last Franchise Year Paid");
-        xLabel9.setExpression("#{entity.lastfranchiseyearpaid}");
-        xLabel9.setName("entity.lastfranchiseyearpaid"); // NOI18N
+        xLabel9.setCaption("Next Franchise Renewal Date");
+        xLabel9.setExpression("#{entity.nextfranchiserenewaldate}");
+        xLabel9.setName("entity.nextfranchiserenewaldate"); // NOI18N
         xLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
         xLabel9.setPreferredSize(new java.awt.Dimension(0, 18));
         xFormPanel5.add(xLabel9);
@@ -167,7 +167,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xLabel21.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel5.add(xLabel21);
 
-        xLabel22.setCaption("Expiry Date");
+        xLabel22.setCaption("Peermit Expiry Date");
         xLabel22.setExpression("#{entity.permit.expirydate} ");
         xLabel22.setVisibleWhen("");
         xLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
@@ -290,14 +290,27 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
                 , new Object[]{"visibleWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
+            }),
+            new com.rameses.rcp.common.Column(new Object[]{
+                new Object[]{"name", "permit.permitno"}
+                , new Object[]{"caption", "Permit No"}
+                , new Object[]{"width", 100}
+                , new Object[]{"minWidth", 0}
+                , new Object[]{"maxWidth", 0}
+                , new Object[]{"required", false}
+                , new Object[]{"resizable", true}
+                , new Object[]{"nullWhenEmpty", true}
+                , new Object[]{"editable", false}
+                , new Object[]{"visible", true}
+                , new Object[]{"visibleWhen", null}
+                , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             })
         });
         schemaList1.setCustomFilter("unit.franchiseid = :objid");
         schemaList1.setOrderBy("dtcreated DESC");
         schemaList1.setQueryName("query");
         schemaList1.setSchemaName("vehicle_application");
-        schemaList1.setAllowCreate(true);
-        schemaList1.setAllowDelete(true);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

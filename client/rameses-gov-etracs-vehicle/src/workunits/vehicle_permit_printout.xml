@@ -7,16 +7,17 @@
                  action="preview"
                  index="30"
                  reportId="vehicle_permit" 
-                 visibleWhen="#{entity.permit !=null }"/>
+                 visibleWhen="#{entity.permit?.objid !=null }"/>
         
+        <!--
         <invoker type="vehicle_franchise:form:formActions" 
                  caption="View Permit" 
                  target="popup" 
                  action="preview"
                  index="30"
                  reportId="vehicle_permit" 
-                 visibleWhen="#{entity.permit !=null }"/>
-
+                 visibleWhen="#{entity.permit?.objid !=null }"/>
+        -->            
     </invokers> 
     <code class="com.rameses.gov.etracs.vehicle.models.VehiclePermitFormReportModel"/>
 </workunit>

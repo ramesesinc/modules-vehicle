@@ -38,7 +38,12 @@ class VehiclePrintReportInterceptor {
 	}
 
 	private void loadOwnerInfo(def app) {
-		app.account.owner = entityFinder.find([objid: app.account.owner.objid]);
+		def owner = entityFinder.find([objid: app.account.owner.objid]);
+		if(!owner) {
+			println "Owner not found ";
+			return;
+		}
+		app.account.owner = owner;
 		if( app.account.owner.type.toUpperCase() == 'INDIVIDUAL') {
 			def mi = "";
 			if( app.account.owner.middlename ) {
@@ -59,7 +64,7 @@ class VehiclePrintReportInterceptor {
 		def app = appEm.find( [objid: appid ]).first();
 		app.controlno = app.franchise.remove("objid");
 		app.vehicletype = app.franchise.remove("vehicletype");
-		//loadOwnerInfo( app );
+		loadOwnerInfo( app );
 		loadUnit( app.unit );
 		result.data = app;
 	}
@@ -71,9 +76,11 @@ class VehiclePrintReportInterceptor {
 		def appid = t.parameters.objid;
 		def app = appEm.find( [objid: appid ]).first();
 		def res = billingSvc.getBillItems( [appid: appid , include_billitems: false, include_items: true ] );
-		//loadOwnerInfo(app);
+
+		loadOwnerInfo(app);
 
 		app.items = res.items;
+		app.duedate = res.duedate;
 		loadUnit( app.unit );
 		result.data = app;
 	}
@@ -85,9 +92,10 @@ class VehiclePrintReportInterceptor {
 		def permitid = t.parameters.permitid;
 		
 		def perm = permitEm.find( [objid: permitid ]).first();
+		if(!perm) throw new Exception("Permit does not exist");
 
-		//loadOwnerInfo(perm);
 		def app = appEm.find([objid: perm.appid]).first();
+		loadOwnerInfo(app);
 		perm.controlno = app.franchise.objid;
 		perm.appyear = app.appyear;
 		perm.apptype = app.apptype;

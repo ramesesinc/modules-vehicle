@@ -33,7 +33,7 @@ public class VehicleApplicationInitialModel   {
     def searchOption = "controlno";
     def vehicletype;
     def entity;
-    def appTypes = ["NEW", "RENEW"]; 
+    def appTypes = ["NEW", "RENEW", "CHANGE_UNIT", "CHANGE_OWNER", "CHANGE_OWNER_UNIT"]; 
     def controlno;
     def apptype;
     
@@ -85,7 +85,6 @@ public class VehicleApplicationInitialModel   {
 
     def startCapture() {
         initNew("CAPTURE");
-        appTypes = ["NEW", "RENEW"]; 
         entity.apptype = "NEW";
         return mode;
     }
@@ -101,7 +100,7 @@ public class VehicleApplicationInitialModel   {
     
     def startSearch() {
         initNew("ONLINE");
-        appTypes = ["NEW", "RENEW", "CHANGE_UNIT", "CHANGE_OWNER", "CHANGE_OWNER_UNIT", "DROP"]; //this is a dummy routine to fix combo error
+        appTypes << "DROP";
         mode = "search";
         return mode;
     }
@@ -152,7 +151,7 @@ public class VehicleApplicationInitialModel   {
     }
     
     public def save() {
-        if(!MsgBox.confirm("You are about to save this entry. Proceed?")) return ;
+        if(!MsgBox.confirm("You are about to save this entry. Proceed?")) return ;        
         entity = appSvc.create( entity );
         def op =  Inv.lookupOpener("vehicle_application:open", [entity: entity ] );
         op.target = "topwindow";

@@ -8,7 +8,7 @@
                  index="30"
                  reportId="vehicle_application" 
                  reportType="application"
-                 visibleWhen="#{ task.state != 'draft' }"/>
+                 xvisibleWhen="#{ task.state != 'draft' }"/>
                     
     </invokers> 
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel"/>

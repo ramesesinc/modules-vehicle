@@ -12,6 +12,7 @@ public class VehicleApplication {
 	String objid;
 	String controlno;
 	int lastfranchiseyearpaid;
+	Date nextfranchiserenewaldate;
 
 	def fixDate( def dt ) {
 		if( dt instanceof String ) {
@@ -36,6 +37,9 @@ public class VehicleApplication {
 		}	
 		if(m.franchise?.lastfranchiseyearpaid) {
 			lastfranchiseyearpaid = m.franchise.lastfranchiseyearpaid;
+		}
+		if(m.franchise?.nextfranchiserenewaldate) {
+			nextfranchiserenewaldate = m.franchise.nextfranchiserenewaldate;
 		}
 	}
 

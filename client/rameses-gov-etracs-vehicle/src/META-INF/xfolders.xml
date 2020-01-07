@@ -21,6 +21,7 @@
             <folder id="master" caption="Master Files" index="1" icon="home/icons/master.png"/>
             <folder id="application" caption="Application" index="2" icon="home/icons/folder.png"/>
             <folder id="txn" caption="Transactions" index="3" icon="home/icons/folder.png"/>
+            <folder id="settings" caption="Settings" index="4" icon="home/icons/folder.png"/>
         </folder>
     </folder>
 </folders>    

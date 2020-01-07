@@ -5,12 +5,13 @@
 		<field name="appno" required="true" caption="App No" searchable="true" indexed="true"/>
 		<field name="appdate" required="true" caption="App Date"/>
 		<field name="appyear" required="true" indexed="true" caption="App Year"/>
-		<field name="apptype" required="true" indexed="true"  caption="App Type"/>
+		<field name="apptype" required="true" indexed="true"  caption="App Type" searchable="true"/>
 		<field name="txnmode" required="true" defaultValue="ONLINE"/>
-		<field name="dtcreated" required="true" />
+		<field name="dtcreated" type="date" required="true" />
 		<field name="createdby_objid" />
 		<field name="createdby_name" />
 		<field name="particulars"  />
+		<field name="dtassessed" type="date" />
 
 		<complex name="franchise" ref="vehicle_franchise" jointype="many-to-one" required="true">
 			<key field="franchiseid" target="objid" />
@@ -20,7 +21,7 @@
 			<key field="acctid" target="objid" />
 		</complex>
 
-		<complex name="permit" ref="vehicle_permit" jointype="many-to-one" required="false" includefields="objid,permitno,expirydate">
+		<complex name="permit" ref="vehicle_permit" jointype="many-to-one" required="false" includefields="objid,permitno,expirydate,dtissued">
 			<key field="objid" target="appid" />
 		</complex>
 

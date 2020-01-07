@@ -7,8 +7,9 @@ package com.rameses.gov.etracs.vehicle.components;
 
 import com.rameses.common.MethodResolver;
 import com.rameses.osiris2.client.WorkUnitUIController;
-import com.rameses.rcp.common.MsgBox;
 import com.rameses.rcp.control.XComponentPanel;
+import com.rameses.rcp.ui.Validatable;
+import com.rameses.rcp.util.ActionMessage;
 
 @com.rameses.rcp.ui.annotations.ComponentBean("com.rameses.gov.etracs.vehicle.components.VehicleInfoPanelModel")
 public class VehicleInfoPanel extends XComponentPanel {
@@ -114,4 +115,9 @@ public class VehicleInfoPanel extends XComponentPanel {
     public void setEditmode(String editmode) {
         this.editmode = editmode;
     }
+
+    public boolean isRequired() {
+        return true;
+    }
+    
 }

@@ -19,6 +19,12 @@ public class VehicleApplicationService  {
 	@DataContext("vehicle_application")
 	def appEm;
 
+	@DataContext("vehicle_application_info")
+	def appInfoEm;
+
+	@DataContext("vehicle_application_fee")
+	def appFeeEm;
+
 	@DataContext("vehicle_account")
 	def acctEm;
 
@@ -111,15 +117,7 @@ public class VehicleApplicationService  {
 		upd.appid = o.objid;
 
 		if( o.apptype.matches('NEW|CHANGE.*') ) {
-			upd.lastfranchiseyearpaid = o.appyear;
-		}
-		else if( o.txnmode == 'CAPTURE' ) {
-			if(!o.lastfranchiseyearpaid ) throw new Exception("Please indicate last franchise year paid");
-			if(o.lastfranchiseyearpaid > dateSvc.getServerYear() ) throw new Exception("Last franchise year paid must be less than current year");
-			//we just assign an arbitrary year
-			if(o.lastfranchiseyearpaid < 2000 ) throw new Exception("Invalid franchise year paid"); 
-
-			upd.lastfranchiseyearpaid = o.lastfranchiseyearpaid;
+			upd.nextfranchiserenewaldate = o.appdate;
 		}
 		franchiseEm.find( [objid: o.franchise.objid] ).update( upd );
 
@@ -259,8 +257,9 @@ public class VehicleApplicationService  {
 			def upd = [appid: prevapp.objid, unitid: prevapp.unitid, acctid: prevapp.acctid ];
 			franchiseEm.find([objid: app.franchiseid] ).update(upd);
 		}
-		
-		appEm.find( [objid: app.objid] ).update( [taskid: "{NULL}", unitid: "{NULL}", acctid: "{NULL}"]);
+		appFeeEm.find( [appid: app.objid] ).delete();
+		appInfoEm.find( [appid: app.objid] ).delete();
+		appEm.find( [objid: app.objid] ).update( [taskid: "{NULL}" ] );
 		vtaskEm.find([refid: app.objid]).delete();
 		appEm.find( [objid: app.objid] ).delete();
 

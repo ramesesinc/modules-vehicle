@@ -1,16 +1,17 @@
 <schema>
 	<element tablename="vehicle_franchise">
 		<field name="objid" primary="true" />
-		<field name="controlno" caption="Control No"/>
+		<field name="controlno" caption="Control No" searchable="true"/>
 		<field name="state"  required="true" />
 		<field name="appid" />
-		<field name="lastfranchiseyearpaid" />
+		<field name="nextfranchiserenewaldate" />
 
 		<complex name="account" ref="vehicle_account" jointype="many-to-one" required="false">
 			<key field="acctid" target="objid" />
 		</complex>
 
-		<complex name="permit" ref="vehicle_permit" jointype="many-to-one" required="false">
+		<complex name="permit" ref="vehicle_permit" jointype="many-to-one" required="false" 
+			includefields="objid,permitno,expirydate,dtissued">
 			<key field="permitid" target="objid" />
 		</complex>
 

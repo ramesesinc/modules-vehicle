@@ -1,0 +1,15 @@
+<workunit  schemaName="vehicle_extensiondate">
+    <invokers>
+        <invoker type="vehicle_extensiondate:create" 
+                 caption="Vehicle Extension Date" 
+                 action="create" target="popup"/>
+        <invoker type="vehicle_extensiondate:open" 
+                 caption="Vehicle Extension Date" 
+                 action="open" target="popup"/>
+        
+    </invokers>
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleExtensionDateModel" />
+    <pages>
+        <page template="com.rameses.gov.etracs.vehicle.views.VehicleExtensionDatePage" />
+    </pages>
+</workunit>

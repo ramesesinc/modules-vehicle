@@ -14,6 +14,9 @@ public class VehicleBillingService {
 	@DataContext("vehicle_itemaccount")
 	def itemAcct;
 
+	@DataContext("vehicle_extensiondate")
+	def extDateEm;
+
 	@Service("NumberService")
 	def numSvc;
 
@@ -26,6 +29,8 @@ public class VehicleBillingService {
 		def items = feeEm.select(sel).where( "appid = :appid AND amount-amtpaid > 0 ", [appid: pp.appid ] ).orderBy("year, item.sortorder" ).list();
 		
 		def assessedYears = items*.year.unique();
+
+		
 
 		def req = [rulename: 'vehiclebilling', params: [appid: pp.appid] ];
 		if( pp.include_items ) req.include_items = true;
@@ -41,6 +46,13 @@ public class VehicleBillingService {
 			facts << new vehicle.facts.VehicleAssessYear( year: it );
 		}
 
+		//load extension dates
+		def vid = app.franchise.vehicletype.objid;
+		def extDates = extDateEm.where( "vehicletypeid=:vid AND year >= :y1 AND year <= :y2", [vid:vid, y1: assessedYears.min() , y2: assessedYears.max()] ).list();	
+		extDates?.each {
+			facts << new treasury.facts.ExtensionDate( year:it.year, month: it.month, date: it.date );	
+		}
+
 		if( pp.amtpaid ) {
 			facts << new treasury.facts.Payment( amount: pp.amtpaid.toDouble() );
 		}
@@ -54,6 +66,8 @@ public class VehicleBillingService {
 			it.setPaypriority( n++ );
 		}
 		def res =  billingRuleSvc.execute( req );
+
+		res.duedate = res.billitems.findAll{ it.duedate!=null }*.duedate.max();
 
 		//format the items
 		if(res.billitems ) {

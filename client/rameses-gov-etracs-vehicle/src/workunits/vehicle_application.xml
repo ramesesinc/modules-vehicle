@@ -13,7 +13,7 @@
         <invoker type="appActions" action="viewReport" tooltip="View Reports" 
                  caption="Reports" 
                  index="100"
-                 visibleWhen="#{task.state == 'end' }"  />
+                 visibleWhen="#{task.state != 'draft' }"  />
         
         <invoker type="appActions" action="cancelApplication" tooltip="Cancel Application" 
                  caption="Cancel Application" 
@@ -39,7 +39,7 @@
 
         <invoker type="appActions" 
                 action="issuePermit" caption="Issue Permit" 
-                visibleWhen="#{ entity.permit == null 
+                visibleWhen="#{ entity.permit?.objid == null 
                     &amp;&amp; entity.apptype.matches('NEW|RENEW')                
                     &amp;&amp; task.state == 'release'
                     &amp;&amp; task.assignee.objid != null

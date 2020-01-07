@@ -50,7 +50,7 @@ public class VehicleInfoPanelModel extends ComponentBean {
                 dt.checkValue = 1;
                 dt.uncheckValue = 0;
             }
-            //if( fld.required == 1 ) dt.required = true;
+            if( fld.required == 1 ) dt.required = true;
             dt.enabled = enabled;
             dt.captionWidth = 150;
             formControls << dt;
