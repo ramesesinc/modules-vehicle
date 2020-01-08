@@ -8,20 +8,13 @@
                  index="30"
                  reportId="vehicle_billing" 
                  reportType="assessment"
+                 allowPrint="#{task.state.matches('billing|payment')}"
                  visibleWhen="#{
-                    task.state.matches('assessment|approval|billing') 
+                    (task.state == 'assessment' 
                     &amp;&amp; task.assignee.objid!=null 
-                    &amp;&amp; task.assignee.objid == userid }"/>
+                    &amp;&amp; task.assignee.objid == userid) ||
+                    task.state.matches('approval|billing|payment') }"/>
                     
-       <invoker type="vehicle_application:form:appActions" 
-                 caption="View Billing" 
-                 target="popup" 
-                 action="preview"
-                 index="30"
-                 reportType="assessment"
-                 reportId="vehicle_billing" 
-                 visibleWhen="#{ task.state == 'payment' }"/>             
-        
     </invokers> 
     <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel"/>
 </workunit>

@@ -139,12 +139,11 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xLookupField1.setRequired(true);
         xFormPanel3.add(xLookupField1);
 
-        xDateField2.setCaption("Next Franchise Renewal Date");
+        xDateField2.setCaption("Next Fran.Renewal Date");
         xDateField2.setName("entity.nextfranchiserenewaldate"); // NOI18N
         xDateField2.setOutputFormat("");
         xDateField2.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' }");
         xDateField2.setPreferredSize(new java.awt.Dimension(150, 20));
-        xDateField2.setRequired(true);
         xFormPanel3.add(xDateField2);
 
         entityLookup1.setCaption("Owner");

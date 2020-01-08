@@ -116,7 +116,6 @@ public class VehicleApplicationService  {
 
 		upd.appid = o.objid;
 
-		throw new Exception("next fran " + o.nextfranchiserenewaldate );
 		if(o.nextfranchiserenewaldate != null ) {
 			upd.nextfranchiserenewaldate = o.nextfranchiserenewaldate;
 		}
