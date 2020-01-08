@@ -60,10 +60,8 @@ class VehiclePermitService {
 	public def getDates( def app ) {
 		def req = [rulename: "vehicledates", params: [appdate:app.appdate]];
 		req.factBuilder = new treasury.utils.FactBuilder();
-		def appFact = new VehicleApplication();
-		appFact.setVehicletype( app.franchise.vehicletype.objid );
-		appFact.setAppdate( app.appdate );
-		appFact.setApptype( app.apptype );
+		def appFact = new VehicleApplication(app);
+
 		req.factBuilder.facts << appFact;
 		def res = billingRuleSvc.execute(req);
 		def expdate = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'expirydate' };
@@ -72,8 +70,8 @@ class VehiclePermitService {
 
 		def df = new java.text.SimpleDateFormat("yyyy-MM-dd");
 		def m = [:];
-		m.expirydate = df.format( expdate );
-		if( nextfranchiserenewaldate ) m.nextfranchiserenewaldate = df.format(  nextfranchiserenewaldate );
+		m.expirydate = df.format( expdate.date );
+		if( nextfranchiserenewaldate ) m.nextfranchiserenewaldate = df.format(  nextfranchiserenewaldate.date );
 
 		return m;
 	}

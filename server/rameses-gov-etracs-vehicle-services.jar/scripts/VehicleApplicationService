@@ -116,7 +116,11 @@ public class VehicleApplicationService  {
 
 		upd.appid = o.objid;
 
-		if( o.apptype.matches('NEW|CHANGE.*') ) {
+		throw new Exception("next fran " + o.nextfranchiserenewaldate );
+		if(o.nextfranchiserenewaldate != null ) {
+			upd.nextfranchiserenewaldate = o.nextfranchiserenewaldate;
+		}
+		else if( o.apptype.matches('NEW|CHANGE.*') ) {
 			upd.nextfranchiserenewaldate = o.appdate;
 		}
 		franchiseEm.find( [objid: o.franchise.objid] ).update( upd );

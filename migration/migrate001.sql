@@ -38,6 +38,12 @@ INSERT IGNORE  INTO sys_rule_fact_field
 VALUES 
 ('treasury.facts.HolidayFact.id','treasury.facts.HolidayFact','id','ID','string',1,'string','string');
 
+INSERT IGNORE  INTO sys_rule_fact_field
+(objid,parentid,name,title,datatype,sortorder,handler,vardatatype)
+VALUES 
+('vehicle.facts.VehicleApplication.nextfranchiserenewaldate','vehicle.facts.VehicleApplication','nextfranchiserenewaldate','Next Franchise Renewal Date','date',10,'date','date');
+
+DELETE FROM sys_rule_fact_field WHERE objid='vehicle.facts.VehicleApplication.lastfranchiseyearpaid';
 
 INSERT INTO sys_ruleset_fact (ruleset, rulefact) VALUES ('vehiclebilling','treasury.facts.ExtensionDate');
 INSERT INTO sys_ruleset_fact (ruleset, rulefact)VALUES ('vehiclebilling','treasury.facts.HolidayFact');

@@ -45,6 +45,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xIntegerField2 = new com.rameses.rcp.control.XIntegerField();
         xLabel4 = new com.rameses.rcp.control.XLabel();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
+        xDateField2 = new com.rameses.rcp.control.XDateField();
         entityLookup1 = new com.rameses.entity.components.EntityLookup();
         entityAddressLookup1 = new com.rameses.entity.components.EntityAddressLookup();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -137,6 +138,14 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xLookupField1.setPreferredSize(new java.awt.Dimension(250, 20));
         xLookupField1.setRequired(true);
         xFormPanel3.add(xLookupField1);
+
+        xDateField2.setCaption("Next Franchise Renewal Date");
+        xDateField2.setName("entity.nextfranchiserenewaldate"); // NOI18N
+        xDateField2.setOutputFormat("");
+        xDateField2.setVisibleWhen("#{ entity.txnmode == 'CAPTURE' }");
+        xDateField2.setPreferredSize(new java.awt.Dimension(150, 20));
+        xDateField2.setRequired(true);
+        xFormPanel3.add(xDateField2);
 
         entityLookup1.setCaption("Owner");
         entityLookup1.setDisableWhen("#{ !editableAccount  }");
@@ -241,6 +250,7 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
     private com.rameses.gov.etracs.vehicle.components.VehicleInfoPanel vehicleInfoPanel1;
     private com.rameses.rcp.control.XComboBox xComboBox1;
     private com.rameses.rcp.control.XDateField xDateField1;
+    private com.rameses.rcp.control.XDateField xDateField2;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XIntegerField xIntegerField2;
     private com.rameses.rcp.control.XLabel xLabel2;
