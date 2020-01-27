@@ -2,7 +2,7 @@
 <!-- Created with iReport - A designer for JasperReports -->
 <!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 <jasperReport
-		 name="PermitReport"
+		 name="vehicle_permit"
 		 columnCount="1"
 		 printOrder="Vertical"
 		 orientation="Portrait"
@@ -24,11 +24,11 @@
 	<import value="net.sf.jasperreports.engine.data.*" />
 
 
-	<field name="year" class="java.lang.Number"/>
+	<field name="appyear" class="java.lang.Number"/>
 	<field name="permitno" class="java.lang.String"/>
-	<field name="owner.name" class="java.lang.String"/>
-	<field name="owner.address.text" class="java.lang.String"/>
-	<field name="bodyno" class="java.lang.String"/>
+	<field name="account.owner.name" class="java.lang.String"/>
+	<field name="account.owner.address.text" class="java.lang.String"/>
+	<field name="unit.bodyno" class="java.lang.String"/>
 	<field name="application.mtopno" class="java.lang.String"/>
 	<field name="expirydate" class="java.util.Date"/>
 	<field name="remarks" class="java.lang.String"/>
@@ -55,7 +55,7 @@
 					<graphicElement stretchType="NoStretch">
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 </graphicElement>
-					<imageExpression class="java.lang.String"><![CDATA["images/watermark.png"]]></imageExpression>
+					<imageExpression class="java.lang.String"><![CDATA["watermark.png"]]></imageExpression>
 				</image>
 				<staticText>
 					<reportElement
@@ -89,7 +89,7 @@
 					<graphicElement stretchType="NoStretch">
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 </graphicElement>
-					<imageExpression class="java.lang.String"><![CDATA["images/logo.png"]]></imageExpression>
+					<imageExpression class="java.lang.String"><![CDATA["logo.png"]]></imageExpression>
 				</image>
 				<staticText>
 					<reportElement
@@ -640,7 +640,7 @@
 					<textElement textAlignment="Center">
 						<font fontName="Arial Narrow"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.Number"><![CDATA[$F{year}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.Number"><![CDATA[$F{appyear}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -666,7 +666,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{owner.name}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{account.owner.name}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -679,7 +679,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{owner.address.text}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{account.owner.address.text}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -692,7 +692,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{bodyno}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{unit.bodyno}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -780,7 +780,7 @@
 						height="20"
 						key="subreport-1"/>
 					<dataSourceExpression><![CDATA[$F{payments}]]></dataSourceExpression>
-					<subreportExpression  class="java.lang.String"><![CDATA["PermitPaymentReport.jasper"]]></subreportExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA["vehicle_permit_payment.jasper"]]></subreportExpression>
 				</subreport>
 			</band>
 		</title>

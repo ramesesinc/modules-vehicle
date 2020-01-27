@@ -35,6 +35,7 @@ public class VehicleExtensionDatePage extends javax.swing.JPanel {
         xIntegerField1 = new com.rameses.rcp.control.XIntegerField();
         xIntegerField2 = new com.rameses.rcp.control.XIntegerField();
         xDateField1 = new com.rameses.rcp.control.XDateField();
+        xTextField2 = new com.rameses.rcp.control.XTextField();
 
         xIntegerField1.setCaption("Year");
         xIntegerField1.setName("entity.year"); // NOI18N
@@ -48,21 +49,27 @@ public class VehicleExtensionDatePage extends javax.swing.JPanel {
         xDateField1.setName("entity.date"); // NOI18N
         xFormPanel1.add(xDateField1);
 
+        xTextField2.setCaption("Title");
+        xTextField2.setName("entity.title"); // NOI18N
+        xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
+        xTextField2.setRequired(true);
+        xFormPanel1.add(xTextField2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -72,5 +79,6 @@ public class VehicleExtensionDatePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XIntegerField xIntegerField1;
     private com.rameses.rcp.control.XIntegerField xIntegerField2;
+    private com.rameses.rcp.control.XTextField xTextField2;
     // End of variables declaration//GEN-END:variables
 }
