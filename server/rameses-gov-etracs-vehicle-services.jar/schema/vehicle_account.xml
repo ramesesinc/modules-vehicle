@@ -13,8 +13,8 @@
 		<field name="contact_email" />
 		<field name="lastfranchisedatepaid" />
 
-		<field name="barangay_objid" required="true"/>
-		<field name="barangay_name" required="false" caption="Barangay"/>
+		<field name="barangay_objid" />
+		<field name="barangay_name" caption="Barangay"/>
 		<field name="supersederid" />
 
 	</element>

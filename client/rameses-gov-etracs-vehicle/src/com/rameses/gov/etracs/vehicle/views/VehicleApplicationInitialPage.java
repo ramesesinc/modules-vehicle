@@ -116,7 +116,6 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xFormPanel3.add(xDateField1);
 
         xIntegerField2.setCaption("App Year");
-        xIntegerField2.setDisableWhen("#{ true }");
         xIntegerField2.setName("entity.appyear"); // NOI18N
         xIntegerField2.setVisibleWhen("");
         xIntegerField2.setRequired(true);

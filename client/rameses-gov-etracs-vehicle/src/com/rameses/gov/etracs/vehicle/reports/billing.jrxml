@@ -521,12 +521,12 @@
 			</band>
 		</pageFooter>
 		<lastPageFooter>
-			<band height="22"  isSplitAllowed="true" >
+			<band height="41"  isSplitAllowed="true" >
 				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Transparent"
 						x="0"
-						y="9"
+						y="28"
 						width="186"
 						height="11"
 						forecolor="#000000"
@@ -547,7 +547,7 @@
 					<reportElement
 						mode="Transparent"
 						x="475"
-						y="9"
+						y="28"
 						width="63"
 						height="11"
 						forecolor="#000000"
@@ -568,7 +568,7 @@
 					<reportElement
 						mode="Transparent"
 						x="133"
-						y="9"
+						y="28"
 						width="342"
 						height="11"
 						forecolor="#000000"
@@ -584,6 +584,27 @@
 						<font fontName="Tahoma" pdfFontName="Helvetica" size="7" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
 					</textElement>
 				<textFieldExpression   class="java.lang.String"><![CDATA["PRINTED BY : " + $P{PRINTEDBY} + "          PRINT DATE : "  + (new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format($P{PRINTDATE}))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="0"
+						y="16"
+						width="475"
+						height="11"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-27"
+						positionType="FixRelativeToBottom"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single">
+						<font fontName="Tahoma" pdfFontName="Helvetica" size="7" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["This is a system generated billing statement. Signatures not required"]]></textFieldExpression>
 				</textField>
 			</band>
 		</lastPageFooter>

@@ -588,7 +588,7 @@
 					<textElement textAlignment="Center" verticalAlignment="Top">
 						<font fontName="Arial" pdfFontName="Helvetica-Bold" size="7" isBold="true" isUnderline="false"/>
 					</textElement>
-				<text><![CDATA[Supervising Administrative Officer Permit & License Division]]></text>
+				<text><![CDATA[Officer in Charge Permit & License Division]]></text>
 				</staticText>
 				<staticText>
 					<reportElement
@@ -679,7 +679,7 @@
 					<textElement verticalAlignment="Bottom">
 						<font fontName="Arial Narrow" size="11"/>
 					</textElement>
-				<textFieldExpression   class="java.lang.String"><![CDATA[$F{account.owner.address.text}]]></textFieldExpression>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{account.owner.address.text}.replace("\n", ", ")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
@@ -720,7 +720,7 @@
 					</textElement>
 				<textFieldExpression   class="java.util.Date"><![CDATA[$F{expirydate}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						x="146"
 						y="355"

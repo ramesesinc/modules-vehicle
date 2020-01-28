@@ -165,7 +165,7 @@ public class VehicleApplicationService  {
 			if( testDate.after( currDate ) ) {
 				throw new Exception("Vehicle is not yet applicable for renewal");
 			}
-			def zv = getExpiryDate( [appdate: currDate, vehicletype: app.franchise.vehicletype ] );
+			def zv = getExpiryDate( [appdate: currDate, vehicletype: app.franchise.vehicletype, apptype: 'RENEW' ] );
 			vf.appdate = currDate;
 			vf.appyear = zv.appyear;			
 		}

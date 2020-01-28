@@ -64,8 +64,10 @@ class VehiclePermitService {
 
 		req.factBuilder.facts << appFact;
 		def res = billingRuleSvc.execute(req);
-		def expdate = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'expirydate' };
-		if( !expdate) throw new Exception("There is no rule defined for renewal date that matches conditions");
+
+		//DO NOT CHANGE it must be permitexpirydate (not expirydate)!
+		def expdate = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'permitexpirydate' };
+		if( !expdate) throw new Exception("There is no rule that will return permitexpirydate");
 		def nextfranchiserenewaldate = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'nextfranchiserenewaldate' };
 
 		def df = new java.text.SimpleDateFormat("yyyy-MM-dd");
