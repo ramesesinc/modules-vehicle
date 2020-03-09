@@ -176,7 +176,6 @@ public class VehicleApplicationInitialPage extends javax.swing.JPanel {
         xLookupField2.setHandler("barangay:lookup");
         xLookupField2.setName("entity.account.barangay"); // NOI18N
         xLookupField2.setPreferredSize(new java.awt.Dimension(250, 20));
-        xLookupField2.setRequired(true);
         xFormPanel3.add(xLookupField2);
 
         xTextField1.setCaption("Phone No");

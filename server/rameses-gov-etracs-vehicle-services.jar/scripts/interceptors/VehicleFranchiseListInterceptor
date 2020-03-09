@@ -30,26 +30,26 @@ class VehicleFranchiseListInterceptor {
 
 		switch( o.node.id ) {
 			case 'unassigned':
-				str = " unitid IS NULL ";
+				str = " appid IS NULL ";
 				break;
 
 			case 'active':
 				m.year = dateSvc.getServerYear();
-				str = " NOT(unitid IS NULL) AND app.task.state = 'end' AND NOT(permitid IS NULL) AND (permit.expirydate > NOW() ) ";  
+				str = " NOT(permitid IS NULL) AND permit.expirydate > NOW()";  
 				break;
 
 			case 'processing':
-				str = "  NOT(appid IS NULL) AND NOT(app.task.state = 'end') ";
+				str = "  NOT(app.task.state = 'end') ";
 				break;
 
 			case 'forrenewal':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(unitid IS NULL) AND  ( permit.expirydate < NOW() ) "
+				str = " app.appyear >= :year  AND permit.expirydate < NOW() "
 				break;
 
 			case 'delinquent':
 				m.year = dateSvc.getServerYear() - 1;
-				str = " NOT(unitid IS NULL) AND app.appyear < :year";
+				str = " app.appyear < :year";
 				break;
 
 			case 'dropped':

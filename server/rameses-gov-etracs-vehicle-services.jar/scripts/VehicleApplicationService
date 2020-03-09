@@ -149,13 +149,24 @@ public class VehicleApplicationService  {
 		def openCount = appEm.find( [franchiseid: vf.objid ] ).where(" NOT(task.state = 'end') ").select("c:{COUNT(*)}").val();
 		if( openCount > 0 ) throw new Exception("There are still unfinished applications being processed. Complete it first or cancel the pending application before proceeding");
 
-		//opne existing new or renew app so we can evaluate the requested application. if renew existing apptype must not be current. 
+		//open existing new or renew app so we can evaluate the requested application. if renew existing apptype must not be current. 
 		//if change, the existing app must be current
 		def app = appEm.find( [objid: vf.appid ] ).first();
 		def currYear = dateSvc.getServerYear();
 		def currDate = dateSvc.getServerDate();
 
+		if(!app.permit?.expirydate )
+				throw new Exception("Please issue a permit from the previous application and expirydate");
+
 		if( o.apptype == "RENEW") {
+			//get the expiry date and add one day. The year will be the renewal year
+			def renewDate = DateUtil.add( vf.permit.expirydate, "1d"  );
+			def renewYear = new DateBean( renewDate ).year;
+			if( renewYear < currYear ) renewYear = currYear;
+
+			if( renewYear == app.appyear ) 
+				throw new Exception("This vehicle has already been renewed for this year");
+
 			int allowed_days = 0;
 			def z = varSvc.early_renewal_allowed_days;
 			if(z) allowed_days = z.toInteger();
@@ -165,14 +176,17 @@ public class VehicleApplicationService  {
 			if( testDate.after( currDate ) ) {
 				throw new Exception("Vehicle is not yet applicable for renewal");
 			}
-			def zv = getExpiryDate( [appdate: currDate, vehicletype: app.franchise.vehicletype, apptype: 'RENEW' ] );
 			vf.appdate = currDate;
-			vf.appyear = zv.appyear;			
+			vf.appyear = renewYear;
 		}
 		else {
 			vf.appdate = currDate;
 			vf.appyear = app.appyear;
+			
+			if( currYear != vf.appyear )
+				throw new Exception("Please renew first before performing any other transaction");
 		}
+
 		//unit info
 		def unit = vf.unit;
 		def infos = unitInfoEm.find( [unitid: vf.unit.objid ] ).list();
@@ -189,28 +203,6 @@ public class VehicleApplicationService  {
 		return vf;
 	}
 
-	@ProxyMethod
-	public def getExpiryDate( def app ) {
-		if(!app.appdate) throw new Exception("Please specify appdate in VehicleApplication.getExpiryDate");
-		if(!app.vehicletype) throw new Exception("Please specify vehicletype in VehicleApplication.getExpiryDate");
-
-		def req = [rulename: "vehicledates", params: [appdate:app.appdate]];
-		req.factBuilder = new treasury.utils.FactBuilder();
-		def appFact = new VehicleApplication();
-		appFact.setVehicletype( app.vehicletype.objid );
-		appFact.setAppdate( app.appdate );
-		appFact.setApptype( app.apptype );
-		req.factBuilder.facts << appFact;
-		def res = billingRuleSvc.execute(req);
-		def v = req.factBuilder.facts.find{ (it instanceof treasury.facts.VarDate) && it.tag == 'expirydate' };
-		if( !v ) throw new Exception("There is no rule defined for renewal date that matches conditions");
-		def df = new java.text.SimpleDateFormat("yyyy-MM-dd");
-		def yf = new java.text.SimpleDateFormat("yyyy");
-		return [
-			expirydate: df.format( v.date ),
-			appyear: yf.format( v.date )
-		];	
-	}
 
 	@ProxyMethod
 	public void updateFranchise(def a ) {

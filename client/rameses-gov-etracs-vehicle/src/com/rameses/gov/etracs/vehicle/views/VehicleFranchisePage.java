@@ -167,7 +167,7 @@ public class VehicleFranchisePage extends javax.swing.JPanel implements UIConten
         xLabel21.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel5.add(xLabel21);
 
-        xLabel22.setCaption("Peermit Expiry Date");
+        xLabel22.setCaption("Permit Expiry Date");
         xLabel22.setExpression("#{entity.permit.expirydate} ");
         xLabel22.setVisibleWhen("");
         xLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));

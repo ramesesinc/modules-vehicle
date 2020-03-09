@@ -68,7 +68,6 @@ public class VehicleApplicationSearchPage extends javax.swing.JPanel {
         entityLookup1.setCaptionWidth(100);
         entityLookup1.setCellPadding(new java.awt.Insets(0, 25, 0, 0));
         entityLookup1.setDepends(new String[] {"searchOption"});
-        entityLookup1.setEntityType("entityindividual");
         entityLookup1.setName("owner"); // NOI18N
         entityLookup1.setPreferredSize(new java.awt.Dimension(0, 21));
         entityLookup1.setRequired(true);

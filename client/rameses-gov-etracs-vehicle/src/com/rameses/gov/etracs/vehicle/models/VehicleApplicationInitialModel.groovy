@@ -63,7 +63,7 @@ public class VehicleApplicationInitialModel   {
             entity.apptype = o;
         },
         "entity.appdate" : { o->
-            def r = appSvc.getExpiryDate( [appdate:o, vehicletype: vehicletype, apptype: entity.apptype ] );   
+            def r = dateSvc.getServerDate();   
             entity.appyear = r.appyear;
             binding.refresh("entity.appyear");
         }
@@ -93,8 +93,7 @@ public class VehicleApplicationInitialModel   {
         initNew("ONLINE");
         entity.appdate = dateSvc.getServerDate();
         entity.unit = [:];
-        def r = appSvc.getExpiryDate( [appdate:entity.appdate, vehicletype: vehicletype, apptype: "NEW" ] );   
-        entity.appyear = r.appyear;
+        entity.appyear = dateSvc.getServerYear();
         return mode;
     }
     
