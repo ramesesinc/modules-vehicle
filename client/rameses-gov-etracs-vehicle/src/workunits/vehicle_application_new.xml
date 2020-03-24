@@ -22,7 +22,7 @@
                 action="startSearch" caption="Drop Unit"  index="23" role="INFO"/>
 
         <!-- actions -->
-        <invoker type="formActions" action="_close" caption="Close"/>                
+        <invoker type="formActions" action="_close" caption="Close" immediate="true"/>                
         <invoker type="formActions" action="doNext" caption="Next" visibleWhen="#{mode == 'search' }" />        
         <invoker type="formActions" action="save" caption="Submit" visibleWhen="#{ mode == 'initial' }" />
         

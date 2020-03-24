@@ -40,8 +40,12 @@ public class VehicleFormReportModel extends FormReportModel {
         
         vehicletype = caller.vehicletype.objid;
         String reportType = inv.properties.reportType;
-        
-        _reportName = reportPath + vehicletype + "_" + reportType +".jasper"; 
+        if( inv.properties.reportName !=null ) {
+            _reportName = inv.properties.reportName;
+        }
+        else {
+            _reportName = reportPath + vehicletype + "_" + reportType +".jasper";             
+        }
         def r = getClass().classLoader.getResource( _reportName );
         if(!r) {
             _reportName = reportPath + "vehicle_" + reportType + ".jasper";             

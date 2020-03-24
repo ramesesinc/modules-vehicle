@@ -9,6 +9,9 @@ class VehiclePrintReportInterceptor {
 	@DataContext("vehicle_application_fee")
 	def appFee;
 
+	@DataContext("vehicle_application_task")
+	def appTaskEm;
+
 	@DataContext("vehicle_payment")
 	def paymentEm;
 
@@ -99,13 +102,13 @@ class VehiclePrintReportInterceptor {
 		perm.controlno = app.franchise.objid;
 		perm.appyear = app.appyear;
 		perm.apptype = app.apptype;
+		perm.appno = app.appno;
 		perm.unit = app.unit;
 		perm.account = app.account;
 		perm.vehicletype = app.franchise.vehicletype;
 		perm.payments = paymentEm.find( [appid: app.objid ] ).where("voided = 0").select("refno,refdate,amount").list();
 
 		//perm.endorser = [name:null, jobtitle: null];
-
 		loadUnit( perm.unit );
 		result.data = perm;
 	}

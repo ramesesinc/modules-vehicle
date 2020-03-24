@@ -1,0 +1,23 @@
+<workunit extends="com/rameses/seti2/templates/CrudLookup.xml" 
+          schemaName="vehicletype_field" allowCreate="false" allowOpen="false" allowDelete="false"
+          groupBy="name,datatype,caption"
+          cols="name,datatype,caption">
+    
+    <invokers>
+        <invoker type="vehicle_fieldtype_decimal:lookup" caption="Decimal Field Info Lookup" 
+                 action="init"
+                 customFilter=" datatype = 'decimal' "/>
+        
+        <invoker type="vehicle_fieldtype_integer:lookup" caption="Integer Field Info Lookup" 
+                 action="init"
+                 customFilter=" datatype = 'integer' "/>
+        
+        <invoker type="vehicle_fieldtype_boolean:lookup" caption="Boolean Field Info Lookup" 
+                 action="init"
+                 customFilter=" datatype = 'boolean' "/>
+        
+        <invoker type="vehicle_fieldtype_string:lookup" caption="String Field Info Lookup"
+                 action="init"
+                 customFilter=" datatype IN ('string', 'text' ) "/>
+    </invokers>
+</workunit>

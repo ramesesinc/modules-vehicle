@@ -21,6 +21,10 @@ public class VehicleAssessmentService  {
 	@DataContext("vehicle_application_info")
 	def infoEm;	
 
+	@DataContext("vehicle_unit_info")
+	def unitInfoEm;	
+
+
 	@DataContext("vehicle_itemaccount")
  	def itemAcctEm;	
 
@@ -60,10 +64,22 @@ public class VehicleAssessmentService  {
 			m.name = it.name;
 			if( it.datatype == 'boolean' ) m.booleanvalue = it.value;
 			else if( it.datatype == 'decimal' ) m.decimalvalue = it.value;
-			else if( it.datatype == 'integer' ) m.integervalue = it.value;
+			else if( it.datatype == 'integer' ) m.intvalue = it.value;
+			else if( it.datatype == 'boolean' ) m.booleanvalue = it.value;			
 			else it.stringvalue = m.value;
 			m.type = [objid: it.name];
 			infoEm.create( m );
+		}
+	}
+
+	void fixInfos(  def infos  ) {
+		infos.each {
+			if( it.value ==null ) return;
+			if( it.datatype == 'boolean' ) it.booleanvalue = it.value;
+			else if( it.datatype == 'decimal' ) it.decimalvalue = it.value;
+			else if( it.datatype == 'integer' ) it.intvalue = it.value;
+			else if( it.datatype == 'boolean' ) it.booleanvalue = it.value;			
+			else it.stringvalue = m.value;
 		}
 	}
 
@@ -94,16 +110,29 @@ public class VehicleAssessmentService  {
 			} 
 		}
 
+		//add the vehicle unit infos to evaluate for assessment
+		def unitInfos = unitInfoEm.find( [unitid: app.unit.objid ]  ).list();
+		unitInfos.each {
+			if( it.field.datatype == "decimal" && it.decimalvalue!=null ) facts << new VehicleDecimalInfo( name: it.field.name,  value: it.decimalvalue );
+			else if( it.field.datatype == "integer" && it.intvalue!=null ) facts << new VehicleIntegerInfo( name: it.field.name, value: it.intvalue );
+			else if( it.field.datatype == "boolean" && it.booleanvalue !=null ) facts << new VehicleBooleanInfo( name: it.field.name, value: it.booleanvalue );	
+			else if( it.field.datatype == "date" && it.datevalue!=null ) facts << new VehicleDateInfo( name: it.field.name, value: it.datevalue );	
+			else if( it.field.datatype.matches("string|text") && it.stringvalue!=null) facts << new VehicleStringInfo( name: it.field.name, value: it.stringvalue );			
+		}
+
 		req.factBuilder = new treasury.utils.FactBuilder();
 		req.factBuilder.variableInfoProvider = new DefaultVariableInfoProvider(
 			schemaName:"vehicle_variable"
 		);
-		req.factBuilder.facts.addAll( facts );
 
+		req.factBuilder.facts.addAll( facts );
 		req.billdate = dateSvc.getServerDate();
+
+		//fix the variables before executing:
+		if( req.params.infos ) fixInfos( req.params.infos );
+
 		def res = billingRuleSvc.execute(req);
 		if(res.askinfos) return res;
-
 
 		saveInfos( app.objid, res.infos );
 		saveBillItems( app.objid, res.billitems );

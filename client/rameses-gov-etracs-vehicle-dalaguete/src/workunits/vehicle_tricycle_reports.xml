@@ -1,6 +1,6 @@
 <workunit extends="com/rameses/seti2/templates/FormReport.xml">
     <invokers>
-        <invoker type="vw_vehicle_application:form:reports" 
+        <invoker type="vehicle_application:form:reports" 
                  caption="Print Application (FORM 01)" 
                  target="popup" 
                  action="preview"
@@ -10,7 +10,7 @@
                  visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
          
-        <invoker type="vw_vehicle_application:form:reports" 
+        <invoker type="vehicle_application:form:reports" 
                  caption="Affidavit (FORM 02)" 
                  target="popup" 
                  action="preview"
@@ -19,7 +19,7 @@
                  visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
 
-        <invoker type="vw_vehicle_application:form:reports" 
+        <invoker type="vehicle_application:form:reports" 
                  caption="Statement if Undertaking (FORM 03)" 
                  target="popup" 
                  action="preview"
@@ -28,7 +28,7 @@
                  visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
                 
-        <invoker type="vw_vehicle_application:form:reports" 
+        <invoker type="vehicle_application:form:reports" 
                  caption="Petition (FORM 04)" 
                  target="popup" 
                  action="preview"
@@ -37,7 +37,7 @@
                  visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
 
-        <invoker type="vw_vehicle_application:form:reports" 
+        <invoker type="vehicle_application:form:reports" 
                  caption="Formal Offer of Evidence (FORM 05)" 
                  target="popup" 
                  action="preview"
@@ -46,5 +46,5 @@
                  visibleWhen="#{ task.state == 'end' }"
                  reportId="vehicle_application" />
     </invokers>
-    <code class="com.rameses.gov.etracs.vehicle.models.VehicleReportForm" /> 
+    <code class="com.rameses.gov.etracs.vehicle.models.VehicleFormReportModel" /> 
 </workunit>
