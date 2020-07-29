@@ -30,6 +30,14 @@ class VehicleApplicationWorkflowInterceptor {
 		if(!cnt) throw new Exception("There must be at least one application fee");
 	}
 
+	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'billing' && args[0].action == 'submit' }")
+	public void beforePostBilling( def evt ) {
+		def p = evt.args[0];
+		def	total = vFee.find([appid: p.refid]).select( "total:{SUM( amount-amtpaid )}" ).val();
+		if(total == null) total = 0;
+		p.info = [amtdue: total, message: 'balance unpaid:' + total ];	
+	}
+
 	@Before(pattern="WorkflowTaskService.signal", eval="#{ args[0].processname=='vehicle_application' && args[0].taskstate == 'payment' && args[0].action == 'post' }")
 	public void beforePayment( def evt ) {
 		def p = evt.args[0];

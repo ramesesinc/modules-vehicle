@@ -97,9 +97,4 @@ public class VehicleApplicationModel extends WorkflowTaskModel {
         def h = { super.open(false); binding.refresh(); }
         return Inv.lookupOpener("vehicle_application:edit", [entity: entity, vehicletype: vehicletype, apptype:apptype, handler: h ]);
     }
-    
-    
-
-    
-    
 }
